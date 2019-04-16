@@ -9,6 +9,10 @@ body {
     font-size: 1.2rem;
 }
 
+body.home {
+    overflow:hidden;
+}
+
 .container {
     min-height:100%;
 }
@@ -28,7 +32,7 @@ body {
 main {
     padding: 30px 0;
     position: absolute;
-    top: 45%;
+    top: 48%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
@@ -78,5 +82,12 @@ a:hover {
     border-color: #4788f2;
 }
 
+svg {
+    height:100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 .st0{fill:none;stroke:#DCDCDC;stroke-miterlimit:10;}
 .st1{fill:none;stroke:#DCDCDC;stroke-linecap:round;stroke-miterlimit:10;}
