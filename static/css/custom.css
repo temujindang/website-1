@@ -51,6 +51,7 @@ main {
 .home .footer {
     position:fixed;
     left:0px;
+    display: none;
 }
 
 a {
