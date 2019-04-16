@@ -11,6 +11,7 @@ body {
 
 body.home {
     overflow:hidden;
+    max-width:100%;
 }
 
 .container {
