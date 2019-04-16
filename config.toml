@@ -1,0 +1,10 @@
+#baseurl = "https://weirdtrickmafia.fm"
+languageCode = "en-us"
+title = "0xide"
+canonifyUrls = true
+
+[params]
+description = "A new computer company with a soul."
+github_url = "https://github.com/0x1de"
+twitter_handle = "0x1de"
+google_analytics = ""
