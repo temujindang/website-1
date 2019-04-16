@@ -68,5 +68,15 @@ a:hover {
     text-decoration: none;
 }
 
+.btn {
+    color: #FFFAFA;
+    border-color: #FFFAFA;
+}
+
+.btn:hover {
+    color: #4788f2;
+    border-color: #4788f2;
+}
+
 .st0{fill:none;stroke:#DCDCDC;stroke-miterlimit:10;}
 .st1{fill:none;stroke:#DCDCDC;stroke-linecap:round;stroke-miterlimit:10;}
