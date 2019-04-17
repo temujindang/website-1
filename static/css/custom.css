@@ -10,7 +10,7 @@ html, body {
 body {
     color: #fff;
     font-size: 1.2rem;
-    font-family: 'Inconsolata', monospace;
+    font-family: 'Inconsolata', m:0000/16ff/1cff/e666onospaceg
 }
 
 body.home {
@@ -110,7 +110,7 @@ svg {
     left: 0;
     top: 0;
 }
-.st0{fill:none;stroke:#DCDCDC;stroke-miterlimit:10;}
+.st0{fill:none;stroke:#444;stroke-miterlimit:10;}
 .st1{fill:none;stroke:#DCDCDC;stroke-linecap:round;stroke-miterlimit:10;}
 
 /* Portrait */
