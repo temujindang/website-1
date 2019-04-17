@@ -10,6 +10,7 @@ html, body {
 body {
     color: #fff;
     font-size: 1.2rem;
+    font-family: 'Inconsolata', monospace;
 }
 
 body.home {
