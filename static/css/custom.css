@@ -111,7 +111,7 @@ svg {
     top: 0;
 }
 .st0{fill:none;stroke:#333;stroke-miterlimit:10;}
-.st1{fill:none;stroke:#c0c0c0;stroke-linecap:round;stroke-miterlimit:10;}
+.st1{fill:none;stroke:#a7a7a7;stroke-linecap:round;stroke-miterlimit:10;}
 
 /* Portrait */
 @media screen and (orientation:portrait) {
