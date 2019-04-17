@@ -116,7 +116,7 @@ svg {
 @media screen and (orientation:portrait) {
     /* Portrait styles */
     svg {
-        height: 120%;
+        height: 130%;
     }
 }
 /* Landscape */
