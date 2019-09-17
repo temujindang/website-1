@@ -27,14 +27,14 @@ versions. This runs in a docker container then outputs the results.
 Add a new markdown file to [`content/blog`](content/blog). Make sure it has the
 following metadata at the top of the file:
 
-``
+```
 +++
 date = "2016-09-17T08:09:26-07:00"
 title = "Post Title"
 authors = ["name of author files in data/team"]
 description = "Description of the post."
 +++
-``
+```
 
 The authors field can hold more than one author and is the name of the `toml`
 file for the specific author in [`data/team`](data/team).
