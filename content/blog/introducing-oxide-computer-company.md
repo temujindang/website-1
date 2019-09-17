@@ -1,7 +1,7 @@
 +++
-date = "2016-09-17T08:09:26-07:00"
-title = "Sample Post"
-authors = ["02-jess"]
+date = "2016-09-16T08:09:26-07:00"
+title = "Introducing Oxide Computer Company"
+authors = ["00-steve", "01-bryan", "02-jess"]
 description = "Description of the sample post."
 +++
 

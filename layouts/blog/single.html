@@ -7,6 +7,16 @@
             <p class="lead">
             {{ .Date.Format "Monday, January 2, 2006" }}
             </p>
+
+            <!-- get the author(s) -->
+            <h4>
+            {{ with .Params.authors }}{{ range $file := . }}
+            <small class="author text-muted">
+                <a href="/authors/{{$file}}/">{{ ( index $.Site.Data.team $file).name }}</a>
+            </small>
+            {{ end }}{{ end }}
+            </h4>
+            <!-- end authors section -->
         </div>
 
         {{ .Content }}

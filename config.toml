@@ -12,3 +12,4 @@ google_analytics = "UA-148178470-1"
 [taxonomies]
   category = "categories"
   tag = "tags"
+  author = "authors"

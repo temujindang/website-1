@@ -61,16 +61,24 @@ html {
     border-bottom: none;
 }
 
-.post h2 a {
+.summary {
+    margin: 0px 0px 40px 0px;
+}
+
+h4 .author {
+    margin: 0px 10px;
+}
+
+.summary h2 a {
     color: #212529;
     border-bottom: 2px solid transparent;
 }
 
-.post h2 a:hover {
+.summary h2 a:hover {
     color: #000000;
     border-bottom: 2px solid #000000;
 }
 
-.post h2 small {
+.summary h2 small {
     margin-left: 10px;
 }

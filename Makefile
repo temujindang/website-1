@@ -17,6 +17,8 @@ DOCKER_FLAGS+=--rm -i \
 DOCKER_FLAGS+=-v $(CURDIR):/src/$(NAME)
 DOCKER_FLAGS+=--workdir /src/$(NAME)
 
+all: dev
+
 REGISTRY := r.j3ss.co
 .PHONY: image-dev
 image-dev:
