@@ -8,3 +8,7 @@ description = "The computer company of the post-cloud generation"
 github_handle = "0x1decc"
 twitter_handle = "0x1deCC"
 google_analytics = "UA-148178470-1"
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"

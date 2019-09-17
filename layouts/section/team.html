@@ -1,0 +1,46 @@
+{{ partial "header.html" . }}
+
+<div class="container">
+    <div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+        <h1 class="display-4">Team</h1>
+        <p class="lead">
+            Nemo enim ipsam voluptatem quia voluptas sit aspernatur.
+        </p>
+    </div>
+
+    <article>
+        {{ range $.Site.Data.team }}
+        <!-- team member -->
+        <div class="row member">
+            <div class="col-md-8">
+                <h2>
+                    {{ .name }}
+                    <small class="text-muted">{{.title}}</small>
+                </h2>
+
+                <!-- social media links -->
+                <div class="icons">
+                    {{with .twitter}}<a class="icon" href="https://twitter.com/{{ . }}" target="_blank">
+                        <i class="fab fa-twitter-square"></i>
+                    </a>{{end}}
+                    {{with .github}}<a class="icon" href="https://github.com/{{ . }}" target="_blank">
+                        <i class="fab fa-github-square"></i>
+                    </a>{{end}}
+                    {{with .linkedin}}<a class="icon" href="https://www.linkedin.com/in/{{ . }}" target="_blank">
+                        <i class="fab fa-linkedin"></i>
+                    </a>{{end}}
+                    {{with .blog}}<a class="icon" href="{{ . }}" target="_blank">
+                        <i class="fas fa-home"></i>
+                    </a>{{end}}
+                </div>
+                <!-- end social media links -->
+
+                {{with .bio}}<p>{{.}}</p>{{end}}
+            </div>
+        </div>
+        <!-- end team member -->
+        {{ end }}
+    </article>
+</div>
+
+{{ partial "footer.html" . }}

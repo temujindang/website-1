@@ -1,35 +1,76 @@
-.bd-placeholder-img {
-    font-size: 1.125rem;
-    text-anchor: middle;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-@media (min-width: 768px) {
-    .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-    }
-}
-
 html {
     font-size: 14px;
 }
+
 @media (min-width: 768px) {
     html {
         font-size: 16px;
     }
 }
 
+#nav {
+    margin-bottom: 0px!important;
+}
+
+#callouts {
+    margin: 30px 0;
+}
+
 .container {
     max-width: 960px;
 }
 
-.pricing-header {
-    max-width: 700px;
+.page {
+    margin-top:30px;
 }
 
-.card-deck .card {
-    min-width: 220px;
+#logo a, nav a, footer a {
+    color: #212529;
+    border-bottom: none;
+}
+
+#logo a:hover, nav a:hover, footer a:hover {
+    text-decoration: none;
+    color: #000000!important;
+    border-bottom: none;
+}
+
+#copyright {
+    margin-top: 20px;
+    display: block;
+    text-align: right;
+}
+
+.member {
+    margin: 0px 0px 20px 0px;
+}
+
+.member .icons {
+    margin: 0px 0px 10px 0px;
+}
+
+.member .icons a {
+    font-size: 16px;
+    margin-right: 5px;
+    color: #6c757d;
+    border-bottom: none;
+}
+
+.member .icons a:hover {
+    color: #000000;
+    border-bottom: none;
+}
+
+.post h2 a {
+    color: #212529;
+    border-bottom: 2px solid transparent;
+}
+
+.post h2 a:hover {
+    color: #000000;
+    border-bottom: 2px solid #000000;
+}
+
+.post h2 small {
+    margin-left: 10px;
 }
