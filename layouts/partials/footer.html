@@ -33,6 +33,16 @@
 
     <script src="/js/site.min.js"></script>
 
+    <script>
+        function doPrettyPrint(){
+            pres=document.getElementsByTagName('pre');
+            for (i=0; i < pres.length; i++) {
+                pres[i].className+=" prettyprint";
+            }
+            prettyPrint();
+        }
+    </script>
+
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id={{.Site.Params.google_analytics}}"></script>
     <script>

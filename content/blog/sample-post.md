@@ -68,7 +68,7 @@ push back or bottleneck mice.
 
 
 ```sh
-#!/bin bash
+#!/bin/bash
 set -e
 set -o pipefail
 

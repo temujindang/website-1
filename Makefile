@@ -29,12 +29,13 @@ static/js/site.min.js: image-dev
 		$(REGISTRY)/$(NAME):dev \
 		uglifyjs --output $@ --compress --mangle -- \
 			static/js/lib/jquery-3.4.1.min.js \
-			static/js/bootstrap.js
+			static/js/bootstrap.js \
+			static/js/prettify.js
 
 static/css/site.min.css: image-dev
 	docker run $(DOCKER_FLAGS) \
 		$(REGISTRY)/$(NAME):dev \
-		sh -c 'cat static/css/bootstrap.css static/css/fontawesome.min.css static/css/custom.css | cleancss -o $@'
+		sh -c 'cat static/css/bootstrap.css static/css/fontawesome.min.css static/css/custom.css static/css/prettify.css | cleancss -o $@'
 
 .PHONY: dev
 dev: static/js/site.min.js static/css/site.min.css ## Build the frontend components.
