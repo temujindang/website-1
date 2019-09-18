@@ -1,3 +1,4 @@
+{{ if .Params.authors }}
 <!-- get the author(s) -->
 {{range .Params.authors}}
 {{$name := (index $.Site.Data.team .).name }}
@@ -8,3 +9,4 @@
 <h6>{{ delimit $authors ", " ", and " }}</h6>
 {{ $.Scratch.Delete "authors" }}
 <!-- end authors section -->
+{{end}}

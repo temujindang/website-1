@@ -15,7 +15,22 @@
             {{ range .Data.Pages.ByTitle }}
             <a class="list-group-item list-group-item-action"  href="{{ .Permalink }}" title="{{ .Title }}">
                 {{.Title}}
+
+                <div class="float-right">
+
+                    {{ $taxo := "categories" }}
+                    {{ if .Param $taxo }}
+                    {{ range .Param $taxo }}
+                    {{ $name := . }}
+                    {{ with $.Site.GetPage (printf "/%s/%s" $taxo ($name | urlize)) }}
+                    <span href="{{.Permalink}}" class="badge badge-dark" title="{{$name|humanize}}">{{$name|humanize}}</span>
+                    {{end}}
+                    {{end}}
+                    {{end}}
+                </div>
             </a>
+
+
             {{ end }}
         </div>
     </article>
