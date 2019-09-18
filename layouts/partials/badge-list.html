@@ -3,7 +3,7 @@
     {{ range .Param $taxo }}
     {{ $name := . }}
     {{ with $.Site.GetPage (printf "/%s/%s" $taxo ($name | urlize)) }}
-    <a href="{{.Permalink}}" class="badge badge-dark">{{$name}}</a>
+    <a href="{{.Permalink}}" class="badge badge-dark" title="{{$name|humanize}}">{{$name|humanize}}</a>
     {{end}}
     {{end}}
 
@@ -11,7 +11,7 @@
     {{ range .Param $taxo }}
     {{ $name := . }}
     {{ with $.Site.GetPage (printf "/%s/%s" $taxo ($name | urlize)) }}
-    <a href="{{.Permalink}}" class="badge badge-secondary">{{$name}}</a>
+    <a href="{{.Permalink}}" class="badge badge-secondary" title="{{$name|humanize}}">{{$name|humanize}}</a>
     {{end}}
     {{end}}
 </section>

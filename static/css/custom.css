@@ -10,12 +10,12 @@
     max-width: 960px;
 }
 
-#logo a, nav a, footer a {
+#logo a, nav a, footer a, h6 a {
     color: #212529;
     border-bottom: none;
 }
 
-#logo a:hover, nav a:hover, footer a:hover {
+#logo a:hover, nav a:hover, footer a:hover, h6 a:hover {
     text-decoration: none;
     color: #000000!important;
     border-bottom: none;
