@@ -97,3 +97,11 @@ article.team {
 .member p {
     padding-right: 10px;
 }
+
+textarea:focus, input:focus, *:focus, button, a, a:focus {
+    outline: none;
+}
+
+p strong {
+    color: #212529;
+}

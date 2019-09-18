@@ -10,7 +10,7 @@
 
     <article class="team">
         <div class="row">
-        {{ range $.Site.Data.team }}
+        {{ range sort $.Site.Data.team "weight" "asc" }}
         <!-- team member -->
         <div class="member col-6 col-md-6">
             <h2>
@@ -20,16 +20,19 @@
 
             <!-- social media links -->
             <div class="icons">
-                {{with .twitter}}<a class="icon" href="https://twitter.com/{{ . }}" target="_blank">
-                    <i class="fab fa-twitter-square"></i>
+                <a class="icon" title="Oxide Blog Posts" href="/authors/{{.name | urlize}}/">
+                    <i class="fas fa-file-alt"></i>
+                </a>
+                {{with .twitter}}<a class="icon" title="Twitter" href="https://twitter.com/{{ . }}" target="_blank">
+                    <i class="fab fa-twitter"></i>
                 </a>{{end}}
-                {{with .github}}<a class="icon" href="https://github.com/{{ . }}" target="_blank">
-                    <i class="fab fa-github-square"></i>
+                {{with .github}}<a class="icon" title="GitHub" href="https://github.com/{{ . }}" target="_blank">
+                    <i class="fab fa-github"></i>
                 </a>{{end}}
-                {{with .linkedin}}<a class="icon" href="https://www.linkedin.com/in/{{ . }}" target="_blank">
-                    <i class="fab fa-linkedin"></i>
+                {{with .linkedin}}<a class="icon" title="LinkedIn" href="https://www.linkedin.com/in/{{ . }}" target="_blank">
+                    <i class="fab fa-linkedin-in"></i>
                 </a>{{end}}
-                {{with .blog}}<a class="icon" href="{{ . }}" target="_blank">
+                {{with .blog}}<a class="icon" title="Personal Blog" href="{{ . }}" target="_blank">
                     <i class="fas fa-home"></i>
                 </a>{{end}}
             </div>
