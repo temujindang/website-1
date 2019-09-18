@@ -1,12 +1,13 @@
+{{ $scratch := newScratch }}
+{{ $scratch.Delete "authors" }}
 {{ if .Params.authors }}
 <!-- get the author(s) -->
 {{range .Params.authors}}
 {{$name := (index $.Site.Data.team .).name }}
 {{$md := printf "<a href=\"/authors/%s\" title=\"%s\">%s</a>" . $name $name}}
-{{ $.Scratch.Add "authors" (slice $md) }}
+{{ $scratch.Add "authors" (slice $md) }}
 {{end}}
-{{ $authors := $.Scratch.Get "authors" }}
+{{ $authors := $scratch.Get "authors" }}
 <h6>{{ delimit $authors ", " ", and " }}</h6>
-{{ $.Scratch.Delete "authors" }}
 <!-- end authors section -->
 {{end}}
