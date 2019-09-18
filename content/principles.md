@@ -82,8 +82,7 @@ their first day of employment.  To some this might seem outlandish or fusty,
 but we
 believe that it serves to emphasize our values -- and the act of
 memorizing them affords new Oxide employees a chance to discuss them
-with their spouse, partner, children, parents or friends.  
-We encourage this
+with their spouse, partner, children, parents or friends.  We encourage this
 kitchen table discussion, as it lets our loved ones understand the
 values at the core of the company we choose to build together.
 
