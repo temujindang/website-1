@@ -8,10 +8,11 @@
         </p>
     </div>
 
-    <article>
+    <article class="team">
+        <div class="row">
         {{ range $.Site.Data.team }}
         <!-- team member -->
-        <div class="member">
+        <div class="member col-6 col-md-6">
             <h2>
                 {{ .name }}
                 <small class="text-muted">{{.title}}</small>
@@ -38,6 +39,7 @@
         </div>
         <!-- end team member -->
         {{ end }}
+        </div>
     </article>
 </div>
 
