@@ -32,7 +32,7 @@
 }
 
 .member {
-    margin: 0px 0px 20px 0px;
+    margin: 0px 0px 40px 0px;
 }
 
 .member .icons {
@@ -40,7 +40,7 @@
 }
 
 .member .icons a {
-    font-size: 16px;
+    font-size: 18px;
     margin-right: 5px;
     color: #6c757d;
     border-bottom: none;
