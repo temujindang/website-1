@@ -29,8 +29,6 @@ static/js/site.min.js: image-dev
 	docker run $(DOCKER_FLAGS) \
 		$(REGISTRY)/$(NAME):dev \
 		uglifyjs --output $@ --compress --mangle -- \
-			static/js/lib/jquery-3.4.1.min.js \
-			static/js/bootstrap.js \
 			static/js/prettify.js
 
 .PHONY: static/css/site.min.css
