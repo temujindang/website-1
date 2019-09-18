@@ -76,3 +76,11 @@ article h2 a:hover {
 article h2 small {
     margin-left: 10px;
 }
+
+.heading .lead {
+    width:100%;
+    max-width: 600px;
+    margin-right: auto;
+    margin-left: auto;
+    line-height: 150%;
+}
