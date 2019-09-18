@@ -10,16 +10,18 @@
 
             <!-- get the author(s) -->
             <h4>
-            {{ with .Params.authors }}{{ range $file := . }}
-            <small class="author text-muted">
-                <a href="/authors/{{$file}}/">{{ ( index $.Site.Data.team $file).name }}</a>
-            </small>
-            {{ end }}{{ end }}
+                {{ with .Params.authors }}{{ range $file := . }}
+                <small class="author text-muted">
+                    <a href="/authors/{{$file}}/">{{ ( index $.Site.Data.team $file).name }}</a>
+                </small>
+                {{ end }}{{ end }}
             </h4>
             <!-- end authors section -->
         </div>
 
         {{ .Content }}
+
+        {{ partial "badge-list.html" . }}
     </article>
 </div>
 

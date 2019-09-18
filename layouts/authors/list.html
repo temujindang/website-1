@@ -2,17 +2,17 @@
 
 <div class="container">
     <div class="heading px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-        <h1 class="display-4">{{.Name}}</h1>
+        <h1 class="display-4">Blog</h1>
         <p class="lead">
-        Taxonomy: {{.Type|humanize}}
+		{{.Name}}
         </p>
     </div>
 
     <article class="terms">
         <div class="list-group">
-            {{ range .Data.Pages.ByDate.Reverse }}
-            <a class="list-group-item list-group-item-action"  href="{{ .Permalink }}" title="{{ .Title }}">
-                {{.Title}}
+            {{ range .Data.Pages.ByTitle }}
+            <a class="list-group-item list-group-item-action"  href="{{ .Permalink }}" title="{{ ( index $.Site.Data.team .Name).name }}">
+                {{ ( index $.Site.Data.team .Name).name }}
             </a>
             {{ end }}
         </div>

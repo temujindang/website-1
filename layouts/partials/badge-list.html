@@ -1,0 +1,17 @@
+<section class="badge-list">
+    {{ $taxo := "categories" }}
+    {{ range .Param $taxo }}
+    {{ $name := . }}
+    {{ with $.Site.GetPage (printf "/%s/%s" $taxo ($name | urlize)) }}
+    <a href="{{.Permalink}}" class="badge badge-dark">{{$name}}</a>
+    {{end}}
+    {{end}}
+
+    {{ $taxo := "tags" }}
+    {{ range .Param $taxo }}
+    {{ $name := . }}
+    {{ with $.Site.GetPage (printf "/%s/%s" $taxo ($name | urlize)) }}
+    <a href="{{.Permalink}}" class="badge badge-secondary">{{$name}}</a>
+    {{end}}
+    {{end}}
+</section>

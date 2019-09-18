@@ -27,11 +27,11 @@
     text-align: right;
 }
 
-.careers {
+.careers, .terms {
     margin: 40px 0 20px 0;
 }
 
-.careers .list-group a, .careers .list-group a:hover {
+article .list-group a, article .list-group a:hover {
     border: 1px solid rgba(0,0,0,.125);
 }
 

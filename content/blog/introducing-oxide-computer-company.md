@@ -3,6 +3,8 @@ date = "2016-09-16T08:09:26-07:00"
 title = "Introducing Oxide Computer Company"
 authors = ["steve-tuck", "bryan-cantrill", "jessie-frazelle"]
 description = "Description of the sample post."
+tags = ["Announcements", "Launch"]
+categories = ["Company"]
 +++
 
 Pulling teeth. Ramp up highlights. Programmatically what the onward and upward,
