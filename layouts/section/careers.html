@@ -1,0 +1,23 @@
+{{ partial "header.html" . }}
+
+<div class="container">
+    <div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+        <h1 class="display-4">We're Hiring</h1>
+        <p class="lead">
+            Come join our enthusiastic and highly motivated team in Oakland, California!
+        </p>
+    </div>
+
+    {{ range .Data.Pages.ByDate.Reverse }}
+    <article class="summary">
+        <h2>
+            <a href="{{ .Permalink }}" title="{{ .Title }}">
+                {{.Title}}
+            </a>
+        </h2>
+        <p>{{ .Summary }}</p>
+    </article>
+    {{ end }}
+</div>
+
+{{ partial "footer.html" . }}

@@ -1,10 +1,9 @@
 ---
-title: Careers
-subtitle: Nemo enim ipsam voluptatem quia voluptas sit aspernatur.
+title: Systems Engineer
+subtitle: "Looking for technologists that are eager to join our mission!"
 date: 2019-09-17T09:32:30-07:00
 draft: false
 ---
-
 
 We are looking for more people like us: systems generalists who love to cut 
 code—software engineers who are afraid of neither the biggest of problems nor 
