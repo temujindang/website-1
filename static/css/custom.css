@@ -27,6 +27,14 @@
     text-align: right;
 }
 
+.careers {
+    margin: 40px 0 20px 0;
+}
+
+.careers .list-group a, .careers .list-group a:hover {
+    border: 1px solid rgba(0,0,0,.125);
+}
+
 .member {
     margin: 0px 0px 40px 0px;
 }
@@ -55,16 +63,16 @@ h4 .author {
     margin: 0px 10px;
 }
 
-.summary h2 a {
+article h2 a {
     color: #212529;
     border-bottom: 2px solid transparent;
 }
 
-.summary h2 a:hover {
+article h2 a:hover {
     color: #000000;
     border-bottom: 2px solid #000000;
 }
 
-.summary h2 small {
+article h2 small {
     margin-left: 10px;
 }

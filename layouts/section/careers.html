@@ -4,20 +4,21 @@
     <div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
         <h1 class="display-4">We're Hiring</h1>
         <p class="lead">
-            Come join our enthusiastic and highly motivated team in Oakland, California!
+        Come join our enthusiastic and highly motivated team in Oakland, California!
         </p>
     </div>
 
-    {{ range .Data.Pages.ByDate.Reverse }}
-    <article class="summary">
-        <h2>
-            <a href="{{ .Permalink }}" title="{{ .Title }}">
+    <p>Below are the positions we are currently looking to hire for. Before applying you should read through our <a href="/principles/">principles of operation</a>. These  consist of our mission, our principles and our values. We are looking for individuals who align with these principles.</p>
+
+    <article class="careers">
+        <div class="list-group">
+            {{ range .Data.Pages.ByDate.Reverse }}
+            <a class="list-group-item list-group-item-action"  href="{{ .Permalink }}" title="{{ .Title }}">
                 {{.Title}}
             </a>
-        </h2>
-        <p>{{ .Summary }}</p>
+            {{ end }}
+        </div>
     </article>
-    {{ end }}
 </div>
 
 {{ partial "footer.html" . }}

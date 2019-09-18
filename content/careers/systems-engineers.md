@@ -1,6 +1,6 @@
 ---
-title: Systems Engineer
-subtitle: "Looking for technologists that are eager to join our mission!"
+title: Systems Engineers
+subtitle: "Are you a technologists that is eager to join our mission?"
 date: 2019-09-17T09:32:30-07:00
 draft: false
 ---
