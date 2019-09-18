@@ -24,6 +24,7 @@ REGISTRY := r.j3ss.co
 image-dev:
 	@docker build --rm --force-rm -f Dockerfile.dev -t $(REGISTRY)/$(NAME):dev .
 
+.PHONY: static/js/site.min.js
 static/js/site.min.js: image-dev
 	docker run $(DOCKER_FLAGS) \
 		$(REGISTRY)/$(NAME):dev \
@@ -32,6 +33,7 @@ static/js/site.min.js: image-dev
 			static/js/bootstrap.js \
 			static/js/prettify.js
 
+.PHONY: static/css/site.min.css
 static/css/site.min.css: image-dev
 	docker run $(DOCKER_FLAGS) \
 		$(REGISTRY)/$(NAME):dev \
