@@ -2,8 +2,8 @@
     margin-bottom: 0px!important;
 }
 
-#callouts {
-    margin: 30px 0;
+.callouts {
+    margin: 100px 0;
 }
 
 .container {
@@ -83,4 +83,8 @@ article h2 small {
     margin-right: auto;
     margin-left: auto;
     line-height: 150%;
+}
+
+.jumbotron h1 {
+    margin: 150px 0px;
 }
