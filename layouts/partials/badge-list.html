@@ -1,21 +1,31 @@
 <section class="badge-list">
-    {{ $taxo := "categories" }}
-    {{ if .Param $taxo }}
-    {{ range .Param $taxo }}
-    {{ $name := . }}
-    {{ with $.Site.GetPage (printf "/%s/%s" $taxo ($name | urlize)) }}
-    <a href="{{.Permalink}}" class="badge badge-dark" title="{{$name|humanize}}">{{$name|humanize}}</a>
-    {{end}}
-    {{end}}
-    {{end}}
+	{{ $taxo := "categories" }}
+	{{ if .Param $taxo }}
+	{{ range .Param $taxo }}
+	{{ $name := . }}
+	{{ with $.Site.GetPage (printf "/%s/%s" $taxo ($name | urlize)) }}
+	<a href="{{.Permalink}}" class="badge badge-dark" title="{{$name|humanize}}">{{$name|humanize}}</a>
+	{{end}}
+	{{end}}
+	{{end}}
 
-    {{ $taxo := "tags" }}
-    {{ if .Param $taxo }}
-    {{ range .Param $taxo }}
-    {{ $name := . }}
-    {{ with $.Site.GetPage (printf "/%s/%s" $taxo ($name | urlize)) }}
-    <a href="{{.Permalink}}" class="badge badge-secondary" title="{{$name|humanize}}">{{$name|humanize}}</a>
-    {{end}}
-    {{end}}
-    {{end}}
+	{{ $taxo := "tags" }}
+	{{ if .Param $taxo }}
+	{{ range .Param $taxo }}
+	{{ $name := . }}
+	{{ with $.Site.GetPage (printf "/%s/%s" $taxo ($name | urlize)) }}
+	<a href="{{.Permalink}}" class="badge badge-secondary" title="{{$name|humanize}}">{{$name|humanize}}</a>
+	{{end}}
+	{{end}}
+	{{end}}
+
+	{{ $taxo := "departments" }}
+	{{ if .Param $taxo }}
+	{{ range .Param $taxo }}
+	{{ $name := . }}
+	{{ with $.Site.GetPage (printf "/%s/%s" $taxo ($name | urlize)) }}
+	<a href="{{.Permalink}}" class="badge badge-dark" title="{{$name|humanize}}">{{$name|humanize}}</a>
+	{{end}}
+	{{end}}
+	{{end}}
 </section>

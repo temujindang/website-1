@@ -1,14 +1,16 @@
 {{ partial "header.html" . }}
 
 <div class="container">
-    <div class="heading px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-        <h1 class="display-4">Blog</h1>
-        <p class="lead">
-        {{.Title}} Posts{{if .Params.subtitle }}: {{.Params.subtitle}}{{end}}
-        </p>
-    </div>
+	{{ partial "breadcrumb.html" . }}
 
-    {{ partial "blog-list.html" . }}
+	<div class="heading px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+		<h1 class="display-4">Blog</h1>
+		<p class="lead">
+		{{.Title|humanize}}
+		</p>
+	</div>
+
+	{{ partial "blog-list.html" . }}
 </div>
 
 {{ partial "footer.html" . }}

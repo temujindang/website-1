@@ -1,6 +1,14 @@
 {{ partial "header.html" . }}
 
 <div class="container">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/blog/">Blog</a></li>
+            <li class="breadcrumb-item"><a href="/authors/">Authors</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ ( index $.Site.Data.team .Name).name }}</li>
+        </ol>
+    </nav>
+
     <div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
         <h1 class="display-4">Blog</h1>
         <p class="lead">

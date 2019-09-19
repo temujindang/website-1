@@ -1,14 +1,16 @@
 {{ partial "header.html" . }}
 
 <div class="container">
-    <div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-        <h1 class="display-4">{{.Title}}</h1>
-        {{if .Params.subtitle}}<p class="lead">{{.Params.subtitle}}</p>{{end}}
-    </div>
-    <article class="page">
-        {{ .Content }}
-    </article>
-    {{if .Params.github_edit_link}}<p class="lead text-center">This page and it's contents can be viewed and edited on <a href="{{ .Params.github_edit_link }}" target="_blank">GitHub</a>.</p>{{end}}
+	<div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+		<h1 class="display-4">{{.Title}}</h1>
+		{{if .Params.subtitle}}<p class="lead">{{.Params.subtitle}}</p>{{end}}
+	</div>
+
+	{{ .Content }}
+
+	{{ partial "badge-list.html" . }}
+
+	{{if .Params.github_edit_link}}<p class="lead text-center">This page and it's contents can be viewed and edited on <a href="{{ .Params.github_edit_link }}" target="_blank">GitHub</a>.</p>{{end}}
 </div>
 
 {{ partial "footer.html" . }}

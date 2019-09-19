@@ -10,12 +10,12 @@
     max-width: 960px;
 }
 
-#logo a, nav a, footer a, h6 a {
+#logo a, nav a, footer a {
     color: #212529;
     border-bottom: none;
 }
 
-#logo a:hover, nav a:hover, footer a:hover, h6 a:hover {
+#logo a:hover, nav a:hover, footer a:hover {
     text-decoration: none;
     color: #000000!important;
     border-bottom: none;
@@ -63,12 +63,12 @@ h4 .author {
     margin: 0px 10px;
 }
 
-article h2 a {
+article h2 a, h6 a {
     color: #212529;
     border-bottom: 2px solid transparent;
 }
 
-article h2 a:hover {
+article h2 a:hover, h6 a:hover {
     color: #000000;
     border-bottom: 2px solid #000000;
 }
