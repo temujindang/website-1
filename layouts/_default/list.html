@@ -13,8 +13,8 @@
 	<article class="terms">
 		<div class="list-group">
 			{{ range .Data.Pages.ByTitle }}
-			<a class="list-group-item list-group-item-action"  href="{{ .Permalink }}" title="{{ .Title|humanize }}">
-				{{.Title|humanize}}
+			<a class="list-group-item list-group-item-action"  href="{{ .Permalink }}" title="{{replace (.Title|title) "-" " "}}">
+				{{replace (.Title|title) "-" " "}}
 			</a>
 			{{ end }}
 		</div>

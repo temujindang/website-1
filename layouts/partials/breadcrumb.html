@@ -8,7 +8,7 @@
         </li>
         {{if ne (.Title|lower) (.Type|lower) }}
         <li class="breadcrumb-item active" aria-current="page">
-            {{.Title|humanize}}
+            {{replace (.Title|title) "-" " "}}
         </li>
         {{end}}
     </ol>

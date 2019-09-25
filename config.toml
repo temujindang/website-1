@@ -14,3 +14,9 @@ google_analytics = "UA-148178470-1"
   tag = "tags"
   author = "authors"
   department = "departments"
+
+[permalinks]
+	categories = "/blog/categories/:slug/"
+	tags = "/blog/tags/:slug/"
+	authors = "/blog/authors/:slug/"
+	departments = "/careers/departments/:slug/"
