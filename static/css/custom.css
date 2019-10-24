@@ -86,11 +86,16 @@ article h2 small {
 }
 
 .jumbotron h1 {
-    margin:150px 0px 50px 0px;
+    margin: 75px 0px 50px 0px;
 }
 
 .jumbotron p {
-    margin-bottom: 150px;
+    color: #fff;
+    margin-bottom: 50px;
+}
+
+.jumbotron p a {
+    margin-bottom: 25px;
 }
 
 article.team {
