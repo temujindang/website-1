@@ -31,7 +31,7 @@ step up.
 - Some backend experience in a framework of your choice
 - Understanding of cloud technologies/infrastructure
 - A sense of design taste for building intuitive interfaces
-- Attention to detail for building  user experiences that are awesome to use
+- Attention to detail for building user experiences that are awesome to use
 
 
 ### Nice to have
