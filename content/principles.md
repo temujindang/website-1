@@ -2,7 +2,7 @@
 title: Principles of Operation
 subtitle: Our Mission, Our Principles and Our Values
 date: 2019-09-17T09:32:30-07:00
-github_edit_link: https://github.com/0x1decc/employee-handbook/blob/master/principles.md
+github_edit_link: https://github.com/oxidecomputer/rfd/tree/master/rfd/0002
 draft: false
 ---
 
@@ -157,8 +157,4 @@ move deliberately rather than hastily.
 - **Versatility**.  While we must naturally specialize, our bold mission also
 demands that any of us may need to apply ourselves in a new domain -- and
 indeed, that much of us will be doing this much of the time.
-
-
-<br/>
-<br/>
 

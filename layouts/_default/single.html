@@ -10,7 +10,7 @@
 
 	{{ partial "badge-list.html" . }}
 
-	{{if .Params.github_edit_link}}<p class="lead text-center">This page and it's contents can be viewed and edited on <a href="{{ .Params.github_edit_link }}" target="_blank">GitHub</a>.</p>{{end}}
+	{{if .Params.github_edit_link}}<p class="lead text-center github_edit_link">This page and it's contents can be viewed and edited on <a href="{{ .Params.github_edit_link }}" target="_blank">GitHub</a>.</p>{{end}}
 </div>
 
 {{ partial "footer.html" . }}
