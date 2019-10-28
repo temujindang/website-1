@@ -23,5 +23,5 @@ problem.
 We expect you to have detailed knowledge of a favorite language, 
 tool or system, but that you are also able to quickly pick up new ones as needed. 
 And while implementation experience is essential, enthusiasm and interest 
-can trump experience. We are willing to take a chance on someone who wants to 
+can outweigh experience. We are willing to take a chance on someone who wants to 
 step up.
