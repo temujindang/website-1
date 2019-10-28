@@ -7,9 +7,9 @@ draft: false
 ---
 
 At Oxide, our mission, principles and values are not mere corporate
-bromides; they comprise the emotional, moral, ethical and spritual core of
+bromides; they comprise the emotional, moral, ethical, and spritual core of
 our company -- they are the soul of Oxide.  For more details on why we think
-it's important to be explicit about our mission, our principles and our
+it's important to be explicit about our mission, our principles, and our
 values (and why the distinctions between them matter), please see the 2017
 Monktoberfest talk on <a
 href="https://www.youtube.com/watch?v=9QMGAtxUlAc">Principles of Technology
