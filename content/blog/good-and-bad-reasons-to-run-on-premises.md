@@ -1,7 +1,7 @@
 +++
 date = "2016-09-17T08:09:26-07:00"
-title = "Sample Post"
-authors = ["jessie-frazelle"]
+title = "The good and bad reasons to run on-premises"
+authors = ["bryan-cantrill", "jessie-frazelle"]
 description = "Description of the sample post."
 categories = ["engineering"]
 +++
