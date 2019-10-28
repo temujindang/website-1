@@ -4,7 +4,7 @@ title = "Oxide Computer Company"
 canonifyUrls = true
 
 [params]
-description = "The computer company of the post-cloud generation"
+description = "Hyperscaler infrastructure for the rest of us"
 github_handle = "oxidecomputer"
 twitter_handle = "oxidecomputer"
 google_analytics = "UA-148178470-1"
