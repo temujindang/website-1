@@ -24,3 +24,16 @@ tool or system, but that you are also able to quickly pick up new ones as needed
 And while implementation experience is essential, enthusiasm and interest 
 can trump experience. We are willing to take a chance on someone who wants to 
 step up.
+
+### Requirements
+
+- Front-end experience (CSS and JavaScript)
+- Some backend experience in a framework of your choice
+- Understanding of cloud technologies/infrastructure
+- A sense of design taste for building intuitive interfaces
+- Attention to detail for building  user experiences that are awesome to use
+
+
+### Nice to have
+
+- Photoshop skills
