@@ -6,7 +6,7 @@ description = "What are the good reasons for running on-premises? What are the b
 categories = ["engineering"]
 +++
 
-> **NOTE:** this is a draft stil working through the wording
+> **NOTE:** this is a draft still working through the wording
 
 A question we get asked frequently is: What are the good and bad reasons to run
 on-premises? Economics, security, latency and regulatory compliance are some of
