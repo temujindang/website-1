@@ -13,7 +13,7 @@ on-premises? Economics, security, latency and regulatory compliance are some of
 the good reasons for running on-premises and we will cover each of these in
 detail.
 
-## The Good Reasons
+## Good Reasons
 
 ### Economics
 
