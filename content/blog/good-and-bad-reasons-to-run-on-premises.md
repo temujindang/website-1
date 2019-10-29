@@ -3,7 +3,7 @@ date = "2019-09-17T08:09:26-07:00"
 title = "The Good and Bad Reasons to Run On-Premises"
 authors = ["jessie-frazelle"]
 description = "What are the good reasons for running on-premises? What are the bad reasons?"
-categories = ["engineering"]
+categories = ["enterprise"]
 +++
 
 > **NOTE:** this is a draft still working through the wording
