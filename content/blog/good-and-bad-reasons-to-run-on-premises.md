@@ -40,6 +40,8 @@ the public cloud to on-premises. Like Facebook, they used the Open Compute
 Project hardware designs and built out their own on-premises cloud
 infrastructure.
 
+[Something about Uber]
+
 ### Security
 
 Running compute workloads and storing data side-by-side other tenants 
