@@ -89,6 +89,10 @@ strategic reasons for running on-premises. If their business requires special
 workloads or configurations not offered in public clouds, they remain
 on-premises to deliver the same workload constraints to their internal teams.
 
+For businesses that need highly available services like retail on Black Friday,
+on-premises can provide additional availability and resiliency in the case of
+failover of other deployments.
+
 ## Bad Reasons
 
 If you do not fall into the above reasons and are still running on-premises, it
