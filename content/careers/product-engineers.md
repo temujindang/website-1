@@ -17,7 +17,7 @@ This job will require taking complex ideas and making them simple for a user to
 understand and use intuitively. We love folks with a passion for making the
 impossible possible. We will be working directly with customers to provide
 solutions for their needs. You will be working primarily on the user facing
-interfaces such as the API and user-interface.
+interfaces such as the API and management dashboard.
 
 We expect you to have detailed knowledge of a favorite language, 
 tool or system, but that you are also able to quickly pick up new ones as needed. 
