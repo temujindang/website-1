@@ -2,7 +2,6 @@
 title: Principles of Operation
 subtitle: Our Mission, Our Principles, and Our Values
 date: 2019-09-17T09:32:30-07:00
-github_edit_link: https://github.com/oxidecomputer/rfd/tree/master/rfd/0002
 draft: false
 ---
 
