@@ -4,9 +4,9 @@
 	{{ partial "breadcrumb.html" . }}
 
 	<div class="heading px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-		<h1 class="display-4">Blog</h1>
+		<h1 class="display-4">{{.Title|title}}</h1>
 		<p class="lead">
-		{{.Title|humanize}}
+		{{.Params.subtitle}}
 		</p>
 	</div>
 

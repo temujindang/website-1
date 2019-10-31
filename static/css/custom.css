@@ -127,3 +127,8 @@ p strong {
 .team-photo img {
     max-height: 500px;
 }
+
+.social-share {
+    margin: 50px 0;
+    text-align: right;
+}

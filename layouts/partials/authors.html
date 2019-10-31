@@ -8,6 +8,6 @@
 {{ $scratch.Add "authors" (slice $md) }}
 {{end}}
 {{ $authors := $scratch.Get "authors" }}
-<h6>{{ delimit $authors ", " ", and " }}</h6>
+<h6>{{ delimit $authors ", " " and " }}</h6>
 <!-- end authors section -->
 {{end}}
