@@ -1,3 +1,7 @@
+body {
+    min-width: 100%;
+}
+
 #nav {
     margin-bottom: 0px!important;
 }
@@ -91,6 +95,10 @@ article h2 small {
 
 .jumbotron p {
     color: #fff;
+    margin-bottom: 20px;
+}
+
+.jumbotron p.footnote {
     margin-bottom: 50px;
 }
 
@@ -149,5 +157,5 @@ p strong {
 
 .hero .btn-lg {
     padding: .5rem 1rem;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
 }
