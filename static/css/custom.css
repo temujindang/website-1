@@ -136,3 +136,13 @@ p strong {
 .social-share .btn-group {
     margin-left: 10px;
 }
+
+.hero {
+    background: url("/img/garage.jpg");
+    background-position: center center;
+    background-size: cover;
+}
+
+.hero .jumbotron {
+    background-color: rgba(22, 24, 26, 0.85);
+}
