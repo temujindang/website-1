@@ -2,5 +2,4 @@ FROM node:alpine
 
 RUN npm install --global \
 	clean-css-cli \
-	imagemin-cli \
 	uglify-js
