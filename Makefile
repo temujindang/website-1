@@ -38,7 +38,14 @@ static/css/site.min.css: image-dev
 		sh -c 'cat static/css/HKGrotesk.css static/css/bootstrap.css static/css/fontawesome.min.css static/css/custom.css static/css/prettify.css | cleancss -o $@'
 
 .PHONY: dev
-dev: static/js/site.min.js static/css/site.min.css ## Build the frontend components.
+dev: static/js/site.min.js static/css/site.min.css imagemin ## Build the frontend components.
+
+.PHONY: imagemin
+imagemin:
+	docker run $(DOCKER_FLAGS) \
+		$(REGISTRY)/$(NAME):dev \
+		imagemin static/img/* --out-dir=static/images
+	@mv static/images/* static/img/
 
 IP_ADDRESS := $(shell ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1' | tail -1)
 .PHONY: serve
