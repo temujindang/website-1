@@ -8,12 +8,16 @@
             {{ .Date.Format "Monday, January 2, 2006" }}
             </p>
 
-        {{ partial "authors.html" . }}
+            {{ partial "authors.html" . }}
         </div>
 
-        {{ .Content }}
+        <div class="post-container">
+            <div class="post-content">
+                {{ .Content }}
 
-        {{ partial "badge-list.html" . }}
+                {{ partial "badge-list.html" . }}
+            </div>
+        </div>
 
         {{ partial "social-share.html" . }}
     </article>
