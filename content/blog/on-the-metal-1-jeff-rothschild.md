@@ -1,10 +1,11 @@
 +++
 date = "2019-09-20T08:09:26-07:00"
-title = "On the Metal: Episode 1 Jeff Rothschild"
+title = "On the Metal: Jeff Rothschild"
 authors = ["bryan-cantrill", "jessie-frazelle", "steve-tuck"]
 description = "On this episode of On the Metal, we interview Jeff Rothschild. Jeff has had a fascinating journey solving all sorts of fun problems at various levels of the stack. He is most widely known as being a co-founder of Veritas Software and VP of Engineering at Facebook, but his story does not start there. Join us as we hear Jeff’s stories from his impressive technical endeavors including disassembling MS-DOS, editing machine code in an octal editor, trolling coworkers in error messages, the origin story of ftruncate, and more."
 tags = ["Podcast"]
 categories = ["On the Metal"]
+episode = 1
 +++
 
 On this episode of On the Metal, we interview Jeff Rothschild. Jeff has had a 
@@ -15,7 +16,7 @@ hear Jeff’s stories from his impressive technical endeavors including
 disassembling MS-DOS, editing machine code in an octal editor, trolling 
 coworkers in error messages, the origin story of `ftruncate`, and more.
 
-## Show Notes
+### Show Notes
 
 Some of the highlights of the show include: 
 
@@ -49,7 +50,5 @@ Some of the highlights of the show include:
 - Unix System III: http://a.papnet.eu/UNIX/sysIII_pdp11/Installation http://a.papnet.eu/UNIX/sysIII_vax/Installation https://groups.google.com/forum/#!original/net.unix/-H9x36DMOBQ/P_G_s9SJBrgJ https://en.wikipedia.org/wiki/UNIX_System_III
 - ICL (International Computers Limited) British computer company: http://sw.ccs.bcs.org/iclarch/ https://en.wikipedia.org/wiki/International_Computers_Limited
 - Gourmet Mode Terminal I/O (Unix) TTY Line Discipline
-
-
-The LOCUS distributed operating system paper: https://dl.acm.org/citation.cfm?doid=800217.806615
+- The LOCUS distributed operating system paper: https://dl.acm.org/citation.cfm?doid=800217.806615
 

@@ -5,6 +5,7 @@ authors = ["bryan-cantrill", "jessie-frazelle"]
 description = "Teaser for our podcast collecting stories from the hardware/software interface."
 tags = ["Announcements", "Launch", "Podcast"]
 categories = ["On the Metal"]
+episode = 0
 +++
 
 Podcast copy for the teaser goes here.
