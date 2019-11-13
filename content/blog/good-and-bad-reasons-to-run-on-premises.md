@@ -4,6 +4,7 @@ title = "The Good and Bad Reasons to Run On-Premises"
 authors = ["jessie-frazelle"]
 description = "What are the good reasons for running on-premises? What are the bad reasons?"
 categories = ["enterprise"]
+draft = true
 +++
 
 > **NOTE:** this is a draft still working through the wording
