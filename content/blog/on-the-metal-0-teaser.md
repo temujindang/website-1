@@ -6,6 +6,7 @@ description = "Teaser for our podcast collecting stories from the hardware/softw
 tags = ["Announcements", "Launch", "Podcast"]
 categories = ["On the Metal"]
 episode = 0
+podcast_file = "episode-0.mp4"
 +++
 
 Podcast copy for the teaser goes here.

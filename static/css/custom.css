@@ -159,3 +159,11 @@ p strong {
     padding: .5rem 1rem;
     font-size: 1.25rem;
 }
+
+.podcast-file {
+    text-align: center;
+}
+
+.audiojs {
+    margin: 10px auto 50px auto;
+}

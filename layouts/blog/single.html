@@ -4,11 +4,19 @@
     <article class="post">
         <div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
             <h1 class="display-4">{{.Title}}</h1>
-            {{if .Params.episode}}<h3>Episode {{.Params.episode}}</h3>{{end}}
+            {{with .Params.episode}}<h3>Episode {{.}}</h3>{{end}}
             <p class="lead">{{ .Date.Format "Monday, January 2, 2006" }}</p>
 
             {{ partial "authors.html" . }}
         </div>
+
+        {{with .Params.podcast_file}}
+        <div class="podcast-file">
+            <div>
+                <audio src="/audio/{{ . }}" preload="auto"/>
+            </div>
+        </div>
+        {{end}}
 
         {{ .Content }}
 

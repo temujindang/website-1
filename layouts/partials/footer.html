@@ -15,7 +15,7 @@
                 <ul class="list-unstyled text-small">
                     <li><a class="text-muted" href="/blog/">Blog</a></li>
                     <li><a class="text-muted" href="/blog/categories/on-the-metal/">On the Metal</a></li>
-					<li><a class="text-muted mailing-list-trigger" href="{{ .Site.Params.signup_form_url }}" target="_blank">Mailing List</a></li>
+                    <li><a class="text-muted mailing-list-trigger" href="{{ .Site.Params.signup_form_url }}" target="_blank">Mailing List</a></li>
                 </ul>
             </div>
             <div class="col-6 col-md">
@@ -42,6 +42,9 @@
             }
             prettyPrint();
         }
+        audiojs.events.ready(function() {
+            var as = audiojs.createAll();
+        });
     </script>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
