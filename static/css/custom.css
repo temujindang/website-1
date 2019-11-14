@@ -159,13 +159,3 @@ p strong {
     padding: .5rem 1rem;
     font-size: 1.25rem;
 }
-
-.post-container {
-    text-align: center;
-}
-
-.post-content {
-    max-width: 680px;
-    text-align: left;
-    margin: auto;
-}
