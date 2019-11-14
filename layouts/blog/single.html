@@ -10,13 +10,9 @@
             {{ partial "authors.html" . }}
         </div>
 
-        <div class="post-container">
-            <div class="post-content">
-                {{ .Content }}
+        {{ .Content }}
 
-                {{ partial "badge-list.html" . }}
-            </div>
-        </div>
+        {{ partial "badge-list.html" . }}
 
         {{ partial "social-share.html" . }}
     </article>
