@@ -59,5 +59,6 @@ Some of the highlights of the show include:
 - RAID (Redundant Array of Independent/Inexpensive Disks/Drives): https://web.eecs.umich.edu/~michjc/eecs584/Papers/katz-2010.pdf https://www2.eecs.berkeley.edu/Pubs/TechRpts/1987/CSD-87-391.pdf http://www.computerworld.com/article/2573180/data-center/the-story-so-far.html https://en.wikipedia.org/wiki/RAID
 - Quake: https://en.wikipedia.org/wiki/Quake_(video_game)
 - Memcached at Facebook: https://www.usenix.org/system/files/conference/nsdi13/nsdi13-final170_update.pdf https://github.com/facebook/mcrouter 
+- Intel Optane: https://www.intel.com/content/www/us/en/architecture-and-technology/intel-optane-technology.html 
 - Multics (Multiplexed Information and Computing Service): https://www.multicians.org/pl1-raf.html https://www.multicians.org/papers.html https://en.wikipedia.org/wiki/Multics
 
