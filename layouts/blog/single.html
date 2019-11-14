@@ -10,12 +10,12 @@
             {{ partial "authors.html" . }}
         </div>
 
-        {{with .Params.podcast_file}}
+        {{if .Params.podcast_file}}
         <div class="podcast-file">
-            <div>
-                <audio src="/audio/{{ . }}" preload="auto"/>
-            </div>
+            <audio src="/audio/{{ .Params.podcast_file }}" preload="auto"/>
         </div>
+
+            {{ partial "podcast-share.html" . }}
         {{end}}
 
         {{ .Content }}

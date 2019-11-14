@@ -167,3 +167,22 @@ p strong {
 .audiojs {
     margin: 10px auto 50px auto;
 }
+
+.podcast-share {
+    margin: 0px 0px 50px 0px;
+    text-align: center;
+}
+
+.post .podcast-share {
+    margin: 20px 0px 30px 0px;
+}
+
+.podcast-share a.btn {
+    border: 1px solid transparent;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.podcast-share a.btn:hover {
+    border: 1px solid transparent;
+    color: #343a40;
+}

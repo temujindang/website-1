@@ -10,6 +10,10 @@
 		</p>
 	</div>
 
+    {{if eq .Title "On the Metal"}}
+	    {{ partial "podcast-share.html" . }}
+    {{end}}
+
 	{{ partial "blog-list.html" . }}
 </div>
 
