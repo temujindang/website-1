@@ -7,6 +7,7 @@ canonifyUrls = true
 description = "Hyperscaler infrastructure for the rest of us"
 github_handle = "oxidecomputer"
 twitter_handle = "oxidecomputer"
+linkedin_url = "https://www.linkedin.com/company/oxidecomputer"
 google_analytics = "UA-148178470-1"
 signup_form_url = "https://oxidecomputer.us20.list-manage.com/subscribe?u=e46acf89cdf1f5bddf3136473&id=8a6d823488"
 twitter_id = "1161434275197009921"
