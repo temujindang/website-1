@@ -2,7 +2,7 @@
 date = "2019-09-20T08:09:26-07:00"
 title = "On the Metal: Jeff Rothschild"
 authors = ["bryan-cantrill", "jessie-frazelle", "steve-tuck"]
-description = "On this episode of On the Metal, we interview Jeff Rothschild. Jeff has had a fascinating journey solving all sorts of fun problems at various levels of the stack. He is most widely known as being a co-founder of Veritas Software and VP of Engineering at Facebook, but his story does not start there. Join us as we hear Jeff’s stories from his impressive technical endeavors including disassembling MS-DOS, editing machine code in an octal editor, trolling coworkers in error messages, the origin story of ftruncate, and more."
+description = "On this episode of On the Metal, we interview Jeff Rothschild. Jeff has had a fascinating journey solving all sorts of fun problems at various levels of the stack. He is most widely known as being a co-founder of Veritas Software and the first VP of Engineering at Facebook, but his story does not start there. Join us as we hear Jeff’s stories from his impressive technical endeavors including disassembling MS-DOS, editing machine code in an octal editor, trolling coworkers in error messages, the origin story of ftruncate, and more."
 tags = ["Podcast"]
 categories = ["On the Metal"]
 episode = 1
@@ -11,7 +11,7 @@ podcast_file = "episode-1.mp3"
 
 On this episode of On the Metal, we interview Jeff Rothschild. Jeff has had a 
 fascinating journey solving all sorts of fun problems at various levels of the 
-stack. He is most widely known as being a co-founder of Veritas Software and VP 
+stack. He is most widely known as being a co-founder of Veritas Software and the first VP 
 of Engineering at Facebook, but his story does not start there. Join us as we 
 hear Jeff’s stories from his impressive technical endeavors including 
 disassembling MS-DOS, editing machine code in an octal editor, trolling 
