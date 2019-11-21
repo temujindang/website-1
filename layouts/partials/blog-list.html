@@ -4,7 +4,7 @@
         <a href="{{ .Permalink }}" title="{{ .Title }}">
             {{.Title}}
         </a>
-        <small class="text-muted">{{ .Date.Format "2006/01/02" }}</small>
+        {{if .Params.departments}}{{else}}<small class="text-muted">{{ .Date.Format "2006/01/02" }}</small>{{end}}
     </h2>
 
     {{ partial "authors.html" . }}
