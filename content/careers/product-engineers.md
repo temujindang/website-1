@@ -7,11 +7,11 @@ application_link: https://docs.google.com/forms/d/e/1FAIpQLSe19YNMk6ZMPaOTbllZAR
 ---
 
 We are looking for engineers and designers with a sharp attention to detail,
-who love building products that delight operators and developers. This is an
-opportunity to design and implement a new interface for developing cloud-like
-applications with a great team. We're seeking highly motivated folks that
-understand the application deployment process from the viewpoint of both the
-developer and operator.
+who love building products that delight operators and developers. This is a
+rare opportunity to design and implement a new interface for developing 
+cloud-like applications with a great team. We're seeking highly motivated folks 
+that understand the application deployment process from the viewpoint of both 
+the developer and operator.
 
 This job will require taking complex ideas and making them simple for a user to
 understand and use intuitively. We love folks with a passion for making the
