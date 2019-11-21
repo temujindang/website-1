@@ -37,3 +37,4 @@ step up.
 ### Nice to have
 
 - Photoshop skills
+- Experience with design systems and tools like Figma
