@@ -1,5 +1,5 @@
 +++
-date = "2019-12-02T08:09:26-07:00"
+date = "2019-11-21T08:09:26-07:00"
 title = "The Soul of a New Computer Company"
 authors = ["steve-tuck", "bryan-cantrill", "jessie-frazelle"]
 description = "Description of the sample post."
