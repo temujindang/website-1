@@ -7,4 +7,21 @@ draft: false
 application_link: https://docs.google.com/forms/d/e/1FAIpQLSe19YNMk6ZMPaOTbllZARs7ZTM030JrPSFsM6GjMQ96Vs8pew/viewform
 ---
 
-Copy goes here.
+Oxide is seeking hardware engineers to join us in building the next
+generation of rack-scale fully-integrated machines.  You should have server
+design experience in every stage of development: ODM/JDM selection, PRD
+development, EVT/DVT/PVT, and deployment into production.  You should have
+experience working with firmware (host firmware, BMC, etc.), and interest in
+the software stack on the host and beyond: the idea of working together with
+a bunch of software engineers who appreciate thoughtful hardware and want to
+integrate it into a complete system should be particularly appealing.  You
+take pride in a correct system, and a pleasure in seeing systems tortured
+until they break; you have developed software to validate hardware -- and
+likely have used it to isolate and debug some nasty hardware bugs.  You
+probably have experience or interest in the Open Compute Project, and you
+are motivated by the idea of your designs having the broadest possible
+impact.
+
+Oxide is based in Oakland, California. While we are open to remote work,
+we believe that it's difficult for this role.
+
