@@ -168,6 +168,11 @@ p strong {
 .hero .btn-lg {
     padding: .5rem 1rem;
     font-size: 1.25rem;
+    background-color: transparent !important;
+}
+
+.hero .btn-lg:hover  {
+    background-color: #48d597 !important;
 }
 
 .podcast-file {
