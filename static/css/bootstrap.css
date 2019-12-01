@@ -2653,13 +2653,13 @@ fieldset:disabled a.btn {
 }
 
 .btn-light {
-  color: #5b595c;
+  color: #414042;
   background-color: #f8f9fa;
   border-color: #f8f9fa;
 }
 
 .btn-light:hover {
-  color: #5b595c;
+  color: #414042;
   background-color: #48d597;
   border-color: #48d597;
 }
