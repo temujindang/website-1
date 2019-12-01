@@ -12,7 +12,7 @@
 
         {{if .Params.podcast_file}}
         <div class="podcast-file">
-            <audio src="/audio/{{ .Params.podcast_file }}" preload="auto"/>
+            <audio src="{{ .Params.podcast_file }}" preload="auto"/>
         </div>
 
             {{ partial "podcast-share.html" . }}

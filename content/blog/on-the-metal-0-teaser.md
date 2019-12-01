@@ -6,7 +6,7 @@ description = "Welcome to our new podcast, On the Metal! As a part of starting a
 tags = ["Announcements", "Launch", "Podcast"]
 categories = ["On the Metal"]
 episode = 0
-podcast_file = "episode-0.mp3"
+podcast_file = "https://media.transistor.fm/8396a7b2.mp3"
 +++
 
 Welcome to our new podcast, On the Metal! As a part of starting Oxide Computer
