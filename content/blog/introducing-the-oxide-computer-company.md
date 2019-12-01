@@ -1,6 +1,6 @@
 +++
 date = "2019-11-21T08:09:26-07:00"
-title = "Oxide Compute Company: Initial boot sequence"
+title = "Oxide Computer Company: Initial boot sequence"
 authors = ["steve-tuck", "bryan-cantrill", "jessie-frazelle"]
 description = "Introducing Oxide Computer Company"
 tags = ["Announcements", "Launch"]
