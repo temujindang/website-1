@@ -2721,14 +2721,14 @@ fieldset:disabled a.btn {
 }
 
 .btn-outline-primary {
-  background-color: #5b595c;
+  background-color: #414042;
   color: #fff;
-  border-color: #5b595c;
+  border-color: #414042;
 }
 
 .btn-outline-primary:hover {
   background-color: #48d597;
-  color: #5b595c;
+  color: #414042;
   border-color: #48d597;
 }
 
@@ -5102,8 +5102,8 @@ a.badge-light:focus, a.badge-light.focus {
 
 .badge-dark {
   color: #fff;
-  background-color: #5b595c;
-  border-color: 1px solid #5b595c;
+  background-color: #414042;
+  border-color: 1px solid #414042;
 }
 
 a.badge-dark:hover, a.badge-dark:focus {
