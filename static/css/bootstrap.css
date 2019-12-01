@@ -431,6 +431,16 @@ h6, .h6 {
   line-height: 1.2;
 }
 
+@media (max-width: 375px) {
+    .display-4 {
+        font-size: 3.0rem !important;
+    }
+
+    .nav-links {
+        text-align: center !important;
+    }
+}
+
 hr {
   margin-top: 1rem;
   margin-bottom: 1rem;
