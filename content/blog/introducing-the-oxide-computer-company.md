@@ -2,7 +2,7 @@
 date = "2019-11-21T08:09:26-07:00"
 title = "Oxide Compute Company: Initial boot sequence"
 authors = ["steve-tuck", "bryan-cantrill", "jessie-frazelle"]
-description = "Description of the sample post."
+description = "Introducing Oxide Computer Company"
 tags = ["Announcements", "Launch"]
 categories = ["Company"]
 +++
@@ -10,7 +10,7 @@ categories = ["Company"]
 We have started a computer company!  If you haven't yet, read Jess's account
 of us being <a href="https://blog.jessfraz.com/post/born-in-a-garage/">born
 in a garage</a> and Bryan's on <a
-href=""http://dtrace.org/blogs/bmc/?p=1086>the soul of our new computer
+href="http://dtrace.org/blogs/bmc/?p=1086">the soul of our new computer
 company</a>.  Also, see the perspective of one of our founding engineers, <a
 href="https://twitter.com/rmustacc">Robert Mustacchi</a>, on <a
 href="xxx">joining Oxide</a>.
