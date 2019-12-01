@@ -19,12 +19,12 @@ html, body {
     max-width: 960px;
 }
 
-#logo a, #nav a {
+#logo a, nav.nav-links a {
     color: #fff;
     border-bottom: none;
 }
 
-#logo a:hover, #nav a:hover, footer a:hover {
+#logo a:hover, nav.nav-links a:hover {
     text-decoration: none;
     color: #48d597 !important;
     border-bottom: none;
