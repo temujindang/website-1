@@ -25,6 +25,10 @@ body {
     border-bottom: none;
 }
 
+#logo img {
+    max-width: 50px;
+}
+
 #copyright {
     margin-top: 20px;
     display: block;
