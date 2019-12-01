@@ -8,6 +8,7 @@ html, body {
 
 #nav {
     margin-bottom: 0px!important;
+    background-color: #414042;
 }
 
 .callouts {
@@ -19,13 +20,13 @@ html, body {
 }
 
 #logo a, nav a, footer a {
-    color: #212529;
+    color: #fff;
     border-bottom: none;
 }
 
 #logo a:hover, nav a:hover, footer a:hover {
     text-decoration: none;
-    color: #000000!important;
+    color: #48d597 !important;
     border-bottom: none;
 }
 
@@ -150,13 +151,14 @@ p strong {
 }
 
 .hero {
+    margin-top: -1px;
     background: url("/img/garage.jpg");
     background-position: center center;
     background-size: cover;
 }
 
 .hero .jumbotron {
-    background-color: rgba(22, 24, 26, 0.85);
+    background-color: rgba(40, 39, 40, 0.90);
 }
 
 .hiring-callout {
