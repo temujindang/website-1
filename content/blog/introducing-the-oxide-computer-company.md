@@ -1,5 +1,5 @@
 +++
-date = "2019-12-02T03:09:26"
+date = "2019-12-02T13:09:26"
 title = "Oxide Computer Company: Initial boot sequence"
 authors = ["steve-tuck", "bryan-cantrill", "jessie-frazelle"]
 description = "Introducing Oxide Computer Company"
