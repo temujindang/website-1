@@ -11,9 +11,11 @@ We have started a computer company!  If you haven't yet, read Jess's account
 of us being <a href="https://blog.jessfraz.com/post/born-in-a-garage/">born
 in a garage</a> and Bryan's on <a
 href="http://dtrace.org/blogs/bmc/?p=1086">the soul of our new computer
-company</a>.  Also, see the perspective of one of our founding engineers, <a
-href="https://twitter.com/rmustacc">Robert Mustacchi</a>, on <a
-href="xxx">joining Oxide</a>.
+company</a>.  Also, see the perspectives of two of our founding engineers: <a
+href="https://twitter.com/rmustacc">Robert Mustacchi</a> on <a
+href="https://fingolfin.org/blog/20191202/oxide.html">joining Oxide</a> and
+<a href="https://twitter.com/jmclulow">Joshua Clulow</a> on the need for
+<a href="https://sysmgr.org/blog/2019/12/02/a-new-machine/">a new machine</a>.
 
 If it needs to be said, starting a computer company is an ambitious
 endeavor; we are thrilled to have investment led by Eclipse Ventures and
