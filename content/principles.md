@@ -115,10 +115,10 @@ too seriously.  We enjoy the company of our colleagues, and cannot imagine a
 day without laughing -- even if occasionally with our mouths full.
 
 - **Optimism**.  While we are in the business of figuring out why things
-will fail, we nonetheless retain a deep and fundmental belief that better
+will fail, we nonetheless retain a deep and fundamental belief that better
 things are possible.
 
-- **Resilience**.  We believe in the words of the late mathematician Piet Hien:
+- **Resilience**.  We believe in the words of the late mathematician Piet Hein:
 "problems worthy of attack prove their worth by fighting back."
 We persist even when problems are fighting back, pushing through the
 disappointment and setbacks endemic to our chosen domain.
