@@ -18,7 +18,7 @@ integrate it into a complete system should be particularly appealing.  You
 take pride in a correct system, and you like to push systems to the breaking
 point; you have developed software to validate hardware -- and likely have
 used it to isolate and debug some nasty hardware bugs.  You may have some
-interest or experience in tamper-resistent systems and hardware roots of
+interest or experience in tamper-resistant systems and hardware roots of
 trust, knowing that current server designs are woefully behind the state of
 the art.  You probably have experience or interest in the Open Compute
 Project, and you are motivated by the idea of your designs having the

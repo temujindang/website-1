@@ -6,7 +6,7 @@ draft: false
 ---
 
 At Oxide, our mission, principles, and values are not mere corporate
-bromides; they comprise the emotional, moral, ethical, and spritual core of
+bromides; they comprise the emotional, moral, ethical, and spiritual core of
 our company -- they are the soul of Oxide.  For more details on why we think
 it's important to be explicit about our mission, our principles, and our
 values (and why the distinctions between them matter), please see the 2017
@@ -87,7 +87,7 @@ alphabetical order.
 
 - **Candor**.  We believe in being forthright, even when that's difficult.
 We avoid euphemism or otherwise cloaking our opinions or experience.
-We respect those who speak candidly, even if we disagree with what what
+We respect those who speak candidly, even if we disagree with what
 they are saying.
 
 - **Courage**. We are bold, willing to do things even if they are
@@ -133,7 +133,7 @@ be disciplined and thorough in our approach.  We insist on getting at the
 root of things, and are unsatisfied to merely address their symptoms.
 
 - **Teamwork**.  We are intensely team-oriented people: we draw strength and
-inspriration from the terrific people we are blessed to work with.  We like
+inspiration from the terrific people we are blessed to work with.  We like
 to collaborate, and believe that our best work comes when we work not merely
 together but *for* one another.
 
