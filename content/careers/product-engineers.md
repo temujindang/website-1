@@ -23,7 +23,8 @@ We expect you to have detailed knowledge of a favorite language,
 tool or system, but that you are also able to quickly pick up new ones as needed. 
 And while implementation experience is essential, enthusiasm and interest 
 can outweigh experience. We are willing to take a chance on someone who wants to 
-step up.
+step up. Oxide is based in Oakland, California, but remote work is possible for
+engineers with a track record of working effectively remotely.
 
 ### Requirements
 
