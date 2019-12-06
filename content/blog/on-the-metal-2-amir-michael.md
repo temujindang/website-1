@@ -17,7 +17,8 @@ through starting a project at Facebook that became an industry-wide movement
 
 ### Show Notes
 
-You can find Amir on Facebook at https://facebook.com/amir and on Twitter at https://twtter.com/digiamir.
+You can find Amir on Facebook at https://facebook.com/amir and on Twitter at 
+https://twitter.com/digiamir.
 
 Some of the highlights of the show include: 
 
