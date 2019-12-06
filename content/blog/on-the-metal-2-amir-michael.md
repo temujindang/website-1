@@ -1,13 +1,19 @@
 +++
-date = "2020-11-25T06:09:26-07:00"
+date = "2019-12-06T06:09:26-07:00"
 title = "On the Metal: Amir Michael"
 authors = ["bryan-cantrill", "jessie-frazelle", "steve-tuck"]
 description = "On this episode of On the Metal, we interview Amir Michael.  Join us as we listen to stories of growing up and coming up in Silicon Valley, from answering a Craigslist ad during the Dot Com Bust for a company with a funny name, through starting a project at Facebook that became an industry-wide movement -- with many exciting tales in between!"
 tags = ["Podcast"]
 categories = ["On the Metal"]
 episode = 2
-podcast_file = ""
+podcast_file = "https://media.transistor.fm/4a4a1ee6.mp3"
 +++
+
+On this episode of On the Metal, we interview Amir Michael.  Join us as we 
+listen to stories of growing up and coming up in Silicon Valley, from answering 
+a Craigslist ad during the Dot Com Bust for a company with a funny name, 
+through starting a project at Facebook that became an industry-wide movement 
+-- with many exciting tales in between!
 
 ### Show Notes
 
