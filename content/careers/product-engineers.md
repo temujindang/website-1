@@ -1,58 +1,44 @@
 ---
-title: Product Engineers
-subtitle: "Are you a technologist with a passion for exquisite user experiences?"
+title: Product Engineering and Design
+subtitle: "Are you a technologist or designer with a passion for exquisite user experiences?"
 date: 2019-09-17T09:32:30-07:00
 departments: ["engineering", "product"]
 application_link: https://docs.google.com/forms/d/e/1FAIpQLSe19YNMk6ZMPaOTbllZARs7ZTM030JrPSFsM6GjMQ96Vs8pew/viewform
 ---
 
-Hyperscalers like Facebook, Google, and Microsoft have what we like to call 
-“infrastructure privilege” since they long ago decided they could build their 
-own hardware and software to fulfill their needs better than commodity vendors. 
-We are working to bring that same infrastructure privilege to everyone else. 
-This leads to better integration between the hardware and software stacks, 
-better power distribution, and better density. It’s even better for the 
-environment due to the energy consumption wins! 
+### About Oxide
 
-We are building in a space where users have been largely neglected so this is 
-a fun opportunity with a lot of impact to be had on user experience! This is 
-a rare opportunity to design and implement a new interface for developing 
-cloud-like applications with a great team. We’re seeking highly motivated 
-folks that understand the application deployment process from the viewpoint 
-of both the developer and operator.
+At Oxide, we are taking a big swing: rethinking the definition of the server-side computer, combining the wisdom of hyperscaler systems with the energy of the open data center — and delivering it as a broadly consumable product. Our most deeply held engineering belief is in the integration of hardware and software: we believe that the best and most reliable infrastructure comes when hardware and software are designed to work with one another. 
 
-We are looking for engineers who love nice design and designers who love to 
-code. We think the best teams are made up of both engineers and designers who 
-take interest in each other's work and take the opportunity to learn from each 
-other. We have a sharp attention to detail and are looking for members of our 
-tribe who share this trait! We are looking for the rare breed of folks with an 
-eye for detail that also understand infrastructure. If you have a love for 
-developer tooling and making the lives of operators easier through user 
-experience, please apply!
+Hyperscalers like Google, Facebook, Twitter, Amazon, and Microsoft have what we like to call “infrastructure privilege”. They build their own hardware and software to fulfill their needs and do it better than commodity vendors ever could. At Oxide, we are working to bring that same infrastructure privilege to everyone else. 
 
-This job will require taking complex ideas and making them simple for a user 
-to understand and use intuitively. We love folks with a passion for making the 
-impossible possible. We will be working directly with customers to provide 
-solutions for their needs. You will be working primarily on the user facing 
-interfaces, such as the API and management dashboard.
+### About the team
 
-We expect you to have detailed knowledge of a favorite language, tool or 
-system, but that you are also able to quickly pick up new ones as needed. 
-And while experience is essential, enthusiasm and interest can outweigh 
-experience. We are willing to take a chance on someone who wants to step up. 
-Oxide is based in Oakland, California, but remote work is possible for folks 
-with a track record of working effectively remotely.
+We are building a small and ambitious UX team. We are looking for an engineer who loves amazing design and a designer who loves to code experiences and interfaces. 
+
+We believe the best product teams are made up of engineers and designers who take the opportunity to learn from and build on each other’s work. We value a sharp attention to detail and are looking for members of our tribe who share this value! We love working with folks who have a passion for making the impossible possible. If you love developer tooling and making the lives of operators easier through great user experience excites you, please apply!
+
+### About the roles
+
+We are looking for a UX Engineer who focuses on things like HTML, CSS, & JavaScript, semantics and accessibility, frameworks, architecture, preprocessors, responsive design, backend development, testing and debugging, package management, build tools, version control, CI/CD, etc.
+
+We are looking for a UX Designer who focuses on things like user and market research, personas and scenarios, information architecture, wireframes, prototyping (light HTML, CSS, & JavaScript), and usability testing.
+
+This team will take complex ideas and make them simple for users to understand and use intuitively. We work directly with our customers to provide solutions for their needs. You will be working primarily on the user-facing interfaces like our API and management dashboard.
 
 ### Requirements
 
-- Front-end experience (CSS and JavaScript)
-- Some backend experience in a framework of your choice
 - Understanding of cloud technologies/infrastructure
-- A sense of design taste for building intuitive interfaces
-- Attention to detail for building user experiences that are awesome to use
+- Front-end experience (HTML, CSS, and JS)
+- Backend experience (primarily for the UX Engineer role)
+- Experience using Git and terminal
+- Attention to detail and a great sense of design taste for building intuitive interfaces and experiences that are awesome to use
+- Experience with design and collaboration tools like Figma, Sketch or XD and Abstract or Invision
+- Experience with prototyping tools like Framer or Principle
 
+We expect you to have detailed knowledge of preferred languages, tools, or systems, but that you are also able to quickly pick up new ones as needed. And while experience is essential, enthusiasm and interest can outweigh experience. We are willing to take a chance on people who want to step up. 
 
-### Nice to have
+Oxide is based in Oakland, California, but remote work is possible for folks with a track record of working effectively remotely.
 
-- Photoshop skills
-- Experience with design systems and tools like Figma
+PS Do you know someone who makes you better at what you do and has helped you achieve things you couldn’t imagine achieving on your own? Someone who has motivated and inspired you? Someone who complements your strengths and makes up for your weaknesses? Stripe experimented with this. They called it BYOT — Bring Your Own Team. In the end, it didn’t work for them — coordinating career moves for one person is complicated enough. That said, if you are applying for one of these roles and know the peanut butter to your jelly, please let us know because we’d love to meet them.
+
