@@ -6,6 +6,10 @@
 		{{if .Params.subtitle}}<p class="lead">{{.Params.subtitle}}</p>{{end}}
 	</div>
 
+	{{if eq .Section "careers"}}
+	{{ partial "careers-header.html" . }}
+	{{end}}
+
 	{{ .Content }}
 
 	{{ partial "badge-list.html" . }}
