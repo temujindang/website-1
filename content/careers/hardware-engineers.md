@@ -25,5 +25,5 @@ Project, and you are motivated by the idea of your designs having the
 broadest possible impact.  
 
 Oxide is based in Oakland, California. While we are open to remote work,
-we believe that it's difficult for this role.
+we believe that will be difficult for this role.
 

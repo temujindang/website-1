@@ -32,7 +32,7 @@ This team will take complex ideas and make them simple for users to understand a
 
 We expect you to have detailed knowledge of preferred languages, tools, or systems, but that you are also able to quickly pick up new ones as needed. And while experience is essential, enthusiasm and interest can outweigh experience. We are willing to take a chance on people who want to step up. 
 
-Oxide is based in Oakland, California, but remote work is possible for folks with a track record of working effectively remotely.
+Oxide is based in Oakland, California, but remote work is possible for people with a track record of working effectively remotely.
 
 PS Do you know someone who makes you better at what you do and has helped you achieve things you couldn’t imagine achieving on your own? Someone who has motivated and inspired you? Someone who complements your strengths and makes up for your weaknesses? Stripe experimented with this. They called it BYOT — Bring Your Own Team. In the end, it didn’t work for them — coordinating career moves for one person is complicated enough. That said, if you are applying for one of these roles and know the peanut butter to your jelly, please let us know because we’d love to meet them.
 
