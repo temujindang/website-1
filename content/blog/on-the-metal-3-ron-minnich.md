@@ -1,5 +1,5 @@
 +++
-date = "2019-12-16T20:09:26"
+date = "2019-12-16T02:09:26"
 title = "On the Metal: Ron Minnich"
 authors = ["bryan-cantrill", "jessie-frazelle", "steve-tuck"]
 description = "On this episode of On the Metal, we interview Ron Minnich. Ron has had a fascinating career working on the interface between software and hardware. Join us to hear a mesmerizing conversation about Unix, Plan9, LinuxBIOS, Chromebooks, RISC-V, of course some Gentoo jokes, flip flip programming toys, and more!"
