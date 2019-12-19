@@ -9,7 +9,12 @@ episode = 4
 podcast_file = "fillmein"
 +++
 
-On this episode of On the Metal, we interview Tom Lyon, Sun employee #8.
+On this episode of On the Metal, we interview Tom Lyon, Sun Microsystems
+employee #8, network storage pioneer and systems software polymath.  Join us
+as Tom recounts losing bits in the hallway at Princeton, the peril
+of software-refreshed DRAM, and how to write a token ring driver from scratch
+in two weeks and still be mistaken for someone from sales. Along the way, Jess,
+Bryan and Tom nerd out about first calculators, favorite editors and hard tabs.
 
 ### Show Notes
 
@@ -32,10 +37,11 @@ Some of the highlights of the show include:
 - Apple LaserWriter: https://en.wikipedia.org/wiki/LaserWriter
 - DECnet: https://en.wikipedia.org/wiki/DECnet
 - X.25: https://en.wikipedia.org/wiki/X.25
+- Tom's notes from the NFS offsite in 1983: https://twitter.com/aka_pugs/status/985941297327366144
 - Automounter: https://en.wikipedia.org/wiki/Automounter
 - CAP theorem: https://en.wikipedia.org/wiki/CAP_theorem
 - Sun's Network Disk (nd) protocol: https://github.com/senjan/ndd/blob/master/nd_pkt.h
-- The Internet Collapse of 1986: https://en.wikipedia.org/wiki/Network_congestion
+- The Internet Collapse of 1986: https://en.wikipedia.org/wiki/Network_congestion#Congestive_collapse
 - Larry Roberts: https://en.wikipedia.org/wiki/Lawrence_Roberts_(scientist)
 - Telenet: https://en.wikipedia.org/wiki/Telenet
 - Tandem Computers: https://en.wikipedia.org/wiki/Tandem_Computers
@@ -50,4 +56,32 @@ Some of the highlights of the show include:
 - TI-83: https://en.wikipedia.org/wiki/TI-83_series
 - HP 48G: https://en.wikipedia.org/wiki/HP_48_series
 - HP-35: https://en.wikipedia.org/wiki/HP-35
+- ed(1): https://en.wikipedia.org/wiki/Ed_(text_editor)
+- IBM System/370: https://en.wikipedia.org/wiki/IBM_System/370
+- APL\360: https://en.wikipedia.org/wiki/APL_(programming_language)#APL%5C360
+- VM/370: https://en.wikipedia.org/wiki/VM_(operating_system)
+- Unibus: https://en.wikipedia.org/wiki/Unibus
+- Interdata: https://en.wikipedia.org/wiki/Interdata
+- Amdahl UTS: https://en.wikipedia.org/wiki/Amdahl_UTS
+- IBM 3270 terminal: https://en.wikipedia.org/wiki/IBM_3270
+
+- Greg Chesson: https://grainger.illinois.edu/alumni/distinguished/7939
+- Joe Ossanna: https://en.wikipedia.org/wiki/Joe_Ossanna
+- nroff: https://en.wikipedia.org/wiki/Nroff
+- IBM 1403: https://en.wikipedia.org/wiki/IBM_1403
+- Dick Lyon: https://en.wikipedia.org/wiki/Richard_F._Lyon
+- Xerox Alto:
+- MAXC, PARC's PDP-10 clone: 
+- Berkeley Computer Corporation: https://en.wikipedia.org/wiki/Project_Genie
+- Bob Lyon: 
+- Optical mouse: https://en.wikipedia.org/wiki/Optical_mouse
+- Steve Kirsch: https://en.wikipedia.org/wiki/Steve_Kirsch
+- Dick Lyon's (color!) technical report on the optical mouse: http://www.dicklyon.com/tech/OMouse/OpticalMouse-Lyon.pdf
+- Ipsilon 
+- ATM: https://en.wikipedia.org/wiki/Asynchronous_transfer_mode
+- Andy Bechtolsheim on "Death to ATM" (July 1996): https://web.archive.org/web/20001217105700/https://www.redherring.com/mag/issue33/atm.html
+- MPLS
+- UCS VIC a.k.a. Palo 
+- VFIO 
+- Open Source Firmware Conference
 
