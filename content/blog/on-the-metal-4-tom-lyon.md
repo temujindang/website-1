@@ -2,7 +2,7 @@
 date = "2029-12-06T06:09:26-07:00"
 title = "On the Metal: Tom Lyon"
 authors = ["bryan-cantrill", "jessie-frazelle"]
-description = "On this episode of On the Metal, we interview Tom Lyon, Sun employee #8, network storage pioneer and systems software polymath.  Join us as Tom recounts losing bits in the hallway at Princeton, the peril of software-refreshed DRAM, and how to write a token ring driver from scratch in two weeks and still be mistaken for someone from sales. Along the way, Jess, Bryan and Tom nerd out about first calculators, favorite editors and hard tabs."
+description = "On this episode of On the Metal, we interview Tom Lyon, Sun employee #8, network storage pioneer and systems software polymath.  Join us as Tom recounts losing bits in the hallway at Princeton, the peril of software-refreshed DRAM, and how to write a token ring driver from scratch in two weeks and still be mistaken for someone from sales. Along the way, Jess, Bryan and Tom nerd out about first calculators, favorite editors, and hard tabs."
 tags = ["Podcast"]
 categories = ["On the Metal"]
 episode = 4
@@ -14,7 +14,7 @@ employee #8, network storage pioneer and systems software polymath.  Join us
 as Tom recounts losing bits in the hallway at Princeton, the peril
 of software-refreshed DRAM, and how to write a token ring driver from scratch
 in two weeks and still be mistaken for someone from sales. Along the way, Jess,
-Bryan and Tom nerd out about first calculators, favorite editors and hard tabs.
+Bryan and Tom nerd out about first calculators, favorite editors, and hard tabs.
 
 ### Show Notes
 
@@ -22,13 +22,15 @@ You can find Tom on Twitter at https://twitter.com/aka_pugs and find his
 blog at https://akapugs.blog/.  You can learn more about DriveScale
 at https://drivescale.com/.
 
+Tom brought us a present: <a href="/img/ibm-360-ready.jpg">an IBM 360-era "Ready" button</a>!
+
 Some of the highlights of the show include: 
 
 - Williams tube (CRT-based memory): https://en.wikipedia.org/wiki/Williams_tube
 - Mercury delay lines: https://en.wikipedia.org/wiki/Delay_line_memory
 - Datapoint: https://en.wikipedia.org/wiki/Datapoint
-- "Datapoint: The Lost Story of the Texans who Invented the Personal Computer
-  Revolution" by Lamont Wood: https://www.goodreads.com/book/show/16214216-datapoint
+- *Datapoint: The Lost Story of the Texans who Invented the Personal Computer
+  Revolution* by Lamont Wood: https://www.goodreads.com/book/show/16214216-datapoint
 - ARCNET: https://en.wikipedia.org/wiki/ARCNET
 - AppleTalk: https://en.wikipedia.org/wiki/AppleTalk
 - Z8530 UART: https://en.wikipedia.org/wiki/Zilog_SCC
@@ -38,7 +40,7 @@ Some of the highlights of the show include:
 - Tom's notes from the NFS offsite in 1983: https://twitter.com/aka_pugs/status/985941297327366144
 - Automounter: https://en.wikipedia.org/wiki/Automounter
 - CAP theorem: https://en.wikipedia.org/wiki/CAP_theorem
-- Sun's Network Disk (nd) protocol: https://github.com/senjan/ndd/blob/master/nd_pkt.h
+- Sun's Network Disk (nd) protocol: https://github.com/senjan/ndd/blob/master/nd_pkt.h (if you find nd(4P) from the SunOS 3.x man pages, let us know!)
 - The Internet Collapse of 1986: https://en.wikipedia.org/wiki/Network_congestion#Congestive_collapse
 - Larry Roberts: https://en.wikipedia.org/wiki/Lawrence_Roberts_(scientist)
 - Telenet: https://en.wikipedia.org/wiki/Telenet
@@ -46,7 +48,7 @@ Some of the highlights of the show include:
 - Token ring: https://en.wikipedia.org/wiki/Token_ring
 - Ipsilon Networks: https://en.wikipedia.org/wiki/Ipsilon_Networks
 - FDDI: https://en.wikipedia.org/wiki/Fiber_Distributed_Data_Interface
-- Crescendo Communications
+- Crescendo Communications: https://books.google.com/books?id=PDsEAAAAMBAJ&pg=PA44&lpg=PA44
 - CDC 3400: https://en.wikipedia.org/wiki/CDC_3000_series
 - Ones' Complement: https://en.wikipedia.org/wiki/Ones%27_complement
 - IBM 1130: https://en.wikipedia.org/wiki/IBM_1130
@@ -68,14 +70,14 @@ Some of the highlights of the show include:
 - Amdahl UTS: https://en.wikipedia.org/wiki/Amdahl_UTS
 - IBM 3270 terminal: https://en.wikipedia.org/wiki/IBM_3270
 - Dick Lyon: https://en.wikipedia.org/wiki/Richard_F._Lyon
-- Xerox Alto:
 - MAXC, PARC's PDP-10 clone: http://www.digibarn.com/collections/parts/maxc-board/index.html
 - Berkeley Computer Corporation: https://en.wikipedia.org/wiki/Project_Genie
-- Bob Lyon: 
+- Bob Lyon: https://www.facebook.com/bob.lyon.98
 - Optical mouse: https://en.wikipedia.org/wiki/Optical_mouse
+- The Oxide garage Sun art work of mysterious origin (a Sun-3/160, perhaps?):  https://oxide.computer/img/garage-sun.jpg
 - Steve Kirsch: https://en.wikipedia.org/wiki/Steve_Kirsch
 - Dick Lyon's (color!) technical report on the optical mouse: http://www.dicklyon.com/tech/OMouse/OpticalMouse-Lyon.pdf
-- Ipsilon 
+- Ipsilon: https://en.wikipedia.org/wiki/Ipsilon_Networks
 - ATM: https://en.wikipedia.org/wiki/Asynchronous_transfer_mode
 - Andy Bechtolsheim on "Death to ATM" (July 1996): https://web.archive.org/web/20001217105700/https://www.redherring.com/mag/issue33/atm.html
 - Tom's original announcement of VFIO: https://lwn.net/Articles/391459/
