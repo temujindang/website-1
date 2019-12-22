@@ -2,7 +2,7 @@
 date = "2029-12-06T06:09:26-07:00"
 title = "On the Metal: Tom Lyon"
 authors = ["bryan-cantrill", "jessie-frazelle"]
-description = "On this episode of On the Metal, we interview Tom Lyon, Sun employee #8."
+description = "On this episode of On the Metal, we interview Tom Lyon, Sun employee #8, network storage pioneer and systems software polymath.  Join us as Tom recounts losing bits in the hallway at Princeton, the peril of software-refreshed DRAM, and how to write a token ring driver from scratch in two weeks and still be mistaken for someone from sales. Along the way, Jess, Bryan and Tom nerd out about first calculators, favorite editors and hard tabs."
 tags = ["Podcast"]
 categories = ["On the Metal"]
 episode = 4
@@ -24,10 +24,8 @@ at https://drivescale.com/.
 
 Some of the highlights of the show include: 
 
-- IBM 704
 - Williams tube (CRT-based memory): https://en.wikipedia.org/wiki/Williams_tube
 - Mercury delay lines: https://en.wikipedia.org/wiki/Delay_line_memory
-- Sun 1 software-based memory refresh
 - Datapoint: https://en.wikipedia.org/wiki/Datapoint
 - "Datapoint: The Lost Story of the Texans who Invented the Personal Computer
   Revolution" by Lamont Wood: https://www.goodreads.com/book/show/16214216-datapoint
@@ -59,19 +57,19 @@ Some of the highlights of the show include:
 - ed(1): https://en.wikipedia.org/wiki/Ed_(text_editor)
 - IBM System/370: https://en.wikipedia.org/wiki/IBM_System/370
 - APL\360: https://en.wikipedia.org/wiki/APL_(programming_language)#APL%5C360
+- IBM 2741 with APL keyboard: https://en.wikipedia.org/wiki/IBM_2741#/media/File:IBM2741.JPG
 - VM/370: https://en.wikipedia.org/wiki/VM_(operating_system)
 - Unibus: https://en.wikipedia.org/wiki/Unibus
 - Interdata: https://en.wikipedia.org/wiki/Interdata
-- Amdahl UTS: https://en.wikipedia.org/wiki/Amdahl_UTS
-- IBM 3270 terminal: https://en.wikipedia.org/wiki/IBM_3270
-
 - Greg Chesson: https://grainger.illinois.edu/alumni/distinguished/7939
 - Joe Ossanna: https://en.wikipedia.org/wiki/Joe_Ossanna
 - nroff: https://en.wikipedia.org/wiki/Nroff
 - IBM 1403: https://en.wikipedia.org/wiki/IBM_1403
+- Amdahl UTS: https://en.wikipedia.org/wiki/Amdahl_UTS
+- IBM 3270 terminal: https://en.wikipedia.org/wiki/IBM_3270
 - Dick Lyon: https://en.wikipedia.org/wiki/Richard_F._Lyon
 - Xerox Alto:
-- MAXC, PARC's PDP-10 clone: 
+- MAXC, PARC's PDP-10 clone: http://www.digibarn.com/collections/parts/maxc-board/index.html
 - Berkeley Computer Corporation: https://en.wikipedia.org/wiki/Project_Genie
 - Bob Lyon: 
 - Optical mouse: https://en.wikipedia.org/wiki/Optical_mouse
@@ -80,8 +78,6 @@ Some of the highlights of the show include:
 - Ipsilon 
 - ATM: https://en.wikipedia.org/wiki/Asynchronous_transfer_mode
 - Andy Bechtolsheim on "Death to ATM" (July 1996): https://web.archive.org/web/20001217105700/https://www.redherring.com/mag/issue33/atm.html
-- MPLS
-- UCS VIC a.k.a. Palo 
-- VFIO 
-- Open Source Firmware Conference
+- Tom's original announcement of VFIO: https://lwn.net/Articles/391459/
+- Open Source Firmware Conference: https://osfc.io/archive
 
