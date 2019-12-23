@@ -24,7 +24,7 @@ at https://drivescale.com/.
 
 Tom brought us a present: <a href="/img/ibm-360-ready.jpg">an IBM 360-era "Ready" button</a>!
 
-![ibm-360-ready](/img/ibm-360-ready.jpg)
+![ibm-360-ready](https://oxide.computer/img/ibm-360-ready.jpg)
 
 Some of the highlights of the show include: 
 
