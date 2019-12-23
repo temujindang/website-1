@@ -24,6 +24,8 @@ at https://drivescale.com/.
 
 Tom brought us a present: <a href="/img/ibm-360-ready.jpg">an IBM 360-era "Ready" button</a>!
 
+![ibm-360-ready](/img/ibm-360-ready.jpg)
+
 Some of the highlights of the show include: 
 
 - Williams tube (CRT-based memory): https://en.wikipedia.org/wiki/Williams_tube
