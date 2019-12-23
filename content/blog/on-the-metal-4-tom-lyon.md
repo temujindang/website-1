@@ -1,12 +1,12 @@
 +++
-date = "2029-12-06T06:09:26-07:00"
+date = "2019-12-23T06:09:26-07:00"
 title = "On the Metal: Tom Lyon"
 authors = ["bryan-cantrill", "jessie-frazelle"]
 description = "On this episode of On the Metal, we interview Tom Lyon, Sun employee #8, network storage pioneer and systems software polymath.  Join us as Tom recounts losing bits in the hallway at Princeton, the peril of software-refreshed DRAM, and how to write a token ring driver from scratch in two weeks and still be mistaken for someone from sales. Along the way, Jess, Bryan and Tom nerd out about first calculators, favorite editors, and hard tabs."
 tags = ["Podcast"]
 categories = ["On the Metal"]
 episode = 4
-podcast_file = "fillmein"
+podcast_file = "https://media.transistor.fm/f11defc9.mp3"
 +++
 
 On this episode of On the Metal, we interview Tom Lyon, Sun Microsystems
