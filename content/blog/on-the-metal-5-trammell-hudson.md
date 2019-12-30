@@ -6,7 +6,7 @@ description = "On this episode of On the Metal, we interview Trammell Hudson. Tr
 tags = ["Podcast"]
 categories = ["On the Metal"]
 episode = 5
-podcast_file = ""
+podcast_file = "https://media.transistor.fm/9d0cafea.mp3"
 +++
 
 On this episode of On the Metal, we interview Trammell Hudson. Trammell has
@@ -71,3 +71,5 @@ Some of the highlights of the show include:
 - MicroPython: https://micropython.org/ https://github.com/micropython/micropython
 - Mirai Webcam Vulnerability: https://www.wired.com/2016/12/botnet-broke-internet-isnt-going-away/ 
 - Trammell's research on Bootguard: https://trmm.net/Bootguard
+- Rust on the Teensy: https://branan.github.io/teensy/
+- Oreboot: https://github.com/oreboot/oreboot https://osfc.io/talks/oreboot
