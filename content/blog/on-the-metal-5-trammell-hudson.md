@@ -2,7 +2,7 @@
 date = "2019-12-30T06:09:26"
 title = "On the Metal: Trammell Hudson"
 authors = ["bryan-cantrill", "jessie-frazelle", "steve-tuck"]
-description = "On this episode of On the Metal, we interview Trammell Hudson. Trammell has some of the most interesting side projects related to every single hardware / software interface you can imagine. Join us as we step into the negative privilege rings with stories of reverse engineering lightbulbs & a Canon 5D Mark 2, hacking a MAC SE, dissecting modchips, evil maid attacks, and more."
+description = "On this episode of On the Metal, we interview Trammell Hudson. Trammell has some of the most interesting side projects related to every single hardware / software interface you can imagine. Join us as we step into the negative privilege rings with stories of reverse engineering lightbulbs & a Canon 5D Mark 2, hacking a Mac SE, dissecting modchips, evil maid attacks, and more."
 tags = ["Podcast"]
 categories = ["On the Metal"]
 episode = 5
@@ -13,7 +13,7 @@ On this episode of On the Metal, we interview Trammell Hudson. Trammell has
 some of the most interesting side projects related to every single hardware
 / software interface you can imagine. Join us as we step into the negative
 privilege rings with stories of reverse engineering lightbulbs & a Canon 5D Mark 2,
-hacking a MAC SE, dissecting modchips, evil maid attacks, and more.
+hacking a Mac SE, dissecting modchips, evil maid attacks, and more.
 
 ### Show Notes
 
