@@ -2,7 +2,7 @@
 date = "2030-01-06T06:00:00-07:00"
 title = "On the Metal: Kenneth Finnegan"
 authors = ["bryan-cantrill", "jessie-frazelle", "steve-tuck"]
-description = "On this episode of On the Metal, we interview Kenneth Finnegan, internet exchange homebrewer. Join us as we delight in the underbelly of the internet, learning about OG ASNs, illegal cabling -- and the thrill of discovering a root DNS server thirty feet away."
+description = "On this episode of On the Metal, we interview Kenneth Finnegan, internet exchange homebrewer. Join us as we delight in the underbelly of the internet, learn about OG ASNs, run upon illegal cabling -- and thrill in the discovery of a root DNS server thirty feet away."
 tags = ["Podcast"]
 categories = ["On the Metal"]
 episode = 6
@@ -10,9 +10,9 @@ podcast_file = "fillmein"
 +++
 
 On this episode of On the Metal, we interview Kenneth Finnegan, internet
-exchange homebrewer. Join us as we delight in the underbelly of the internet,
-learning about OG ASNs, illegal cabling -- and the thrill of discovering a
-root DNS server thirty feet away.
+exchange homebrewer. Join us as we delight in the underbelly of the
+internet, learn about OG ASNs, run upon illegal cabling -- and thrill in the
+discovery of a root DNS server thirty feet away.
 
 ### Show Notes
 
