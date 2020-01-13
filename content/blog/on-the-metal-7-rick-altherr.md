@@ -48,3 +48,8 @@ Some of the highlights of the show include:
 - Fly height: https://en.wikipedia.org/wiki/Flying_height http://maeresearch.ucsd.edu/callafon/publications/2011/UweIEEETonM.pdf
 - The legend of the walking drives: http://catb.org/jargon/html/W/walking-drives.html http://msgboard.snopes.com/cgi-bin/ultimatebb.cgi?ubb=get_topic;f=103;t=000500;p=1
 - Open Source Firmware Conference: https://osfc.io/
+- Coreboot: https://www.coreboot.org/
+- ChromeOS Firmware: https://www.chromium.org/chromium-os/developer-information-for-chrome-os-devices/custom-firmware
+- EDK II: https://github.com/tianocore/edk2
+- Open Compute Project: https://www.opencompute.org/
+- Width of a Horse's butt: http://www.naute.com/stories/rail.phtml
