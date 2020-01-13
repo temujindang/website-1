@@ -44,3 +44,4 @@ Some of the highlights of the show include:
 - IPMI: https://www.intel.com/content/www/us/en/products/docs/servers/ipmi/ipmi-home.html https://en.wikipedia.org/wiki/Intelligent_Platform_Management_Interface
 - I2C: https://i2c.info/
 - Non maskable interrupt: https://en.wikipedia.org/wiki/Non-maskable_interrupt
+- Fly height: https://en.wikipedia.org/wiki/Flying_height http://maeresearch.ucsd.edu/callafon/publications/2011/UweIEEETonM.pdf
