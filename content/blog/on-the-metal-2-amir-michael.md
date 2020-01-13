@@ -7,6 +7,7 @@ tags = ["Podcast"]
 categories = ["On the Metal"]
 episode = 2
 podcast_file = "https://media.transistor.fm/4a4a1ee6.mp3"
+iframe_link = "https://share.transistor.fm/e/34e16a32"
 +++
 
 On this episode of On the Metal, we interview Amir Michael.  Join us as we 
