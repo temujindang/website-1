@@ -7,6 +7,7 @@ tags = ["Podcast"]
 categories = ["On the Metal"]
 episode = 5
 podcast_file = "https://media.transistor.fm/9d0cafea.mp3"
+iframe_link = "https://share.transistor.fm/e/a9256054"
 +++
 
 On this episode of On the Metal, we interview Trammell Hudson. Trammell has
