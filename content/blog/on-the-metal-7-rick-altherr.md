@@ -10,7 +10,7 @@ podcast_file = ""
 +++
 
 On this episode of On the Metal, we interview Rick Altherr, who has experience working all over the stack. 
-Join us as we discuss impossible bugs, fires in the datacenter, reverse engineering BMC firmware, 
+Join us as we discuss impossible bugs, fires in the data center, reverse engineering BMC firmware, 
 BMC vulnerabilities, Cray computers, and Windows NT on MIPS. Yup you heard that right! 
 
 ### Show Notes
@@ -44,4 +44,7 @@ Some of the highlights of the show include:
 - IPMI: https://www.intel.com/content/www/us/en/products/docs/servers/ipmi/ipmi-home.html https://en.wikipedia.org/wiki/Intelligent_Platform_Management_Interface
 - I2C: https://i2c.info/
 - Non maskable interrupt: https://en.wikipedia.org/wiki/Non-maskable_interrupt
+- Read and write heads: https://www.computerhistory.org/storageengine/thin-film-heads-introduced-for-large-disks/ https://www.tomshardware.com/reviews/hard-drive-magnetic-storage-hdd,3005-2.html https://en.wikipedia.org/wiki/Disk_read-and-write_head
 - Fly height: https://en.wikipedia.org/wiki/Flying_height http://maeresearch.ucsd.edu/callafon/publications/2011/UweIEEETonM.pdf
+- The legend of the walking drives: http://catb.org/jargon/html/W/walking-drives.html http://msgboard.snopes.com/cgi-bin/ultimatebb.cgi?ubb=get_topic;f=103;t=000500;p=1
+- Open Source Firmware Conference: https://osfc.io/
