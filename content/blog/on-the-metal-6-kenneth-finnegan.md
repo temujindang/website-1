@@ -7,6 +7,7 @@ tags = ["Podcast"]
 categories = ["On the Metal"]
 episode = 6
 podcast_file = "https://media.transistor.fm/9212f8ff.mp3"
+iframe_link = "https://share.transistor.fm/e/6ebd391b"
 +++
 
 On this episode of On the Metal, we interview Kenneth Finnegan, internet
