@@ -1,5 +1,5 @@
 +++
-date = "2030-01-13T06:00:00-07:00"
+date = "2020-01-13T06:00:00"
 title = "On the Metal: Rick Altherr"
 authors = ["bryan-cantrill", "jessie-frazelle", "steve-tuck"]
 description = "On this episode of On the Metal, we interview Rick Altherr, who has experience working all over the stack. Join us as we discuss impossible bugs, fires in the data center, reverse engineering BMC firmware, BMC vulnerabilities, Cray computers, and Windows NT on MIPS. Yup you heard that right! "
