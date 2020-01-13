@@ -7,6 +7,7 @@ tags = ["Podcast"]
 categories = ["On the Metal"]
 episode = 4
 podcast_file = "https://media.transistor.fm/f11defc9.mp3"
+iframe_link = "https://share.transistor.fm/e/e89c3b37"
 +++
 
 On this episode of On the Metal, we interview Tom Lyon, Sun Microsystems
