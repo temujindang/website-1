@@ -7,6 +7,7 @@ tags = ["Podcast"]
 categories = ["On the Metal"]
 episode = 3
 podcast_file = "https://media.transistor.fm/344925bb.mp3"
+iframe_link = "https://share.transistor.fm/e/43499ab9"
 +++
 
 On this episode of On the Metal, we interview Ron Minnich. Ron has had a 
