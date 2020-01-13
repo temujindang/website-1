@@ -2,11 +2,12 @@
 date = "2030-01-13T06:00:00-07:00"
 title = "On the Metal: Rick Altherr"
 authors = ["bryan-cantrill", "jessie-frazelle", "steve-tuck"]
-description = ""
+description = "On this episode of On the Metal, we interview Rick Altherr, who has experience working all over the stack. Join us as we discuss impossible bugs, fires in the data center, reverse engineering BMC firmware, BMC vulnerabilities, Cray computers, and Windows NT on MIPS. Yup you heard that right! "
 tags = ["Podcast"]
 categories = ["On the Metal"]
 episode = 7
 podcast_file = "https://media.transistor.fm/ceda47c6.mp3"
+iframe_link = "https://share.transistor.fm/e/71644107"
 +++
 
 On this episode of On the Metal, we interview Rick Altherr, who has experience working all over the stack. 
