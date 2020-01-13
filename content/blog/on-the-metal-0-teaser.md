@@ -7,6 +7,7 @@ tags = ["Announcements", "Launch", "Podcast"]
 categories = ["On the Metal"]
 episode = 0
 podcast_file = "https://media.transistor.fm/8396a7b2.mp3"
+iframe_link = "https://share.transistor.fm/e/055722a9"
 +++
 
 Welcome to our new podcast, On the Metal! As a part of starting Oxide Computer
