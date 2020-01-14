@@ -43,4 +43,5 @@ Some of the highlights of the show include:
 - Internet outage involving Allegheny Technologies: https://blog.cloudflare.com/how-verizon-and-a-bgp-optimizer-knocked-large-parts-of-the-internet-offline-today/
 - DNS root servers: https://www.iana.org/domains/root/servers
 - M-ROOT DNS server: https://www.peeringdb.com/net/825
-
+- BGP Design and Implementation: https://amzn.to/2NE3SXl
+- Norton Internet Peering Playbook: https://amzn.to/2QRkHA0
