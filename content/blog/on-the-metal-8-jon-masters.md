@@ -1,5 +1,5 @@
 +++
-date = "2020-01-20T06:00:00-07:00"
+date = "2020-01-20T04:00:00-07:00"
 title = "On the Metal: Jon Masters"
 authors = ["bryan-cantrill", "jessie-frazelle", "steve-tuck"]
 description = "On this episode of On the Metal, we interview Jon Masters, computer architecture raconteur, microprocessor *enfant terrible*, and Patron Saint of Lost Computational Causes.  Join us as we learn why Jon hates simultaneous multithreading, why he loves UEFI (?!) -- and when we can expect the supremacy of the quantum blockchain."
