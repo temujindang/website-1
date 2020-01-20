@@ -37,6 +37,7 @@ Some of the highlights of the show include:
 - Itanium: https://en.wikipedia.org/wiki/Itanium
 - McKinley: https://en.wikipedia.org/wiki/List_of_Intel_Itanium_microprocessors#McKinley_(180_nm)
 - Leon Czolgosz: https://en.wikipedia.org/wiki/Leon_Czolgosz
+- Humartia: https://en.wikipedia.org/wiki/Hamartia
 - Transmeta: https://en.wikipedia.org/wiki/Transmeta
 - Transmeta Crusoe: https://en.wikipedia.org/wiki/Transmeta_Crusoe
 - Richard (Dick) Sites: https://sites.google.com/site/dicksites/
