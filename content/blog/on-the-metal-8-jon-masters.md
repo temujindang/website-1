@@ -1,12 +1,13 @@
 +++
-date = "2030-01-06T06:00:00-07:00"
+date = "2020-01-20T06:00:00-07:00"
 title = "On the Metal: Jon Masters"
 authors = ["bryan-cantrill", "jessie-frazelle", "steve-tuck"]
 description = "On this episode of On the Metal, we interview Jon Masters, computer architecture raconteur, microprocessor *enfant terrible*, and Patron Saint of Lost Computational Causes.  Join us as we learn why Jon hates simultaneous multithreading, why he loves UEFI (?!) -- and when we can expect the supremacy of the quantum blockchain."
 tags = ["Podcast"]
 categories = ["On the Metal"]
 episode = 8
-podcast_file = "fillmein"
+podcast_file = "https://media.transistor.fm/f037142a.mp3"
+iframe_link = "https://share.transistor.fm/e/ad9a87ec"
 +++
 
 On this episode of On the Metal, we interview Jon Masters, computer
@@ -27,10 +28,10 @@ Some of the highlights of the show include:
 - Speculative execution: https://www.extremetech.com/computing/261792-what-is-speculative-execution
 - ICL: https://en.wikipedia.org/wiki/International_Computers_Limited
 - Hacker News front page, January 1st, 2018: https://news.ycombinator.com/front?day=2018-01-01
-- "Boogie Nights", the death of Little Bill: https://www.youtube.com/watch?v=JFX-qfYbHKg
+- *Boogie Nights*, the death of Little Bill: https://www.youtube.com/watch?v=JFX-qfYbHKg
 - BBC Micro 6502: https://en.wikipedia.org/wiki/BBC_Micro
 - BBC Master: https://en.wikipedia.org/wiki/BBC_Master
-- "Storage Wars": https://en.wikipedia.org/wiki/Storage_Wars
+- *Storage Wars*: https://en.wikipedia.org/wiki/Storage_Wars
 - PA-8000: https://en.wikipedia.org/wiki/PA-8000
 - SPARCbook 3000ST: https://blog.adafruit.com/2019/04/01/sparcbook-3000st-the-coolest-90s-laptop-sparc-vintagecomputing-retrocomputing-eckmeister/
 - Itanium: https://en.wikipedia.org/wiki/Itanium
