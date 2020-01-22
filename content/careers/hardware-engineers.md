@@ -24,6 +24,6 @@ the art.  You probably have experience or interest in the Open Compute
 Project, and you are motivated by the idea of your designs having the
 broadest possible impact.  
 
-Oxide is based in Oakland, California. While we are open to remote work,
+Oxide is based in Emeryville, California. While we are open to remote work,
 we believe that will be difficult for this role.
 

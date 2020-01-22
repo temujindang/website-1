@@ -33,6 +33,7 @@ While the nature of the problems we're solving biases us to those with
 experience, we are open to engineers at the beginning of their career who
 feel an exceptional calling to systems software.  
 
-Oxide is based in Oakland, California, but remote work is possible for people with a track record of working effectively remotely.
+Oxide is based in Emeryville, California, but remote work is possible for
+people with a track record of working effectively remotely.
 
 
