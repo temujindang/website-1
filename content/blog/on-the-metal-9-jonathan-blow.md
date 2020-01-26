@@ -71,6 +71,12 @@ Some of the highlights of the show include:
 - Smart pointer: https://en.wikipedia.org/wiki/Smart_pointer
 - D language: https://en.wikipedia.org/wiki/D_(programming_language)
 - Entity-component-system: https://en.wikipedia.org/wiki/Entity_component_system
-
-1:53:11
+- Jonathan's talk "Preventing the Collapse of Civilization": https://www.youtube.com/watch?v=pW-SOdj4Kkk
+- Tcl: https://en.wikipedia.org/wiki/Tcl
+- Dropbox's Python 2 to Python 3 migration: https://blogs.dropbox.com/tech/2018/09/how-we-rolled-out-one-of-the-largest-python-3-migrations-ever/
+- Resource acquisition is initialization (RAII): https://en.wikipedia.org/wiki/Resource_acquisition_is_initialization
+- Anders Hejlsberg: https://en.wikipedia.org/wiki/Anders_Hejlsberg
+- Hygienic macro: https://en.wikipedia.org/wiki/Hygienic_macro
+- DWARF: https://en.wikipedia.org/wiki/DWARF
+- Unix philosophy: https://en.wikipedia.org/wiki/Unix_philosophy
 
