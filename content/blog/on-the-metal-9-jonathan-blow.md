@@ -1,5 +1,5 @@
 +++
-date = "2020-01-27T03:00:00-07:00"
+date = "2020-01-27T06:00:00-07:00"
 title = "On the Metal: Jonathan Blow"
 authors = ["bryan-cantrill", "jessie-frazelle", "steve-tuck"]
 description = "On this episode of On the Metal, we interview legendary game designer and programmer Jonathan Blow.  Join along as Jonathan takes us from collision detection on the Atari 800, through porting Doom to SGI's famous set-top box, starting a game company at the worst possible time, his adventures with the (in)famous Cell processor, making several hit games -- and his more recent experiences with a new programming language of his own creation."
