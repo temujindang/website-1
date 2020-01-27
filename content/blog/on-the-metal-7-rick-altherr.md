@@ -35,7 +35,7 @@ Some of the highlights of the show include:
 - Alpha Station: https://web.archive.org/web/20060701073452/http://h18002.www1.hp.com/alphaserver/workstations.html https://en.wikipedia.org/wiki/AlphaStation
 - Tru64: https://groups.google.com/forum/?hl=en#!original/bit.listserv.esl-l/BovGe3q9yWE/cqlcCYfxmbAJ https://en.wikipedia.org/wiki/Tru64_UNIX
 - Windows NT: https://web.archive.org/web/20040610122846/http://www.microsoft.com/presspass/features/1998/winntfs.asp https://web.archive.org/web/20020503172231/http://www.win2000mag.com/Articles/Print.cfm?ArticleID=4494 https://en.wikipedia.org/wiki/Windows_NT
-- Windows NT on Mips: https://gunkies.org/wiki/Installing_Windows_NT_4.0_on_Qemu(MIPS)
+- Windows NT on Mips: <a href="https://gunkies.org/wiki/Installing_Windows_NT_4.0_on_Qemu(MIPS)">https://gunkies.org/wiki/Installing_Windows_NT_4.0_on_Qemu(MIPS)</a>
 - Palo Alto Goodwill: https://goodwillsv.org/store/palo-alto-store/
 - SGI: https://en.wikipedia.org/wiki/Silicon_Graphics https://en.wikipedia.org/wiki/SGI_Visual_Workstation
 - Cray 1 on ebay: https://www.theregister.co.uk/2010/05/24/cray_1_gate_module_ebay/

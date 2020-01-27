@@ -23,10 +23,10 @@ You can find Jonathan on Twitter at https://twitter.com/Jonathan_Blow.
 
 Some of the highlights of the show include: 
 
-- *The Witness*: https://en.wikipedia.org/wiki/The_Witness_(2016_video_game)
-- *Prince of Persia*: https://en.wikipedia.org/wiki/Prince_of_Persia_(1989_video_game)
+- *The Witness*: <a href="https://en.wikipedia.org/wiki/The_Witness_(2016_video_game)">https://en.wikipedia.org/wiki/The_Witness_(2016_video_game)</a>
+- *Prince of Persia*: <a href="https://en.wikipedia.org/wiki/Prince_of_Persia_(1989_video_game)">https://en.wikipedia.org/wiki/Prince_of_Persia_(1989_video_game)</a>
 - *Prince of Persia* source code: https://github.com/jmechner/Prince-of-Persia-Apple-II
-- Sprite: https://en.wikipedia.org/wiki/Sprite_(computer_graphics)
+- Sprite: <a href="https://en.wikipedia.org/wiki/Sprite_(computer_graphics)">https://en.wikipedia.org/wiki/Sprite_(computer_graphics)</a>
 - Atari 800: https://en.wikipedia.org/wiki/Atari_8-bit_family
 - Atari CTIA (chip performing, among many other things, collision detection for the Atari 800): https://en.wikipedia.org/wiki/CTIA_and_GTIA
 - Commodore 64: https://en.wikipedia.org/wiki/Commodore_64
@@ -34,7 +34,7 @@ Some of the highlights of the show include:
 - Skeletal animation: https://en.wikipedia.org/wiki/Skeletal_animation
 - GPGPU: https://en.wikipedia.org/wiki/General-purpose_computing_on_graphics_processing_units
 - GeForce 2080 Ti: https://en.wikipedia.org/wiki/GeForce_20_series
-- Cell microprocessor: https://en.wikipedia.org/wiki/Cell_(microprocessor)
+- Cell microprocessor: <a href="https://en.wikipedia.org/wiki/Cell_(microprocessor)">https://en.wikipedia.org/wiki/Cell_(microprocessor)</a>
 - Dennard scaling: https://en.wikipedia.org/wiki/Dennard_scaling
 - Amdahl's Law: https://en.wikipedia.org/wiki/Amdahl%27s_law
 - Embarrassingly parallel: https://en.wikipedia.org/wiki/Embarrassingly_parallel
@@ -46,7 +46,7 @@ Some of the highlights of the show include:
 - Chronostasis (the illusion of time standing still after eye movement): https://en.wikipedia.org/wiki/Chronostasis
 - *Counter-strike*: https://en.wikipedia.org/wiki/Counter-Strike 
 - *SimCity*: https://en.wikipedia.org/wiki/SimCity
-- *Trinity*: https://en.wikipedia.org/wiki/Trinity_(video_game)
+- *Trinity*: <a href="https://en.wikipedia.org/wiki/Trinity_(video_game)">https://en.wikipedia.org/wiki/Trinity_(video_game)</a>
 - Brian Moriarty: https://en.wikipedia.org/wiki/Brian_Moriarty
 - Infocom: https://en.wikipedia.org/wiki/Infocom
 - *Lost Treasures of Infocom*: https://en.wikipedia.org/wiki/The_Lost_Treasures_of_Infocom
@@ -55,17 +55,17 @@ Some of the highlights of the show include:
 - Silicon Graphics: https://en.wikipedia.org/wiki/Silicon_Graphics
 - Time Warner's "Full Service Network" (SGI Orlando project): https://www.nytimes.com/1994/12/12/business/time-warner-s-time-machine-for-future-video.html
 - Netscape Communications: https://en.wikipedia.org/wiki/Netscape
-- *Doom*: https://en.wikipedia.org/wiki/Doom_(1993_video_game)
+- *Doom*: <a href="https://en.wikipedia.org/wiki/Doom_(1993_video_game)">https://en.wikipedia.org/wiki/Doom_(1993_video_game)</a>
 - *Wolfenstein 3D*: https://en.wikipedia.org/wiki/Wolfenstein_3D
-- *Ultima* series: https://en.wikipedia.org/wiki/Ultima_(series)
+- *Ultima* series: <a href="https://en.wikipedia.org/wiki/Ultima_(series)">https://en.wikipedia.org/wiki/Ultima_(series)</a>
 - SGI engineers transferred to Nvidia, ca. 1999: https://www.eetimes.com/sgi-graphics-team-moves-to-nvidia/
-- *Quake*: https://en.wikipedia.org/wiki/Quake_(video_game)
+- *Quake*: <a href="https://en.wikipedia.org/wiki/Quake_(video_game)">https://en.wikipedia.org/wiki/Quake_(video_game)</a>
 - *Quake* source code: https://github.com/id-Software/Quake
 - John Carmack: https://en.wikipedia.org/wiki/John_Carmack
 - Michael Abrash: https://en.wikipedia.org/wiki/Michael_Abrash
 - Total Entertainment Network: https://en.wikipedia.org/wiki/Total_Entertainment_Network
 - boo.com: https://en.wikipedia.org/wiki/Boo.com
-- *Braid*: https://en.wikipedia.org/wiki/Braid_(video_game)
+- *Braid*: <a href="https://en.wikipedia.org/wiki/Braid_(video_game)">https://en.wikipedia.org/wiki/Braid_(video_game)</a>
 - SIMD: https://en.wikipedia.org/wiki/SIMD
 - Pentium U-pipe and V-pipe: https://en.wikichip.org/w/index.php?title=File:24281603.pdf&page=8
 - Data-oriented design: https://en.wikipedia.org/wiki/Data-oriented_design
@@ -74,7 +74,7 @@ Some of the highlights of the show include:
 - JAI language: https://en.wikipedia.org/wiki/Jonathan_Blow#JAI_language
 - "Worse is better" and the "MIT approach": https://en.wikipedia.org/wiki/Worse_is_better
 - Smart pointer: https://en.wikipedia.org/wiki/Smart_pointer
-- D language: https://en.wikipedia.org/wiki/D_(programming_language)
+- D language: <a href="https://en.wikipedia.org/wiki/D_(programming_language)">https://en.wikipedia.org/wiki/D_(programming_language)</a>
 - Entity-component-system: https://en.wikipedia.org/wiki/Entity_component_system
 - Jonathan's talk "Preventing the Collapse of Civilization": https://www.youtube.com/watch?v=pW-SOdj4Kkk
 - Tcl: https://en.wikipedia.org/wiki/Tcl

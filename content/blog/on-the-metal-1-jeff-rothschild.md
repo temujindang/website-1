@@ -54,11 +54,11 @@ Some of the highlights of the show include:
 - Gourmet Mode Terminal I/O (Unix) TTY Line Discipline
 - The LOCUS distributed operating system paper: https://dl.acm.org/citation.cfm?doid=800217.806615
 - Ethernet over Coax: https://en.wikipedia.org/wiki/Ethernet_over_coax
-- Logical Volume Manager: http://www.tldp.org/HOWTO/LVM-HOWTO/ https://en.wikipedia.org/wiki/Logical_volume_management https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)
+- Logical Volume Manager: http://www.tldp.org/HOWTO/LVM-HOWTO/ https://en.wikipedia.org/wiki/Logical_volume_management <a href="https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)">https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)</a>
 - VxFS (Veritas File System): https://web.archive.org/web/20031025011156/http://ftp.support.veritas.com/pub/support/products/FileSystem_UNIX/253148.pdf https://web.archive.org/web/20080309193205/http://www.patentstorm.us/patents/6871271.html https://web.archive.org/web/20080309165600/http://mailman.eng.auburn.edu/pipermail/veritas-vx/2000-April/000163.html https://en.wikipedia.org/wiki/Veritas_File_System
 - VxVM (Veritas Volume Manager): https://docs.oracle.com/cd/E19896-01/875-3115-10/875-3115-10.pdf https://en.wikipedia.org/wiki/Veritas_Volume_Manager
 - RAID (Redundant Array of Independent/Inexpensive Disks/Drives): https://web.eecs.umich.edu/~michjc/eecs584/Papers/katz-2010.pdf https://www2.eecs.berkeley.edu/Pubs/TechRpts/1987/CSD-87-391.pdf http://www.computerworld.com/article/2573180/data-center/the-story-so-far.html https://en.wikipedia.org/wiki/RAID
-- Quake: https://en.wikipedia.org/wiki/Quake_(video_game)
+- Quake: <a href="https://en.wikipedia.org/wiki/Quake_(video_game)">https://en.wikipedia.org/wiki/Quake_(video_game)</a>
 - Memcached at Facebook: https://www.usenix.org/system/files/conference/nsdi13/nsdi13-final170_update.pdf https://github.com/facebook/mcrouter 
 - Intel Optane: https://www.intel.com/content/www/us/en/architecture-and-technology/intel-optane-technology.html 
 - Multics (Multiplexed Information and Computing Service): https://www.multicians.org/pl1-raf.html https://www.multicians.org/papers.html https://en.wikipedia.org/wiki/Multics

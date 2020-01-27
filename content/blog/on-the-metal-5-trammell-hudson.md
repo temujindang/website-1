@@ -29,7 +29,7 @@ Some of the highlights of the show include:
 - OSF/1: https://en.wikipedia.org/wiki/OSF/1
 - Intel i860: https://en.wikipedia.org/wiki/Intel_i860
 - Intel Pentium Pro: https://en.wikipedia.org/wiki/Pentium_Pro
-- Red Storm: https://en.wikipedia.org/wiki/Red_Storm_(computing)
+- Red Storm: <a href="https://en.wikipedia.org/wiki/Red_Storm_(computing)">https://en.wikipedia.org/wiki/Red_Storm_(computing)</a>
 - RISC architecture is going to change everything: https://www.youtube.com/watch?v=RL9yCWv7NS0&feature=emb_title
 - Message passing interface (MPI): https://en.wikipedia.org/wiki/Message_Passing_Interface
 - System management mode (SMM): https://en.wikipedia.org/wiki/System_Management_Mode

@@ -45,7 +45,7 @@ Some of the highlights of the show include:
 - CAP theorem: https://en.wikipedia.org/wiki/CAP_theorem
 - Sun's Network Disk (nd) protocol: https://github.com/senjan/ndd/blob/master/nd_pkt.h (if you find nd(4P) from the SunOS 3.x man pages, let us know!)
 - The Internet Collapse of 1986: https://en.wikipedia.org/wiki/Network_congestion#Congestive_collapse
-- Larry Roberts: https://en.wikipedia.org/wiki/Lawrence_Roberts_(scientist)
+- Larry Roberts: <a href="https://en.wikipedia.org/wiki/Lawrence_Roberts_(scientist)">https://en.wikipedia.org/wiki/Lawrence_Roberts_(scientist)</a>
 - Telenet: https://en.wikipedia.org/wiki/Telenet
 - Tandem Computers: https://en.wikipedia.org/wiki/Tandem_Computers
 - Token ring: https://en.wikipedia.org/wiki/Token_ring
@@ -59,11 +59,11 @@ Some of the highlights of the show include:
 - TI-83: https://en.wikipedia.org/wiki/TI-83_series
 - HP 48G: https://en.wikipedia.org/wiki/HP_48_series
 - HP-35: https://en.wikipedia.org/wiki/HP-35
-- ed(1): https://en.wikipedia.org/wiki/Ed_(text_editor)
+- ed(1): <a href="https://en.wikipedia.org/wiki/Ed_(text_editor)">https://en.wikipedia.org/wiki/Ed_(text_editor)</a>
 - IBM System/370: https://en.wikipedia.org/wiki/IBM_System/370
 - APL\360: https://en.wikipedia.org/wiki/APL_(programming_language)#APL%5C360
 - IBM 2741 with APL keyboard: https://en.wikipedia.org/wiki/IBM_2741#/media/File:IBM2741.JPG
-- VM/370: https://en.wikipedia.org/wiki/VM_(operating_system)
+- VM/370: <a href="https://en.wikipedia.org/wiki/VM_(operating_system)">https://en.wikipedia.org/wiki/VM_(operating_system)</a>
 - Unibus: https://en.wikipedia.org/wiki/Unibus
 - Interdata: https://en.wikipedia.org/wiki/Interdata
 - Greg Chesson: https://grainger.illinois.edu/alumni/distinguished/7939

@@ -29,7 +29,7 @@ Some of the highlights of the show include:
 - Tokyo Electron Limited (TEL): https://en.wikipedia.org/wiki/Tokyo_Electron
 - Tier 2 network: https://en.wikipedia.org/wiki/Tier_2_network
 - Hurricane Electric: https://en.wikipedia.org/wiki/Hurricane_Electric
-- Autonomous system: https://en.wikipedia.org/wiki/Autonomous_system_(Internet)
+- Autonomous system: <a href="https://en.wikipedia.org/wiki/Autonomous_system_(Internet)">https://en.wikipedia.org/wiki/Autonomous_system_(Internet)</a>
 - Border Gateway Protocol: https://en.wikipedia.org/wiki/Border_Gateway_Protocol
 - ASN 7034: https://peeringdb.com/asn/7034
 - "Creating an Autonomous System for Fun and Profit": https://blog.thelifeofkenneth.com/2017/11/creating-autonomous-system-for-fun-and.html

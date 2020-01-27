@@ -23,8 +23,8 @@ You can find Jon on Twitter at https://twitter.com/jonmasters.
 Some of the highlights of the show include: 
 
 - "Negative Result: Reading Kernel Memory From User Mode" (blog post from July 2017): https://cyber.wtf/2017/07/28/negative-result-reading-kernel-memory-from-user-mode/
-- Spectre: https://en.wikipedia.org/wiki/Spectre_(security_vulnerability)
-- Meltdown: https://en.wikipedia.org/wiki/Meltdown_(security_vulnerability)
+- Spectre: <a href="https://en.wikipedia.org/wiki/Spectre_(security_vulnerability)">https://en.wikipedia.org/wiki/Spectre_(security_vulnerability)</a>
+- Meltdown: <a href="https://en.wikipedia.org/wiki/Meltdown_(security_vulnerability)">https://en.wikipedia.org/wiki/Meltdown_(security_vulnerability)</a>
 - Speculative execution: https://www.extremetech.com/computing/261792-what-is-speculative-execution
 - ICL: https://en.wikipedia.org/wiki/International_Computers_Limited
 - Hacker News front page, January 1st, 2018: https://news.ycombinator.com/front?day=2018-01-01
@@ -35,20 +35,20 @@ Some of the highlights of the show include:
 - PA-8000: https://en.wikipedia.org/wiki/PA-8000
 - SPARCbook 3000ST: https://blog.adafruit.com/2019/04/01/sparcbook-3000st-the-coolest-90s-laptop-sparc-vintagecomputing-retrocomputing-eckmeister/
 - Itanium: https://en.wikipedia.org/wiki/Itanium
-- McKinley: https://en.wikipedia.org/wiki/List_of_Intel_Itanium_microprocessors#McKinley_(180_nm)
+- McKinley: <a href="https://en.wikipedia.org/wiki/List_of_Intel_Itanium_microprocessors#McKinley_(180_nm)">https://en.wikipedia.org/wiki/List_of_Intel_Itanium_microprocessors#McKinley_(180_nm)</a>
 - Leon Czolgosz: https://en.wikipedia.org/wiki/Leon_Czolgosz
 - Humartia: https://en.wikipedia.org/wiki/Hamartia
 - Transmeta: https://en.wikipedia.org/wiki/Transmeta
 - Transmeta Crusoe: https://en.wikipedia.org/wiki/Transmeta_Crusoe
 - Richard (Dick) Sites: https://sites.google.com/site/dicksites/
 - Dick Sites, "It's the Memory, Stupid!": http://cva.stanford.edu/classes/cs99s/papers/architects_look_to_future.pdf
-- John Crawford: https://en.wikipedia.org/wiki/John_Crawford_(engineer)
+- John Crawford: <a href="https://en.wikipedia.org/wiki/John_Crawford_(engineer)">https://en.wikipedia.org/wiki/John_Crawford_(engineer)</a>
 - John Hennessy: https://en.wikipedia.org/wiki/John_L._Hennessy
 - Kernel page-table isolation: https://en.wikipedia.org/wiki/Kernel_page-table_isolation
 - Hot Chips 30 keynote: https://www.youtube.com/watch?v=d5XzVF0sAZo
 - Panel at Hot Chips 30 keynote: https://www.youtube.com/watch?v=d5XzVF0sAZo#t=1h17m
 - The Omega Directive: https://en.wikipedia.org/wiki/The_Omega_Directive
-- L1TF: https://en.wikipedia.org/wiki/Foreshadow_(security_vulnerability)
+- L1TF: <a href="https://en.wikipedia.org/wiki/Foreshadow_(security_vulnerability)">https://en.wikipedia.org/wiki/Foreshadow_(security_vulnerability)</a>
 - iDRACula: https://www.servethehome.com/idracula-vulnerability-impacts-millions-of-legacy-dell-emc-servers/
 - MDS, including Zombieload and RIDL: https://en.wikipedia.org/wiki/Microarchitectural_Data_Sampling
 - Heartbleed: https://en.wikipedia.org/wiki/Heartbleed
@@ -80,7 +80,7 @@ Some of the highlights of the show include:
 - Gordon Moore, "Cramming more components onto integrated circuits": http://cmore.soest.hawaii.edu/summercourse/2014/documents/Karl_05-27/Moore_1965.pdf
 - International Technology Roadmap for Semiconductors (ITRS): https://en.wikipedia.org/wiki/International_Technology_Roadmap_for_Semiconductors
 - Andy "Krazy" Glew: http://blog.andy.glew.ca/
-- Cannon Lake: https://en.wikipedia.org/wiki/Cannon_Lake_(microarchitecture)
+- Cannon Lake: <a href="https://en.wikipedia.org/wiki/Cannon_Lake_(microarchitecture)">https://en.wikipedia.org/wiki/Cannon_Lake_(microarchitecture)</a>
 - Theodore Wright, "Factors Affecting the Cost of Airplanes": http://www.uvm.edu/pdodds/research/papers/others/1936/wright1936a.pdf
 - Wright's Law vs. Moore's Law: https://ark-invest.com/research/wrights-law-2
 - Nano-RAM (carbon nanotube-based memory): https://en.wikipedia.org/wiki/Nano-RAM

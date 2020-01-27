@@ -23,7 +23,7 @@ https://twitter.com/digiamir.
 
 Some of the highlights of the show include: 
 
-- Silcon wafers: https://en.wikipedia.org/wiki/Wafer_(electronics)
+- Silcon wafers: <a href="https://en.wikipedia.org/wiki/Wafer_(electronics)">https://en.wikipedia.org/wiki/Wafer_(electronics)</a>
 - The "Turbo button": https://en.wikipedia.org/wiki/Turbo_button
 - BBSs: https://www.theatlantic.com/technology/archive/2016/11/the-lost-civilization-of-dial-up-bulletin-board-systems/506465/
 - Turbo Pascal: https://en.wikipedia.org/wiki/Turbo_Pascal
