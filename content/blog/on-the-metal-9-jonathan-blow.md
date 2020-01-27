@@ -1,16 +1,21 @@
 +++
-date = "2030-01-20T04:00:00-07:00"
+date = "2020-01-27T03:00:00-07:00"
 title = "On the Metal: Jonathan Blow"
 authors = ["bryan-cantrill", "jessie-frazelle", "steve-tuck"]
-description = "On this episode of On the Metal, we interview Jonathan Blow"
+description = "On this episode of On the Metal, we interview legendary game designer and programmer Jonathan Blow.  Join along as Jonathan takes us from collision detection on the Atari 800, through porting Doom to SGI's famous set-top box, starting a game company at the worst possible time, his adventures with the (in)famous Cell processor, making several hit games -- and his more recent experiences with a new programming language of his own creation."
 tags = ["Podcast"]
 categories = ["On the Metal"]
 episode = 9
-podcast_file = "fillmein"
-iframe_link = "fillmein"
+podcast_file = "https://media.transistor.fm/754f684f.mp3"
+iframe_link = "https://share.transistor.fm/e/9c4b292f"
 +++
 
-On this episode of On the Metal, we interview Jonathan Blow.
+On this episode of On the Metal, we interview legendary game designer and
+programmer Jonathan Blow.  Join along as Jonathan takes us from collision
+detection on the Atari 800, through porting Doom to SGI's famous set-top box,
+starting a game company at the worst possible time, his adventures
+with the (in)famous Cell processor, making several hit games -- and his
+more recent experiences with a new programming language of his own creation.
 
 ### Show Notes
 
@@ -75,8 +80,9 @@ Some of the highlights of the show include:
 - Tcl: https://en.wikipedia.org/wiki/Tcl
 - Dropbox's Python 2 to Python 3 migration: https://blogs.dropbox.com/tech/2018/09/how-we-rolled-out-one-of-the-largest-python-3-migrations-ever/
 - Resource acquisition is initialization (RAII): https://en.wikipedia.org/wiki/Resource_acquisition_is_initialization
+- Microkernels: https://en.wikipedia.org/wiki/Microkernel
 - Anders Hejlsberg: https://en.wikipedia.org/wiki/Anders_Hejlsberg
-- Hygienic macro: https://en.wikipedia.org/wiki/Hygienic_macro
+- Dynamic linking: https://en.wikipedia.org/wiki/Dynamic_linker
+- Hygienic macros: https://en.wikipedia.org/wiki/Hygienic_macro
 - DWARF: https://en.wikipedia.org/wiki/DWARF
 - Unix philosophy: https://en.wikipedia.org/wiki/Unix_philosophy
-
