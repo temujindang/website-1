@@ -62,7 +62,7 @@ Some of the highlights of the show include:
 - /dev/tcp
 - Rob Pike talk on how to go wrong with naming: https://www.youtube.com/watch?v=5kj5ApnhPAE
 - Los Alamos Q cluster: https://www.networkworld.com/article/2338572/los-alamos-builds-largest-infiniband-cluster.html
-- VPROC: https://books.google.com/books?id=sr71_M6r3cAC&pg=PA567&lpg=PA567&dq=Vproc&source=bl&ots=Od936MFpvu&sig=ACfU3U3XSlMkeII4fMtpN3QOCRaOkSZJzw&hl=en&sa=X&ved=2ahUKEwjI3d_ZpLnmAhWVoJ4KHQTRD0cQ6AEwCXoECAoQAQ#v=onepage&q=Vproc&f=false
+- Eric Hendriks, "BProc: The Beowulf Distributed Process Space": http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.100.2633&rep=rep1&type=pdf
 - InfiniBand: https://en.wikipedia.org/wiki/InfiniBand
 - Broadcom SDK > 14 million lines of code: https://www.broadcom.com/products/pcie-switches-bridges/software-dev-kit
 - Ignition firmware intel ½ megabite: https://edk2.groups.io/g/devel/message/50920 https://hardenedlinux.github.io/firmware/2016/11/17/neutralize_ME_firmware_on_sandybridge_and_ivybridge.html
