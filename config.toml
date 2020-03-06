@@ -1,4 +1,4 @@
-baseurl = "https://oxide.computer"
+baseurl = ""
 languageCode = "en-us"
 title = "Oxide Computer Company"
 canonifyUrls = true
