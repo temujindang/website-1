@@ -14,11 +14,15 @@
         </div>
 
         <div class="row">
-            {{ range sort $.Site.Data.execs "weight" "desc" }}
-              {{ partial "team-member.html" . }}
+            {{ range sort $.Site.Data.team "weight" "desc" }}
+                {{ if gt .weight 0 }}
+                     {{ partial "team-member.html" . }}
+                {{ end }}
             {{ end }}
             {{ range sort $.Site.Data.team "name" "asc" }}
-              {{ partial "team-member.html" . }}
+                {{ if not .weight }}
+                     {{ partial "team-member.html" . }}
+                {{ end }}
             {{ end }}
         </div>
     </article>
