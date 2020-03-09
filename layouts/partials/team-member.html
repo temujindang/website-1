@@ -7,9 +7,13 @@
 
 	<!-- social media links -->
 	<div class="icons">
+		{{/* Only the founders (with assigned weight) have posts on the
+		official blog so far, so only display the 'Posts' URL for them. */}}
+		{{ if .weight }}
 		<a class="icon" title="Oxide Blog Posts" href="/blog/authors/{{.name | urlize}}/">
 			<i class="fas fa-file-alt"></i>
 		</a>
+		{{ end }}
 		{{with .twitter}}<a class="icon" title="Twitter" href="https://twitter.com/{{ . }}" target="_blank">
 			<i class="fab fa-twitter"></i>
 		</a>{{end}}
