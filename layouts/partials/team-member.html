@@ -2,7 +2,7 @@
 <div class="member col-6 col-md-6">
     <h3>
 		{{ .name }}
-		<small class="text-muted">{{.title}}</small>
+		{{ if .weight }}<small class="text-muted">{{.title}}</small>{{end}}
 	</h3>
 
 	<!-- social media links -->
