@@ -1,0 +1,34 @@
+<!-- team member -->
+<div class="member col-6 col-md-6">
+    <h3>
+		{{ .name }}
+		{{ if .weight }}<small class="text-muted">{{.title}}</small>{{end}}
+	</h3>
+
+	<!-- social media links -->
+	<div class="icons">
+		{{/* Only the founders (with assigned weight) have posts on the
+		official blog so far, so only display the 'Posts' URL for them. */}}
+		{{ if .weight }}
+		<a class="icon" title="Oxide Blog Posts" href="/blog/authors/{{.name | urlize}}/">
+			<i class="fas fa-file-alt"></i>
+		</a>
+		{{ end }}
+		{{with .twitter}}<a class="icon" title="Twitter" href="https://twitter.com/{{ . }}" target="_blank">
+			<i class="fab fa-twitter"></i>
+		</a>{{end}}
+		{{with .github}}<a class="icon" title="GitHub" href="https://github.com/{{ . }}" target="_blank">
+			<i class="fab fa-github"></i>
+		</a>{{end}}
+		{{with .linkedin}}<a class="icon" title="LinkedIn" href="{{ . }}" target="_blank">
+			<i class="fab fa-linkedin-in"></i>
+		</a>{{end}}
+		{{with .blog}}<a class="icon" title="Personal Blog" href="{{ . }}" target="_blank">
+			<i class="fas fa-home"></i>
+		</a>{{end}}
+	</div>
+	<!-- end social media links -->
+
+	{{with .bio}}<p>{{.}}</p>{{end}}
+</div>
+<!-- end team member -->

@@ -1,5 +1,6 @@
-weight = 00
+weight = 03
 name = "Steve Tuck"
 title = "CEO"
 twitter = "sdtuck"
 linkedin = "https://www.linkedin.com/in/steve-tuck-02b4313/"
+github = "sdtuck"
