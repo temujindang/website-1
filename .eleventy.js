@@ -9,6 +9,9 @@ const options = {
 };
 
 module.exports = function (eleventyConfig) {
+  // Add RSS plugin.
+  const pluginRss = require("@11ty/eleventy-plugin-rss");
+  eleventyConfig.addPlugin(pluginRss);
 
   // Markdown helpers
   eleventyConfig.setLibrary("md", markdownIt(options));
@@ -50,13 +53,6 @@ module.exports = function (eleventyConfig) {
   // if (process.env.NODE_ENV == "production") {
   //   eleventyConfig.addTransform("CleanCSS", require("./src/utils/minify-css.js"));
   // }
-
-  // rss feed ftw
-
-  const pluginRss = require("@11ty/eleventy-plugin-rss");
-  module.exports = function (eleventyConfig) {
-    eleventyConfig.addPlugin(pluginRss);
-  };
 
   // Static assets to pass through
   eleventyConfig.addPassthroughCopy({ "./src/site/_includes/fonts": "fonts" });
