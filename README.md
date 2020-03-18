@@ -1,9 +1,6 @@
 # Oxide Computer Company website
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/4151ca40-1788-4959-9367-38ad71d11492/deploy-status)](https://app.netlify.com/sites/festive-leakey-447d0c/deploys)
-
-https://festive-leakey-447d0c.netlify.com/
-
+[![Netlify Status](https://api.netlify.com/api/v1/badges/0cf78df6-6274-4d35-b329-23b354d037e7/deploy-status)](https://app.netlify.com/sites/gracious-heisenberg-b8f5b9/deploys)
 
 ## Prerequisites
 
