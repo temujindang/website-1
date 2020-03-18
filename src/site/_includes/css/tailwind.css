@@ -4,9 +4,11 @@
 
 /* purgecss end ignore */
 
+
 /*
  * Fonts
  * */
+
 @font-face {
   font-family: 'HK Grotesk';
   font-style: normal;
@@ -147,6 +149,7 @@
   src: local('HK Grotesk Bold Legacy Italic'), url('/fonts/HKGrotesk-BoldLegacyItalic.woff') format('woff');
 }
 
+
 /*
   Content sections conventions
 */
@@ -172,8 +175,9 @@ html {
 }
 
 .content {
-  @apply text-lg;
+  @apply text-xl;
   @apply leading-loose;
+  @apply tracking-wider;
   animation: 1s ease 0s 1 normal none running fadein;
 }
 
@@ -387,7 +391,7 @@ h3 {
 .content li {
   @apply list-disc;
   @apply list-outside;
-  @apply break-all;
+  @apply break-normal;
   @apply leading-normal;
 }
 
