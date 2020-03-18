@@ -1,0 +1,48 @@
+/*
+  Terminal
+*/
+
+.terminal {
+  box-sizing: inherit;
+  @apply w-auto;
+  @apply h-auto;
+  @apply pt-16;
+  @apply pb-8;
+  @apply px-8;
+  /* text-transform: uppercase; */
+}
+
+.terminal .output {
+  color: rgba(128, 255, 128, 0.8);
+  text-shadow: 0 0 2px rgba(0, 255, 0, 0.75);
+  /* text-shadow:
+      0 0 1px rgba(51, 255, 51, 0.4),
+      0 0 2px rgba(255, 255, 255, 0.8); */
+}
+
+.terminal .output::before {
+  content: "> ";
+}
+
+.terminal-bar>div.icon-btn:first-child {
+  margin-left: 0.6rem;
+}
+
+.terminal a {
+  color: #fff;
+  text-decoration: none;
+  @apply border-b-0;
+  @apply border-none;
+}
+
+.terminal a::before {
+  content: "[";
+}
+
+.terminal a::after {
+  content: "]";
+}
+
+.terminal .errorcode {
+  color: white;
+}

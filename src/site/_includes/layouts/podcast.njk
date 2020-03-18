@@ -1,0 +1,31 @@
+---
+layout: default
+pageClass: podcast
+---
+<div class="podcast-container">
+  <time value="{{ item.date }}" class="text-gray-200">{{ date | readableDate }}</time>
+  <h1 class="heading">{{ title }}</h1>
+  <div class="podcast-share mt-12 mb-6">
+    {% include 'components/podcast-share.njk' %}
+  </div>
+  <div class="podcast-file mt-12 mb-6">
+    <h3 class="heading">Listen</h3>
+    <div class="my-4 py-3 lg:py-3">
+      <audio class="object-center" src="{{ podcast_file }}" controls preload="auto" />
+    </div>
+  </div>
+  <div class="mb-4">
+    {{ content | section | safe }}
+  </div>
+  <div>
+    {{ content | section('remainder') | safe }}
+  </div>
+  {# {% include "components/blog-discuss.njk" %} #}
+  {% include "components/social-share.njk" %}
+  <div class="mt-12 pt-2 text-gray-400 text-sm border-t border-gray-300">
+    <p>
+      You can listen to more from Oxide Computer Company on our <a href="/podcast">podcast</a> page.
+    </p>
+  </div>
+</div>
+

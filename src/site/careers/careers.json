@@ -1,0 +1,7 @@
+{
+  "layout": "layouts/careers.njk",
+  "tags": [
+    "job"
+  ],
+  "templateEngineOverride": "njk,md"
+}

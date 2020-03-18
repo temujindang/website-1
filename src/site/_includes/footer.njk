@@ -1,0 +1,125 @@
+<div class="content relative max-w-screen-xl mx-auto {% if page.url == "/" %}mt-12 sm:mt-48 md:mt-24{% endif %} px-6 sm:px-6 fade-in">
+  {# {%- if page.url == "/" -%}
+    <div class="newsletter show-on-scroll">
+  {%- else -%}
+    <div class="newsletter border-t-4 border-oxide-green show-on-scroll">
+  {%- endif -%} #}
+  <div class="newsletter {% if page.url == "/" %}{% else %} border-t-4 border-oxide-green {% endif %} show-on-scroll">
+    <div class="my-16 py-12 lg:py-4">
+      {# <h4 class="text-sm leading-5 font-semibold tracking-wider uppercase text-gray-400 lg:text-right sm:text-left">
+        Subscribe to our newsletter
+      </h4>
+      <p class="mt-4 text-base leading-6 text-gray-300 lg:text-right sm:text-left">
+        Get the latest news from Oxide.
+      </p>
+      <div class="mt-4">
+        {% include 'components/mailchimp-signup.njk' %}
+      </div> #}
+
+      <div class="max-w-screen-xl mx-auto flex flex-col">
+        <h2 class="heading">
+          Sign up for our newsletter
+        </h2>
+        <p class="max-w-3xl leading-6 text-gray-300">
+          Get the latest news from Oxide.
+        </p>
+        <div class="my-8">
+          {# <form class="sm:flex">
+            <input aria-label="Email address" type="email" required class="appearance-none w-full px-5 py-3 border border-transparent text-base leading-6 rounded-md text-gray-900 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 transition duration-150 ease-in-out sm:max-w-xs" placeholder="Enter your email" />
+            <div class="mt-3 rounded-md shadow sm:mt-0 sm:ml-3 sm:flex-shrink-0">
+              <button class="w-full flex items-center justify-center px-5 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-500 hover:bg-indigo-400 focus:outline-none focus:bg-indigo-400 transition duration-150 ease-in-out">
+                Notify me
+              </button>
+            </div>
+          </form> #}
+          {% include 'components/mailchimp-signup.njk' %}
+          {# <p class="mt-3 text-sm leading-5 text-gray-300">
+            We care about the protection of your data. Read our
+            <a href="#" class="text-white font-medium underline">
+              Privacy Policy.
+            </a>
+          </p> #}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer show-on-scroll">
+    <div class="my-16 py-6 lg:py-4">
+      <div class="header flex justify-between items-baseline mb-8 pb-2 border-b">
+        <div class="h-8 w-auto">
+          {% include "components/logo-svg-dark.njk" %}
+        </div>
+        {# FIXME: SEE http://tholman.com/elevator.js/ #}
+        {# <button class="elevator-button text-xs text-gray-400">Return to top </button> #}
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="mb-2">
+          <h2 class="text-lg leading-5 font-semibold tracking-wider text-gray-200">Oxide Computer Company</h2>
+          <span class="mt-4 block text-base leading-6 text-gray-300">1251 Park Avenue</span>
+          <span class="block text-base leading-6 text-gray-300">Emeryville, CA 94608</span>
+        </div>
+        <div>
+          <h4 class="text-lg leading-5 font-semibold tracking-wider text-gray-200">
+            Resources
+          </h4>
+          <ul>
+            <li>
+              <a href="/about/" class="link">
+                <span>Principles</span>
+              </a>
+            </li>
+            <li>
+              <a href="/team/" class="link">
+                <span>Team</span>
+              </a>
+            </li>
+            <li>
+              <a href="/blog/" class="link">
+                <span>Blog</span>
+              </a>
+            </li>
+            <li>
+              <a href="/podcast/" class="link">
+                <span>Podcast</span>
+              </a>
+            </li>
+            <li>
+              <a href="/careers/" class="link">
+                <span>Jobs</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="md:pl-0 lg:pl-12 md:border-0 lg:border-l max-w-sm">
+          <h4 class="text-lg leading-5 font-semibold tracking-wider text-gray-200">
+            Contact us
+          </h4>
+          <p class="mt-4 text-base leading-6 text-gray-300">
+            If you would like to share your ideas or feedback, please email us. We'll reply as soon as possible.
+          </p>
+          <p class="mt-4 text-base leading-6 text-gray-300"><a href="mailto:info@oxide.computer">info@oxide.computer</a></p>
+          <p class="mt-0 text-base leading-6 text-gray-300"><a href="tel:5109221392">(510) 922-1392</a></p>
+        </div>
+      </div>
+      <div class="mt-8 border-t pt-8 md:flex md:items-baseline md:justify-between">
+        <div class="flex md:order-2">
+          <a href="https://twitter.com/{{ site.twitter_handle }}" target="_blank" class="social text-gray-400 hover:text-gray-300">
+            <span class="sr-only">Twitter</span>
+            {% include "components/icon-twitter.njk" %}
+          </a>
+          <a href="https://github.com/{{ site.github_handle }}" target="_blank" class="social ml-6 text-gray-400 hover:text-gray-300">
+            <span class="sr-only">GitHub</span>
+            {% include "components/icon-github.njk" %}
+          </a>
+          <a href="{{ site.linkedin_url }}" target="_blank" class="social ml-6 text-gray-400 hover:text-gray-300">
+            <span class="sr-only">LinkedIn</span>
+            {% include "components/icon-linkedin.njk" %}
+          </a>
+        </div>
+        <p class="mt-8 text-sm leading-6 text-oxide-green md:mt-0 md:order-1">
+          &copy; 2020 Oxide Computer Company. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

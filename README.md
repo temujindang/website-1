@@ -1,57 +1,99 @@
-# Website
+# Oxide Computer Company website
 
-Source code for oxidecomputer.com.
+[![Netlify Status](https://api.netlify.com/api/v1/badges/4151ca40-1788-4959-9367-38ad71d11492/deploy-status)](https://app.netlify.com/sites/festive-leakey-447d0c/deploys)
 
-* [Contributing](README.md#contributing)
-    * [Running locally](README.md#running-locally)
-    * [Compressing the javascript and css files](README.md#compressing-the-javascript-and-css-files)
-    * [Adding a blog post](README.md#adding-a-blog-post)
-    * [Adding a new team member](README.md#adding-a-new-team-member)
+https://festive-leakey-447d0c.netlify.com/
 
-## Contributing
 
-### Running locally
+## Prerequisites
 
-Install [hugo](https://gohugo.io/).
+- [Node and NPM](https://nodejs.org/)
+- [Netlify CLI](https://www.npmjs.com/package/netlify-cli)
 
-Run `hugo serve` to automatically update as you make changes. This will output
-the url to the browser.
+## Stack
 
-Or you can use `make serve`.
+- [Eleventy](https://11ty.dev) for templates and site generation
+- [Tailwindcss](https://tailwindcss.com) for a utility first CSS workflow
+- [PurgeCSS](https://www.purgecss.com/) for optimizing CSS output
+- [UglifyJS](https://www.npmjs.com/package/uglify-js) for a simple JS build pipeline
+- [Netlify CLI](https://www.npmjs.com/package/netlify-cli) for Netlify dev pipeline and local replication of prod environment
 
-### Compressing the javascript and css files
 
-Run `make dev` to compress all the javascript and css files into minified
-versions. This runs in a docker container then outputs the results.
+## Running locally
 
-### Adding a blog post
+```bash
 
-Add a new markdown file to [`content/blog`](content/blog). Make sure it has the
-following metadata at the top of the file:
+# install Netlify CLI globally
+npm install netlify-cli -g
 
-```
-+++
-date = "2016-09-17T08:09:26-07:00"
-title = "Post Title"
-authors = ["name of author files in data/team"]
-description = "Description of the post."
-+++
+# install the project dependencies
+npm install
+
+# run the build and server locally
+netlify dev
 ```
 
-The authors field can hold more than one author and is the name of the `toml`
-file for the specific author in [`data/team`](data/team).
+## Adding new content 
 
-### Adding a new team member
+### Blog posts
 
-Add a toml file to [`data/team`](data/team) in the following format:
+Add a new markdown file to [`src/site/blog`](src/site/blog). Make sure it has the
+following metadata at the top of the file. To make things easy on yourself, duplicate an existing post.
 
-```toml
-name = "Jessie Frazelle"
-title = "CPO"
-twitter = "jessfraz"
-github = "jessfraz"
-linkedin = "https://www.linkedin.com/in/jessie-frazelle/"
-blog = "https://jess.dev"
+```
+---
+title: 'Post title'
+subtitle: 'Post subtitle (if any)'
+date: 2020-02-03T23:00:00
+tags: ['post', 'announcements']
+author: ["first-last", "first-last", "first-last"]
+description: A description that is used in snippets
+---
 ```
 
-The order for the team page is based on alphabetical order.
+FIXME👇  
+~~The authors field can hold more than one author and is the name of the `json`
+file for the specific author in [`_data/team`](_data/team).~~
+
+### Team members
+
+Add a json file to [`_data/team`](data/team) in the following format:
+
+```json
+{
+  "weight": 1,
+  "name": "Jessie Frazelle",
+  "title": "CPO",
+  "twitter": "jessfraz",
+  "github": "jessfraz",
+  "linkedin": "https://www.linkedin.com/in/jessie-frazelle/",
+  "blog": "https://jess.dev"
+}
+```
+
+The order for the team page is currently set in `_date/team/members.json`.
+
+## Previewing the production build
+
+When building for production, an extra build step will strip out all CSS classes not used in the site. This step is not performed during the automatic rebuilds which take place during dev.
+
+```bash
+# run the production build
+npm run build
+```
+
+## Styling with TailwindCSS
+
+This site uses TailwindCSS to offer utility CSS classes and provide a rapid means to styling the site. This means that most styling can be done without writing any additional CSS. Instead, utility classes can be added directly to the HTML. This may not be to everyone's tastes, but it can provide some very rapid development and also offer surprising levels of familiarity for those used to working in this way (since the conventions and classes are not _per site_.)
+
+While running/developing locally, the `npm run start` command will recompile the site as files are saved and this includes the CSS pipeline from Tailwind.
+
+### Global CSS utilities.
+
+A small number of bespoke CSS rules are provided for efficiency of repeated or global classes. These reside in `src/site/_includes/css/tailwind.css`
+
+<!-- ## Just clone and go
+
+You can also get started with your own copy of this site cloned to your GitHub account and deployed to Netlify with a configured CI/CD pipeline and HTTPS by clicking the button below and following the instructions.
+
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/philhawksworth/eleventail) -->

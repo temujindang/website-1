@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en" class="font-sans">
+<!--
+
+     OOOOOOOOO       XXXXXXX          XXXXXXX   IIIIIIII  DDDDDDDDDDDDD         EEEEEEEEEEEEEEEEEEEEEE
+   OO:::::::::OO     X:::::X          X:::::X   I::::::I  D::::::::::::DDD      E::::::::::::::::::::E
+ OO:::::::::::::OO    X:::::X        X:::::X    I::::::I  D:::::::::::::::DD    E::::::::::::::::::::E
+O:::::::OOO:::::::O    X:::::X      X:::::X     II::::II  DDD:::::DDDDD:::::D   EE::::::EEEEEEEEE::::E
+O::::::O   O::::::O     XX::::X    X::::XX       I::::I   D:::::D     D:::::D   E:::::E
+O:::::O     O:::::O      X:::::X  X:::::X        I::::I   D:::::D      D:::::D  E:::::E
+O:::::O     O:::::O       X::::::X:::::X         I::::I   D:::::D      D:::::D  E::::::EEEEEEEEEE
+O:::::O     O:::::O        X::::::::::X          I::::I   D:::::D      D:::::D  E:::::::::::::::E
+O:::::O     O:::::O         X::::::::X           I::::I   D:::::D      D:::::D  E:::::::::::::::E
+O:::::O     O:::::O       X::::::X:::::X         I::::I   D:::::D      D:::::D  E::::::EEEEEEEEEE
+O:::::O     O:::::O      X:::::X X:::::X         I::::I   D:::::D      D:::::D  E:::::E
+O::::::O   O::::::O     XX::::X    X::::XX       I::::I   D:::::D     D:::::D   E:::::E
+O:::::::OOO:::::::O    X:::::X      X:::::X     II::::II  DDD:::::DDDDD:::::D   EE::::::EEEEEEEE:::::E
+ OO:::::::::::::OO    X:::::X        X:::::X    I::::::I  D:::::::::::::::DD    E::::::::::::::::::::E
+   OO:::::::::OO     X:::::X          X:::::X   I::::::I  D::::::::::::DDD      E::::::::::::::::::::E
+     OOOOOOOOO       XXXXXXX          XXXXXXX   IIIIIIII  DDDDDDDDDDDDD         EEEEEEEEEEEEEEEEEEEEEE
+
+
+
+
+     000000000                               1111111     DDDDDDDDDDDDD          EEEEEEEEEEEEEEEEEEEEEE
+   00:::::::::00                            1::::::1     D::::::::::::DDD       E::::::::::::::::::::E
+ 00:::::::::::::00                         1:::::::1     D:::::::::::::::DD     E::::::::::::::::::::E
+0:::::::000:::::::0                        111:::::1     DDD:::::DDDDD:::::D    EE::::::EEEEEEEEE::::E
+0::::::0   0::::::0  xxxxxxx      xxxxxxx     1::::1     D:::::D      D:::::D   E:::::E
+0:::::0     0:::::0   x:::::x    x:::::x      1::::1     D:::::D       D:::::D  E:::::E
+0:::::0     0:::::0    x:::::x  x:::::x       1::::1     D:::::D       D:::::D  E::::::EEEEEEEEEE
+0:::::0 000 0:::::0     x:::::xx:::::x        1::::l     D:::::D       D:::::D  E:::::::::::::::E
+0:::::0 000 0:::::0      x::::::::::x         1::::l     D:::::D       D:::::D  E:::::::::::::::E
+0:::::0     0:::::0       x::::::::x          1::::l     D:::::D       D:::::D  E::::::EEEEEEEEEE
+0:::::0     0:::::0       x::::::::x          1::::l     D:::::D       D:::::D  E:::::E
+0::::::0   0::::::0      x::::::::::x         1::::l     D:::::D      D:::::D   E:::::E
+0:::::::000:::::::0     x:::::xx:::::x     111::::::111  DDD:::::DDDDD:::::D    EE::::::EEEEEEEE:::::E
+ 00:::::::::::::00     x:::::x  x:::::x    1::::::::::1  D:::::::::::::::DD     E::::::::::::::::::::E
+   00:::::::::00      x:::::x    x:::::x   1::::::::::1  D::::::::::::DDD       E::::::::::::::::::::E
+     000000000       xxxxxxx      xxxxxxx  111111111111  DDDDDDDDDDDDD          EEEEEEEEEEEEEEEEEEEEEE
+
+-->
+
+  <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+  <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+  <!--[if IE 8]>         <html class="no-js lt-ie9" lang="en"> <![endif]-->
+  <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v1.9.3/dist/alpine.js" defer></script>
+    {% include "head-meta.njk" %}
+    {# <script src="https://unpkg.com/favicon-switcher@1.2.2/dist/index.js" crossorigin="anonymous" type="application/javascript"></script> #}
+  </head>
+  <body id="top" class="container mx-auto mb-12 max-w-none lg:max-w-6xl bg-oxide-gray text-white">
+    {% include "header.njk" %}
+    <div class="content relative max-w-screen-xl mx-auto px-6 sm:px-6 fade-in">
+      {% if page.url == "/" %}
+        <div class="home page w-auto">
+
+      {% elseif page.url == "/blog/" %}
+        <div class="blog page w-auto lg:w-3/4">
+
+      {% elseif page.url == "/careers/" %}
+        <div class="careers page w-auto lg:w-3/4">
+
+      {% elseif page.url == "/podcast/" %}
+        <div class="podcasts page w-auto lg:w-3/4">
+
+      {% elseif page.url == "../podcast/" %}
+        pod page
+        <div class="podcast page w-auto lg:w-3/4">
+
+      {% else %}
+        <div class="page w-auto lg:w-3/4">
+
+      {% endif %}
+
+        {%- if heading -%}
+          <h1 class="heading">{{ heading }}</h1>
+        {%- endif -%}
+
+        {%- if subheading -%}
+          <h2 class="heading">{{ subheading }}</h2>
+        {%- endif -%}
+
+        {{ content | safe }}
+
+      </div>
+    </div>
+
+    {% include "footer.njk" %}
+
+     {% if page.url == "/" %}
+      <div class="circuit-svg">
+        {% include "components/circuits.njk" %}
+      </div>
+    {% endif %}
+
+    {% set js %}
+      {# {% include "js/elevator.js" %} #}
+      {# {% include "js/core.js" %} #}
+      {% include "js/hello.js" %}
+    {% endset %}
+    <script>{{ js | jsmin | safe }}</script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{site.google_analytics}}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', '{{site.google_analytics}}');
+    </script>
+  </body>
+</html>
+
+
+
