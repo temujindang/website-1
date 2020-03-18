@@ -1,0 +1,24 @@
+---
+permalink: blog/index.xml
+eleventyExcludeFromCollections: true
+---
+
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>{{ site.site_title }}: Blog</title>
+  <subtitle>Thoughts, ramblings, insights and everything in between from the Oxide Computer Company team.</subtitle>
+  <link href="https://oxide.computer.blog/index.xml" rel="self"/>
+  <link href="https://oxide.computer" />
+  <updated>{{ collections.post | rssLastUpdatedDate }}</updated>
+  <id>{{ metadata.url }}</id>
+  {%- for post in collections.post %}
+  {% set absolutePostUrl %}{{ post.url | url | absoluteUrl(metadata.url) }}{% endset %}
+  <entry>
+    <title>{{ post.data.title }}</title>
+    <link href="{{ absolutePostUrl }}"/>
+    <updated>{{ post.date | rssDate }}</updated>
+    <id>{{ absolutePostUrl }}</id>
+    <content type="html">{{ post.templateContent | htmlToAbsoluteUrls(absolutePostUrl) }}</content>
+  </entry>
+  {%- endfor %}
+</feed>
