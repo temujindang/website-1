@@ -1,6 +1,6 @@
     <li class="my-24 pb-32 border-b border-gray-500">
       <time value="{{ item.date }}" class="font-bold text-gray-400">{{ item.date | readableDate }}</time>
-      <h3 class="heading"><a href="{{ item.url }}">{{ item.data.title }}</a></h3>
+      <h2 class="heading"><a href="{{ item.url }}">{{ item.data.title }}</a></h2>
       <div>
       {{ item.templateContent | section | safe }}
       </div>
