@@ -30,22 +30,6 @@
     <meta media="(prefers-color-scheme:dark)" name="theme-color" content="#222">
 
     <!--Twitter Card-->
-    <meta property="twitter:creator:id" content="{{ site.twitter_id }}" />
-    <meta name="twitter:site" content="@{{ site.twitter_handle }}">
-    <meta name="twitter:creator" content="@{{ site.twitter_handle }}">
-    <meta name="twitter:title" content="{{ title }}">
-    <meta name="twitter:description" content="{{content | striptags | truncate(196) }}">
-    <meta name="twitter:image" content="{{site.site_meta_image}}">
-    <meta name="twitter:domain" content="{%- if description -%}{{ description }}{%- else -%}{{site.site_tagline}}{%- endif -%}">
-    <meta name="twitter:url" content="{{ site.site_url }}{{ page.url }}">
-
-    <meta property="og:site_name" content="{{ site.site_title }}">
-    <meta property="og:url" content="{{ site.site_url }}" />
-    <meta property="og:title" content="{{ site.site_title }}" />
-    <meta property="og:description" content="{%- if description -%}{{ description }}{%- else -%}{{site.site_tagline}}{%- endif -%}" />
-    <meta name="og:image" content="{{site.site_meta_image}}">
-    <meta name="og:image:secure_url" content="{{site.site_meta_image}}">
-
     {%- if podcast_file -%}
         <meta name="twitter:card" content="player">
         <meta name="twitter:player" content="{{ iframe_link }}">
@@ -56,3 +40,19 @@
     {%- else -%}
         <meta name="twitter:card" content="{{site.site_meta_image}}">
     {%- endif -%}
+    <meta name="twitter:title" content="{{ title }}">
+    <meta name="twitter:site" content="@{{ site.twitter_handle }}">
+    <meta name="twitter:description" content="{{content | striptags | truncate(196) }}">
+    <meta name="twitter:image" content="{{site.site_meta_image}}">
+    <meta name="twitter:image:alt" content="{{content | striptags | truncate(196) }}">
+    <meta property="twitter:creator:id" content="{{ site.twitter_id }}" />
+    <meta name="twitter:creator" content="@{{ site.twitter_handle }}">
+    <meta name="twitter:domain" content="{%- if description -%}{{ description }}{%- else -%}{{site.site_tagline}}{%- endif -%}">
+    <meta name="twitter:url" content="{{ site.site_url }}{{ page.url }}">
+
+    <meta property="og:site_name" content="{{ site.site_title }}">
+    <meta property="og:url" content="{{ site.site_url }}" />
+    <meta property="og:title" content="{{ site.site_title }}" />
+    <meta property="og:description" content="{%- if description -%}{{ description }}{%- else -%}{{site.site_tagline}}{%- endif -%}" />
+    <meta name="og:image" content="{{site.site_meta_image}}">
+    <meta name="og:image:secure_url" content="{{site.site_meta_image}}">
