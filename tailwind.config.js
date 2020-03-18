@@ -31,7 +31,7 @@ module.exports = {
         '-16': '-4rem',
       },
       spacing: {
-        '0.5': '0.125rem',
+        'xxs': '0.125rem',
       }
     }
   },
