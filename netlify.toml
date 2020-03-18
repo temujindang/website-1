@@ -4,6 +4,10 @@ publish = "dist"
 environment = { NODE_VERSION = "10.15.3", NODE_ENV = "production" }
 
 [[redirects]]
+from = "/principles"
+to = "/about"
+
+[[redirects]]
 from = "/careers/hardware-engineers"
 to = "/careers/hardware-engineering"
 
