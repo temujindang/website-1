@@ -46,16 +46,13 @@
     <meta name="og:image" content="{{site.site_meta_image}}">
     <meta name="og:image:secure_url" content="{{site.site_meta_image}}">
 
-    {#
-    {{if site.podcast_file}}
+    {%- if podcast_file -%}
         <meta name="twitter:card" content="player">
-        <meta name="twitter:player" content="{{ site.iframe_link }}">
+        <meta name="twitter:player" content="{{ iframe_link }}">
         <meta name="twitter:player:width" content="500">
         <meta name="twitter:player:height" content="180">
-        <meta name="twitter:player:stream" content="{{ site.podcast_file }}">
+        <meta name="twitter:player:stream" content="{{ podcast_file }}">
         <meta name="twitter:player:stream:content_type" content="audio/mpeg">
-    {{else}}
-        <meta name="twitter:card" content="summary">
-        <meta name="twitter:card" content="summary_large_image">
-    {{end}}
-    #}
+    {%- else -%}
+        <meta name="twitter:card" content="{{site.site_meta_image}}">
+    {%- endif -%}
