@@ -7,7 +7,6 @@ ifeq ($(INTERACTIVE), 1)
 endif
 
 DOCKER_FLAGS += --name oxide-website \
-		-v $(CURDIR):/usr/src/website \
 		--disable-content-trust \
 
 DOCKER_IMAGE=oxide/webiste
@@ -24,6 +23,7 @@ run: build ## Runs the build.
 .PHONY: shell
 shell: build ## Pop into a shell in the container.
 	docker run --rm -i $(DOCKER_FLAGS) \
+		-v $(CURDIR):/usr/src/website \
 		--entrypoint bash \
 		$(DOCKER_IMAGE)
 
