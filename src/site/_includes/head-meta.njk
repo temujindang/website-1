@@ -1,11 +1,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{%- if title -%}{{ title }}{%- else -%}{{ site.site_title }}{%- endif -%}</title>
+    <title>{%- if title -%}{{ site.site_title }}: {{ title }}{%- else -%}{{ site.site_title }}{%- endif -%}</title>
 
     <!--Schema-->
     <link rel="author" href="{{ site.site_url }}">
     <link rel="publisher" href="{{ site.site_url }}">
     <link rel="canonical" href="{{ site.site_url }}{{ page.url }}">
-    <meta itemprop="name" content="{%- if title -%}{{ title }}{%- else -%}{{ site.site_title }}{%- endif -%}">
+    <meta itemprop="name" content="{%- if title -%}{{ site.site_title }}: {{ title }}{%- else -%}{{ site.site_title }}{%- endif -%}">
     <meta name="description" content="{{ content | striptags | truncate(196) }}">
     <meta itemprop="description" content="{{ content | striptags | truncate(196) }}">
     <meta itemprop="image" content="{{site.site_meta_image}}">
@@ -40,7 +40,7 @@
     {%- else -%}
         <meta name="twitter:card" content="summary">
     {%- endif -%}
-    <meta name="twitter:title" content="{{ title }}">
+    <meta name="twitter:title" content="{%- if title -%}{{ site.site_title }}: {{ title }}{%- else -%}{{ site.site_title }}{%- endif -%}">
     <meta name="twitter:site" content="@{{ site.twitter_handle }}">
     <meta name="twitter:description" content="{{content | striptags | truncate(196) }}">
     <meta name="twitter:image" content="{{site.site_meta_image}}">
@@ -52,7 +52,7 @@
 
     <meta property="og:site_name" content="{{ site.site_title }}">
     <meta property="og:url" content="{{ site.site_url }}" />
-    <meta property="og:title" content="{{ site.site_title }}" />
+    <meta property="og:title" content="{%- if title -%}{{ site.site_title }}: {{ title }}{%- else -%}{{ site.site_title }}{%- endif -%}" />
     <meta property="og:description" content="{%- if description -%}{{ description }}{%- else -%}{{site.site_tagline}}{%- endif -%}" />
     <meta name="og:image" content="{{site.site_meta_image}}">
     <meta name="og:image:secure_url" content="{{site.site_meta_image}}">
