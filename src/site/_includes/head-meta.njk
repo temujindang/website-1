@@ -1,0 +1,61 @@
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{%- if title -%}{{ title }}{%- else -%}{{ site.site_title }}{%- endif -%}</title>
+
+    <!--Schema-->
+    <link rel="author" href="{{ site.site_url }}">
+    <link rel="publisher" href="{{ site.site_url }}">
+    <link rel="canonical" href="{{ site.site_url }}{{ page.url }}">
+    <meta itemprop="name" content="{%- if title -%}{{ title }}{%- else -%}{{ site.site_title }}{%- endif -%}">
+    <meta name="description" content="{{ content | striptags | truncate(196) }}">
+    <meta itemprop="description" content="{{ content | striptags | truncate(196) }}">
+    <meta itemprop="image" content="{{site.site_meta_image}}">
+
+    {# <link href="/feed.xml" rel="alternate" type="application/rss+xml" title="{{ site.site_title }}: {{site.site_tagline}}"> #}
+    {# <link href="/feed.xml" rel="feed" type="application/rss+xml" title="{{ site.site_title }}: {{site.site_tagline}}"> #}
+
+    <link rel="apple-touch-icon" media="(prefers-color-scheme:light)" sizes="180x180" href="../images/favicon/light/apple-touch-icon.png">
+    <link rel="icon" type="image/png" media="(prefers-color-scheme:light)" sizes="32x32" href="../images/favicon/light/favicon-32x32.png">
+    <link rel="icon" type="image/png" media="(prefers-color-scheme:light)" sizes="16x16" href="../images/favicon/light/favicon-16x16.png">
+    <link media="(prefers-color-scheme:light)" rel="manifest" href="../images/favicon/light/manifest.json">
+    <meta media="(prefers-color-scheme:light)" name="msapplication-config" content="../images/favicon/light/browserconfig.xml" />
+    <meta media="(prefers-color-scheme:light)" name="msapplication-TileColor" content="#ffffff">
+    <meta media="(prefers-color-scheme:light)" name="theme-color" content="#ffffff">
+
+    <link rel="apple-touch-icon" media="(prefers-color-scheme:dark)" sizes="180x180" href="../images/favicon/dark/apple-touch-icon.png">
+    <link rel="icon" type="image/png"  media="(prefers-color-scheme:dark)" sizes="32x32" href="../images/favicon/dark/favicon-32x32.png">
+    <link rel="icon" type="image/png"  media="(prefers-color-scheme:dark)" sizes="16x16" href="../images/favicon/dark/favicon-16x16.png">
+    <link media="(prefers-color-scheme:dark)" rel="manifest" href="../images/favicon/dark/manifest.json">
+    <meta media="(prefers-color-scheme:dark)" name="msapplication-config" content="../images/favicon/dark/browserconfig.xml" />
+    <meta media="(prefers-color-scheme:dark)" name="msapplication-TileColor" content="#222">
+    <meta media="(prefers-color-scheme:dark)" name="theme-color" content="#222">
+
+    <!--Twitter Card-->
+    <meta property="twitter:creator:id" content="{{ site.twitter_id }}" />
+    <meta name="twitter:site" content="@{{ site.twitter_handle }}">
+    <meta name="twitter:creator" content="@{{ site.twitter_handle }}">
+    <meta name="twitter:title" content="{{ title }}">
+    <meta name="twitter:description" content="{{content | striptags | truncate(196) }}">
+    <meta name="twitter:image" content="{{site.site_meta_image}}">
+    <meta name="twitter:domain" content="{%- if description -%}{{ description }}{%- else -%}{{site.site_tagline}}{%- endif -%}">
+    <meta name="twitter:url" content="{{ site.site_url }}{{ page.url }}">
+
+    <meta property="og:site_name" content="{{ site.site_title }}">
+    <meta property="og:url" content="{{ site.site_url }}" />
+    <meta property="og:title" content="{{ site.site_title }}" />
+    <meta property="og:description" content="{%- if description -%}{{ description }}{%- else -%}{{site.site_tagline}}{%- endif -%}" />
+    <meta name="og:image" content="{{site.site_meta_image}}">
+    <meta name="og:image:secure_url" content="{{site.site_meta_image}}">
+
+    {#
+    {{if site.podcast_file}}
+        <meta name="twitter:card" content="player">
+        <meta name="twitter:player" content="{{ site.iframe_link }}">
+        <meta name="twitter:player:width" content="500">
+        <meta name="twitter:player:height" content="180">
+        <meta name="twitter:player:stream" content="{{ site.podcast_file }}">
+        <meta name="twitter:player:stream:content_type" content="audio/mpeg">
+    {{else}}
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:card" content="summary_large_image">
+    {{end}}
+    #}

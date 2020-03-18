@@ -1,0 +1,31 @@
+---
+title: "404: Not Found"
+permalink: 404.html
+heading: "404"
+subheading: Control of the computer could not be regained.
+layout: fourohfour
+pageClass: content
+templateEngineOverride: njk, md
+---
+
+<div class="mac-window bg-oxide-gray border-box shadow-lg">
+  <div class="mac-titlebar flex content-center">
+    <div class="flex items-center">
+      <span class="mac-titlebar-button bg-red-500"></span>
+      <span class="mac-titlebar-button bg-orange-400"></span>
+      <span class="mac-titlebar-button bg-green-400"></span>
+    </div>
+    <div class="m-auto inset-0 text-xs text-center text-oxide-gray">guest@oxidecomputer: ~</div>
+  </div>
+  <div class="console-text flex">
+    <div class="noise"></div>
+    <div class="noise-overlay"></div>
+    <div class="terminal p-4 pt-16">
+      <h1 class="mb-6 text-4xl text-oxide-green leading-snug font-bold tracking-wider">Error <span class="errorcode">{{heading}}</span></h1>
+      <p class="output">HALT AND CATCH FIRE   (HCF)</p>
+      <p class="output">{{subheading}} I.e., the page you are looking for might have been removed, had its name changed, or is otherwise unavailable.</p>
+      <p class="output">Please go back or <a href="/">return to the homepage</a>.</p>
+      <p class="output">Good luck.</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+    <li class="my-12 pb-12 border-b border-gray-500">
+      <h3 class="heading"><a href="{{ item.url }}">{{ item.data.title }}</a></h3>
+      <div class="">
+        {{ item.templateContent | section | safe }}
+      </div>
+      {% include "components/join-us-link.njk" %}
+    </li>

@@ -1,0 +1,661 @@
+/* purgecss start ignore */
+
+@tailwind base;
+
+/* purgecss end ignore */
+
+
+/*
+  Content sections conventions
+*/
+
+html::-webkit-scrollbar-track {
+  /* -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1); */
+  @apply bg-oxide-gray;
+}
+
+html::-webkit-scrollbar {
+  width: 8px;
+  background-color: #F5F5F5;
+}
+
+html::-webkit-scrollbar-thumb {
+  border-radius: 0;
+  background: rgb(72, 213, 151);
+  background: gradient(6deg, rgba(72, 213, 151, 0.2) 20%, rgba(72, 213, 151, 0.804359243697479) 100%);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.content {
+  @apply text-lg;
+  @apply leading-loose;
+  animation: 1s ease 0s 1 normal none running fadein;
+}
+
+section {
+  @apply pb-10;
+  @apply px-4;
+}
+
+p+p {
+  @apply mt-4;
+}
+
+p {
+  @apply text-gray-300;
+}
+
+.ascii pre {
+  font-family: monospace;
+  white-space: pre;
+}
+
+
+/*
+  Global headings conventions
+*/
+
+h1.heading {
+  @apply mb-6;
+  @apply text-3xl;
+  @apply leading-snug;
+  @apply font-bold;
+  @apply tracking-wider;
+  @apply text-oxide-green;
+}
+
+@screen md {
+  h1.heading {
+    @apply text-5xl;
+  }
+}
+
+.blog h1.heading:after,
+.page h1.heading:after,
+.podcasts h1.heading:after {
+  content: "";
+  @apply block;
+  @apply relative;
+  @apply w-12;
+  @apply mt-3;
+  @apply h-1;
+  @apply bg-oxide-green;
+}
+
+h1.heading span {
+  @apply block;
+}
+
+.page h2,
+h2.heading {
+  @apply mt-8;
+  @apply mb-6;
+  @apply text-2xl;
+  @apply font-semibold;
+  @apply leading-normal;
+  /* text-3xl leading-9 font-extrabold tracking-tight text-white sm: text-4xl sm: leading-10 */
+  /* leading-normal */
+}
+
+@screen md {
+  h2.heading {
+    @apply text-4xl;
+  }
+}
+
+@screen md {
+  .page h2 {
+    @apply mt-12;
+  }
+}
+
+.blog h3,
+.page h3,
+.podcasts h3 {
+  @apply mt-8;
+  @apply mb-4;
+  @apply text-2xl;
+  @apply font-semibold;
+  @apply leading-10;
+}
+
+
+/* @screen md {
+  .blog h3,
+  .page h3,
+  .podcasts h3 {
+    @apply leading-4;
+  }
+} */
+
+h1,
+h2,
+h3 {
+  @apply font-extrabold;
+  @apply break-normal;
+}
+
+
+/*
+  Base styles for links
+*/
+
+.content a {
+  @apply text-oxide-green;
+  @apply border-b-2;
+  @apply border-transparent;
+  transition: all 40ms ease-in-out;
+  /* background-image: -webkit-gradient(linear, left top, left bottom, color-stop(70%, transparent), color-stop(70%, rgba(101, 125, 225, .4)));
+  background-image: linear-gradient(180deg, transparent 70%, rgba(101, 125, 225, .4) 0); */
+}
+
+.content a:hover,
+.content a:focus {
+  @apply border-b-2;
+  @apply border-oxide-green;
+}
+
+.content a.social-share-button {
+  @apply inline-flex;
+  @apply items-center;
+  @apply px-2;
+  @apply py-2;
+  @apply border-4;
+  @apply border-oxide-green;
+  @apply text-sm;
+  @apply leading-tight;
+  @apply font-bold;
+  @apply text-oxide-gray;
+  @apply bg-oxide-green;
+  @apply transition;
+  @apply duration-150;
+  @apply ease-in-out;
+  @apply cursor-pointer;
+  @apply rounded-none;
+}
+
+.content a.social-share-button:hover,
+.content a.social-share-button:active {
+  @apply border-oxide-green;
+  @apply bg-white;
+}
+
+.content a.social-share-button:focus {
+  @apply outline-none;
+  @apply shadow-outline;
+}
+
+
+/*
+  Base styles for pages
+*/
+
+.content .page {
+  @apply mb-16;
+}
+
+
+/*
+  Base styles for lists
+*/
+
+.content ul,
+.content ol {
+  @apply my-6;
+  @apply ml-6;
+}
+
+.content ol li {
+  @apply list-decimal;
+  @apply pl-2;
+}
+
+.content li {
+  @apply list-disc;
+  @apply list-outside;
+  @apply break-all;
+  @apply leading-normal;
+}
+
+.blog ul,
+.blog ol,
+.careers ul,
+.careers ol,
+.podcasts ul,
+.podcasts ol {
+  @apply my-4;
+  @apply ml-0;
+}
+
+.blog ul li,
+.blog ol li,
+.careers ul li,
+.careers ol li,
+.podcasts ul li,
+.podcasts ol li {
+  @apply list-none;
+  @apply list-inside;
+}
+
+.blog ul li:last-of-type,
+.blog ol li:last-of-type,
+.careers ul li:last-of-type,
+.careers ol li:last-of-type,
+.podcasts ul li:last-of-type,
+.podcasts ol li:last-of-type {
+  @apply border-b-0;
+}
+
+
+/*
+  Navigation links
+*/
+
+.nav-tab {
+  @apply inline-block;
+  @apply text-white;
+  @apply px-4;
+  @apply py-2;
+}
+
+.nav-tab:hover {
+  @apply text-oxide-green;
+}
+
+a.nav-tab.active {
+  @apply text-oxide-green;
+}
+
+
+/*
+  Styles for footer
+*/
+
+
+/* .footer a {
+  @apply border-b-0;
+  @apply border-oxide-green;
+}
+
+.footer a:hover,
+.footer a:focus {
+  @apply border-b-4;
+  @apply border-oxide-green;
+}
+
+.footer a.social,
+.footer a.social:hover,
+.footer a.social:focus {
+  @apply border-b-0;
+} */
+
+a.nav-tab:focus,
+.content .footer a.link:focus {
+  @apply text-oxide-green;
+}
+
+a.nav-tab span,
+.content .footer a.link span {
+  @apply inline-block;
+  @apply relative;
+}
+
+a.nav-tab span:after,
+.content .footer a.link span:after {
+  content: '';
+  @apply absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) translateY(2px);
+  @apply bg-transparent;
+  width: 100%;
+  height: 1px;
+  transition: transform 150ms ease-out, background 150ms ease-out;
+}
+
+a.nav-tab:hover span:after,
+.content .footer a.link:hover span:after {
+  transform: translateX(-50%) translateY(4px);
+  @apply bg-oxide-green;
+  transition: transform 60ms ease-in-out, background 30ms ease-in-out;
+}
+
+
+/* FIXME: fix this hack for navigation buttons */
+
+.content .footer a {
+  @apply border-b;
+  @apply border-transparent;
+  @apply text-base;
+  @apply text-gray-300;
+  transition: all 40ms ease-in-out;
+}
+
+.content .footer a.return-to-top {
+  @apply text-xs;
+  @apply text-gray-400;
+}
+
+.content .footer a:hover,
+.content .footer a:focus {
+  @apply border-b;
+  @apply border-transparent;
+}
+
+.content .footer ul {
+  @apply mt-4;
+  @apply ml-0;
+  @apply list-none;
+}
+
+.content .footer ul li {
+  @apply mb-2;
+  @apply list-none;
+}
+
+
+/*
+  Components
+*/
+
+audio {
+  object-fit: inherit;
+}
+
+.podcast-container ul {
+  @apply ml-0;
+}
+
+.podcast-container ul li {
+  @apply mb-4;
+  @apply list-none;
+  @apply leading-relaxed;
+}
+
+.podcast-container ul li a {
+  display: table;
+}
+
+.podcast-share a {
+  @apply border-transparent;
+  @apply mt-2;
+  @apply border-b-4;
+  @apply flex;
+  @apply items-center;
+  @apply mr-4;
+  transition: border 40ms ease-in-out;
+}
+
+@screen sm {
+  .podcast-share a {
+    @apply justify-around;
+  }
+}
+
+.podcast-share a:hover,
+.podcast-share a:focus {
+  @apply border-b-4;
+  @apply border-oxide-green;
+  @apply border-solid;
+}
+
+.podcast-share .podcast-icon {
+  @apply h-5;
+  @apply inline;
+  @apply mr-2;
+}
+
+
+/*
+  404
+*/
+
+.fourohfour {
+  box-sizing: border-box;
+  height: 100%;
+  font-family: Monaco, Andale Mono, Monospace, Courier;
+  /* color: #0f0; */
+  @apply relative;
+  background-image: radial-gradient(#11581E, #041607), url("/images/noise.gif");
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* color: rgba(128, 255, 128, 0.8);
+  text-shadow:
+      0 0 1ex rgba(51, 255, 51, 1),
+      0 0 2px rgba(255, 255, 255, 0.8); */
+}
+
+.mac-window {
+  border-radius: 5px 5px 2px 2px;
+}
+
+.mac-titlebar {
+  @apply absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  border-radius: 5px 5px 0 0;
+  @apply p-2;
+  @apply bg-gray-200;
+}
+
+.mac-titlebar-button {
+  @apply inline-block;
+  @apply rounded-full;
+  @apply w-3;
+  @apply h-3;
+  @apply mr-2;
+}
+
+.noise {
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url("/images/noise.gif");
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: -1;
+  opacity: .02;
+}
+
+.noise-overlay {
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient( 180deg, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0) 100%);
+  background-size: auto 4px;
+  z-index: 1;
+}
+
+.noise-overlay::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient( 0deg, transparent 0%, rgba(32, 128, 32, 0.2) 2%, rgba(32, 128, 32, 0.8) 3%, rgba(32, 128, 32, 0.2) 3%, transparent 100%);
+  background-repeat: no-repeat;
+  animation: scan 3.14159s linear 0s infinite;
+}
+
+
+/*
+  Circuits
+*/
+
+
+/* .circuit-svg>svg {
+  min-width: 100vw;
+  min-height: 100vh;
+  flex: none;
+} */
+
+.circuit-svg {
+  height: 100vh;
+  max-height: 658px;
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  @apply text-gray-800;
+  background: rgb(255, 255, 255);
+  background: radial-gradient(farthest-corner at 100% 100%, rgba(255, 255, 255, 1) 10%, rgba(34, 34, 34, 1) 80%);
+  @apply opacity-25;
+}
+
+@screen lg {
+  .circuit-svg {
+    height: 100vh;
+    max-height: 48rem;
+  }
+}
+
+
+/* Circles */
+
+.st1 {
+  /* fill: none; */
+  /* stroke: #efefef; */
+  /* stroke-linecap: round; */
+  /*
+     * Firefox 69.0.1 was drawing the circle before the lines, shortend delay
+     * to compensate for inconsistency between browsers.
+     */
+  /* animation: drawCircle 180ms 6s both; */
+  /* transition: stroke 180ms ease-in; */
+}
+
+@screen lg {
+  .st1 {
+    animation: drawCircle 180ms 2s both;
+    transition: stroke 180ms ease-in;
+  }
+}
+
+@keyframes drawCircle {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+/* Lines */
+
+.st0 {
+  /* fill: none; */
+  /* stroke: #393939; */
+  /* stroke: #505050; */
+  /* stroke-miterlimit: 10; */
+  /* */
+  /* animation: drawLine 12s 10s ease-out both; */
+  /*
+     * Safari Version 13.0.3 (15608.3.10.1.4) for some reason doesn't recognize
+     * both for animation-fill-mode. Instead it just draws the lines without any
+     * animation or draws partial lines.
+     */
+  /* -webkit-animation: drawLine 12s 10s ease-out forwards; */
+  /* transition: stroke 900ms ease-in; */
+}
+
+@screen lg {
+  .st0 {
+    animation: drawLine 6s 10s ease-out both;
+    -webkit-animation: drawLine 6s 10s ease-out forwards;
+    transition: stroke 900ms ease-in;
+  }
+}
+
+@keyframes drawLine {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+
+/*
+ * Safari Version 13.0.3 also seems to require the from keyword in order to
+ * properly render the transition, similar to the chrome and firefox renditions.
+ */
+
+@-webkit-keyframes drawLine {
+  from {
+    stroke-dashoffset: 20%;
+  }
+}
+
+
+/*
+  Animations
+*/
+
+.show-on-scroll {
+  opacity: 0;
+  transition: transform 4s .25s cubic-bezier(0, 1, .3, 1), opacity .3s .25s ease-out;
+  will-change: transform;
+}
+
+
+/* purgecss start ignore */
+
+.show-on-scroll.is-visible {
+  opacity: 1;
+}
+
+
+/* purgecss end ignore */
+
+.fade-in {
+  animation: 2s ease 0s 1 normal none running fadein;
+}
+
+@-webkit-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scan {
+  0% {
+    background-position: 0 -100vh;
+  }
+  35%,
+  100% {
+    background-position: 0 100vh;
+  }
+}
+
+
+/* purgecss start ignore */
+
+@tailwind components;
+
+/* purgecss end ignore */
+
+@tailwind utilities;

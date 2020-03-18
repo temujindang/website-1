@@ -1,0 +1,18 @@
+---
+title: Careers
+heading: We're Hiring
+subheading: Join our team!
+layout: default
+---
+
+We are currently hiring for hardware engineering, software engineering, and product engineering and design roles.
+
+Before applying please read our <a href="/about">principles of operation</a> to get a sense of our mission, our principles and our values — we are looking for individuals who align with these principles.
+
+<div>
+  <ul>
+    {%- for item in collections.job | reverse -%}
+      {% include 'components/teaser-job.njk' %}
+    {%- endfor -%}
+  </ul>
+</div>

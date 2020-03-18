@@ -1,0 +1,14 @@
+---
+title: Podcast
+heading: On The Metal
+subheading: Tales from the Hardware/Software Interface.
+layout: default
+templateEngineOverride: njk, md
+---
+
+{% include 'components/podcast-share.njk' %}
+<ul>
+  {%- for item in collections.podcast | reverse -%}
+    {% include 'components/teaser-podcast.njk' %}
+  {%- endfor -%}
+</ul>

@@ -1,0 +1,22 @@
+---
+layout: default
+pageClass: post
+---
+<div>
+  <time value="{{ item.date }}" class="text-gray-200">{{ date | readableDate }}</time>
+  <h1 class="heading">{{ title }}</h1>
+  <div class="mb-4 text-lg font-medium">
+    {{ content | section | safe }}
+  </div>
+  <div>
+    {{ content | section('remainder') | safe }}
+  </div>
+  {# {% include "components/blog-discuss.njk" %} #}
+  {% include "components/social-share.njk" %}
+  <div class="mt-12 pt-2 text-gray-400 text-sm border-t border-gray-300">
+    <p>
+      You can read more from Oxide Computer Company on our <a href="/blog">blog</a>.
+    </p>
+  </div>
+</div>
+

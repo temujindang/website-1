@@ -1,0 +1,18 @@
+<h5 class="mt-8">Share this!</h5>
+<div class="social-share flex md:order-2">
+  <span class="inline-flex">
+    <a href="https://twitter.com/intent/tweet?source={{ site.site_title }}&text={{ title }}&url=https://oxide.computer{{ page.url }}&via={{ site.twitter_handle }}" type="button" target="_blank" class="social-share-button">
+      {% include "components/icon-twitter.njk" %}
+    </a>
+  </span>
+  <span class="inline-flex">
+    <a href="https://www.facebook.com/share.php?u=https://oxide.computer{{ page.url }}" type="button" target="_blank" class="social-share-button">
+      {% include "components/icon-fb.njk" %}
+    </a>
+  </span>
+  <span class="inline-flex">
+    <a href="https://www.linkedin.com/shareArticle?url=https://oxide.computer{{ page.url }}&title={{title | truncate(80) }}&summary={{ description | truncate(96) }}" type="button" target="_blank" class="social-share-button">
+      {% include "components/icon-linkedin.njk" %}
+    </a>
+  </span>
+</div>
