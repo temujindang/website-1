@@ -1,5 +1,8 @@
 FROM node:10-alpine
 
+RUN apk --no-cache add \
+	bash
+
 COPY . /usr/src/website
 WORKDIR /usr/src/website
 
