@@ -31,10 +31,10 @@ pageClass: content
             <a href="https://twitter.com/{{ member.twitter }}" target="_blank" class="mr-2 border-none text-gray-400 hover:text-gray-300 hover:text-gray-300">{% include "components/icon-twitter.njk" %}</a>
           {%- endif -%}
           {%- if member.linkedin -%}
-            <a href="https://www.linkedin.com/in/{{ member.linkedin }}" target="_blank" class="mr-2 border-none text-gray-400 hover:text-gray-300 hover:text-gray-300">{% include "components/icon-linkedin.njk" %}</i></a>
+            <a href="{{ member.linkedin }}" target="_blank" class="mr-2 border-none text-gray-400 hover:text-gray-300 hover:text-gray-300">{% include "components/icon-linkedin.njk" %}</i></a>
           {%- endif -%}
           {%- if member.blog -%}
-            <a href="https://www.linkedin.com/in/{{ member.linkedin }}" target="_blank" class="mr-2 border-none text-gray-400 hover:text-gray-300 hover:text-gray-300">{% include "components/icon-rss.njk" %}</i></a>
+            <a href="{{ member.blog }}" target="_blank" class="mr-2 border-none text-gray-400 hover:text-gray-300 hover:text-gray-300">{% include "components/icon-rss.njk" %}</i></a>
           {%- endif -%}
         </div>
       </div>
