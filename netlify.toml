@@ -1,17 +1,64 @@
 [build]
-  command = "npm run build"
-  publish = "dist"
-  environment = { NODE_VERSION = "10.15.3", NODE_ENV = "production" }
-  # functions = "./src/functions"
-
-[dev]
-  command = "npm run start"
-  publish = "dist"
-  port = 3000
-  targetPort = 8181
-  NODE_ENV = "development"
-  # functionsPort = 34567
+command = "npm run build"
+publish = "dist"
+environment = { NODE_VERSION = "10.15.3", NODE_ENV = "production" }
 
 [[redirects]]
-  from = "/post/*"
-  to = "/blog/:splat"
+from = "/careers/hardware-engineers"
+to = "/careers/hardware-engineering"
+
+[[redirects]]
+from = "/careers/software-engineers"
+to = "/careers/software-engineering"
+
+[[redirects]]
+from = "/careers/product-engineers"
+to = "/careers/product-engineering"
+
+[[redirects]]
+from = "/blog/categories/on-the-metal"
+to = "/podcast"
+
+[[redirects]]
+from = "/blog/on-the-metal-10-season-1-wrap-up"
+to = "/podcast/on-the-metal-10-season-1-wrap-up"
+
+[[redirects]]
+from = "/blog/on-the-metal-9-jonathan-blow"
+to = "/podcast/on-the-metal-9-jonathan-blow"
+
+[[redirects]]
+from = "/blog/on-the-metal-8-jon-masters"
+to = "/podcast/on-the-metal-8-jon-masters"
+
+[[redirects]]
+from = "/blog/on-the-metal-7-rick-altherr"
+to = "/podcast/on-the-metal-7-rick-altherr"
+
+[[redirects]]
+from = "/blog/on-the-metal-6-kenneth-finnegan"
+to = "/podcast/on-the-metal-6-kenneth-finnegan"
+
+[[redirects]]
+from = "/blog/on-the-metal-5-trammell-hudson"
+to = "/podcast/on-the-metal-5-trammell-hudson"
+
+[[redirects]]
+from = "/blog/on-the-metal-4-tom-lyon"
+to = "/podcast/on-the-metal-4-tom-lyon"
+
+[[redirects]]
+from = "/blog/on-the-metal-3-ron-minnich"
+to = "/podcast/on-the-metal-3-ron-minnich"
+
+[[redirects]]
+from = "/blog/on-the-metal-2-amir-michael"
+to = "/podcast/on-the-metal-2-amir-michael"
+
+[[redirects]]
+from = "/blog/on-the-metal-1-jeff-rothschild"
+to = "/podcast/on-the-metal-1-jeff-rothschild"
+
+[[redirects]]
+from = "/blog/on-the-metal-0-teaser"
+to = "/podcast/on-the-metal-0-teaser"
