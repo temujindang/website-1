@@ -33,6 +33,46 @@ npm install
 netlify dev
 ```
 
+## Adding new content 
+
+### Blog posts
+
+Add a new markdown file to [`src/site/blog`](src/site/blog). Make sure it has the
+following metadata at the top of the file. To make things easy on yourself, duplicate an existing post.
+
+```
+---
+title: 'Post title'
+subtitle: 'Post subtitle (if any)'
+date: 2020-02-03T23:00:00
+tags: ['post', 'announcements']
+author: ["first-last", "first-last", "first-last"]
+description: A description that is used in snippets
+---
+```
+
+FIXME👇  
+~~The authors field can hold more than one author and is the name of the `json`
+file for the specific author in [`_data/team`](_data/team).~~
+
+### Team members
+
+Add a json file to [`_data/team`](data/team) in the following format:
+
+```json
+{
+  "weight": 1,
+  "name": "Jessie Frazelle",
+  "title": "CPO",
+  "twitter": "jessfraz",
+  "github": "jessfraz",
+  "linkedin": "https://www.linkedin.com/in/jessie-frazelle/",
+  "blog": "https://jess.dev"
+}
+```
+
+The order for the team page is currently set in `_date/team/members.json`.
+
 ## Previewing the production build
 
 When building for production, an extra build step will strip out all CSS classes not used in the site. This step is not performed during the automatic rebuilds which take place during dev.
