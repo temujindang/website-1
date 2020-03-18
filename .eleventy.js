@@ -59,9 +59,9 @@ module.exports = function (eleventyConfig) {
   };
 
   // Static assets to pass through
-  eleventyConfig.addPassthroughCopy("./src/site/_includes/css/fonts");
+  eleventyConfig.addPassthroughCopy("./src/site/css/fonts");
   eleventyConfig.addPassthroughCopy("./src/site/images");
-  eleventyConfig.addPassthroughCopy("./src/site/_includes/css");
+  eleventyConfig.addPassthroughCopy("./src/site/css");
 
   return {
     dir: {
