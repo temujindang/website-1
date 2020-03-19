@@ -1,3 +1,6 @@
+/* This was causing some of the css we need to be removed.
+ * TODO: fix this and add it back in
+ */
 const purgecss = require('@fullhuman/postcss-purgecss')({
 
   // Specify the paths to all of the template files in your project
@@ -14,6 +17,6 @@ module.exports = {
     require('tailwindcss'),
     // require('@tailwindcss/ui'),
     require('autoprefixer'),
-    ...process.env.NODE_ENV === 'production' ? [purgecss, require('cssnano')] : []
+    ...process.env.NODE_ENV === 'production' ? [require('cssnano')] : []
   ]
 };
