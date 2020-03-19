@@ -199,7 +199,7 @@ p {
   white-space: pre;
 }
 
-blockquote {
+.content blockquote {
   @apply bg-gray-200;
   @apply border-l-8;
   @apply border-gray-400;
@@ -212,7 +212,7 @@ blockquote {
   quotes: "\201C""\201D""\2018""\2019";
 }
 
-blockquote:before {
+.content blockquote:before {
   @apply mr-1;
   @apply text-6xl;
   line-height: 0.1em;
@@ -221,7 +221,7 @@ blockquote:before {
   content: open-quote;
 }
 
-blockquote p {
+.content blockquote p {
   @apply inline;
   @apply font-semibold;
   @apply text-gray-800;
