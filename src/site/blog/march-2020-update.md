@@ -9,7 +9,7 @@ description: Updates from the Oxide Computer Company from March 2020.
 
 Hello friends!
 
-Things have been moving very fast here and we apologise for the lack of an official update on our end, other than our Twitter feeds.
+Things have been moving very fast here and we apologize for the lack of an official update on our end, other than our Twitter feeds.
 
 We are now a [team](/team) of 15 people! Everyone was in Emeryville for the Open Compute Summit, which was cancelled, but we still made the best of it by having company-wide face-to-face architecture discussions. We even snapped a photo with the whole team, as Bryan [said](https://twitter.com/bcantrill/status/1237463119581949953): we cannot wait for this image to be burned into a ROM.
 
