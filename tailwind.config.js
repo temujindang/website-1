@@ -3,6 +3,7 @@ module.exports = {
     fontFamily: {
       display: ["HK Grotesk", "HK Grotesk Legacy", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "Noto Sans", "sans-serif", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"],
       body: ["HK Grotesk", "HK Grotesk Legacy", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "Noto Sans", "sans-serif", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"],
+      sans: ["HK Grotesk", "HK Grotesk Legacy", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "Noto Sans", "sans-serif", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"],
     },
     extend: {
       colors: {
@@ -19,11 +20,6 @@ module.exports = {
         },
         'oxide-gray': '#222222',
         'oxide-green': '#48d597',
-      },
-      fontFamily: {
-        sans: [
-          "HK Grotesk", "HK Grotesk Legacy", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "Noto Sans", "sans-serif", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
-        ]
       },
       inset: {
         '-2': '-0.5rem',
