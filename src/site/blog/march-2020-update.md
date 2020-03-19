@@ -33,12 +33,14 @@ I have written some articles on my blog and for the ACM Queue that you might enj
 - [Chipping away at Moore's Law](https://queue.acm.org/detail.cfm?id=3388515)
 - [Power to the People](https://blog.jessfraz.com/post/power-to-the-people/)
 
-Last week, Tom Krazit at Protocol published a feature on what we are working on: [This little server startup wants to take on a horde of tech giants](https://www.protocol.com/oxide-computer-cloud-server).
+Tom Krazit at Protocol published a feature on what we are working on: [This little server startup wants to take on a horde of tech giants](https://www.protocol.com/oxide-computer-cloud-server).
 
-On Monday, I [opened our phone line](https://twitter.com/jessfraz/status/1239584753205923841) to anyone who wanted to share stories about their hardware pain. Thank you to everyone for the wonderful conversations!
+Last Monday, I [opened our phone line](https://twitter.com/jessfraz/status/1239584753205923841) to anyone who wanted to share stories about their hardware pain. Thank you to everyone for the wonderful conversations!
 
 On Wednesday, [Jared Volpe](https://twitter.com/plainspace) shipped the redesign of this website! 
 
-Tomorrow, be sure to checkout a live stream of Bryan's talk on [Tock OS](https://www.tockos.org/) at [Oxidize 1K](https://oxidizeconf.com/oxidize-1k/). We will update this post with the video when it is uploaded after.
+On Friday, Bryan gave a talk on [Tock OS](https://www.tockos.org/) at [Oxidize 1K](https://oxidizeconf.com/oxidize-1k/).
+
+[put video embed here]
 
 From everyone at Oxide, we wish you the best during this unprecedented time.
