@@ -24,8 +24,14 @@ run: build ## Runs the build.
 shell: build ## Pop into a shell in the container.
 	docker run --rm -i $(DOCKER_FLAGS) \
 		-v $(CURDIR):/usr/src/website \
+		--net host \
 		--entrypoint bash \
 		$(DOCKER_IMAGE)
+
+.PHONY: clean
+clean: ## Remove node_modules and package-lock.json.
+	sudo $(RM) -r node_modules
+	sudo $(RM) package-lock.json
 
 .PHONY: help
 help:
