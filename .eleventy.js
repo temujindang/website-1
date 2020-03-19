@@ -4,7 +4,8 @@ const util = require('util');
 const markdownIt = require("markdown-it");
 const options = {
   html: true,
-  breaks: true,
+    // Keep this to false so we can return after 80 chars.
+  breaks: false,
   linkify: true
 };
 
