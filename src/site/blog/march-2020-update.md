@@ -11,11 +11,11 @@ Hello friends!
 
 Things have been moving very fast here and we apologize for the lack of an official update on our end, other than our Twitter feeds.
 
-We are now a [team](/team) of 15 people! Everyone was in Emeryville for the Open Compute Summit, which was cancelled, but we still made the best of it by having company-wide face-to-face architecture discussions. We even snapped a photo with the whole team, as Bryan [said](https://twitter.com/bcantrill/status/1237463119581949953): we cannot wait for this image to be burned into a ROM.
+We are now a [team](/team) of 15 people! Everyone was in Emeryville for the Open Compute Summit, which was cancelled, but we still made the best of it by having company-wide face-to-face architecture discussions. We even snapped a photo with the whole team. As Bryan [said](https://twitter.com/bcantrill/status/1237463119581949953): we cannot wait for this image to be burned into a ROM.
 
 ![team](/images/team.jpg)
 
-Last month, we wrapped up the first season of our podcast, [On the Metal](https://oxide.computer/podcast/). These were super fun to record and I know we are looking forward to season 2 just as much as you are!
+Last month, we wrapped up the first season of our podcast, [On the Metal](https://oxide.computer/podcast/). These were super fun to record and I know we are looking forward to Season 2 just as much as you are!
 
 On February 18th, we received the most perfect PCI vendor ID: `01DE`! Huge thanks to [Robert Mustacchi](https://twitter.com/rmustacc) for getting that!
 
