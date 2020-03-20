@@ -1,5 +1,5 @@
 /* This was causing some of the css we need to be removed.
- * TODO [$5e7510282495610007ff3c42]: fix this and add it back in
+ * TODO: fix this and add it back in
  */
 const purgecss = require('@fullhuman/postcss-purgecss')({
 
