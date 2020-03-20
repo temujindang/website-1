@@ -21,10 +21,10 @@ wait for this image to be burned into a ROM.
 
 ![team](/images/team.jpg)
 
-We also made sure to make a visit to the Computer History Museum while everyone
-was in town. Was fun to have some folks from the open firmware community
-join us as well! Since it was not busy we got an unusually long amount of time
-with the docent at the IBM 1401 demo which was fascinating.
+We also made sure to visit the Computer History Museum while everyone
+was in town. It was fun to have some folks from the open firmware community
+join us as well! Since it was not busy we got to spend an unusually long amount 
+of time with the docent at the IBM 1401 demo which was fascinating.
 
 ![computer-history-museum](/images/computer-history-museum.jpg)
 
