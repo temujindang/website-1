@@ -68,7 +68,7 @@ Bryan gave a talk at Stanford on [The Soul of a New Machine](https://www.youtube
   <iframe class="max-w-full" width="560" height="315" src="https://www.youtube.com/embed/vvZA9n3e5pc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-### Busy writing
+### Research and writing
 
 I have written some articles on my blog and for ACM Queue that you might 
 enjoy reading:
