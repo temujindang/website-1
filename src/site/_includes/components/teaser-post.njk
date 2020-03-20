@@ -2,15 +2,14 @@
       <h2 class="heading"><a href="{{ item.url }}">{{ item.data.title }}</a></h2>
       <div class="post-metadata mt-4 mb-6">
         <div class="author uppercase">
-        {# FIXME NEW POST: why isn't this working here? #}
         {% set comma = joiner() %}
-        {%- for author in authors %}
+        {%- for author in item.data.authors %}
           {{ comma() }} {{ team[author].name }}
         {%- endfor %}
         </div>
         <time value="{{ item.date }}" class="text-gray-400">{{ item.date | readableDate }}</time>
       </div>
       <div>
-      {{ item.description }}
+      {{ item.data.description }}
       </div>
     </li>

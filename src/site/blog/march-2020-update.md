@@ -3,12 +3,10 @@ title: 'March 2020 Update'
 date: 2020-03-20T03:09:26
 tags: ['post', 'update']
 authors: ["jessie-frazelle"]
-description: Updates from the Oxide Computer Company for March 2020.
+description: |
+    Updates from the warehouse for March 2020 including hiring, our office, 
+    research, talks, a trip to the Computer History Museum, and new developments.
 ---
-
-<!-- FIXME NEW POST: let's get a class on the content before more so we can style it -->
-<!-- Wishing you health and resilience in trying times and a quick update from Oxide. -->
-
 
 Hello friends!
 
@@ -16,7 +14,6 @@ I want to start by saying we wish you the very best during this unprecedented ti
 in which we are all united. 
 Our thoughts go out to everyone working hard to help those in need. 
 We wish you and your families health and resilience.
-<!--more-->
 
 ### Hard at work... and growing
 

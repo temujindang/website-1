@@ -4,14 +4,21 @@ subtitle: 'OTM episode'
 date: 2019-12-16T02:09:26
 tags: ['post', 'podcast']
 author: ['bryan-cantrill', 'jessie-frazelle', 'steve-tuck']
-description: On this episode of On the Metal, we interview Ron Minnich. Ron has had a fascinating career working on the interface between software and hardware. Join us to hear a mesmerizing conversation about Unix, Plan9, LinuxBIOS, Chromebooks, RISC-V, of course some Gentoo jokes, flip flip programming toys, and more!
+description: |
+    On this episode of On the Metal, we interview Ron Minnich. Ron has had a 
+    fascinating career working on the interface between software and hardware. 
+    Join us to hear a mesmerizing conversation about Unix, Plan9, LinuxBIOS, 
+    Chromebooks, RISC-V, of course some Gentoo jokes, flip flip programming 
+    toys, and more!
 podcast_file: https://media.transistor.fm/344925bb.mp3
 iframe_link: https://share.transistor.fm/e/43499ab9
 ---
 
-On this episode of On the Metal, we interview Ron Minnich. Ron has had a fascinating career working on the interface between software and hardware. Join us ~~as we install Gentoo and compile GCC~~ to hear a mesmerizing conversation about Unix, Plan9, LinuxBIOS, Chromebooks, RISC-V, of course some Gentoo jokes, flip flop programming toys, and more!
-
-<!--more-->
+On this episode of On the Metal, we interview Ron Minnich. Ron has had a 
+fascinating career working on the interface between software and hardware.
+Join us ~~as we install Gentoo and compile GCC~~ to hear a mesmerizing 
+conversation about Unix, Plan9, LinuxBIOS, Chromebooks, RISC-V, of course 
+some Gentoo jokes, flip flop programming toys, and more!
 
 ### Show notes and highlights
 

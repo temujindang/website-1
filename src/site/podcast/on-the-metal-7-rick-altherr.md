@@ -4,14 +4,21 @@ subtitle: 'OTM episode'
 date: 2020-01-13T06:00:00
 tags: ['post', 'podcast']
 author: ['bryan-cantrill', 'jessie-frazelle', 'steve-tuck']
-description: On this episode of On the Metal, we interview Rick Altherr, who has experience working all over the stack. Join us as we discuss impossible bugs, fires in the data center, reverse engineering BMC firmware, BMC vulnerabilities, Cray computers, and Windows NT on MIPS. Yup you heard that right!
+description: |
+    On this episode of On the Metal, we interview Rick Altherr, who has 
+    experience working all over the stack. Join us as we discuss impossible 
+    bugs, fires in the data center, reverse engineering BMC firmware, BMC 
+    vulnerabilities, Cray computers, and Windows NT on MIPS. Yup you heard 
+    that right!
 podcast_file: https://media.transistor.fm/ceda47c6.mp3
 iframe_link: https://share.transistor.fm/e/71644107
 ---
 
-On this episode of On the Metal, we interview Rick Altherr, who has experience working all over the stack. Join us as we discuss impossible bugs, fires in the data center, reverse engineering BMC firmware, BMC vulnerabilities, Cray computers, and Windows NT on MIPS. Yup you heard that right! 
-
-<!--more-->
+On this episode of On the Metal, we interview Rick Altherr, 
+who has experience working all over the stack. Join us as we 
+discuss impossible bugs, fires in the data center, reverse engineering 
+BMC firmware, BMC vulnerabilities, Cray computers, and Windows NT on MIPS. 
+Yup you heard that right! 
 
 ### Show notes and highlights
 

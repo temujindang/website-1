@@ -44,7 +44,8 @@ subtitle: 'Post subtitle (if any)'
 date: 2020-02-03T23:00:00
 tags: ['post', 'announcements']
 author: ["first-last", "first-last", "first-last"]
-description: A description that is used in snippets.
+description: |
+    A description that is used in snippets.
 ---
 ```
 

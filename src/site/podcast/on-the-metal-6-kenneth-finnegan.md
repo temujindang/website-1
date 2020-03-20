@@ -4,14 +4,19 @@ subtitle: 'OTM episode'
 date: 2020-01-06T06:00:00-07:00
 tags: ['post', 'podcast']
 author: ['bryan-cantrill', 'jessie-frazelle', 'steve-tuck']
-description: On this episode of On the Metal, we interview Kenneth Finnegan, internet exchange homebrewer. Join us as we delight in the underbelly of the internet, learn about OG ASNs, run upon illegal cabling -- and thrill in the discovery of a root DNS server thirty feet away.
+description: |
+    On this episode of On the Metal, we interview Kenneth Finnegan, 
+    internet exchange homebrewer. Join us as we delight in the underbelly 
+    of the internet, learn about OG ASNs, run upon illegal cabling -- and 
+    thrill in the discovery of a root DNS server thirty feet away.
 podcast_file: https://media.transistor.fm/9212f8ff.mp3
 iframe_link: https://share.transistor.fm/e/6ebd391b
 ---
 
-On this episode of On the Metal, we interview Kenneth Finnegan, internet exchange homebrewer. Join us as we delight in the underbelly of the internet, learn about OG ASNs, run upon illegal cabling -- and thrill in the discovery of a root DNS server thirty feet away.
-
-<!--more-->
+On this episode of On the Metal, we interview Kenneth Finnegan, 
+internet exchange homebrewer. Join us as we delight in the underbelly 
+of the internet, learn about OG ASNs, run upon illegal cabling -- and 
+thrill in the discovery of a root DNS server thirty feet away.
 
 ### Show notes and highlights
 

@@ -4,14 +4,25 @@ subtitle: 'OTM episode'
 date: 2019-12-23T06:09:26-07:00
 tags: ['post', 'podcast']
 author: ['bryan-cantrill', 'jessie-frazelle', 'steve-tuck']
-description: On this episode of On the Metal, we interview Tom Lyon, Sun employee #8, network storage pioneer and systems software polymath.  Join us as Tom recounts losing bits in the hallway at Princeton, the peril of software-refreshed DRAM, and how to write a token ring driver from scratch in two weeks and still be mistaken for someone from sales. Along the way, Jess, Bryan and Tom nerd out about first calculators, favorite editors, and hard tabs.
+description: |
+    On this episode of On the Metal, we interview Tom Lyon, Sun employee #8, 
+    network storage pioneer and systems software polymath.  Join us as Tom 
+    recounts losing bits in the hallway at Princeton, the peril of 
+    software-refreshed DRAM, and how to write a token ring driver from 
+    scratch in two weeks and still be mistaken for someone from sales. 
+    Along the way, Jess, Bryan and Tom nerd out about first calculators, 
+    favorite editors, and hard tabs.
 podcast_file: https://media.transistor.fm/f11defc9.mp3
 iframe_link: https://share.transistor.fm/e/e89c3b37
 ---
 
-On this episode of On the Metal, we interview Tom Lyon, Sun Microsystems employee #8, network storage pioneer and systems software polymath.  Join us as Tom recounts losing bits in the hallway at Princeton, the peril of software-refreshed DRAM, and how to write a token ring driver from scratch in two weeks and still be mistaken for someone from sales. Along the way, Jess, Bryan and Tom nerd out about first calculators, favorite editors, and hard tabs.
-
-<!--more-->
+On this episode of On the Metal, we interview Tom Lyon, Sun Microsystems 
+employee #8, network storage pioneer and systems software polymath.  
+Join us as Tom recounts losing bits in the hallway at Princeton, the peril 
+of software-refreshed DRAM, and how to write a token ring driver from scratch 
+in two weeks and still be mistaken for someone from sales. Along the way, 
+Jess, Bryan and Tom nerd out about first calculators, favorite editors, 
+and hard tabs.
 
 ### Show notes and highlights
 
