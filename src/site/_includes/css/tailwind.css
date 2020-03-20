@@ -537,7 +537,7 @@ a.nav-tab:hover span:after,
 }
 
 .content .footer ul {
-  @apply mt-4;
+  @apply mt-3;
   @apply ml-0;
   @apply list-none;
 }
