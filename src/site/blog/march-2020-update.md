@@ -4,7 +4,7 @@ subtitle: ''
 date: 2020-03-19T03:09:26
 tags: ['post', 'update']
 author: ["jessie-frazelle"]
-description: Updates from the Oxide Computer Company from March 2020.
+description: Updates from the Oxide Computer Company for March 2020.
 ---
 
 Hello friends!
