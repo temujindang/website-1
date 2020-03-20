@@ -9,7 +9,8 @@ description: Updates from the Oxide Computer Company for March 2020.
 
 Hello friends!
 
-I want to start by saying we wish you the very best during this unprecedented time. 
+I want to start by saying we wish you the very best during this unprecedented time
+in which we are all united. 
 Our thoughts go out to everyone working hard to help those in need. 
 We wish you and your families health and resilience.
 
