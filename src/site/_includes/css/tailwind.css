@@ -269,7 +269,7 @@ h1.heading span {
 .page h2,
 h2.heading {
   @apply mt-10;
-  @apply mb-6;
+  @apply mb-4;
   @apply text-2xl;
   @apply font-semibold;
   @apply leading-normal;
