@@ -10,7 +10,6 @@ description: Updates from the Oxide Computer Company for March 2020.
 <!-- FIXME NEW POST: let's get a class on the content before more so we can style it -->
 <!-- Wishing you health and resilience in trying times and a quick update from Oxide. -->
 
-<!--more-->
 
 Hello friends!
 
@@ -18,6 +17,7 @@ I want to start by saying we wish you the very best during this unprecedented ti
 in which we are all united. 
 Our thoughts go out to everyone working hard to help those in need. 
 We wish you and your families health and resilience.
+<!--more-->
 
 ### Hard at work... and growing
 
