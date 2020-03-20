@@ -3,9 +3,9 @@ title: Blog
 heading: Blog
 subheading: Thoughts, ramblings, insights and everything in between from the Oxide Computer Company team.
 layout: default
-templateEngineOverride: njk, md
+pageClass: blog
 ---
-
+{# This is the blog posts page #}
 <div>
   <ul>
     {%- for item in collections.post | reverse -%}

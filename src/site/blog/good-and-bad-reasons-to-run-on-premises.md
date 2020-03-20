@@ -1,10 +1,10 @@
 ---
 title: 'The Good and Bad Reasons to Run On-Premises'
-subtitle: ''
 date: 2019-09-17T08:09:26-07:00
 tags: ['draft']
-author: ["jessie-frazelle"]
-description: What are the good reasons for running on-premises? What are the bad reasons?
+authors: ["jessie-frazelle"]
+description: |
+    What are the good reasons for running on-premises? What are the bad reasons?
 ---
 
 > **NOTE:** this is a draft still working through the wording
@@ -13,8 +13,6 @@ A question we get asked frequently is: What are the good and bad reasons to run
 on-premises? Economics, security, latency and regulatory compliance are some of
 the good reasons for running on-premises and we will cover each of these in
 detail.
-
-<!--more-->
 
 ## Good Reasons
 

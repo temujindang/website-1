@@ -3,15 +3,22 @@ title: 'On the Metal: Jon Masters'
 subtitle: 'OTM episode'
 date: 2020-01-20T04:00:00-07:00
 tags: ['post', 'podcast']
-author: ['bryan-cantrill', 'jessie-frazelle', 'steve-tuck']
-description: On this episode of On the Metal, we interview Jon Masters, computer architecture raconteur, microprocessor *enfant terrible*, and Patron Saint of Lost Computational Causes.  Join us as we learn why Jon hates simultaneous multithreading, why he loves UEFI (?!) -- and when we can expect the supremacy of the quantum blockchain.
+authors: ['bryan-cantrill', 'jessie-frazelle', 'steve-tuck']
+description: |
+    On this episode of On the Metal, we interview Jon Masters, computer 
+    architecture raconteur, microprocessor *enfant terrible*, and Patron 
+    Saint of Lost Computational Causes.  Join us as we learn why Jon hates 
+    simultaneous multithreading, why he loves UEFI (?!) -- and when we can 
+    expect the supremacy of the quantum blockchain.
 podcast_file: https://media.transistor.fm/f037142a.mp3
 iframe_link: https://share.transistor.fm/e/ad9a87ec
 ---
 
-On this episode of On the Metal, we interview Jon Masters, computer architecture raconteur, microprocessor *enfant terrible*, and Patron Saint of Lost Computational Causes.  Join us as we learn why Jon hates simultaneous multithreading, why he loves UEFI (?!) -- and when we can expect the supremacy of the quantum blockchain.
-
-<!--more-->
+On this episode of On the Metal, we interview Jon Masters, computer 
+architecture raconteur, microprocessor *enfant terrible*, and Patron 
+Saint of Lost Computational Causes.  Join us as we learn why Jon hates 
+simultaneous multithreading, why he loves UEFI (?!) -- and when we can 
+expect the supremacy of the quantum blockchain.
 
 ### Show notes and highlights
 

@@ -3,15 +3,24 @@ title: 'On the Metal: Trammell Hudson'
 subtitle: 'OTM episode'
 date: 2019-12-30T06:09:26
 tags: ['post', 'podcast', 'announcements', 'launch']
-author: ['bryan-cantrill', 'jessie-frazelle', 'steve-tuck']
-description: On this episode of On the Metal, we interview Trammell Hudson. Trammell has some of the most interesting side projects related to every single hardware / software interface you can imagine. Join us as we step into the negative privilege rings with stories of reverse engineering lightbulbs & a Canon 5D Mark 2, hacking a Mac SE, dissecting modchips, evil maid attacks, and more.
+authors: ['bryan-cantrill', 'jessie-frazelle', 'steve-tuck']
+description: |
+    On this episode of On the Metal, we interview Trammell Hudson. Trammell 
+    has some of the most interesting side projects related to every single 
+    hardware / software interface you can imagine. Join us as we step into 
+    the negative privilege rings with stories of reverse engineering 
+    lightbulbs & a Canon 5D Mark 2, hacking a Mac SE, dissecting modchips, 
+    evil maid attacks, and more.
 podcast_file: https://media.transistor.fm/9d0cafea.mp3
 iframe_link: https://share.transistor.fm/e/a9256054
 ---
 
-On this episode of On the Metal, we interview Trammell Hudson. Trammell has some of the most interesting side projects related to every single hardware / software interface you can imagine. Join us as we step into the negative privilege rings with stories of reverse engineering lightbulbs & a Canon 5D Mark 2, hacking a Mac SE, dissecting modchips, evil maid attacks, and more.
-
-<!--more-->
+On this episode of On the Metal, we interview Trammell Hudson. 
+Trammell has some of the most interesting side projects related 
+to every single hardware / software interface you can imagine. 
+Join us as we step into the negative privilege rings with stories 
+of reverse engineering lightbulbs & a Canon 5D Mark 2, hacking a 
+Mac SE, dissecting modchips, evil maid attacks, and more.
 
 ### Show notes and highlights
 

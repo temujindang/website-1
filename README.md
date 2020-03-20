@@ -62,10 +62,17 @@ title: 'Post title'
 subtitle: 'Post subtitle (if any)'
 date: 2020-02-03T23:00:00
 tags: ['post', 'announcements']
-author: ["first-last", "first-last", "first-last"]
-description: A description that is used in snippets
+authors: ["first-last", "first-last", "first-last"]
+description: |
+    A description that is used in snippets.
 ---
 ```
+
+~~The authors field can hold more than one author and is the name of the `json`
+file for the specific author in [`_data/team`](_data/team).~~
+
+Make sure to add a `description` to your post for the main pages as well as social 
+media cards.
 
 #### Rich links
 
@@ -73,10 +80,6 @@ If you want to use rich links add them to a post in this format:
 ```
 {{"https://oxide.computer/podcast/on-the-metal-10-season-1-wrap-up/" | linkPreview | safe}}
 ```
-
-FIXME👇  
-~~The authors field can hold more than one author and is the name of the `json`
-file for the specific author in [`_data/team`](_data/team).~~
 
 ### Team members
 

@@ -1,10 +1,19 @@
 ---
 layout: default
-pageClass: post
+pageClass: page blogpost
 ---
+{# This is the single blog post page #}
 <div>
-  <time value="{{ item.date }}" class="text-gray-200">{{ date | readableDate }}</time>
   <h1 class="heading">{{ title }}</h1>
+  <div class="post-metadata my-12">
+    <div class="author uppercase">
+      {% set comma = joiner() %}
+      {%- for author in authors %}
+        {{ comma() }} {{ team[author].name }}
+      {%- endfor %}
+    </div>
+    <time value="{{ item.date }}" class="text-gray-400">{{ date | readableDate }}</time>
+  </div>
   <div class="mb-4">
     {{ content | section | safe }}
   </div>

@@ -1,6 +1,5 @@
 ---
 layout: default
-pageClass: job
 ---
 <div class="career">
   <h1 class="heading">{{ title }}</h1>
@@ -10,8 +9,13 @@ pageClass: job
   <div class="mb-8">
     {{ content | section('remainder') | safe }}
   </div>
-  {% include "components/application-link.njk" %}
-  <div class="mt-12 pt-2 text-gray-400 text-sm border-t border-gray-300">
+  <div class="bg-gray-800 overflow-hidden">
+    <div class="flex items-center justify-between px-4 py-5 sm:p-6">
+      {% include "components/application-link.njk" %}
+      <span class="leading-normal font-bold">We look forward to hearing from you!</span>
+    </div>
+  </div>
+  <div class="mt-10 pt-2 text-gray-400 text-sm border-t border-gray-300">
     <p>
       Check out the rest of our open roles on our <a href="/careers">careers page</a>.
     </p>

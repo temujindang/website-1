@@ -63,13 +63,13 @@ O:::::::OOO:::::::O    X:::::X      X:::::X     II::::II  DDD:::::DDDDD:::::D   
 			})
 		</script>
   </head>
-  <body id="top" class="container mx-auto mb-12 max-w-none lg:max-w-6xl bg-oxide-gray text-white">
+  <body id="top" class="{% if pageClass %}{{ pageClass }}{% endif %} container mx-auto mb-12 max-w-none lg:max-w-6xl bg-oxide-gray text-white">
     {% include "header.njk" %}
     <div class="content relative max-w-screen-xl mx-auto px-6 sm:px-6 fade-in">
       {% if page.url == "/" %}
-        <div class="home page w-auto">
+        <div class="page w-auto">
 
-      {% elseif page.url == "/blog/" %}
+      {# {% elseif page.url == "/blog/" %}
         <div class="blog page w-auto lg:w-3/4">
 
       {% elseif page.url == "/careers/" %}
@@ -80,7 +80,7 @@ O:::::::OOO:::::::O    X:::::X      X:::::X     II::::II  DDD:::::DDDDD:::::D   
 
       {% elseif page.url == "../podcast/" %}
         pod page
-        <div class="podcast page w-auto lg:w-3/4">
+        <div class="podcast page w-auto lg:w-3/4"> #}
 
       {% else %}
         <div class="page w-auto lg:w-3/4">
@@ -92,7 +92,7 @@ O:::::::OOO:::::::O    X:::::X      X:::::X     II::::II  DDD:::::DDDDD:::::D   
         {%- endif -%}
 
         {%- if subheading -%}
-          <h2 class="heading">{{ subheading }}</h2>
+          <h2 class="subheading">{{ subheading }}</h2>
         {%- endif -%}
 
         {{ content | safe }}
@@ -109,8 +109,7 @@ O:::::::OOO:::::::O    X:::::X      X:::::X     II::::II  DDD:::::DDDDD:::::D   
     {% endif %}
 
     {% set js %}
-      {# {% include "js/elevator.js" %} #}
-      {# {% include "js/core.js" %} #}
+      {% include "js/elevator.js" %}
       {% include "js/hello.js" %}
     {% endset %}
     <script>{{ js | jsmin | safe }}</script>

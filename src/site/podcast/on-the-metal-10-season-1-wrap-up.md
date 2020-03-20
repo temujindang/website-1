@@ -3,15 +3,23 @@ title: 'On the Metal: Season 1 Wrap Up'
 subtitle: 'OTM episode'
 date: 2020-02-03T08:09:26
 tags: ['post', 'podcast', 'announcements', 'launch']
-author: ['bryan-cantrill', 'jessie-frazelle', 'steve-tuck']
-description: Welp, that's a wrap for the first season of the On the Metal podcast. Join us as we reminisce about some of our favorite parts (although it was very hard to choose). We also uncover some aspects of the podcast you never heard about! While this is the end of the first season, we absolutely cannot wait for the second season. Thank you so much for listening, we will be back soon!
+authors: ['bryan-cantrill', 'jessie-frazelle', 'steve-tuck']
+description: |
+    Welp, that's a wrap for the first season of the On the Metal podcast. 
+    Join us as we reminisce about some of our favorite parts (although it 
+    was very hard to choose). We also uncover some aspects of the podcast 
+    you never heard about! While this is the end of the first season, we 
+    absolutely cannot wait for the second season. Thank you so much for 
+    listening, we will be back soon!
 podcast_file: https://media.transistor.fm/204d8793.mp3
 iframe_link: https://share.transistor.fm/e/4d030faf
 ---
 
-Welp, that's a wrap for the first season of the On the Metal podcast. Join us as we reminisce about some of our favorite parts (although it was very hard to choose). We also uncover some aspects of the podcast you never heard about! While this is the end of the first season, we absolutely cannot wait for the second season. Thank you so much for listening, we will be back soon!
-
-<!--more-->
+Welp, that's a wrap for the first season of the On the Metal podcast. Join us 
+as we reminisce about some of our favorite parts (although it was very hard to 
+choose). We also uncover some aspects of the podcast you never heard about! 
+While this is the end of the first season, we absolutely cannot wait for the 
+second season. Thank you so much for listening, we will be back soon!
 
 ### Show notes and highlights
 

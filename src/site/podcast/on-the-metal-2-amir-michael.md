@@ -3,15 +3,22 @@ title: 'On the Metal: Amir Michael'
 subtitle: 'OTM episode'
 date: 2019-12-06T06:09:26-07:00
 tags: ['post', 'podcast', 'announcements', 'launch']
-author: ['bryan-cantrill', 'jessie-frazelle']
-description: On this episode of On the Metal, we interview Amir Michael.  Join us as we listen to stories of growing up and coming up in Silicon Valley, from answering a Craigslist ad during the Dot Com Bust for a company with a funny name, through starting a project at Facebook that became an industry-wide movement -- with many exciting tales in between!
+authors: ['bryan-cantrill', 'jessie-frazelle']
+description: |
+    On this episode of On the Metal, we interview Amir Michael.  Join us as 
+    we listen to stories of growing up and coming up in Silicon Valley, from 
+    answering a Craigslist ad during the Dot Com Bust for a company with a 
+    funny name, through starting a project at Facebook that became an 
+    industry-wide movement -- with many exciting tales in between!
 podcast_file: https://media.transistor.fm/4a4a1ee6.mp3
 iframe_link: https://share.transistor.fm/e/34e16a32
 ---
 
-On this episode of On the Metal, we interview Amir Michael.  Join us as we listen to stories of growing up and coming up in Silicon Valley, from answering a Craigslist ad during the Dot Com Bust for a company with a funny name, through starting a project at Facebook that became an industry-wide movement -- with many exciting tales in between!
-
-<!--more-->
+On this episode of On the Metal, we interview Amir Michael.  Join us as we 
+listen to stories of growing up and coming up in Silicon Valley, from answering 
+a Craigslist ad during the Dot Com Bust for a company with a funny name, 
+through starting a project at Facebook that became an industry-wide movement -- 
+with many exciting tales in between!
 
 ### Show notes and highlights
 
