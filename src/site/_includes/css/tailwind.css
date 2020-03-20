@@ -250,22 +250,9 @@ h1.heading {
   }
 }
 
-
-/* .blog h1.heading:after,
-.page h1.heading:after,
-.podcasts h1.heading:after {
-  content: "";
-  @apply block;
-  @apply relative;
-  @apply w-12;
-  @apply mt-3;
-  @apply h-1;
-  @apply bg-oxide-green;
-} */
-
 .blog h1.heading:after,
 .page h1.heading:after,
-.podcasts h1.heading:after {
+.podcast h1.heading:after {
   content: "";
   @apply block;
   @apply relative;
@@ -305,7 +292,7 @@ h2.heading {
 
 .blog h3,
 .page h3,
-.podcasts h3 {
+.podcast h3 {
   @apply mt-8;
   @apply mb-4;
   @apply text-xl;
@@ -317,7 +304,7 @@ h2.heading {
 /* @screen md {
   .blog h3,
   .page h3,
-  .podcasts h3 {
+  .podcast h3 {
     @apply leading-4;
   }
 } */
@@ -411,32 +398,42 @@ h3 {
   @apply leading-normal;
 }
 
-.blog ul,
-.blog ol,
-.careers ul,
-.careers ol,
-.podcasts ul,
-.podcasts ol {
+.blog .content ul,
+.blog .content ol,
+.careers .content ul,
+.careers .content ol,
+.podcast .content ul,
+.podcast .content ol {
   @apply my-4;
   @apply ml-0;
 }
 
-.blog ul li,
-.blog ol li,
-.careers ul li,
-.careers ol li,
-.podcasts ul li,
-.podcasts ol li {
+.blog .content ul li,
+.blog .content ol li,
+.careers .content ul li,
+.careers .content ol li,
+.podcast .content ul li,
+.podcast .content ol li {
   @apply list-none;
   @apply list-inside;
 }
 
-.blog ul li:last-of-type,
-.blog ol li:last-of-type,
-.careers ul li:last-of-type,
-.careers ol li:last-of-type,
-.podcasts ul li:last-of-type,
-.podcasts ol li:last-of-type {
+.blog .content ul li a,
+.blog .content ol li a,
+.careers .content ul li a,
+.careers .content ol li a,
+.podcast .content ul li a,
+.podcast .content ol li a {
+  @apply break-all;
+  /* @apply text-base; */
+}
+
+.blog .content ul li:last-of-type,
+.blog .content ol li:last-of-type,
+.careers .content ul li:last-of-type,
+.careers .content ol li:last-of-type,
+.podcast .content ul li:last-of-type,
+.podcast .content ol li:last-of-type {
   @apply border-b-0;
 }
 
