@@ -60,6 +60,14 @@ Tom Krazit at Protocol published a feature on what we are working on:
 
 ![conference-room-signs](/images/conference-room-signs.jpg)
 
+We have gotten some amazing mugs from folks for our collection, thank you all
+so much! 
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Thanks to <a href="https://twitter.com/davidmedberry?ref_src=twsrc%5Etfw">@davidmedberry</a> for the Cray mug and book! We will put it to good use <a href="https://twitter.com/oxidecomputer?ref_src=twsrc%5Etfw">@oxidecomputer</a>! <a href="https://t.co/QNPrIGEzbB">pic.twitter.com/QNPrIGEzbB</a></p>&mdash; Jessie Frazelle (@jessfraz) <a href="https://twitter.com/jessfraz/status/1237463947604668416?ref_src=twsrc%5Etfw">March 10, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">THANK YOU <a href="https://twitter.com/abenik?ref_src=twsrc%5Etfw">@abenik</a> for the Orion mug! Our collection is so truly unique now :) 😍🤓 <a href="https://t.co/aIXxfQhg4e">pic.twitter.com/aIXxfQhg4e</a></p>&mdash; Jessie Frazelle (@jessfraz) <a href="https://twitter.com/jessfraz/status/1228022420633636864?ref_src=twsrc%5Etfw">February 13, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
 Last Monday, I [opened our phone line](https://twitter.com/jessfraz/status/1239584753205923841) 
 to anyone who wanted to share stories about their hardware pain. Thank you to everyone for 
 the wonderful conversations!
