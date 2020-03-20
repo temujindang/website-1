@@ -30,7 +30,7 @@ You can find Trammell on Twitter at https://twitter.com/qrs, his blog at https:/
 - Modchips: https://trmm.net/modchips
 - Bloomberg Supermicro story: https://www.bloomberg.com/news/features/2018-10-04/the-big-hack-how-china-used-a-tiny-chip-to-infiltrate-america-s-top-companies
 - SPI flash reader: https://trmm.net/SPI_flash
-- spispy flash emulator: https://github.com/osresearch/spisp https://trmm.net/Spispy
+- spispy flash emulator: https://github.com/osresearch/spispy https://trmm.net/Spispy
 - ChromeOS firmware: https://chromium.googlesource.com/chromiumos/platform/firmware/+/e295ff701af589df9eae9f4549792700c4cbe1f3/README.md https://www.chromium.org/chromium-os/developer-information-for-chrome-os-devices/custom-firmware
 - Trusted Platform Module (TPM): https://trustedcomputinggroup.org/work-groups/trusted-platform-module/ https://en.wikipedia.org/wiki/Trusted_Platform_Module
 - UEFI 'Chain of Trust': https://uefi.org/sites/default/files/resources/UEFI%20Forum%20White%20Paper%20-%20Chain%20of%20Trust%20Introduction_Final.pdf
