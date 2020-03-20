@@ -68,7 +68,7 @@ const linkPreview = (link, callback) => {
 const markdownIt = require("markdown-it");
 const options = {
   html: true,
-    // Keep this to false so we can return after 80 chars.
+  // Keep this to false so we can return after 80 chars.
   breaks: false,
   linkify: true
 };
