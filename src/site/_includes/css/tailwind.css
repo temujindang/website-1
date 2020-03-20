@@ -294,11 +294,12 @@ h2.heading {
 .blog h3,
 .page h3,
 .podcast h3 {
-  @apply mt-6;
+  @apply mt-10;
   @apply mb-4;
   @apply text-xl;
   @apply font-semibold;
   @apply leading-10;
+  @apply uppercase;
 }
 
 
