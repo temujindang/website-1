@@ -235,6 +235,7 @@ p {
 */
 
 h1.heading {
+  @apply mt-3;
   @apply mb-6;
   @apply text-3xl;
   @apply leading-snug;

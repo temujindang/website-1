@@ -1,9 +1,10 @@
 ---
 layout: default
 pageClass: post
+templateEngineOverride: njk, md
 ---
 <div>
-  <time value="{{ item.date }}" class="text-gray-200">{{ date | readableDate }}</time>
+  {% include "components/post-metadata.njk" %}
   <h1 class="heading">{{ title }}</h1>
   <div class="mb-4">
     {{ content | section | safe }}
