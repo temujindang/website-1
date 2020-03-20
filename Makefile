@@ -29,9 +29,10 @@ shell: build ## Pop into a shell in the container.
 		$(DOCKER_IMAGE)
 
 .PHONY: clean
-clean: ## Remove node_modules and package-lock.json.
+clean: ## Remove node_modules, dist, and package-lock.json.
 	sudo $(RM) -r node_modules
 	sudo $(RM) package-lock.json
+	sudo $(RM) -r dist
 
 .PHONY: help
 help:
