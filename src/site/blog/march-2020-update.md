@@ -14,7 +14,8 @@ Our thoughts go out to everyone working hard to help those in need.
 We hope you and your families are staying safe.
 
 A lot has happened at Oxide since we first decloaked in Decemeber and I apologize 
-for the lack of an official update on our end, other than our Twitter feeds.
+for the lack of an official update on our end, other than our Twitter feeds. We've
+been hard at work building a product.
 
 We are now a [team](/team) of 15 people! 
 Everyone was in Emeryville for the 
@@ -80,9 +81,11 @@ the wonderful conversations!
 On Wednesday, [Jared Volpe](https://twitter.com/plainspace) 
 shipped the redesign of this website! Pro tip: check out the 404 page ;) 
 
-On Friday, Bryan gave a talk on [Tock OS](https://www.tockos.org/) at 
-[Oxidize 1K](https://oxidizeconf.com/oxidize-1k/).
+On Friday, Bryan gave a talk on at 
+[Oxidize 1K](https://oxidizeconf.com/oxidize-1k/) on 
+"Tockilator: Deducing Tock execution flow
+from Ibex Verilator traces".
 
 [put video embed here]
 
-
+That's all for now. We will continue to update you with news as we go about building. Stay tuned!
