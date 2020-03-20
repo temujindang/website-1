@@ -39,7 +39,7 @@ Last month, we wrapped up the first season of our podcast,
 [On the Metal](https://oxide.computer/podcast/). These were super fun to 
 record and I know we are looking forward to Season 2 just as much as you are!
 
-On February 18th, we received the most perfect PCI vendor ID: `01DE`! 
+On February 18th, we received the most perfect PCI vendor ID: `01DE`. 
 Huge thanks to [Robert Mustacchi](https://twitter.com/rmustacc) for getting that!
 
 <blockquote class="twitter-tweet"><p lang="ca" dir="ltr">#​define PCI_VENDOR_ID_OXIDE 0x1DE</p>&mdash; Joshua M. Clulow (@jmclulow) <a href="https://twitter.com/jmclulow/status/1229923714218594305?ref_src=twsrc%5Etfw">February 19, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
