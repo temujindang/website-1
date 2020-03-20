@@ -375,7 +375,7 @@ h3 {
   @apply mb-16;
 }
 
-.content .page img {
+.content .page.blogpost img {
   @apply my-8;
   @apply border-oxide-green;
   @apply border-4;
