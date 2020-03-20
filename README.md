@@ -7,17 +7,16 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**
 
-- [Oxide Computer Company website](#oxide-computer-company-website)
-  - [Prerequisites](#prerequisites)
-  - [Stack](#stack)
-  - [Running locally](#running-locally)
-  - [Adding new content](#adding-new-content)
-    - [Blog posts](#blog-posts)
-      - [Rich links](#rich-links)
-    - [Team members](#team-members)
-  - [Previewing the production build](#previewing-the-production-build)
-  - [Styling with TailwindCSS](#styling-with-tailwindcss)
-    - [Global CSS utilities.](#global-css-utilities)
+- [Prerequisites](#prerequisites)
+- [Stack](#stack)
+- [Running locally](#running-locally)
+- [Adding new content](#adding-new-content)
+  - [Blog posts](#blog-posts)
+    - [Rich links](#rich-links)
+  - [Team members](#team-members)
+- [Previewing the production build](#previewing-the-production-build)
+- [Styling with TailwindCSS](#styling-with-tailwindcss)
+  - [Global CSS utilities.](#global-css-utilities)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
