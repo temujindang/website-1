@@ -14,4 +14,4 @@ jobs:
         uses: docker://node:latest
         with:
           entrypoint: bash
-          args: -c "npm install broken-link-checker -g && blc http://oxide.computer -ro --exclude linkedin.com --exclude dell.com/support/articles"
+          args: -c "npm install broken-link-checker -g && blc http://oxide.computer -ro --exclude linkedin.com --exclude dell.com/support/article --exclude http://www.cpu-world.com/CPUs/2901"
