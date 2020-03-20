@@ -270,7 +270,7 @@ h1.heading span {
 h2.heading {
   @apply mt-10;
   @apply mb-6;
-  @apply text-3xl;
+  @apply text-2xl;
   @apply font-semibold;
   @apply leading-normal;
   /* text-3xl leading-9 font-extrabold tracking-tight text-white sm: text-4xl sm: leading-10 */
@@ -293,7 +293,7 @@ h2.heading {
 .blog h3,
 .page h3,
 .podcast h3 {
-  @apply mt-8;
+  @apply mt-6;
   @apply mb-4;
   @apply text-xl;
   @apply font-semibold;

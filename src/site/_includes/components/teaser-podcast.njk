@@ -1,7 +1,9 @@
     <li class="my-24 pb-32 border-b border-gray-600">
-      <time value="{{ item.date }}" class="font-bold text-gray-400">{{ item.date | readableDate }}</time>
-      <h3 class="heading"><a href="{{ item.url }}">{{ item.data.title }}</a></h3>
-      <div class="">
+      <h2 class="heading"><a href="{{ item.url }}">{{ item.data.title }}</a></h2>
+      <div class="post-metadata my-6">
+        <time value="{{ item.date }}" class="font-bold text-gray-400">{{ item.date | readableDate }}</time>
+      </div>
+      <div>
       {{ item.templateContent | section | safe }}
       </div>
     </li>
