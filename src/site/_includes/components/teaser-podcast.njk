@@ -7,7 +7,7 @@
             {{ comma() }} {{ team[author].name }}
             {%- endfor %}
         </div>
-        <time value="{{ item.date }}" class="font-bold text-gray-400">{{ item.date | readableDate }}</time>
+        <time value="{{ item.date }}" class="text-gray-400">{{ item.date | readableDate }}</time>
     </div>
     <div>
         {{ item.data.description }}
