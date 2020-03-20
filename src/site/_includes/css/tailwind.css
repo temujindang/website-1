@@ -376,7 +376,10 @@ h3 {
   @apply mb-16;
 }
 
-.page.blogpost .content img {
+
+/* Hack for styling images in Markdown  */
+
+.page.blogpost .content p>img {
   @apply my-8;
   @apply border-oxide-green;
   @apply border-4;
