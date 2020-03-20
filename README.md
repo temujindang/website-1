@@ -7,15 +7,17 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**
 
-- [Prerequisites](#prerequisites)
-- [Stack](#stack)
-- [Running locally](#running-locally)
-- [Adding new content](#adding-new-content)
-  - [Blog posts](#blog-posts)
-  - [Team members](#team-members)
-- [Previewing the production build](#previewing-the-production-build)
-- [Styling with TailwindCSS](#styling-with-tailwindcss)
-  - [Global CSS utilities.](#global-css-utilities)
+- [Oxide Computer Company website](#oxide-computer-company-website)
+  - [Prerequisites](#prerequisites)
+  - [Stack](#stack)
+  - [Running locally](#running-locally)
+  - [Adding new content](#adding-new-content)
+    - [Blog posts](#blog-posts)
+      - [Rich links](#rich-links)
+    - [Team members](#team-members)
+  - [Previewing the production build](#previewing-the-production-build)
+  - [Styling with TailwindCSS](#styling-with-tailwindcss)
+    - [Global CSS utilities.](#global-css-utilities)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -64,6 +66,13 @@ tags: ['post', 'announcements']
 author: ["first-last", "first-last", "first-last"]
 description: A description that is used in snippets
 ---
+```
+
+#### Rich links
+
+If you want to use rich links add them to a post in this format:
+```
+{{"https://oxide.computer/podcast/on-the-metal-10-season-1-wrap-up/" | linkPreview | safe}}
 ```
 
 FIXME👇  
