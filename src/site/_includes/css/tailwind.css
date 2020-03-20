@@ -501,7 +501,7 @@ a.nav-tab:hover span:after,
 }
 
 
-/* TODO: fix this hack for navigation buttons */
+/* TODO [$5e7510282495610007ff3c44]: fix this hack for navigation buttons */
 
 .content .footer a {
   @apply border-b;
