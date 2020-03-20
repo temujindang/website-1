@@ -21,6 +21,13 @@ wait for this image to be burned into a ROM.
 
 ![team](/images/team.jpg)
 
+We also made sure to make a visit to the Computer History Museum while everyone
+was in town. Was fun to have some folks from the open firmware community
+join us as well! Since it was not busy we got an unusually long amount of time
+with the docent at the IBM 1401 demo which was fascinating.
+
+![computer-history-museum](/images/computer-history-museum.jpg)
+
 Last month, we wrapped up the first season of our podcast, 
 [On the Metal](https://oxide.computer/podcast/). These were super fun to 
 record and I know we are looking forward to Season 2 just as much as you are!
@@ -45,6 +52,10 @@ enjoy reading:
 
 Tom Krazit at Protocol published a feature on what we are working on: 
 [This little server startup wants to take on a horde of tech giants](https://www.protocol.com/oxide-computer-cloud-server).
+
+[Cliff L. Biffle](http://cliffle.com/) made us new signs for our conference rooms!
+
+![conference-room-signs](/images/conference-room-signs.jpg)
 
 Last Monday, I [opened our phone line](https://twitter.com/jessfraz/status/1239584753205923841) 
 to anyone who wanted to share stories about their hardware pain. Thank you to everyone for 
