@@ -14,4 +14,4 @@ jobs:
         uses: docker://node:latest
         with:
           entrypoint: bash
-          args: -c "npm install broken-link-checker -g && blc http://oxide.computer -ro"
+          args: -c "npm install broken-link-checker -g && blc http://oxide.computer -ro --exclude linkedin.com"

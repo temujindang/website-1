@@ -1,6 +1,7 @@
 # Oxide Computer Company website
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/0cf78df6-6274-4d35-b329-23b354d037e7/deploy-status)](https://app.netlify.com/sites/gracious-heisenberg-b8f5b9/deploys)
+[![broken link checker](https://github.com/oxidecomputer/website/workflows/broken%20link%20checker/badge.svg)](https://github.com/oxidecomputer/website/actions?query=workflow%3A%22broken+link+checker%22)
 
 ## Prerequisites
 
