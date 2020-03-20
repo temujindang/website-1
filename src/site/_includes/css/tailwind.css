@@ -373,7 +373,7 @@ h3 {
   Base styles for pages
 */
 
-.page .content {
+.content {
   @apply mb-16;
 }
 
