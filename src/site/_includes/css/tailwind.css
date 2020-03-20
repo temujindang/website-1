@@ -695,7 +695,8 @@ audio {
 
 .circuit-svg {
   height: 100vh;
-  max-height: 658px;
+  /* max-height: 658px; */
+  min-height: 740px;
   overflow: hidden;
   position: absolute;
   left: 0;
