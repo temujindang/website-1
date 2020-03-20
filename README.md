@@ -52,6 +52,8 @@ FIXME👇
 ~~The authors field can hold more than one author and is the name of the `json`
 file for the specific author in [`_data/team`](_data/team).~~
 
+Make sure to add a `<!--more-->` break so that the whole post doesn't show on the blog posts page and only shows a snippet instead. 
+
 ### Team members
 
 Add a json file to [`_data/team`](data/team) in the following format:
