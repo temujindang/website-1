@@ -223,10 +223,11 @@ p {
 
 .content blockquote p {
   @apply inline;
-  @apply text-3xl;
+  @apply text-2xl;
   @apply font-bold;
-  @apply text-gray-800;
   @apply tracking-widest;
+  @apply leading-tight;
+  @apply text-gray-800;
 }
 
 
@@ -375,7 +376,7 @@ h3 {
   @apply mb-16;
 }
 
-.content .page img {
+.content .page.blogpost img {
   @apply my-8;
   @apply border-oxide-green;
   @apply border-4;
