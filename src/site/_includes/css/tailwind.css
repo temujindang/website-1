@@ -377,6 +377,8 @@ h3 {
 
 .content .page img {
   @apply my-8;
+  @apply border-oxide-green;
+  @apply border-4;
 }
 
 

@@ -60,7 +60,7 @@ Huge thanks to [Robert Mustacchi](https://twitter.com/rmustacc) for getting that
 Bryan gave a talk at Stanford on [The Soul of a New Machine](https://www.youtube.com/watch?v=vvZA9n3e5pc).
 
 <div class="my-8">
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/vvZA9n3e5pc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <iframe class="max-w-full" width="560" height="315" src="https://www.youtube.com/embed/vvZA9n3e5pc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
 ### Busy writing
