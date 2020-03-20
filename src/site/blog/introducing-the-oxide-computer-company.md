@@ -3,7 +3,7 @@ title: 'Oxide Computer Company: Initial boot sequence'
 subtitle: ''
 date: 2019-12-02T03:09:26
 tags: ['post', 'announcements', 'launch']
-author: ["steve-tuck", "bryan-cantrill", "jessie-frazelle"]
+authors: ["steve-tuck", "bryan-cantrill", "jessie-frazelle"]
 description: Introducing Oxide Computer Company
 ---
 

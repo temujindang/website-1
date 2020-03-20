@@ -3,7 +3,7 @@ title: 'March 2020 Update'
 subtitle: ''
 date: 2020-03-19T03:09:26
 tags: ['post', 'update']
-author: ["jessie-frazelle"]
+authors: ["jessie-frazelle"]
 description: Updates from the Oxide Computer Company for March 2020.
 ---
 

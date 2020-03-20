@@ -3,7 +3,7 @@ title: 'The Good and Bad Reasons to Run On-Premises'
 subtitle: ''
 date: 2019-09-17T08:09:26-07:00
 tags: ['draft']
-author: ["jessie-frazelle"]
+authors: ["jessie-frazelle"]
 description: What are the good reasons for running on-premises? What are the bad reasons?
 ---
 
