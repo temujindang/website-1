@@ -1,7 +1,7 @@
 ---
 title: 'March 2020 Update'
 date: 2020-03-20T03:09:26
-tags: ['post', 'update']
+tags: ['draft', 'update']
 authors: ["jessie-frazelle"]
 description: |
     Updates from the warehouse for March 2020 including hiring, our office, 
