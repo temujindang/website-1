@@ -375,6 +375,10 @@ h3 {
   @apply mb-16;
 }
 
+.content .page img {
+  @apply my-8;
+}
+
 
 /*
   Base styles for lists
