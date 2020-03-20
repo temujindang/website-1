@@ -372,11 +372,11 @@ h3 {
   Base styles for pages
 */
 
-.content .page {
+.page .content {
   @apply mb-16;
 }
 
-.content .page.blogpost img {
+.page.blogpost .content img {
   @apply my-8;
   @apply border-oxide-green;
   @apply border-4;
