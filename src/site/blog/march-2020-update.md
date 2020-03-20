@@ -12,7 +12,9 @@ Hello friends!
 Things have been moving very fast here and we apologize for the lack of an 
 official update on our end, other than our Twitter feeds.
 
-We are now a [team](/team) of 15 people! Everyone was in Emeryville for the 
+We are now a [team](/team) of 15 people! 
+<!--more-->
+Everyone was in Emeryville for the 
 Open Compute Summit, which was cancelled, but we still made the best of it by 
 having company-wide face-to-face architecture discussions. We even snapped a 
 photo with the whole team. As Bryan 
