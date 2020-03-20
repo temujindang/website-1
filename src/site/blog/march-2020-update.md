@@ -11,7 +11,7 @@ Hello friends!
 
 I want to start by saying we wish you the very best during this unprecedented time. 
 Our thoughts go out to everyone working hard to help those in need. 
-We hope you and your families are staying safe.
+We wish you and your families health and resilience.
 
 A lot has happened at Oxide since we first decloaked in Decemeber and I apologize 
 for the lack of an official update on our end, other than our Twitter feeds. We've
