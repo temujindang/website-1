@@ -52,6 +52,7 @@ enjoy reading:
 - [Securing the Boot Process](https://cacm.acm.org/magazines/2020/3/243026-securing-the-boot-process/fulltext)
 - [Chipping away at Moore's Law](https://queue.acm.org/detail.cfm?id=3388515)
 - [Power to the People](https://blog.jessfraz.com/post/power-to-the-people/)
+- [The Life of a Data Byte](https://blog.jessfraz.com/post/the-life-of-a-data-byte/)
 
 Tom Krazit at Protocol published a feature on what we are working on: 
 [This little server startup wants to take on a horde of tech giants](https://www.protocol.com/oxide-computer-cloud-server).
