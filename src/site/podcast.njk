@@ -10,7 +10,7 @@ templateEngineOverride: njk, md
 <span class="leading-tight text-xl">Subscribe</span>
 {% include 'components/podcast-share.njk' %}
 <ul>
-  {%- for item in collections.podcast | reverse -%}
+    {%- for item in collections.podcast | reverse -%}
     {% include 'components/teaser-podcast.njk' %}
-  {%- endfor -%}
+    {%- endfor -%}
 </ul>
