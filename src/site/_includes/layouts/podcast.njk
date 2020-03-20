@@ -7,10 +7,11 @@ pageClass: page podcast
   <time value="{{ item.date }}" class="text-gray-200">{{ date | readableDate }}</time>
   <h1 class="heading">{{ title }}</h1>
   <div class="podcast-share mt-12 mb-6">
+    <span class="leading-tight text-xl">Subscribe</span>
     {% include 'components/podcast-share.njk' %}
   </div>
   <div class="podcast-file my-12">
-    <h3 class="heading">Listen</h3>
+    <span class="leading-tight text-xl">Listen</span>
     <div class="w-auto mt-4 mb-8 py-6 lg:py-6 border-t border-b text-base">
       <audio class="object-center" src="{{ podcast_file }}" controls preload="auto" />
     </div>

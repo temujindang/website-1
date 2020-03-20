@@ -7,6 +7,7 @@ pageClass: podcast
 templateEngineOverride: njk, md
 ---
 {# This is the podcasts page #}
+<span class="leading-tight text-xl">Subscribe</span>
 {% include 'components/podcast-share.njk' %}
 <ul>
   {%- for item in collections.podcast | reverse -%}
