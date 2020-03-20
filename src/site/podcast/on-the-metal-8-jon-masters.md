@@ -3,7 +3,7 @@ title: 'On the Metal: Jon Masters'
 subtitle: 'OTM episode'
 date: 2020-01-20T04:00:00-07:00
 tags: ['post', 'podcast']
-author: ['bryan-cantrill', 'jessie-frazelle', 'steve-tuck']
+authors: ['bryan-cantrill', 'jessie-frazelle', 'steve-tuck']
 description: |
     On this episode of On the Metal, we interview Jon Masters, computer 
     architecture raconteur, microprocessor *enfant terrible*, and Patron 

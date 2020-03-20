@@ -3,7 +3,7 @@ title: 'On the Metal: Jeff Rothschild'
 subtitle: 'OTM episode'
 date: 2019-12-02T05:09:26
 tags: ['post', 'podcast']
-author: ['bryan-cantrill', 'jessie-frazelle', 'steve-tuck']
+authors: ['bryan-cantrill', 'jessie-frazelle', 'steve-tuck']
 description: |
     On this episode of On the Metal, we interview Jeff Rothschild. Jeff has 
     had a fascinating journey solving all sorts of fun problems at various 

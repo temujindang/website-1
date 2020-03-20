@@ -3,7 +3,7 @@ title: 'On the Metal: Kenneth Finnegan'
 subtitle: 'OTM episode'
 date: 2020-01-06T06:00:00-07:00
 tags: ['post', 'podcast']
-author: ['bryan-cantrill', 'jessie-frazelle', 'steve-tuck']
+authors: ['bryan-cantrill', 'jessie-frazelle', 'steve-tuck']
 description: |
     On this episode of On the Metal, we interview Kenneth Finnegan, 
     internet exchange homebrewer. Join us as we delight in the underbelly 

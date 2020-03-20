@@ -3,7 +3,7 @@ title: 'On the Metal: Season 1 Wrap Up'
 subtitle: 'OTM episode'
 date: 2020-02-03T08:09:26
 tags: ['post', 'podcast', 'announcements', 'launch']
-author: ['bryan-cantrill', 'jessie-frazelle', 'steve-tuck']
+authors: ['bryan-cantrill', 'jessie-frazelle', 'steve-tuck']
 description: |
     Welp, that's a wrap for the first season of the On the Metal podcast. 
     Join us as we reminisce about some of our favorite parts (although it 

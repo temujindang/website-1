@@ -3,7 +3,7 @@ title: 'On the Metal: Trammell Hudson'
 subtitle: 'OTM episode'
 date: 2019-12-30T06:09:26
 tags: ['post', 'podcast', 'announcements', 'launch']
-author: ['bryan-cantrill', 'jessie-frazelle', 'steve-tuck']
+authors: ['bryan-cantrill', 'jessie-frazelle', 'steve-tuck']
 description: |
     On this episode of On the Metal, we interview Trammell Hudson. Trammell 
     has some of the most interesting side projects related to every single 

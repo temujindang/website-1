@@ -3,7 +3,7 @@ title: 'On the Metal: Ron Minnich'
 subtitle: 'OTM episode'
 date: 2019-12-16T02:09:26
 tags: ['post', 'podcast']
-author: ['bryan-cantrill', 'jessie-frazelle', 'steve-tuck']
+authors: ['bryan-cantrill', 'jessie-frazelle', 'steve-tuck']
 description: |
     On this episode of On the Metal, we interview Ron Minnich. Ron has had a 
     fascinating career working on the interface between software and hardware. 

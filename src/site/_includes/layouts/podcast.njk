@@ -7,6 +7,12 @@ pageClass: page podcast
   <time value="{{ item.date }}" class="text-gray-200">{{ date | readableDate }}</time>
   <h1 class="heading">{{ title }}</h1>
   <div class="podcast-share mt-12 mb-6">
+    <div class="author uppercase">
+      {% set comma = joiner() %}
+      {%- for author in authors %}
+        {{ comma() }} {{ team[author].name }}
+      {%- endfor %}
+    </div>
     <span class="leading-tight text-xl">Subscribe</span>
     {% include 'components/podcast-share.njk' %}
   </div>

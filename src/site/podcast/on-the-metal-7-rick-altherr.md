@@ -3,7 +3,7 @@ title: 'On the Metal: Rick Altherr'
 subtitle: 'OTM episode'
 date: 2020-01-13T06:00:00
 tags: ['post', 'podcast']
-author: ['bryan-cantrill', 'jessie-frazelle', 'steve-tuck']
+authors: ['bryan-cantrill', 'jessie-frazelle', 'steve-tuck']
 description: |
     On this episode of On the Metal, we interview Rick Altherr, who has 
     experience working all over the stack. Join us as we discuss impossible 

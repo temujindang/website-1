@@ -1,6 +1,12 @@
 <li class="my-24 pb-32 border-b border-gray-600">
     <h2 class="heading"><a href="{{ item.url }}">{{ item.data.title }}</a></h2>
     <div class="post-metadata mt-4 mb-6">
+        <div class="author uppercase">
+            {% set comma = joiner() %}
+            {%- for author in item.data.authors %}
+            {{ comma() }} {{ team[author].name }}
+            {%- endfor %}
+        </div>
         <time value="{{ item.date }}" class="font-bold text-gray-400">{{ item.date | readableDate }}</time>
     </div>
     <div>

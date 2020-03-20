@@ -3,7 +3,7 @@ title: 'On the Metal: Teaser'
 subtitle: 'OTM episode'
 date: 2019-12-01T08:09:26
 tags: ['post', 'podcast', 'announcements', 'launch']
-author: ['bryan-cantrill', 'jessie-frazelle']
+authors: ['bryan-cantrill', 'jessie-frazelle']
 description: |
     Welcome to our new podcast, On the Metal! As a part of starting a company, 
     we decided to also create the podcast we always wanted. 

@@ -3,7 +3,7 @@ title: 'On the Metal: Amir Michael'
 subtitle: 'OTM episode'
 date: 2019-12-06T06:09:26-07:00
 tags: ['post', 'podcast', 'announcements', 'launch']
-author: ['bryan-cantrill', 'jessie-frazelle']
+authors: ['bryan-cantrill', 'jessie-frazelle']
 description: |
     On this episode of On the Metal, we interview Amir Michael.  Join us as 
     we listen to stories of growing up and coming up in Silicon Valley, from 

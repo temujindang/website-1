@@ -3,7 +3,7 @@ title: 'On the Metal: Tom Lyon'
 subtitle: 'OTM episode'
 date: 2019-12-23T06:09:26-07:00
 tags: ['post', 'podcast']
-author: ['bryan-cantrill', 'jessie-frazelle', 'steve-tuck']
+authors: ['bryan-cantrill', 'jessie-frazelle', 'steve-tuck']
 description: |
     On this episode of On the Metal, we interview Tom Lyon, Sun employee #8, 
     network storage pioneer and systems software polymath.  Join us as Tom 

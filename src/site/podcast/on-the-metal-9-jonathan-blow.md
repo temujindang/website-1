@@ -3,7 +3,7 @@ title: 'On the Metal: Jonathan Blow'
 subtitle: 'OTM episode'
 date: 2020-01-27T06:00:00-07:00
 tags: ['post', 'podcast']
-author: ['bryan-cantrill', 'jessie-frazelle', 'steve-tuck']
+authors: ['bryan-cantrill', 'jessie-frazelle', 'steve-tuck']
 description: |
     On this episode of On the Metal, we interview legendary game designer 
     and programmer Jonathan Blow.  Join along as Jonathan takes us from 
