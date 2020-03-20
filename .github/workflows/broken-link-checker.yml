@@ -1,0 +1,17 @@
+on:
+  schedule:
+    - cron: "* * * * *"
+  push:
+    branches:
+      - master # Push events on master branch
+name: broken link checker
+jobs:
+  brokenLinkChecker:
+    name: broken link checker
+    runs-on: ubuntu-latest
+    steps:
+      - name: broken link checker
+        uses: docker://node:latest
+        with:
+          entrypoint: bash
+          args: -c "npm install broken-link-checker -g && blc http://oxide.computer -ro"
