@@ -3,14 +3,20 @@ title: 'March 2020 Update'
 subtitle: ''
 date: 2020-03-19T03:09:26
 tags: ['post', 'update']
-author: ["jessie-frazelle"]
+authors: ["jessie-frazelle"]
 description: Updates from the Oxide Computer Company for March 2020.
 ---
 
 Hello friends!
 
-Things have been moving very fast here and we apologize for the lack of an 
-official update on our end, other than our Twitter feeds.
+I want to start by saying we wish you the very best during this unprecedented time
+in which we are all united. 
+Our thoughts go out to everyone working hard to help those in need. 
+We wish you and your families health and resilience.
+
+A lot has happened at Oxide since we first decloaked in Decemeber and I apologize 
+for the lack of an official update on our end, other than our Twitter feeds. We've
+been hard at work building a product!
 
 We are now a [team](/team) of 15 people! 
 Everyone was in Emeryville for the 
@@ -35,7 +41,7 @@ Last month, we wrapped up the first season of our podcast,
 [On the Metal](https://oxide.computer/podcast/). These were super fun to 
 record and I know we are looking forward to Season 2 just as much as you are!
 
-On February 18th, we received the most perfect PCI vendor ID: `01DE`! 
+On February 18th, we received the most perfect PCI vendor ID: `01DE`. 
 Huge thanks to [Robert Mustacchi](https://twitter.com/rmustacc) for getting that!
 
 <blockquote class="twitter-tweet"><p lang="ca" dir="ltr">#​define PCI_VENDOR_ID_OXIDE 0x1DE</p>&mdash; Joshua M. Clulow (@jmclulow) <a href="https://twitter.com/jmclulow/status/1229923714218594305?ref_src=twsrc%5Etfw">February 19, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -44,7 +50,7 @@ Bryan gave a talk at Stanford on [The Soul of a New Machine](https://www.youtube
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/vvZA9n3e5pc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-I have written some articles on my blog and for the ACM Queue that you might 
+I have written some articles on my blog and for ACM Queue that you might 
 enjoy reading:
 
 - [Open Source Firmware](https://cacm.acm.org/magazines/2019/10/239673-open-source-firmware/fulltext)
@@ -52,6 +58,7 @@ enjoy reading:
 - [Securing the Boot Process](https://cacm.acm.org/magazines/2020/3/243026-securing-the-boot-process/fulltext)
 - [Chipping away at Moore's Law](https://queue.acm.org/detail.cfm?id=3388515)
 - [Power to the People](https://blog.jessfraz.com/post/power-to-the-people/)
+- [The Life of a Data Byte](https://blog.jessfraz.com/post/the-life-of-a-data-byte/)
 
 Tom Krazit at Protocol published a feature on what we are working on: 
 [This little server startup wants to take on a horde of tech giants](https://www.protocol.com/oxide-computer-cloud-server).
@@ -75,9 +82,11 @@ the wonderful conversations!
 On Wednesday, [Jared Volpe](https://twitter.com/plainspace) 
 shipped the redesign of this website! Pro tip: check out the 404 page ;) 
 
-On Friday, Bryan gave a talk on [Tock OS](https://www.tockos.org/) at 
-[Oxidize 1K](https://oxidizeconf.com/oxidize-1k/).
+On Friday, Bryan gave a talk on at 
+[Oxidize 1K](https://oxidizeconf.com/oxidize-1k/) on 
+"Tockilator: Deducing Tock execution flow
+from Ibex Verilator traces".
 
 [put video embed here]
 
-From everyone at Oxide, we wish you the best during this unprecedented time.
+That's all for now. We will continue to update you with news as we go about building. Stay tuned!

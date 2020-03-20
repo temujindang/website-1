@@ -6,6 +6,12 @@ templateEngineOverride: njk, md
 <div>
   {% include "components/post-metadata.njk" %}
   <h1 class="heading">{{ title }}</h1>
+  <h3 class="author">
+    {% set comma = joiner() %}
+    {%- for author in authors %}
+          {{ comma() }} {{ team[author].name }}
+    {%- endfor %}
+  </h3>
   <div class="mb-4">
     {{ content | section | safe }}
   </div>
