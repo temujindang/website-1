@@ -9,8 +9,12 @@ description: Updates from the Oxide Computer Company for March 2020.
 
 Hello friends!
 
-Things have been moving very fast here and we apologize for the lack of an 
-official update on our end, other than our Twitter feeds.
+I want to start by saying we wish you the very best during this unprecedented time. 
+Our thoughts go out to everyone working hard to help those in need. 
+We hope you and your families are staying safe.
+
+A lot has happened at Oxide since we first decloaked in Decemeber and I apologize 
+for the lack of an official update on our end, other than our Twitter feeds.
 
 We are now a [team](/team) of 15 people! 
 Everyone was in Emeryville for the 
@@ -81,4 +85,4 @@ On Friday, Bryan gave a talk on [Tock OS](https://www.tockos.org/) at
 
 [put video embed here]
 
-From everyone at Oxide, we wish you the best during this unprecedented time.
+
