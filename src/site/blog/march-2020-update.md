@@ -8,7 +8,7 @@ description: Updates from the Oxide Computer Company for March 2020.
 ---
 
 <!-- FIXME NEW POST: let's get a class on the content before more so we can style it -->
-Wishing you health and resilience in trying times and a quick update from Oxide.
+<!-- Wishing you health and resilience in trying times and a quick update from Oxide. -->
 
 <!--more-->
 
@@ -20,6 +20,7 @@ Our thoughts go out to everyone working hard to help those in need.
 We wish you and your families health and resilience.
 
 ### Hard at work... and growing
+
 A lot has happened at Oxide since we first decloaked in Decemeber and I apologize 
 for the lack of an official update on our end, other than our Twitter feeds. We've
 been hard at work building a product!
@@ -34,7 +35,8 @@ wait for this image to be burned into a ROM.
 
 ![team](/images/team.jpg)
 
-### Computer History!
+### Computer History Museum
+
 We also made sure to visit the Computer History Museum while everyone
 was in town. It was fun to have some folks from the open firmware community
 join us as well! Since it was not busy we got to spend an unusually long amount 
@@ -42,12 +44,14 @@ of time with the docent at the IBM 1401 demo which was fascinating.
 
 ![computer-history-museum](/images/computer-history-museum.jpg)
 
-### On the Metal season 2 coming soon
+### On the Metal
+
 Last month, we wrapped up the first season of our podcast, 
 [On the Metal](https://oxide.computer/podcast/). These were super fun to 
 record and I know we are looking forward to Season 2 just as much as you are!
 
-### Best PCI vendor ID ever
+### PCI
+
 On February 18th, we received the most perfect PCI vendor ID: `01DE`. 
 Huge thanks to [Robert Mustacchi](https://twitter.com/rmustacc) for getting that!
 
@@ -56,7 +60,8 @@ Huge thanks to [Robert Mustacchi](https://twitter.com/rmustacc) for getting that
   <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </div>
 
-### The Soul of a New Machine at Standford
+### The Soul of a New Machine at Stanford
+
 Bryan gave a talk at Stanford on [The Soul of a New Machine](https://www.youtube.com/watch?v=vvZA9n3e5pc).
 
 <div class="my-8">
@@ -64,6 +69,7 @@ Bryan gave a talk at Stanford on [The Soul of a New Machine](https://www.youtube
 </div>
 
 ### Busy writing
+
 I have written some articles on my blog and for ACM Queue that you might 
 enjoy reading:
 
@@ -75,10 +81,12 @@ enjoy reading:
 - [The Life of a Data Byte](https://blog.jessfraz.com/post/the-life-of-a-data-byte/)
 
 ### In the media
+
 Tom Krazit at Protocol published a feature on what we are working on: 
 [This little server startup wants to take on a horde of tech giants](https://www.protocol.com/oxide-computer-cloud-server).
 
 ### Moving in
+
 [Cliff L. Biffle](http://cliffle.com/) made us new signs for our conference rooms!
 
 ![conference-room-signs](/images/conference-room-signs.jpg)
@@ -97,16 +105,19 @@ so much!
 </div>
 
 ### The phone lines are now open!
-Last Monday, I [opened our phone line](https://twitter.com/jessfraz/status/1239584753205923841) 
+
+On Monday, I [opened our phone line](https://twitter.com/jessfraz/status/1239584753205923841) 
 to anyone who wanted to share stories about their hardware pain. Thank you to everyone for 
 the wonderful conversations!
 
 ### oxide.computer v2
+
 On Wednesday, [Jared Volpe](https://twitter.com/plainspace) 
 shipped the redesign of this website! Pro tip: check out the 404 page ;) 
 
 ### Bryan at Oxidize 1K
-On Friday, Bryan gave a talk on at 
+
+Today, Bryan gave a talk on at 
 [Oxidize 1K](https://oxidizeconf.com/oxidize-1k/) on 
 "Tockilator: Deducing Tock execution flow
 from Ibex Verilator traces".
@@ -114,4 +125,5 @@ from Ibex Verilator traces".
 [put video embed here]
 
 ### Stay tuned!
-That's all for now. We will continue to update you with news as we go about building. Stay tuned!
+
+That's all for now. We will continue to update you with news as we go about building.
