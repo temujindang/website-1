@@ -1,7 +1,15 @@
-
-    <li class="my-24 pb-32 border-b border-gray-500">
-      {% include "components/post-metadata.njk" %}
+    <li class="my-24 pb-32 border-b border-gray-600">
       <h2 class="heading"><a href="{{ item.url }}">{{ item.data.title }}</a></h2>
+      <div class="post-metadata my-6">
+        <div class="author uppercase">
+        {# FIXME: why isn't this working here? #}
+        {% set comma = joiner() %}
+        {%- for author in authors %}
+          {{ comma() }} {{ team[author].name }}
+        {%- endfor %}
+        </div>
+        <time value="{{ item.date }}" class="text-gray-400">{{ item.date | readableDate }}</time>
+      </div>
       <div>
       {{ item.templateContent | section | safe }}
       </div>

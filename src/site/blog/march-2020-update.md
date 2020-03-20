@@ -1,11 +1,16 @@
 ---
 title: 'March 2020 Update'
 subtitle: ''
-date: 2020-03-19T03:09:26
+date: 2020-03-23T03:09:26
 tags: ['post', 'update']
 authors: ["jessie-frazelle"]
 description: Updates from the Oxide Computer Company for March 2020.
 ---
+
+<!-- FIXME: let's get a class on the content before more so we can style it -->
+Wishing you health and resilience in trying times and a quick update from Oxide.
+
+<!--more-->
 
 Hello friends!
 
@@ -25,8 +30,6 @@ having company-wide face-to-face architecture discussions. We even snapped a
 photo with the whole team. As Bryan 
 [said](https://twitter.com/bcantrill/status/1237463119581949953): we cannot 
 wait for this image to be burned into a ROM.
-
-<!--more-->
 
 ![team](/images/team.jpg)
 

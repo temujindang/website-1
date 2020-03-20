@@ -250,6 +250,19 @@ h1.heading {
   }
 }
 
+
+/* .blog h1.heading:after,
+.page h1.heading:after,
+.podcasts h1.heading:after {
+  content: "";
+  @apply block;
+  @apply relative;
+  @apply w-12;
+  @apply mt-3;
+  @apply h-1;
+  @apply bg-oxide-green;
+} */
+
 .blog h1.heading:after,
 .page h1.heading:after,
 .podcasts h1.heading:after {
@@ -558,12 +571,13 @@ audio {
 }
 
 .podcast-share a {
-  @apply border-transparent;
-  @apply mt-2;
-  @apply border-b-4;
   @apply flex;
   @apply items-center;
+  @apply mt-2;
   @apply mr-4;
+  @apply border-transparent;
+  @apply border-b-4;
+  @apply text-sm;
   transition: border 40ms ease-in-out;
 }
 

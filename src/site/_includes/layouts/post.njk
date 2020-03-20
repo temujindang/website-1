@@ -1,17 +1,18 @@
 ---
 layout: default
 pageClass: post
-templateEngineOverride: njk, md
 ---
 <div>
-  {% include "components/post-metadata.njk" %}
   <h1 class="heading">{{ title }}</h1>
-  <h3 class="author">
-    {% set comma = joiner() %}
-    {%- for author in authors %}
-          {{ comma() }} {{ team[author].name }}
-    {%- endfor %}
-  </h3>
+  <div class="post-metadata my-12">
+    <div class="author uppercase">
+      {% set comma = joiner() %}
+      {%- for author in authors %}
+        {{ comma() }} {{ team[author].name }}
+      {%- endfor %}
+    </div>
+    <time value="{{ item.date }}" class="text-gray-400">{{ date | readableDate }}</time>
+  </div>
   <div class="mb-4">
     {{ content | section | safe }}
   </div>
