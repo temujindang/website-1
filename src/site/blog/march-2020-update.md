@@ -16,7 +16,7 @@ We wish you and your families health and resilience.
 
 A lot has happened at Oxide since we first decloaked in Decemeber and I apologize 
 for the lack of an official update on our end, other than our Twitter feeds. We've
-been hard at work building a product.
+been hard at work building a product!
 
 We are now a [team](/team) of 15 people! 
 Everyone was in Emeryville for the 
