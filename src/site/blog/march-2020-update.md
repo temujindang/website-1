@@ -62,7 +62,7 @@ to anyone who wanted to share stories about their hardware pain. Thank you to ev
 the wonderful conversations!
 
 On Wednesday, [Jared Volpe](https://twitter.com/plainspace) 
-shipped the redesign of this website! 
+shipped the redesign of this website! Pro tip: check out the 404 page ;) 
 
 On Friday, Bryan gave a talk on [Tock OS](https://www.tockos.org/) at 
 [Oxidize 1K](https://oxidizeconf.com/oxidize-1k/).
