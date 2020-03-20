@@ -52,6 +52,16 @@ O:::::::OOO:::::::O    X:::::X      X:::::X     II::::II  DDD:::::DDDDD:::::D   
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v1.9.3/dist/alpine.js" defer></script>
     {% include "head-meta.njk" %}
     {# <script src="https://unpkg.com/favicon-switcher@1.2.2/dist/index.js" crossorigin="anonymous" type="application/javascript" defer></script> #}
+    <script defer type="text/javascript" src="//cdn.jsdelivr.net/blazy/latest/blazy.min.js"></script>
+		<script type="text/javascript">
+			window.addEventListener('DOMContentLoaded', () => {
+				var bLazy = new Blazy({
+					selector: ".lp img",
+					offset: 300,
+					success: (element) => {element.style.backgroundColor = "white";}
+				});
+			})
+		</script>
   </head>
   <body id="top" class="{% if pageClass %}{{ pageClass }}{% endif %} container mx-auto mb-12 max-w-none lg:max-w-6xl bg-oxide-gray text-white">
     {% include "header.njk" %}

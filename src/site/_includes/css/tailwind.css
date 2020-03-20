@@ -606,6 +606,100 @@ audio {
 
 
 /*
+  link previews
+*/
+
+.lp {
+  @apply flex;
+  @apply my-8;
+  @apply bg-gray-800;
+  max-height: 162px;
+}
+
+.lp svg {
+  width: 162px;
+  height: 162px;
+}
+
+.lp a,
+.lp a:hover,
+.lp a:link,
+.lp a:active,
+.lp a:visited {
+  @apply no-underline;
+  @apply border-none;
+}
+
+.lp a:hover *,
+.lp a:active *,
+.lp-img:hover,
+.lp-img:active,
+.lp-meta:hover,
+.lp-meta:active {
+  @apply no-underline;
+  @apply border-none;
+}
+
+.lp-img {
+  @apply block;
+  @apply flex-initial;
+  @apply order-last;
+  @apply relative;
+  @apply bg-gray-300;
+  min-height: 100px;
+}
+
+.lp-img img {
+  @apply absolute;
+  @apply inset-0;
+  @apply w-full;
+  @apply h-full;
+  @apply object-cover;
+}
+
+.lp-meta {
+  @apply block;
+  @apply flex-1;
+  @apply m-0;
+  @apply p-6;
+  @apply pt-7;
+  @apply overflow-hidden;
+  @apply text-lg;
+  @apply leading-tight;
+}
+
+.lp-title {
+  @apply block;
+  @apply font-bold;
+  @apply text-lg;
+  @apply overflow-hidden;
+  max-height: 32px;
+}
+
+.lp-desc {
+  @apply block;
+  @apply text-base;
+  @apply overflow-hidden;
+  max-height: 80px;
+}
+
+.lp-url {
+  @apply text-sm;
+}
+
+.lp-author,
+.lp-url,
+.lp-desc {
+  @apply block;
+  @apply mt-4;
+}
+
+.lp-author::before {
+  content: "by ";
+}
+
+
+/*
   404
 */
 

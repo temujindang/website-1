@@ -82,7 +82,7 @@ You can find Jonathan on Twitter at https://twitter.com/Jonathan_Blow.
 - Entity-component-system: https://en.wikipedia.org/wiki/Entity_component_system
 - Jonathan's talk 'Preventing the Collapse of Civilization': https://www.youtube.com/watch?v=pW-SOdj4Kkk
 - Tcl: https://en.wikipedia.org/wiki/Tcl
-- Dropbox's Python 2 to Python 3 migration: https://blogs.dropbox.com/tech/2018/09/how-we-rolled-out-one-of-the-largest-python-3-migrations-ever/
+- Dropbox's Python 2 to Python 3 migration: https://dropbox.tech/application/how-we-rolled-out-one-of-the-largest-python-3-migrations-ever
 - Resource acquisition is initialization (RAII): https://en.wikipedia.org/wiki/Resource_acquisition_is_initialization
 - Microkernels: https://en.wikipedia.org/wiki/Microkernel
 - Anders Hejlsberg: https://en.wikipedia.org/wiki/Anders_Hejlsberg
