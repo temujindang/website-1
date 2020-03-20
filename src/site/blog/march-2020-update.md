@@ -1,6 +1,5 @@
 ---
 title: 'March 2020 Update'
-subtitle: ''
 date: 2020-03-20T03:09:26
 tags: ['post', 'update']
 authors: ["jessie-frazelle"]

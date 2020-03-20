@@ -44,15 +44,15 @@ subtitle: 'Post subtitle (if any)'
 date: 2020-02-03T23:00:00
 tags: ['post', 'announcements']
 author: ["first-last", "first-last", "first-last"]
-description: A description that is used in snippets
+description: A description that is used in snippets.
 ---
 ```
 
-FIXME👇  
 ~~The authors field can hold more than one author and is the name of the `json`
 file for the specific author in [`_data/team`](_data/team).~~
 
-Make sure to add a `<!--more-->` break so that the whole post doesn't show on the blog posts page and only shows a snippet instead. 
+Make sure to add a `description` to your post for the main pages as well as social 
+media cards.
 
 ### Team members
 

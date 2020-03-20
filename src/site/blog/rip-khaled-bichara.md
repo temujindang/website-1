@@ -1,6 +1,5 @@
 ---
 title: 'RIP Khaled Bichara, 1971-2020'
-subtitle: ''
 date: 2020-02-03T23:00:00
 tags: ['post', 'announcements']
 authors: ["steve-tuck", "bryan-cantrill", "jessie-frazelle"]
