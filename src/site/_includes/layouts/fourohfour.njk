@@ -58,7 +58,6 @@ O:::::::OOO:::::::O    X:::::X      X:::::X     II::::II  DDD:::::DDDDD:::::D   
     {% include "footer.njk" %}
 
     {% set js %}
-      {% include "js/core.js" %}
       {% include "js/hello.js" %}
     {% endset %}
     <script>{{ js | jsmin | safe }}</script>
