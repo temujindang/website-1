@@ -2,7 +2,7 @@
       <h2 class="heading"><a href="{{ item.url }}">{{ item.data.title }}</a></h2>
       <div class="post-metadata my-6">
         <div class="author uppercase">
-        {# FIXME: why isn't this working here? #}
+        {# FIXME NEW POST: why isn't this working here? #}
         {% set comma = joiner() %}
         {%- for author in authors %}
           {{ comma() }} {{ team[author].name }}

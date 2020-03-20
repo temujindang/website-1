@@ -7,7 +7,7 @@ authors: ["jessie-frazelle"]
 description: Updates from the Oxide Computer Company for March 2020.
 ---
 
-<!-- FIXME: let's get a class on the content before more so we can style it -->
+<!-- FIXME NEW POST: let's get a class on the content before more so we can style it -->
 Wishing you health and resilience in trying times and a quick update from Oxide.
 
 <!--more-->
