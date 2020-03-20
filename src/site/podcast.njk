@@ -3,9 +3,10 @@ title: Podcast
 heading: On The Metal
 subheading: Tales from the Hardware/Software Interface.
 layout: default
+pageClass: podcast
 templateEngineOverride: njk, md
 ---
-
+{# This is the podcasts page #}
 {% include 'components/podcast-share.njk' %}
 <ul>
   {%- for item in collections.podcast | reverse -%}
