@@ -1,7 +1,5 @@
-var
-scrollTo = function(to, duration) {
-    const
-    element = document.scrollingElement || document.documentElement,
+var scrollTo = function(to, duration) {
+    var element = document.scrollingElement || document.documentElement,
         start = element.scrollTop,
         change = to - start,
         startDate = +new Date(),
@@ -16,8 +14,8 @@ scrollTo = function(to, duration) {
             return -c/2 * (t*(t-2) - 1) + b;
         },
         animateScroll = function() {
-            const currentDate = +new Date();
-            const currentTime = currentDate - startDate;
+            var currentDate = +new Date();
+            var currentTime = currentDate - startDate;
             element.scrollTop = parseInt(easeInOutQuad(currentTime, start, change, duration));
             if(currentTime < duration) {
                 requestAnimationFrame(animateScroll);
