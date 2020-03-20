@@ -44,7 +44,7 @@ Bryan gave a talk at Stanford on [The Soul of a New Machine](https://www.youtube
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/vvZA9n3e5pc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-I have written some articles on my blog and for the ACM Queue that you might 
+I have written some articles on my blog and for ACM Queue that you might 
 enjoy reading:
 
 - [Open Source Firmware](https://cacm.acm.org/magazines/2019/10/239673-open-source-firmware/fulltext)
