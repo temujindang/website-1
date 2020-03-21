@@ -622,6 +622,15 @@ audio {
   link previews
 */
 
+
+/* TODO: Make rich links work on narrow viewports  */
+
+
+/* TODO: Make rich links scale vertically  */
+
+
+/* TODO: Figure out what the image isn't working on the Oxide example */
+
 .lp {
   @apply h-40;
   @apply flex;
