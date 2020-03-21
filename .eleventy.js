@@ -23,7 +23,6 @@ const linkPreview = (link, callback) => {
     let domain = link.replace(/^http[s]?:\/\/([^\/]+).*$/i, '$1');
     let title = escape((metadata.openGraph ? metadata.openGraph.title : null) || metadata.general.title || "").trim();
     let author = escape(((metadata.jsonLd && metadata.jsonLd.author) ? metadata.jsonLd.author.name : null) || "");
-    // TODO: Fix issue with images on rich link previews
     let image = escape((metadata.openGraph && metadata.openGraph.image) ? (Array.isArray(metadata.openGraph.image) ? metadata.openGraph.image[0].url : metadata.openGraph.image.url) : null);
     let description = escape(((metadata.openGraph ? metadata.openGraph.description : "") || metadata.general.description || "").trim());
 
