@@ -1,49 +1,6 @@
-<div class="content relative max-w-screen-xl mx-auto {% if page.url == "/" %}mt-12 sm:mt-48 md:mt-24{% endif %} px-6 sm:px-6 fade-in">
-  {# {%- if page.url == "/" -%}
-    <div class="newsletter show-on-scroll">
-  {%- else -%}
-    <div class="newsletter border-t-4 border-oxide-green show-on-scroll">
-  {%- endif -%} #}
-  <div class="newsletter {% if page.url == "/" %}{% else %} border-t-4 border-oxide-green {% endif %} show-on-scroll">
-    <div class="my-16 py-12 lg:py-4">
-      {# <h4 class="text-sm leading-5 font-semibold tracking-wider uppercase text-gray-400 lg:text-right sm:text-left">
-        Subscribe to our newsletter
-      </h4>
-      <p class="mt-4 text-base leading-6 text-gray-300 lg:text-right sm:text-left">
-        Get the latest news from Oxide.
-      </p>
-      <div class="mt-4">
-        {% include 'components/mailchimp-signup.njk' %}
-      </div> #}
-
-      <div class="max-w-screen-xl mx-auto flex flex-col">
-        <h2 class="heading">
-          Sign up for our newsletter
-        </h2>
-        <p class="max-w-3xl leading-6 text-gray-300">
-          Get the latest news from Oxide.
-        </p>
-        <div class="my-8">
-          {# <form class="sm:flex">
-            <input aria-label="Email address" type="email" required class="appearance-none w-full px-5 py-3 border border-transparent text-base leading-6 rounded-md text-gray-900 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 transition duration-150 ease-in-out sm:max-w-xs" placeholder="Enter your email" />
-            <div class="mt-3 rounded-md shadow sm:mt-0 sm:ml-3 sm:flex-shrink-0">
-              <button class="w-full flex items-center justify-center px-5 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-500 hover:bg-indigo-400 focus:outline-none focus:bg-indigo-400 transition duration-150 ease-in-out">
-                Notify me
-              </button>
-            </div>
-          </form> #}
-          {% include 'components/mailchimp-signup.njk' %}
-          {# <p class="mt-3 text-sm leading-5 text-gray-300">
-            We care about the protection of your data. Read our
-            <a href="#" class="text-white font-medium underline">
-              Privacy Policy.
-            </a>
-          </p> #}
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="content relative max-w-screen-xl mx-auto px-6 sm:px-6 fade-in">
   <div class="footer show-on-scroll">
+    {% include "components/newsletter.njk" %}
     <div class="my-16 py-6 lg:py-4">
       <div class="header flex justify-between items-baseline mb-8 pb-2 border-b">
         <div class="h-8 w-auto">

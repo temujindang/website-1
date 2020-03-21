@@ -1,0 +1,15 @@
+<div class="newsletter {% if page.url == "/" %}{% else %} border-t-4 border-oxide-green {% endif %} show-on-scroll">
+  <div class="my-16 py-12 lg:py-4">
+    <div class="max-w-screen-xl mx-auto flex flex-col">
+      <h2 class="heading">
+        Sign up for our newsletter
+      </h2>
+      <p class="max-w-3xl leading-6 text-gray-300">
+        Get the latest news from Oxide.
+      </p>
+      <div class="my-8">
+        {% include 'components/mailchimp-signup.njk' %}
+      </div>
+    </div>
+  </div>
+</div>
