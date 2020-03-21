@@ -658,7 +658,8 @@ audio {
   @apply inset-0;
   @apply w-full;
   @apply h-full;
-  @apply object-cover;
+  @apply object-contain;
+  @apply bg-gray-600;
 }
 
 .lp-meta {
