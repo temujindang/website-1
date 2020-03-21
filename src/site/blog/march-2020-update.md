@@ -1,6 +1,6 @@
 ---
 title: 'March 2020 Update'
-date: 2020-03-20T03:09:26
+date: 2020-03-23T03:09:26
 tags: ['draft', 'update']
 authors: ["jessie-frazelle"]
 description: |
@@ -102,7 +102,7 @@ so much!
 
 ### The phone lines are now open!
 
-On Monday, I [opened our phone line](https://twitter.com/jessfraz/status/1239584753205923841) 
+Last Monday, I [opened our phone line](https://twitter.com/jessfraz/status/1239584753205923841) 
 to anyone who wanted to share stories about their hardware pain. Thank you to everyone for 
 the wonderful conversations!
 
@@ -113,7 +113,7 @@ shipped the redesign of this website! Pro tip: check out the 404 page ;)
 
 ### Bryan at Oxidize 1K
 
-Today, Bryan gave a talk on at 
+On Friday, Bryan gave a talk on at 
 [Oxidize 1K](https://oxidizeconf.com/oxidize-1k/) on 
 "Tockilator: Deducing Tock execution flow
 from Ibex Verilator traces".
