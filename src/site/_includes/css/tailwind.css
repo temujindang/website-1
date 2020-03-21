@@ -439,6 +439,15 @@ h3 {
   /* @apply text-base; */
 }
 
+.blog .content .heading a,
+.blog .content .heading a,
+.careers .content .heading a,
+.careers .content .heading a,
+.podcast .content .heading a,
+.podcast .content .heading a {
+  @apply break-normal;
+}
+
 .blog .content ul li:last-of-type,
 .blog .content ol li:last-of-type,
 .careers .content ul li:last-of-type,
