@@ -623,15 +623,15 @@ audio {
 */
 
 .lp {
+  @apply h-40;
   @apply flex;
   @apply my-8;
   @apply bg-gray-800;
-  max-height: 162px;
 }
 
 .lp svg {
-  width: 162px;
-  height: 162px;
+  @apply w-56;
+  @apply h-40;
 }
 
 .lp a,
@@ -658,8 +658,14 @@ audio {
   @apply flex-initial;
   @apply order-last;
   @apply relative;
-  @apply bg-gray-300;
-  min-height: 100px;
+  @apply invisible;
+  @apply mr-4;
+}
+
+@screen md {
+  .lp-img {
+    @apply visible;
+  }
 }
 
 .lp-img img {
@@ -668,49 +674,43 @@ audio {
   @apply w-full;
   @apply h-full;
   @apply object-contain;
-  @apply bg-gray-600;
+  @apply bg-gray-800;
 }
 
 .lp-meta {
   @apply block;
   @apply flex-1;
   @apply m-0;
-  @apply p-6;
-  @apply pt-7;
+  @apply p-4;
   @apply overflow-hidden;
-  @apply text-lg;
+  @apply text-sm;
   @apply leading-tight;
 }
 
 .lp-title {
   @apply block;
   @apply font-bold;
-  @apply text-lg;
+  @apply text-base;
   @apply overflow-hidden;
-  max-height: 32px;
+  max-height: 44px;
 }
 
 .lp-desc {
   @apply block;
   @apply text-base;
   @apply overflow-hidden;
-  max-height: 80px;
+  @apply mt-1;
+  max-height: 60px;
 }
 
-.lp-url {
-  @apply text-sm;
+.lp-author {
+  @apply uppercase;
 }
 
-.lp-author,
-.lp-url,
-.lp-desc {
-  @apply block;
-  @apply mt-4;
-}
 
-.lp-author::before {
+/* .lp-author::before {
   content: "by ";
-}
+} */
 
 
 /*
