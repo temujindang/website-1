@@ -38,7 +38,7 @@
         <meta name="twitter:player:stream" content="{{ podcast_file }}">
         <meta name="twitter:player:stream:content_type" content="audio/mpeg">
     {%- else -%}
-        <meta name="twitter:card" content="summary">
+        <meta name="twitter:card" content="summary_large_image">
     {%- endif -%}
     <meta name="twitter:title" content="{%- if title -%}{{ site.site_title }}: {{ title }}{%- else -%}{{ site.site_title }}{%- endif -%}">
     <meta name="twitter:site" content="@{{ site.twitter_handle }}">
@@ -55,4 +55,7 @@
     <meta property="og:title" content="{%- if title -%}{{ site.site_title }}: {{ title }}{%- else -%}{{ site.site_title }}{%- endif -%}" />
     <meta property="og:description" content="{%- if description -%}{{ description }}{%- else -%}{{site.site_tagline}}{%- endif -%}" />
     <meta name="og:image" content="{{site.site_meta_image}}">
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1120">
+    <meta property="og:image:height" content="600">
     <meta name="og:image:secure_url" content="{{site.site_meta_image}}">
