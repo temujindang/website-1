@@ -8,7 +8,7 @@
             {% include "components/wordmark-svg-dark.njk" %}
           </a>
           <div class="-mr-2 flex items-center md:hidden">
-            <button @click="open = true" type="button" class="appearance-none inline-flex justify-center p-2 text-gray-100 hover:text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
+            <button @click="open = true" type="button" class="appearance-none inline-flex justify-center p-2 text-gray-100 hover:text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out" aria-label="Menu">
               <span class="mr-1 leading-normal">Menu</span>
               <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                 <title>Menu icon</title>
@@ -39,7 +39,7 @@
               {% include "components/wordmark-svg-light.njk" %}
             </a>
             <div class="-mr-2">
-              <button @click="open = false" type="button" class="appearance-none inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
+              <button @click="open = false" type="button" class="appearance-none inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out" aria-label="Menu">
                 <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                   <title>Menu icon</title>
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
