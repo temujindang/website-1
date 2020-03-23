@@ -119,7 +119,7 @@ On Friday, Bryan gave a talk on at
 from Ibex Verilator traces".
 
 We will update this post once the video becomes available! For a good synopsis
-of the conference checkout [this post](https://pramode.in/2020/03/21/oxidize1k-a-remote-rustlang-embedded-conference/).
+of the conference check out [this post](https://pramode.in/2020/03/21/oxidize1k-a-remote-rustlang-embedded-conference/).
 
 ### Stay tuned!
 
