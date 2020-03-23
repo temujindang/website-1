@@ -493,12 +493,14 @@ a.nav-tab.active {
   @apply border-b-4;
   @apply border-oxide-green;
 }
+ */
 
 .footer a.social,
 .footer a.social:hover,
 .footer a.social:focus {
-  @apply border-b-0;
-} */
+  @apply text-oxide-green;
+  transition: all 40ms ease-in-out;
+}
 
 a.nav-tab:focus,
 .content .footer a.link:focus {
