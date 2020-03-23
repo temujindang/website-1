@@ -64,6 +64,11 @@ O:::::::OOO:::::::O    X:::::X      X:::::X     II::::II  DDD:::::DDDDD:::::D   
 		</script>
   </head>
   <body id="top" class="{% if pageClass %}{{ pageClass }}{% endif %} container mx-auto mb-12 max-w-none lg:max-w-6xl bg-oxide-gray text-white">
+    {% if page.url == "/" %}
+      <div class="circuit-svg">
+        {% include "components/circuits.njk" %}
+      </div>
+    {% endif %}
     {% include "header.njk" %}
     <div class="content relative max-w-screen-xl mx-auto px-6 sm:px-6 fade-in">
       {% if page.url == "/" %}
@@ -86,12 +91,6 @@ O:::::::OOO:::::::O    X:::::X      X:::::X     II::::II  DDD:::::DDDDD:::::D   
     </div>
 
     {% include "footer.njk" %}
-
-     {% if page.url == "/" %}
-      <div class="circuit-svg">
-        {% include "components/circuits.njk" %}
-      </div>
-    {% endif %}
 
     {% set js %}
       {% include "js/elevator.js" %}
