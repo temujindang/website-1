@@ -124,6 +124,7 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.addTransform("htmlmin", require("./src/utils/minify-html.js"));
   }
 
+  // TODO: minify the css output when running in prod
   // minify the css output when running in prod
   // if (process.env.NODE_ENV == "production") {
   //   eleventyConfig.addTransform("CleanCSS", require("./src/utils/minify-css.js"));
