@@ -5,6 +5,7 @@ tags: ['draft']
 authors: ["steve-tuck", "bryan-cantrill", "jessie-frazelle"]
 ---
 
+{{"http://localhost:8181/podcast/on-the-metal-9-jonathan-blow/" | linkPreview | safe}}
 {{"https://www.protocol.com/oxide-computer-cloud-server" | linkPreview | safe}}
 {{"https://www.youtube.com/watch?v=vvZA9n3e5pc" | linkPreview | safe}}
 {{"https://oxide.computer/podcast/on-the-metal-10-season-1-wrap-up/" | linkPreview | safe}}
