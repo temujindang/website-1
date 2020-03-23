@@ -17,7 +17,7 @@ We wish you and your families health and resilience.
 
 ### Hard at work... and growing
 
-A lot has happened at Oxide since we first decloaked in Decemeber and I apologize 
+A lot has happened at Oxide since we first de-cloaked in December and I apologize 
 for the lack of an official update on our end, other than our Twitter feeds. We've
 been hard at work building a product!
 
