@@ -118,7 +118,7 @@ On Friday, Bryan gave a talk on at
 "Tockilator: Deducing Tock execution flow
 from Ibex Verilator traces".
 
-[put video embed here]
+We will update this post once the video becomes available!
 
 ### Stay tuned!
 
