@@ -393,8 +393,8 @@ h3 {
 
 .content ul,
 .content ol {
-  @apply my-6;
-  @apply ml-6;
+  /* @apply my-6; */
+  /* @apply ml-3; */
 }
 
 .content ol li {
@@ -403,7 +403,7 @@ h3 {
 }
 
 .content li {
-  @apply list-disc;
+  /* @apply list-disc; */
   @apply list-outside;
   @apply break-normal;
   @apply leading-normal;
