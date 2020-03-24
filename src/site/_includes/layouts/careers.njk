@@ -10,9 +10,9 @@ layout: default
     {{ content | section('remainder') | safe }}
   </div>
   <div class="bg-gray-800 overflow-hidden">
-    <div class="flex items-center justify-between px-4 py-5 sm:p-6">
+    <div class="flex flex-col lg:items-center lg:justify-between lg:flex-row px-4 py-5 sm:p-6">
       {% include "components/application-link.njk" %}
-      <span class="leading-normal font-bold">We look forward to hearing from you!</span>
+      <span class="leading-normal">We look forward to hearing from you!</span>
     </div>
   </div>
   <div class="mt-10 pt-2 text-gray-400 text-sm border-t border-gray-300">

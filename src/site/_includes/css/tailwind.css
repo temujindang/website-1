@@ -240,7 +240,7 @@ h1.heading {
   @apply mb-6;
   @apply text-3xl;
   @apply leading-snug;
-  @apply font-bold;
+  @apply font-semibold;
   @apply tracking-wider;
   @apply text-oxide-green;
 }
