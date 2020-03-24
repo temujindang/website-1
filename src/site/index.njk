@@ -5,41 +5,43 @@ pageClass: home
 ---
 <div id="hero" class="mx-auto max-w-screen-xl pb-20 md:pb-32">
   <div class="lg:grid lg:grid-cols-12 lg:gap-8">
-    <div class="md:max-w-2xl lg:col-span-8">
+    <div class="lg:col-span-8 lg:border-r lg:border-gray-700">
       <h1 class="heading"><span>Hyperscaler infrastructure</span> <span>for the rest of us</span></h1>
-      <p class="font-bold">We are building a new kind of server.</p>
-      <p class="font-bold">True rack-scale design, bringing cloud hyperscale innovations around density, efficiency, cost, reliability, manageability, and security to everyone running on-premises compute infrastructure.</p>
+      <p class="font-semibold">We are building a new kind of server.</p>
+      <p class="font-semibold">True rack-scale design, bringing cloud hyperscale innovations around density, efficiency, cost, reliability, manageability, and security to everyone running on-premises compute infrastructure.</p>
     </div>
-    <div class="sm:max-w-lg sm:mx-auto lg:max-w-none lg:mx-0 lg:col-span-4">
-      <div class="-m-3">
-        <div class="sm:hidden">
-          <select class="form-select block w-full">
-            <option selected>Recent</option>
-            <option>View all</option>
-          </select>
+    <div class="sm:max-w-lg lg:col-span-4">
+      <div class="ml-4">
+        <div class="-m-3">
+          <div class="sm:hidden">
+            <select class="form-select block w-full">
+              <option selected>Recent</option>
+              <option>View all</option>
+            </select>
+          </div>
+          <div class="hidden sm:block">
+            <nav class="flex">
+              <span class="px-3 py-2 font-medium text-sm leading-5 text-gray-300 focus:outline-none focus:bg-gray-200">
+                Recent posts
+              </span>
+              <a href="/blog/" class="ml-4 px-3 py-2 font-medium text-sm leading-5 hover:text-gray-300 focus:outline-none focus:text-gray-300">
+                View all
+              </a>
+            </nav>
+          </div>
         </div>
-        <div class="hidden sm:block">
-          <nav class="flex">
-            <span class="px-3 py-2 font-medium text-sm leading-5 text-gray-300 focus:outline-none focus:bg-gray-200">
-              Recent posts
-            </span>
-            <a href="/blog/" class="ml-4 px-3 py-2 font-medium text-sm leading-5 hover:text-gray-300 focus:outline-none focus:text-gray-300">
-              View all
-            </a>
-          </nav>
-        </div>
+        <ul class="font-semibold">
+          <li class="my-4 pb-4 border-b border-gray-600">
+            <a href="#">March 2020 Update</a>
+          </li>
+          <li class="my-4 pb-4 border-b border-gray-600">
+            <a href="#">RIP Khaled Bichara, 1971-2020</a>
+          </li>
+          <li class="my-4 pb-4 border-b border-gray-600">
+            <a href="#">On the Metal: Season 1 Wrap Up</a>
+          </li>
+        </ul>
       </div>
-      <ul class="font-semibold">
-        <li class="my-4 pb-4 border-b border-gray-600">
-          <a href="#">RIP Khaled Bichara, 1971-2020</a>
-        </li>
-        <li class="my-4 pb-4 border-b border-gray-600">
-          <a href="#">On the Metal: Season 1 Wrap Up</a>
-        </li>
-        <li class="my-4 pb-4 border-b border-gray-600">
-          <a href="#">On the Metal: Jonathan Blow</a>
-        </li>
-      </ul>
     </div>
   </div>
 </div>
