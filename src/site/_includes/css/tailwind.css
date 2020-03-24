@@ -805,7 +805,7 @@ audio {
 @screen lg {
   .circuit-svg {
     height: 100vh;
-    max-height: 48rem;
+    max-height: 42rem;
   }
 }
 
