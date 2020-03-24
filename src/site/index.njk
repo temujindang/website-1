@@ -31,6 +31,10 @@ pageClass: home
           </div>
         </div>
         <ul class="font-semibold">
+          {# TODO: Range or For/If loop to stop at 3 posts #}
+          {# {%- for item in collections.post | reverse -%}
+            {% include 'components/teaser-post-title.njk' %}
+          {%- endfor -%} #}
           <li class="my-4 pb-4 border-b border-gray-600">
             <a href="#">March 2020 Update</a>
           </li>
