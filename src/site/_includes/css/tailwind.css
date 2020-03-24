@@ -431,6 +431,15 @@ h3 {
   @apply border-b-0;
 }
 
+.teaser-post-item {
+  @apply border-b;
+  @apply border-gray-600;
+}
+
+.teaser-post-item:last-of-type {
+  @apply border-none;
+}
+
 
 /*
   Navigation links
