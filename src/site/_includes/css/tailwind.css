@@ -251,9 +251,7 @@ h1.heading {
   }
 }
 
-.blog h1.heading:after,
-.page h1.heading:after,
-.podcast h1.heading:after {
+.page h1.heading:after {
   content: "";
   @apply block;
   @apply relative;
@@ -291,9 +289,7 @@ h2.heading {
   }
 } */
 
-.blog h3,
-.page h3,
-.podcast h3 {
+.page h3 {
   @apply mt-10;
   @apply mb-4;
   @apply text-xl;
@@ -304,9 +300,7 @@ h2.heading {
 
 
 /* @screen md {
-  .blog h3,
-  .page h3,
-  .podcast h3 {
+  .page h3 {
     @apply leading-4;
   }
 } */
@@ -404,56 +398,36 @@ h3 {
 
 .content li {
   /* @apply list-disc; */
-  @apply list-outside;
-  @apply break-normal;
-  @apply leading-normal;
+  /* @apply list-outside; */
+  /* @apply break-normal; */
+  /* @apply leading-normal; */
 }
 
-.blog .content ul,
-.blog .content ol,
-.careers .content ul,
-.careers .content ol,
-.podcast .content ul,
-.podcast .content ol {
+.page .content ul,
+.page .content ol {
   @apply my-4;
   @apply ml-0;
 }
 
-.blog .content ul li,
-.blog .content ol li,
-.careers .content ul li,
-.careers .content ol li,
-.podcast .content ul li,
-.podcast .content ol li {
+.page .content ul li,
+.page .content ol li {
   @apply list-none;
   @apply list-inside;
 }
 
-.blog .content ul li a,
-.blog .content ol li a,
-.careers .content ul li a,
-.careers .content ol li a,
-.podcast .content ul li a,
-.podcast .content ol li a {
+.page .content ul li a,
+.page .content ol li a {
   @apply break-all;
   /* @apply text-base; */
 }
 
-.blog .content .heading a,
-.blog .content .heading a,
-.careers .content .heading a,
-.careers .content .heading a,
-.podcast .content .heading a,
-.podcast .content .heading a {
+.page .content .heading a,
+.page .content .heading a {
   @apply break-normal;
 }
 
-.blog .content ul li:last-of-type,
-.blog .content ol li:last-of-type,
-.careers .content ul li:last-of-type,
-.careers .content ol li:last-of-type,
-.podcast .content ul li:last-of-type,
-.podcast .content ol li:last-of-type {
+.page .content ul li:last-of-type,
+.page .content ol li:last-of-type {
   @apply border-b-0;
 }
 
