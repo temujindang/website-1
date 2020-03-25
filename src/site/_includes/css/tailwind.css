@@ -9,6 +9,9 @@
  * Fonts
  * */
 
+
+/* TODO: Move fonts somewhere else */
+
 @font-face {
   font-family: 'HK Grotesk';
   font-style: normal;
@@ -240,7 +243,7 @@ h1.heading {
   @apply mb-6;
   @apply text-3xl;
   @apply leading-snug;
-  @apply font-bold;
+  @apply font-semibold;
   @apply tracking-wider;
   @apply text-oxide-green;
 }
@@ -251,9 +254,7 @@ h1.heading {
   }
 }
 
-.blog h1.heading:after,
-.page h1.heading:after,
-.podcast h1.heading:after {
+.page h1.heading:after {
   content: "";
   @apply block;
   @apply relative;
@@ -291,9 +292,7 @@ h2.heading {
   }
 } */
 
-.blog h3,
-.page h3,
-.podcast h3 {
+.page h3 {
   @apply mt-10;
   @apply mb-4;
   @apply text-xl;
@@ -304,9 +303,7 @@ h2.heading {
 
 
 /* @screen md {
-  .blog h3,
-  .page h3,
-  .podcast h3 {
+  .page h3 {
     @apply leading-4;
   }
 } */
@@ -393,8 +390,8 @@ h3 {
 
 .content ul,
 .content ol {
-  @apply my-6;
-  @apply ml-6;
+  /* @apply my-6; */
+  /* @apply ml-3; */
 }
 
 .content ol li {
@@ -403,58 +400,47 @@ h3 {
 }
 
 .content li {
-  @apply list-disc;
-  @apply list-outside;
-  @apply break-normal;
-  @apply leading-normal;
+  /* @apply list-disc; */
+  /* @apply list-outside; */
+  /* @apply break-normal; */
+  /* @apply leading-normal; */
 }
 
-.blog .content ul,
-.blog .content ol,
-.careers .content ul,
-.careers .content ol,
-.podcast .content ul,
-.podcast .content ol {
+.page .content ul,
+.page .content ol {
   @apply my-4;
   @apply ml-0;
 }
 
-.blog .content ul li,
-.blog .content ol li,
-.careers .content ul li,
-.careers .content ol li,
-.podcast .content ul li,
-.podcast .content ol li {
+.page .content ul li,
+.page .content ol li {
   @apply list-none;
   @apply list-inside;
 }
 
-.blog .content ul li a,
-.blog .content ol li a,
-.careers .content ul li a,
-.careers .content ol li a,
-.podcast .content ul li a,
-.podcast .content ol li a {
+.page .content ul li a,
+.page .content ol li a {
   @apply break-all;
   /* @apply text-base; */
 }
 
-.blog .content .heading a,
-.blog .content .heading a,
-.careers .content .heading a,
-.careers .content .heading a,
-.podcast .content .heading a,
-.podcast .content .heading a {
+.page .content .heading a,
+.page .content .heading a {
   @apply break-normal;
 }
 
-.blog .content ul li:last-of-type,
-.blog .content ol li:last-of-type,
-.careers .content ul li:last-of-type,
-.careers .content ol li:last-of-type,
-.podcast .content ul li:last-of-type,
-.podcast .content ol li:last-of-type {
+.page .content ul li:last-of-type,
+.page .content ol li:last-of-type {
   @apply border-b-0;
+}
+
+.teaser-post-item {
+  @apply border-b;
+  @apply border-gray-600;
+}
+
+.teaser-post-item:last-of-type {
+  @apply border-none;
 }
 
 
@@ -493,12 +479,14 @@ a.nav-tab.active {
   @apply border-b-4;
   @apply border-oxide-green;
 }
+ */
 
 .footer a.social,
 .footer a.social:hover,
 .footer a.social:focus {
-  @apply border-b-0;
-} */
+  @apply text-oxide-green;
+  transition: all 40ms ease-in-out;
+}
 
 a.nav-tab:focus,
 .content .footer a.link:focus {
@@ -554,7 +542,7 @@ a.nav-tab:hover span:after,
 }
 
 .content .footer ul {
-  @apply mt-3;
+  @apply mt-2;
   @apply ml-0;
   @apply list-none;
 }
@@ -829,7 +817,7 @@ audio {
 @screen lg {
   .circuit-svg {
     height: 100vh;
-    max-height: 48rem;
+    max-height: 42rem;
   }
 }
 

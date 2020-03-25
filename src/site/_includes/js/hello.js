@@ -3,8 +3,8 @@
 // });
 
 // Code for back to top button.
-document.querySelector('.elevator-button').addEventListener('click', function(){
-    scrollTo(document.body, 500);
+document.querySelector('.elevator-button').addEventListener('click', function () {
+    scrollTo(document.body, 300);
 });
 
 var paths = document.querySelectorAll('.st0');
