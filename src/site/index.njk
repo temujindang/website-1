@@ -30,16 +30,12 @@ pageClass: home
           </div>
         </div>
         <ul class="font-semibold">
-          {# TODO: Range or For/If loop to stop at 3 posts #}
-          {# {%- for item in collections.post | reverse -%}
-            {% include 'components/teaser-post-title.njk' %}
-          {%- endfor -%} #}
-          <li class="teaser-post-item my-4 pb-4 border-b">
-            <a href="/blog/march-2020-update/">March 2020 Update</a>
-          </li>
-          <li class="teaser-post-item my-4 pb-4 border-b">
-            <a href="/podcast/on-the-metal-10-season-1-wrap-up/">On the Metal: Season 1 Wrap Up</a>
-          </li>
+          {%- for i in collections.post | reverse -%}
+          {# TODO: remove the part of the if for the khaled post and change 5 to 4 after it passes being in the top 3 #}
+            {%- if (loop.index < 5) and (i.data.title != "RIP Khaled Bichara, 1971-2020") -%}
+               {% include 'components/teaser-post-title.njk' %}
+            {%- endif -%}
+          {%- endfor -%}
         </ul>
       </div>
     </div>
