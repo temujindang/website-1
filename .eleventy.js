@@ -119,11 +119,6 @@ module.exports = function (eleventyConfig) {
   // compress and combine js files
   eleventyConfig.addFilter("jsmin", require("./src/utils/minify-js.js"));
 
-  // minify the html output when running in prod
-  if (process.env.NODE_ENV == "production") {
-    eleventyConfig.addTransform("htmlmin", require("./src/utils/minify-html.js"));
-  }
-
   // TODO: minify the css output when running in prod
   // minify the css output when running in prod
   // if (process.env.NODE_ENV == "production") {
