@@ -31,6 +31,7 @@ pageClass: home
         </div>
         <ul class="font-semibold">
           {%- for i in collections.post | reverse -%}
+          {# TODO: remove the part of the if for the khaled post and change 5 to 4 after it passes being in the top 3 #}
             {%- if (loop.index < 5) and (i.data.title != "RIP Khaled Bichara, 1971-2020") -%}
                {% include 'components/teaser-post-title.njk' %}
             {%- endif -%}
