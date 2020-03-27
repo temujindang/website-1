@@ -1,4 +1,4 @@
-# debs installed by npm
+# deps installed by npm
 /node_modules
 
 # build artifacts
