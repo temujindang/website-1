@@ -173,14 +173,24 @@ html::-webkit-scrollbar-thumb {
   background: gradient(6deg, rgba(72, 213, 151, 0.2) 20%, rgba(72, 213, 151, 0.804359243697479) 100%);
 }
 
+::selection {
+  background: #8ce5bd;
+  /* WebKit/Blink Browsers */
+}
+
+::-moz-selection {
+  background: #8ce5bd;
+  /* Gecko Browsers */
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 .content {
   @apply text-xl;
-  @apply leading-loose;
-  @apply tracking-wider;
+  @apply leading-relaxed;
+  @apply tracking-wide;
   animation: 1s ease 0s 1 normal none running fadein;
 }
 
