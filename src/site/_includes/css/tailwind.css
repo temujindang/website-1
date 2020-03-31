@@ -274,10 +274,6 @@ h1.heading {
   @apply bg-oxide-green;
 }
 
-h1.heading span {
-  @apply block;
-}
-
 .page h2,
 h2.heading {
   @apply mt-10;
@@ -590,10 +586,11 @@ audio {
   @apply items-center;
   @apply mt-2;
   @apply mr-4;
-  @apply border-transparent;
-  @apply border-b-2;
   @apply text-sm;
-  transition: border 40ms ease-in-out;
+  @apply border-collapse;
+  @apply border-none;
+  @apply border-b-0;
+  @apply border-transparent;
 }
 
 @screen sm {
@@ -603,13 +600,16 @@ audio {
 }
 
 .podcast-share a:hover,
-.podcast-share a:focus {
-  @apply border-b-2;
-  @apply border-oxide-green;
-  @apply border-solid;
+.podcast-share a:focus,
+.rss-follow a:hover,
+.rss-follow a:focus {
+  @apply border-collapse;
+  @apply border-none;
+  @apply border-b-0;
+  @apply border-transparent;
 }
 
-.podcast-share .podcast-icon {
+.podcast-icon {
   @apply h-5;
   @apply inline;
   @apply mr-2;
