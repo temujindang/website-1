@@ -591,7 +591,7 @@ audio {
   @apply mt-2;
   @apply mr-4;
   @apply border-transparent;
-  @apply border-b-4;
+  @apply border-b-2;
   @apply text-sm;
   transition: border 40ms ease-in-out;
 }
@@ -604,7 +604,7 @@ audio {
 
 .podcast-share a:hover,
 .podcast-share a:focus {
-  @apply border-b-4;
+  @apply border-b-2;
   @apply border-oxide-green;
   @apply border-solid;
 }
