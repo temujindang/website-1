@@ -274,10 +274,6 @@ h1.heading {
   @apply bg-oxide-green;
 }
 
-h1.heading span {
-  @apply block;
-}
-
 .page h2,
 h2.heading {
   @apply mt-10;
