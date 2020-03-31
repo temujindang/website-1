@@ -189,8 +189,8 @@ html {
 
 .content {
   @apply text-xl;
-  @apply leading-relaxed;
-  @apply tracking-wide;
+  @apply leading-loose;
+  @apply tracking-wider;
   animation: 1s ease 0s 1 normal none running fadein;
 }
 
