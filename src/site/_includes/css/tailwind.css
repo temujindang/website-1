@@ -247,7 +247,7 @@ p {
 h1.heading {
   @apply mt-3;
   @apply mb-6;
-  @apply text-3xl;
+  @apply text-4xl;
   @apply leading-snug;
   @apply font-semibold;
   @apply tracking-wider;
