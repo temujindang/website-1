@@ -213,15 +213,11 @@ p {
 }
 
 .content blockquote {
-  @apply bg-gray-200;
+  @apply bg-gray-800;
   @apply border-l-8;
   @apply border-oxide-green;
   @apply mb-12;
-  @apply px-3;
-  @apply py-4;
-  @apply text-gray-800;
-  /* margin: 1.5em 10px; */
-  /* padding: 0.5em 10px; */
+  @apply p-4;
   quotes: "\201C""\201D""\2018""\2019";
 }
 
@@ -237,10 +233,10 @@ p {
 .content blockquote p {
   @apply inline;
   @apply text-2xl;
-  @apply font-bold;
+  @apply font-semibold;
   @apply tracking-widest;
   @apply leading-tight;
-  @apply text-gray-800;
+  @apply text-white;
 }
 
 
