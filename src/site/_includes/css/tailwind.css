@@ -816,7 +816,8 @@ audio {
   right: 0;
   @apply text-gray-800;
   background: rgb(255, 255, 255);
-  background: radial-gradient(farthest-side at 100% 100%, rgba(255, 255, 255, 1) 10%, rgba(34, 34, 34, 1) 80%);
+  /* background: radial-gradient(farthest-side at 100% 100%, rgba(255, 255, 255, 1) 10%, rgba(34, 34, 34, 1) 80%); */
+  background: linear-gradient(0deg, rgba(34, 34, 34, 1) 0%, rgba(0, 0, 0, 0) 50%);
   @apply opacity-25;
 }
 
