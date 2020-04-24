@@ -24,7 +24,6 @@
 ## Prerequisites
 
 - [Node and NPM](https://nodejs.org/)
-- [Netlify CLI](https://www.npmjs.com/package/netlify-cli)
 
 ## Stack
 
@@ -46,7 +45,7 @@ npm install netlify-cli -g
 npm install
 
 # run the build and server locally
-netlify dev
+npm run watch
 ```
 
 ## Adding new content 
