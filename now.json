@@ -1,15 +1,8 @@
 {
-
+    "github": {
+    "enabled": true
+  },
   "headers": [
-    {
-      "source": "/.well-known/matrix/*",
-      "headers" : [
-        {
-          "key" : "content-type",
-          "value" : "application/json"
-        }
-      ]
-    },
     {
       "source": "/.well-known/matrix/(.*)",
       "headers" : [
