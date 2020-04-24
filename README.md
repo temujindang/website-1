@@ -1,6 +1,5 @@
 # Oxide Computer Company website
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/0cf78df6-6274-4d35-b329-23b354d037e7/deploy-status)](https://app.netlify.com/sites/gracious-heisenberg-b8f5b9/deploys)
 [![broken link checker](https://github.com/oxidecomputer/website/workflows/broken%20link%20checker/badge.svg)](https://github.com/oxidecomputer/website/actions?query=workflow%3A%22broken+link+checker%22)
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
@@ -31,16 +30,11 @@
 - [Tailwindcss](https://tailwindcss.com) for a utility first CSS workflow
 - [PurgeCSS](https://www.purgecss.com/) for optimizing CSS output
 - [UglifyJS](https://www.npmjs.com/package/uglify-js) for a simple JS build pipeline
-- [Netlify CLI](https://www.npmjs.com/package/netlify-cli) for Netlify dev pipeline and local replication of prod environment
 
 
 ## Running locally
 
 ```bash
-
-# install Netlify CLI globally
-npm install netlify-cli -g
-
 # install the project dependencies
 npm install
 
@@ -117,8 +111,3 @@ While running/developing locally, the `npm run start` command will recompile the
 
 A small number of bespoke CSS rules are provided for efficiency of repeated or global classes. These reside in `src/site/_includes/css/tailwind.css`
 
-<!-- ## Just clone and go
-
-You can also get started with your own copy of this site cloned to your GitHub account and deployed to Netlify with a configured CI/CD pipeline and HTTPS by clicking the button below and following the instructions.
-
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/philhawksworth/eleventail) -->
