@@ -3,6 +3,7 @@ title: Software engineering
 subtitle: Are you a technologist that is eager to join our mission?
 tags: job
 application_link: https://forms.gle/gm8Rtmz1vxsesmUY6
+pageClass: page career
 ---
 
 Oxide is seeking software engineers at nearly every level of the software stack, from the depths of firmware through the hypervisor, control plane, top-of-rack switch, and higher-level management software. 

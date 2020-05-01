@@ -3,6 +3,7 @@ title: Hardware engineering
 subtitle: Are you a technologist that is eager to join our mission?
 tags: job
 application_link: https://forms.gle/gm8Rtmz1vxsesmUY6
+pageClass: page career
 ---
 
 Oxide is seeking hardware engineers to join us in building the next generation of rack-scale fully-integrated machines.  

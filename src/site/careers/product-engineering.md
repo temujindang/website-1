@@ -3,6 +3,7 @@ title: Product engineering and design
 subtitle: Are you a technologist or designer with a passion for exquisite user experiences?
 tags: job
 application_link: https://forms.gle/xss6RjsAnPaqi6Wp9
+pageClass: page career
 ---
 
 We are building a small and ambitious UX team. We are looking for an engineer
