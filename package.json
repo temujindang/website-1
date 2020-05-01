@@ -1,7 +1,7 @@
 {
   "name": "oxide",
   "version": "0.1.0",
-  "description": "A project scaffold for a site with Eleventy and TailwindCSS on Netlify",
+  "description": "A project scaffold for a site with Eleventy and TailwindCSS on Vercel",
   "author": "Jared Volpe (forked from Phil Hawksworth)",
   "license": "MIT",
   "repository": {
