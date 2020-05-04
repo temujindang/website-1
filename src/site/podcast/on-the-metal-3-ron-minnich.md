@@ -50,7 +50,7 @@ some Gentoo jokes, flip flop programming toys, and more!
 - Think-a-Dot: https://www.jaapsch.net/puzzles/thinkadot.htm
 - E.S.R Inc: https://en.wikipedia.org/wiki/E.S.R.,_Inc.
 - Digi-Comp: https://en.wikipedia.org/wiki/Digi-Comp_II
-- Turning Tumble (modern day Dr. Nim): https://www.turingtumble.com/
+- Turing Tumble (modern day Dr. Nim): https://www.turingtumble.com/
 - ILLIAC: https://en.wikipedia.org/wiki/ILLIAC  
 - Geniac: https://en.wikipedia.org/wiki/Geniac
 - Edmund Berkeley: https://en.wikipedia.org/wiki/Edmund_Berkeley
