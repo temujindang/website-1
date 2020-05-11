@@ -54,8 +54,7 @@ systems, but that you are also able to quickly pick up new ones as needed.
 And while experience is essential, enthusiasm and interest can outweigh
 experience. We are willing to take a chance on people who want to step up.
 
-Oxide is based in Emeryville, California, but remote work is possible for
-people with a track record of working effectively remotely.
+Oxide is based in Emeryville, California, but we support remote work as well.
 
 PS Do you know someone who makes you better at what you do and has helped you
 achieve things you couldn't imagine achieving on your own? Someone who has
