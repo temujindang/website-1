@@ -5,147 +5,145 @@
   },
    "routes": [
     { "handle": "filesystem" },
-    { "src": "/(.*)", "status": 404, "dest": "/404/" }
+    { "src": "/(.*)", "status": 404, "dest": "/404/" },
+    {
+      "src": "/principles",
+      "dest": "/about"
+    },
+    {
+      "src": "/principles/",
+      "dest": "/about/"
+    },
+    {
+      "src": "/careers/hardware-engineers",
+      "dest": "/careers/hardware-engineering"
+    },
+    {
+      "src": "/careers/hardware-engineers/",
+      "dest": "/careers/hardware-engineering/"
+    },
+    {
+      "src": "/careers/software-engineers",
+      "dest": "/careers/software-engineering"
+    },
+    {
+      "src": "/careers/software-engineers/",
+      "dest": "/careers/software-engineering/"
+    },
+    {
+      "src": "/careers/product-engineers",
+      "dest": "/careers/product-engineering"
+    },
+    {
+      "src": "/careers/product-engineers/",
+      "dest": "/careers/product-engineering/"
+    },
+    {
+      "src": "/blog/categories/on-the-metal",
+      "dest": "/podcast"
+    },
+    {
+      "src": "/blog/categories/on-the-metal/",
+      "dest": "/podcast/"
+    },
+    {
+      "src": "/blog/on-the-metal-10-season-1-wrap-up",
+      "dest": "/podcast/on-the-metal-10-season-1-wrap-up"
+    },
+    {
+      "src": "/blog/on-the-metal-10-season-1-wrap-up/",
+      "dest": "/podcast/on-the-metal-10-season-1-wrap-up/"
+    },
+    {
+      "src": "/blog/on-the-metal-9-jonathan-blow",
+      "dest": "/podcast/on-the-metal-9-jonathan-blow"
+    },
+    {
+      "src": "/blog/on-the-metal-9-jonathan-blow/",
+      "dest": "/podcast/on-the-metal-9-jonathan-blow/"
+    },
+    {
+      "src": "/blog/on-the-metal-8-jon-masters",
+      "dest": "/podcast/on-the-metal-8-jon-masters"
+    },
+    {
+      "src": "/blog/on-the-metal-8-jon-masters/",
+      "dest": "/podcast/on-the-metal-8-jon-masters/"
+    },
+    {
+      "src": "/blog/on-the-metal-7-rick-altherr",
+      "dest": "/podcast/on-the-metal-7-rick-altherr"
+    },
+    {
+      "src": "/blog/on-the-metal-7-rick-altherr/",
+      "dest": "/podcast/on-the-metal-7-rick-altherr/"
+    },
+    {
+      "src": "/blog/on-the-metal-6-kenneth-finnegan",
+      "dest": "/podcast/on-the-metal-6-kenneth-finnegan"
+    },
+    {
+      "src": "/blog/on-the-metal-6-kenneth-finnegan/",
+      "dest": "/podcast/on-the-metal-6-kenneth-finnegan/"
+    },
+    {
+      "src": "/blog/on-the-metal-5-trammell-hudson",
+      "dest": "/podcast/on-the-metal-5-trammell-hudson"
+    },
+    {
+      "src": "/blog/on-the-metal-5-trammell-hudson/",
+      "dest": "/podcast/on-the-metal-5-trammell-hudson/"
+    },
+    {
+      "src": "/blog/on-the-metal-4-tom-lyon",
+      "dest": "/podcast/on-the-metal-4-tom-lyon"
+    },
+    {
+      "src": "/blog/on-the-metal-4-tom-lyon/",
+      "dest": "/podcast/on-the-metal-4-tom-lyon/"
+    },
+    {
+      "src": "/blog/on-the-metal-3-ron-minnich",
+      "dest": "/podcast/on-the-metal-3-ron-minnich"
+    },
+    {
+      "src": "/blog/on-the-metal-3-ron-minnich/",
+      "dest": "/podcast/on-the-metal-3-ron-minnich/"
+    },
+    {
+      "src": "/blog/on-the-metal-2-amir-michael",
+      "dest": "/podcast/on-the-metal-2-amir-michael"
+    },
+    {
+      "src": "/blog/on-the-metal-2-amir-michael/",
+      "dest": "/podcast/on-the-metal-2-amir-michael/"
+    },
+    {
+      "src": "/blog/on-the-metal-1-jeff-rothschild",
+      "dest": "/podcast/on-the-metal-1-jeff-rothschild"
+    },
+    {
+      "src": "/blog/on-the-metal-1-jeff-rothschild/",
+      "dest": "/podcast/on-the-metal-1-jeff-rothschild/"
+    },
+    {
+      "src": "/blog/on-the-metal-0-teaser",
+      "dest": "/podcast/on-the-metal-0-teaser"
+    },
+    {
+      "src": "/blog/on-the-metal-0-teaser/",
+      "dest": "/podcast/on-the-metal-0-teaser/"
+    }
   ],
   "headers": [
     {
-      "source": "/.well-known/matrix/(.*)",
+      "src": "/.well-known/matrix/(.*)",
       "headers" : [
         {
           "key" : "content-type",
           "value" : "application/json"
         }
       ]
-    }
-  ],
-  "redirects": [
-    {
-      "source": "/principles",
-      "destination": "/about"
-    },
-    {
-      "source": "/principles/",
-      "destination": "/about/"
-    },
-    {
-      "source": "/careers/hardware-engineers",
-      "destination": "/careers/hardware-engineering"
-    },
-    {
-      "source": "/careers/hardware-engineers/",
-      "destination": "/careers/hardware-engineering/"
-    },
-    {
-      "source": "/careers/software-engineers",
-      "destination": "/careers/software-engineering"
-    },
-    {
-      "source": "/careers/software-engineers/",
-      "destination": "/careers/software-engineering/"
-    },
-    {
-      "source": "/careers/product-engineers",
-      "destination": "/careers/product-engineering"
-    },
-    {
-      "source": "/careers/product-engineers/",
-      "destination": "/careers/product-engineering/"
-    },
-    {
-      "source": "/blog/categories/on-the-metal",
-      "destination": "/podcast"
-    },
-    {
-      "source": "/blog/categories/on-the-metal/",
-      "destination": "/podcast/"
-    },
-    {
-      "source": "/blog/on-the-metal-10-season-1-wrap-up",
-      "destination": "/podcast/on-the-metal-10-season-1-wrap-up"
-    },
-    {
-      "source": "/blog/on-the-metal-10-season-1-wrap-up/",
-      "destination": "/podcast/on-the-metal-10-season-1-wrap-up/"
-    },
-    {
-      "source": "/blog/on-the-metal-9-jonathan-blow",
-      "destination": "/podcast/on-the-metal-9-jonathan-blow"
-    },
-    {
-      "source": "/blog/on-the-metal-9-jonathan-blow/",
-      "destination": "/podcast/on-the-metal-9-jonathan-blow/"
-    },
-    {
-      "source": "/blog/on-the-metal-8-jon-masters",
-      "destination": "/podcast/on-the-metal-8-jon-masters"
-    },
-    {
-      "source": "/blog/on-the-metal-8-jon-masters/",
-      "destination": "/podcast/on-the-metal-8-jon-masters/"
-    },
-    {
-      "source": "/blog/on-the-metal-7-rick-altherr",
-      "destination": "/podcast/on-the-metal-7-rick-altherr"
-    },
-    {
-      "source": "/blog/on-the-metal-7-rick-altherr/",
-      "destination": "/podcast/on-the-metal-7-rick-altherr/"
-    },
-    {
-      "source": "/blog/on-the-metal-6-kenneth-finnegan",
-      "destination": "/podcast/on-the-metal-6-kenneth-finnegan"
-    },
-    {
-      "source": "/blog/on-the-metal-6-kenneth-finnegan/",
-      "destination": "/podcast/on-the-metal-6-kenneth-finnegan/"
-    },
-    {
-      "source": "/blog/on-the-metal-5-trammell-hudson",
-      "destination": "/podcast/on-the-metal-5-trammell-hudson"
-    },
-    {
-      "source": "/blog/on-the-metal-5-trammell-hudson/",
-      "destination": "/podcast/on-the-metal-5-trammell-hudson/"
-    },
-    {
-      "source": "/blog/on-the-metal-4-tom-lyon",
-      "destination": "/podcast/on-the-metal-4-tom-lyon"
-    },
-    {
-      "source": "/blog/on-the-metal-4-tom-lyon/",
-      "destination": "/podcast/on-the-metal-4-tom-lyon/"
-    },
-    {
-      "source": "/blog/on-the-metal-3-ron-minnich",
-      "destination": "/podcast/on-the-metal-3-ron-minnich"
-    },
-    {
-      "source": "/blog/on-the-metal-3-ron-minnich/",
-      "destination": "/podcast/on-the-metal-3-ron-minnich/"
-    },
-    {
-      "source": "/blog/on-the-metal-2-amir-michael",
-      "destination": "/podcast/on-the-metal-2-amir-michael"
-    },
-    {
-      "source": "/blog/on-the-metal-2-amir-michael/",
-      "destination": "/podcast/on-the-metal-2-amir-michael/"
-    },
-    {
-      "source": "/blog/on-the-metal-1-jeff-rothschild",
-      "destination": "/podcast/on-the-metal-1-jeff-rothschild"
-    },
-    {
-      "source": "/blog/on-the-metal-1-jeff-rothschild/",
-      "destination": "/podcast/on-the-metal-1-jeff-rothschild/"
-    },
-    {
-      "source": "/blog/on-the-metal-0-teaser",
-      "destination": "/podcast/on-the-metal-0-teaser"
-    },
-    {
-      "source": "/blog/on-the-metal-0-teaser/",
-      "destination": "/podcast/on-the-metal-0-teaser/"
     }
   ]
 }
