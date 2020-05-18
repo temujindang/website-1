@@ -6,6 +6,15 @@
    "routes": [
     { "handle": "filesystem" },
     { "src": "/(.*)", "status": 404, "dest": "/404/" },
+    {"src": "/.well-known/matrix/(.*)",
+      "headers" : [
+        {
+          "key" : "content-type",
+          "value" : "application/json"
+        }
+      ],
+      "dest": "/.well-known/matrix/$1"
+    },
     {
       "src": "/principles",
       "dest": "/about"
@@ -133,17 +142,6 @@
     {
       "src": "/blog/on-the-metal-0-teaser/",
       "dest": "/podcast/on-the-metal-0-teaser/"
-    }
-  ],
-  "headers": [
-    {
-      "src": "/.well-known/matrix/(.*)",
-      "headers" : [
-        {
-          "key" : "content-type",
-          "value" : "application/json"
-        }
-      ]
     }
   ]
 }
