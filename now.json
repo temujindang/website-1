@@ -1,18 +1,15 @@
 {
-    "version": 2,
-    "github": {
+  "version": 2,
+  "github": {
     "enabled": true
   },
-   "routes": [
+  "routes": [
     { "handle": "filesystem" },
     { "src": "/(.*)", "status": 404, "dest": "/404/" },
     {"src": "/.well-known/matrix/(.*)",
-      "headers" : [
-        {
-          "key" : "content-type",
-          "value" : "application/json"
-        }
-      ],
+      "headers" : {
+        "content-type": "application/json"
+      },
       "dest": "/.well-known/matrix/$1"
     },
     {
