@@ -28,9 +28,9 @@ and hard tabs.
 
 You can find Tom on Twitter at https://twitter.com/aka_pugs and find his blog at https://akapugs.blog/.  You can learn more about DriveScale at https://drivescale.com/.
 
-Tom brought us a present: <a href='../../images/ibm-360-ready.jpg'>an IBM 360-era 'Ready' button</a>!
+Tom brought us a present: <a href='../../images/blog/ibm-360-ready.jpg'>an IBM 360-era 'Ready' button</a>!
 
-![ibm-360-ready](https://oxide.computer/images/ibm-360-ready.jpg)
+![ibm-360-ready](../../images/blog/ibm-360-ready.jpg)
 
 - Williams tube (CRT-based memory): https://en.wikipedia.org/wiki/Williams_tube
 - Mercury delay lines: https://en.wikipedia.org/wiki/Delay_line_memory
@@ -80,7 +80,7 @@ Tom brought us a present: <a href='../../images/ibm-360-ready.jpg'>an IBM 360-er
 - Berkeley Computer Corporation: https://en.wikipedia.org/wiki/Project_Genie
 - Bob Lyon: https://www.facebook.com/bob.lyon.98
 - Optical mouse: https://en.wikipedia.org/wiki/Optical_mouse
-- The Oxide garage Sun art work of mysterious origin (a Sun-3/160, perhaps?):  https://oxide.computer/images/garage-sun.jpg
+- The Oxide garage Sun art work of mysterious origin (a Sun-3/160, perhaps?): [conference-room-signs.jpg](/images/blog/conference-room-signs.jpg)
 - Steve Kirsch: https://en.wikipedia.org/wiki/Steve_Kirsch
 - Dick Lyon's (color!) technical report on the optical mouse: http://www.dicklyon.com/tech/OMouse/OpticalMouse-Lyon.pdf
 - Ipsilon: https://en.wikipedia.org/wiki/Ipsilon_Networks

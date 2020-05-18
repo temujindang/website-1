@@ -29,7 +29,7 @@ photo with the whole team. As Bryan
 [said](https://twitter.com/bcantrill/status/1237463119581949953): we cannot 
 wait for this image to be burned into a ROM.
 
-![team](/images/team.jpg)
+![team](/images/site/team.jpg)
 
 ### Computer History Museum
 
@@ -38,7 +38,7 @@ was in town. It was fun to have some folks from the open firmware community
 join us as well! Since it was not busy we got to spend an unusually long amount 
 of time with the docent at the IBM 1401 demo which was fascinating.
 
-![computer-history-museum](/images/computer-history-museum.jpg)
+![computer-history-museum](/images/blog/computer-history-museum.jpg)
 
 ### On the Metal
 
@@ -85,7 +85,7 @@ Tom Krazit at Protocol published a feature on what we are working on:
 
 [Cliff L. Biffle](http://cliffle.com/) made us new signs for our conference rooms!
 
-![conference-room-signs](/images/conference-room-signs.jpg)
+![conference-room-signs](/images/blog/conference-room-signs.jpg)
 
 We have gotten some amazing mugs from folks for our collection, thank you all
 so much! 

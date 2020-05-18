@@ -723,7 +723,7 @@ audio {
   font-family: Monaco, Andale Mono, Monospace, Courier;
   /* color: #0f0; */
   @apply relative;
-  background-image: radial-gradient(#11581E, #041607), url("/images/noise.gif");
+  background-image: radial-gradient(#11581E, #041607), url("/images/site/noise.gif");
   background-repeat: no-repeat;
   background-size: cover;
   /* color: rgba(128, 255, 128, 0.8);
@@ -760,7 +760,7 @@ audio {
   position: absolute;
   width: 100%;
   height: 100%;
-  background-image: url("/images/noise.gif");
+  background-image: url("/images/site/noise.gif");
   background-repeat: no-repeat;
   background-size: cover;
   z-index: -1;
