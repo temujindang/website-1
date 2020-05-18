@@ -4,8 +4,6 @@
     "enabled": true
   },
   "routes": [
-    { "handle": "filesystem" },
-    { "src": "/(.*)", "status": 404, "dest": "/404/" },
     {"src": "/.well-known/matrix/(.*)",
       "headers" : {
         "content-type": "application/json"
@@ -139,6 +137,8 @@
     {
       "src": "/blog/on-the-metal-0-teaser/",
       "dest": "/podcast/on-the-metal-0-teaser/"
-    }
+    },
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "status": 404, "dest": "/404.html" }
   ]
 }
