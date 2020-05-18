@@ -8,7 +8,7 @@
       "headers" : {
         "content-type": "application/json"
       },
-      "dest": "/.well-known/matrix/$1"
+      "continue": true
     },
     {
       "src": "/principles",
