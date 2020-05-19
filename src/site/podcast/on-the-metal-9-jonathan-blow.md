@@ -25,7 +25,7 @@ experiences with a new programming language of his own creation.
 
 ### Show notes and highlights
 
-You can find Jonathan on Twitter at https://twitter.com/Jonathan_Blow.
+You can find Jonathan on Twitter at [twitter.com/Jonathan_Blow](https://twitter.com/Jonathan_Blow).
 
 - *The Witness*: <a href='https://en.wikipedia.org/wiki/The_Witness_(2016_video_game)'>https://en.wikipedia.org/wiki/The_Witness_(2016_video_game)</a>
 - *Prince of Persia*: <a href='https://en.wikipedia.org/wiki/Prince_of_Persia_(1989_video_game)'>https://en.wikipedia.org/wiki/Prince_of_Persia_(1989_video_game)</a>

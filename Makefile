@@ -25,9 +25,9 @@ test: ## Runs bash script tests.
 
 .PHONY: broken-link-checker
 broken-link-checker: ## Run the broken link checker.
-	docker run --rm -i $(DOCKER_FLAGS) \
+	-docker run --rm -i $(DOCKER_FLAGS) \
 		--name brok \
-		-v $(CURDIR):/usr/src:ro \
+		-v $(CURDIR):/usr/src \
 		--workdir /usr/src \
 		jess/brok brok src/site/**/*.md
 

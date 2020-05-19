@@ -22,7 +22,7 @@ expect the supremacy of the quantum blockchain.
 
 ### Show notes and highlights
 
-You can find Jon on Twitter at https://twitter.com/jonmasters.
+You can find Jon on Twitter at [twitter.com/jonmasters](https://twitter.com/jonmasters).
 
 - 'Negative Result: Reading Kernel Memory From User Mode' (blog post from July 2017): https://cyber.wtf/2017/07/28/negative-result-reading-kernel-memory-from-user-mode/
 - Spectre: <a href='https://en.wikipedia.org/wiki/Spectre_(security_vulnerability)'>https://en.wikipedia.org/wiki/Spectre_(security_vulnerability)</a>

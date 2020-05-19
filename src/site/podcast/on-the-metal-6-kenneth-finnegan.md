@@ -20,7 +20,7 @@ thrill in the discovery of a root DNS server thirty feet away.
 
 ### Show notes and highlights
 
-You can find Kenneth on Twitter at https://twitter.com/KWF and read his blog at https://blog.thelifeofkenneth.com/.  You can follow the Fremont Cabal Internet Exchange at https://twitter.com/FremontCabalIX.
+You can find Kenneth on Twitter at [twitter.com/KWF](https://twitter.com/KWF) and read his blog at [blog.thelifeofkenneth.com](https://blog.thelifeofkenneth.com/).  You can follow the Fremont Cabal Internet Exchange at [twitter.com/FremontCabalIX](https://twitter.com/FremontCabalIX).
 
 - Gallium arsenide: https://en.wikipedia.org/wiki/Gallium_arsenide
 - Lam Research: https://en.wikipedia.org/wiki/Lam_Research

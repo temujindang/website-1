@@ -22,7 +22,7 @@ with many exciting tales in between!
 
 ### Show notes and highlights
 
-You can find Amir on Facebook at https://facebook.com/amir and on Twitter at https://twitter.com/digiamir.
+You can find Amir on Facebook at [facebook.com/amir](https://facebook.com/amir) and on Twitter at [twitter.com/digiamir](https://twitter.com/digiamir).
 
 - Silcon wafers: <a href='https://en.wikipedia.org/wiki/Wafer_(electronics)'>https://en.wikipedia.org/wiki/Wafer_(electronics)</a>
 - The 'Turbo button': https://en.wikipedia.org/wiki/Turbo_button
