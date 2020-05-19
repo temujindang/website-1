@@ -23,6 +23,14 @@ shellcheck: ## Runs the shellcheck tests on the scripts.
 test: ## Runs bash script tests.
 	@$(CURDIR)/scripts/test.sh
 
+.PHONY: broken-link-checker
+broken-link-checker: ## Run the broken link checker.
+	docker run --rm -i $(DOCKER_FLAGS) \
+		--name brok \
+		-v $(CURDIR):/usr/src:ro \
+		--workdir /usr/src \
+		jess/brok brok src/site/**/*.md
+
 .PHONY: build
 build: ## Build the docker image.
 	@docker build --rm --force-rm -t $(DOCKER_IMAGE) .
