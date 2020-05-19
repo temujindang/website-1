@@ -7,9 +7,21 @@ ifeq ($(INTERACTIVE), 1)
 endif
 
 DOCKER_FLAGS += --name oxide-website \
-		--disable-content-trust \
+				--disable-content-trust \
 
 DOCKER_IMAGE=oxide/webiste
+
+.PHONY: shellcheck
+shellcheck: ## Runs the shellcheck tests on the scripts.
+	docker run --rm -i $(DOCKER_FLAGS) \
+		--name shellcheck \
+		-v $(CURDIR):/usr/src:ro \
+		--workdir /usr/src \
+		jess/shellcheck ./scripts/shellcheck.sh
+
+.PHONY: test
+test: ## Runs bash script tests.
+	@$(CURDIR)/scripts/test.sh
 
 .PHONY: build
 build: ## Build the docker image.
