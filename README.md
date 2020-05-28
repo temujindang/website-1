@@ -1,6 +1,8 @@
 # Oxide Computer Company website
 
-[![broken link checker](https://github.com/oxidecomputer/website/workflows/broken%20link%20checker/badge.svg)](https://github.com/oxidecomputer/website/actions?query=workflow%3A%22broken+link+checker%22)
+[![make shellcheck](https://github.com/oxidecomputer/website/workflows/make%20shellcheck/badge.svg)](https://github.com/oxidecomputer/website/actions?query=workflow%3A%22make+shellcheck%22+branch%3Amaster)
+[![make test](https://github.com/oxidecomputer/website/workflows/make%20test/badge.svg)](https://github.com/oxidecomputer/website/actions?query=workflow%3A%22make+test%22+branch%3Amaster)
+[![make broken-link-checker](https://github.com/oxidecomputer/website/workflows/make%20broken-link-checker/badge.svg)](https://github.com/oxidecomputer/website/actions?query=workflow%3A%22make+broken-link-checker%22+branch%3Amaster)
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->

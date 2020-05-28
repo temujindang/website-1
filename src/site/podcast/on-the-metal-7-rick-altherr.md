@@ -22,7 +22,7 @@ Yup you heard that right!
 
 ### Show notes and highlights
 
-You can find Rick on Twitter at https://twitter.com/kc8apf and read his blog at https://www.kc8apf.net/.
+You can find Rick on Twitter at [twitter.com/kc8apf](https://twitter.com/kc8apf) and read his blog at [kc8apf.net](https://www.kc8apf.net/).
 
 - USBAnywhere: https://eclypsium.com/2019/09/03/usbanywhere-bmc-vulnerability-opens-servers-to-remote-attack/
 - Rick's talk at OSFC: https://www.youtube.com/watch?v=QrcdHHsfaKQ

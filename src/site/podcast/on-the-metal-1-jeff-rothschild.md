@@ -45,7 +45,7 @@ trolling coworkers in error messages, the origin story of `ftruncate`, and more.
 - H200 (Honeywell): http://www.feb-patrimoine.com/projet/honeywell200/h-200.htm  https://en.wikipedia.org/wiki/Honeywell_200
 - IBM 1401: http://bitsavers.trailing-edge.com/pdf/ibm/1401/A24-1401-1_1401_System_Summary_Sep64.pdf https://web.archive.org/web/20100809033646/http://www.bitsavers.org/pdf/ibm/140x/A24-1403-5_1401_Reference_Apr62.pdf https://en.wikipedia.org/wiki/IBM_1401
 - Current Mode Logic (CML): https://en.wikipedia.org/wiki/Current-mode_logic
-- Emitter Coupled Logic (ECL): http://www.physics.dcu.ie/~bl/digi/unitd04.pdf https://en.wikipedia.org/wiki/Emitter-coupled_logic
+- Emitter Coupled Logic (ECL): https://global.oup.com/us/companion.websites/fdscontent/uscompanion/us/static/companion.websites/9780199339136/pdf/Additional_Material.pdf https://en.wikipedia.org/wiki/Emitter-coupled_logic
 - Microcode: https://people.cs.clemson.edu/~mark/uprog.html https://www.computer.org/csdl/magazine/an/1986/02/man1986020116/13rRUxZRbqE http://gordonbell.azurewebsites.net/computer_structures_principles_and_examples/csp0174.htm https://archive.org/details/microprogramming00huss  https://en.wikipedia.org/wiki/Microcode
 - Intel 3805 DRAM
 - Repeat Move String Byte Instruction

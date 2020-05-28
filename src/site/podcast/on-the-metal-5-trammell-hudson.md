@@ -24,7 +24,7 @@ Mac SE, dissecting modchips, evil maid attacks, and more.
 
 ### Show notes and highlights
 
-You can find Trammell on Twitter at https://twitter.com/qrs, his blog at https://trmm.net/, and his GitHub at https://github.com/osresearch.
+You can find Trammell on Twitter at [twitter.com/qrs](https://twitter.com/qrs), his blog at [trmm.net](https://trmm.net/), and his GitHub at [github.com/osresearch](https://github.com/osresearch).
 
 - Sandia National Labs: https://www.sandia.gov/
 - Intel Paragon: https://en.wikipedia.org/wiki/Intel_Paragon

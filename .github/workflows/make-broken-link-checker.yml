@@ -1,0 +1,12 @@
+on:
+  push
+name: make broken-link-checker
+jobs:
+  broken-link-checker:
+    name: make broken-link-checker
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: make broken-link-checker
+        run: make broken-link-checker
+        shell: bash
