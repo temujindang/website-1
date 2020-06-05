@@ -957,6 +957,42 @@ audio {
   }
 }
 
+.animated__target {
+  display: inline-block;
+  -webkit-transform: translateY(115%);
+  transform: translateY(115%)
+}
+.animated__container {
+  display: inline-block;
+  display: inline-flex;
+  overflow: hidden
+}
+
+.animated__container .animated__target {
+  -webkit-animation: translate-headline .75s cubic-bezier(.5, 0, 0, 1) forwards;
+  animation: translate-headline .75s cubic-bezier(.5, 0, 0, 1) forwards
+}
+
+@-webkit-keyframes translate-headline {
+  0% {
+    -webkit-transform: translateY(115%);
+    transform: translateY(115%)
+  }
+  to {
+    -webkit-transform: translateY(0);
+    transform: translateY(0)
+  }
+}
+@keyframes translate-headline {
+  0% {
+    -webkit-transform: translateY(115%);
+    transform: translateY(115%)
+  }
+  to {
+    -webkit-transform: translateY(0);
+    transform: translateY(0)
+  }
+}
 
 /* purgecss start ignore */
 
