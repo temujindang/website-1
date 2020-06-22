@@ -23,10 +23,10 @@ this list exhaustive, it is merely a reference to some of my favorite moments in
 history. 
 
 - 1990: The world wide web was released out of CERN, thank you Tim Berners-Lee!
-    Originially it only ran on NeXT computers!
+    Originally it only ran on NeXT computers!
 - 1991: Apple's PowerBook laptops, with built in trackball, are released.
 - 1993: Windows NT is released.
--  1994: ZipDrives are released from Iomega, allowing 100MB to be stored on
+-  1994: Zip drives are released from Iomega, allowing 100MB to be stored on
     a single Zip Disk.
 - 1995 and later: The big browser war between Netscape and Microsoft.
 - 1997: The CD-RW is introduced.
