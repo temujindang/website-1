@@ -38,6 +38,6 @@ your favorite memories from the 90s we didn't mention!
 The logo we came up for this era should be easy to pin point exactly what
 inspired it :) but we will let you all guess for yourselves!
 
-![retro-logo-90s](/images/blog/retro-logos/90s.jpg)
+![retro-logo-90s](/images/blog/retro-logos/90s.png)
 
 Stay tuned tomorrow as we go further back in time to the 80s!
