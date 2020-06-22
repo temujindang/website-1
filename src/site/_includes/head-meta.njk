@@ -43,7 +43,7 @@
     <meta name="twitter:title" content="{%- if title -%}{{ site.site_title }}: {{ title }}{%- else -%}{{ site.site_title }}{%- endif -%}">
     <meta name="twitter:site" content="@{{ site.twitter_handle }}">
     <meta name="twitter:description" content="{%- if description -%}{{ description }}{%- else -%}{{site.site_tagline}}{%- endif -%}">
-    <meta name="twitter:image" content="{{site.site_meta_image}}">
+    <meta name="twitter:image" content="{%- if social_image -%}{{ social_image }}{%- else -%}{{site.site_meta_image}}{%- endif -%}">
     <meta name="twitter:image:alt" content="{{content | striptags | truncate(196) }}">
     <meta property="twitter:creator:id" content="{{ site.twitter_id }}" />
     <meta name="twitter:creator" content="@{{ site.twitter_handle }}">
