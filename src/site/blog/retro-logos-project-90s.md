@@ -39,6 +39,11 @@ your favorite memories from the 90s we didn't mention!
 The logo we came up for this era should be easy to pin point exactly what
 inspired it :) but we will let you all guess for yourselves!
 
-![retro-logo-90s](/images/blog/retro-logos/90s.png)
+<div class="my-8 border-4 border-oxide-green">
+  <picture>
+    <source srcset="/images/blog/retro-logos/90s-narrow.png" media="(max-width: 767px)">
+    <img src="/images/blog/retro-logos/90s.png" alt="retro-logo-90s" />
+  </picture>
+</div>
 
 Stay tuned tomorrow as we go further back in time to the 80s!
