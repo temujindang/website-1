@@ -3,7 +3,7 @@ title: 'Retro Logos Project: 90s'
 date: 2020-06-29T03:09:26
 tags: ['post', 'design', 'fun']
 authors: ["jessie-frazelle"]
-social_image: https://oxide.computer/images/blog/retro-logos/90s.png
+social_image: https://oxide.computer/images/blog/retro-logos/social/90s.png
 description: |
   Introducing the retro logos project and going through the 90s with some fun
   computer history.
