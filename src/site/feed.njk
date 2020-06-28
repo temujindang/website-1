@@ -6,6 +6,11 @@ eleventyExcludeFromCollections: true
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>{{ site.site_title }}: Blog</title>
   <subtitle>Thoughts, ramblings, insights and everything in between from the Oxide Computer Company team.</subtitle>
+  <image>
+    <url>https://oxide.computer/images/favicon/light/favicon-32x32.png</url>
+    <title>{{ site.site_title }}</title>
+    <link>https://oxide.computer</link>
+  </image>
   <link href="https://oxide.computer/blog/index.xml" rel="self"/>
   <link href="https://oxide.computer" />
   <updated>{{ collections.post | rssLastUpdatedDate }}</updated>
