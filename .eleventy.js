@@ -105,6 +105,9 @@ module.exports = function (eleventyConfig) {
     // Newest date in the collection
     return new Date(Math.max(...collection.map(item => {return item.date}))).toUTCString();
   });
+  eleventyConfig.addFilter('addCDATA', htmlContent => {
+      return "<![CDATA[ " + htmlContent + " ]]>";
+  });
 
   // a debug utility
   eleventyConfig.addFilter('dump', obj => {
