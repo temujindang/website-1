@@ -19,7 +19,7 @@ eleventyExcludeFromCollections: true
   {% set absolutePostUrl %}{{ post.url | url | absoluteUrl("https://oxide.computer" + metadata.url) }}{% endset %}
   <item>
     <title><![CDATA[ {{ post.data.title }} ]]></title>
-    <description><![CDATA[ {%- if post.data.description -%}{{ post.data.description }}{%- else -%}{{site.site_tagline}}{%- endif -%} ]]></description>
+    <description>{%- if post.data.description -%}{{ post.data.description | addCDATA }}{%- else -%}{{site.site_tagline | addCDATA}}{%- endif -%}</description>
     <link>{{ absolutePostUrl }}</link>
     <pubDate>{{ post.date.toUTCString() }}</pubDate>
     <guid isPermaLink="false">{{ absolutePostUrl }}</guid>
