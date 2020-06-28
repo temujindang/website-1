@@ -11,7 +11,7 @@ description: |
 
 Welcome back!
 
-As promised today we will be going back in time another decade into the 80s! The
+As promised today we will be going back in time another decade to the 80s! The
 80s had some great designs for computers and lots of innovations! These
 are a few moments from computer history in the 80s:
 
