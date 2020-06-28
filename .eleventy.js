@@ -96,6 +96,16 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addLayoutAlias('fourohfour', 'layouts/fourohfour.njk');
   eleventyConfig.addLayoutAlias('conf', 'layouts/conf.njk');
 
+  // RSS last feed updated.
+  eleventyConfig.addNunjucksFilter("rssFeedLastUpdatedDate", collection => {
+    if( !collection || !collection.length ) {
+      throw new Error( "Collection is empty in rssFeedLastUpdatedDate filter." );
+    }
+
+    // Newest date in the collection
+    return new Date(Math.max(...collection.map(item => {return item.date}))).toUTCString();
+  });
+
   // a debug utility
   eleventyConfig.addFilter('dump', obj => {
     return util.inspect(obj)

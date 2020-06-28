@@ -8,20 +8,20 @@ eleventyExcludeFromCollections: true
   <description><![CDATA[ Thoughts, ramblings, insights and everything in between from the Oxide Computer Company team. ]]></description>
   <image>
     <url>https://oxide.computer/images/favicon/light/favicon-32x32.png</url>
-    <title>{{ site.site_title }}</title>
+    <title>{{ site.site_title }}: Blog</title>
     <link>https://oxide.computer/blog/</link>
   </image>
   <link>https://oxide.computer/blog/</link>
   <atom:link href="https://oxide.computer/blog/index.xml" rel="self" type="application/rss+xml"/>
   <ttl>60</ttl>
-  <lastBuildDate>{{ collections.post | rssLastUpdatedDate }}</lastBuildDate>
+  <lastBuildDate>{{ collections.post | rssFeedLastUpdatedDate }}</lastBuildDate>
   {%- for post in collections.post %}
   {% set absolutePostUrl %}{{ post.url | url | absoluteUrl(metadata.url) }}{% endset %}
   <item>
     <title><![CDATA[ {{ post.data.title }} ]]></title>
     <description><![CDATA[ {%- if post.data.description -%}{{ post.data.description }}{%- else -%}{{site.site_tagline}}{%- endif -%}" ]]></description>
     <link>https://oxide.computer/{{ absolutePostUrl }}</link>
-    <pubdate>{{ post.date | rssDate }}</pubdate>
+    <pubdate>{{ post.date.toUTCString() }}</pubdate>
     <guid isPermaLink="false">{{ absolutePostUrl }}</guid>
     <content:encoded><![CDATA[ {{ post.templateContent | htmlToAbsoluteUrls(absolutePostUrl) }} ]]></content:encoded>
   </item>
