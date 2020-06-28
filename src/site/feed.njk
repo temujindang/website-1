@@ -20,10 +20,10 @@ eleventyExcludeFromCollections: true
   <item>
     <title><![CDATA[ {{ post.data.title }} ]]></title>
     <description><![CDATA[ {%- if post.data.description -%}{{ post.data.description }}{%- else -%}{{site.site_tagline}}{%- endif -%}" ]]></description>
-    <link>https://oxide.computer/{{ absolutePostUrl }}</link>
+    <link>https://oxide.computer{{ absolutePostUrl }}</link>
     <pubdate>{{ post.date.toUTCString() }}</pubdate>
     <guid isPermaLink="false">{{ absolutePostUrl }}</guid>
-    <content:encoded><![CDATA[ {{ post.templateContent | htmlToAbsoluteUrls(absolutePostUrl) }} ]]></content:encoded>
+    <content:encoded><![CDATA[ {{ post.templateContent | htmlToAbsoluteUrls("https://oxide.computer" + absolutePostUrl) }} ]]></content:encoded>
   </item>
   {%- endfor %}
 </channel>
