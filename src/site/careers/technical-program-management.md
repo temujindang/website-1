@@ -1,7 +1,7 @@
 ---
 title: Technical program manager
 subtitle: Are you a technical program manager that is eager to join our mission?
-tags: job
+tags: ['draft']
 application_link: https://forms.gle/Gaj1GMKXCS2izQjD9
 pageClass: page career
 ---

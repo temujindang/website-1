@@ -1,5 +1,8 @@
-<div class="animated__container newsletter {% if page.url == "/" %}{% else %} border-t-4 border-oxide-green {% endif %} show-on-scroll">
-  <div class="animated__target my-16 py-12 lg:py-4" style="animation-delay: 1s;">
+<div class="animated__container newsletter w-full
+{% if page.url == "/" %}{% else %} border-t-4 border-oxide-green {% endif %}
+{% if page.url ==  "/404.html" %}border-none{% endif %}
+show-on-scroll">
+  <div class="animated__target my-16 py-12 lg:py-4 w-full" style="animation-delay: 1s;">
     <div class="max-w-screen-xl mx-auto flex flex-col">
       <h2 class="heading">
         Sign up for our newsletter
