@@ -16,5 +16,6 @@
   "stitcher_url": "https://www.stitcher.com/s?fid=488658&refid=stpr",
   "pocketcasts_url": "https://pca.st/gg2yq8h0",
   "spotify_url": "https://open.spotify.com/show/4GDUravTUbvTrdJ2oWnzJp",
-  "podcast_rss_feed": "https://feeds.transistor.fm/on-the-metal-0294649e-ec23-4eab-975a-9eb13fd94e06"
+  "podcast_rss_feed": "https://feeds.transistor.fm/on-the-metal-0294649e-ec23-4eab-975a-9eb13fd94e06",
+  "blog_rss_feed": "https://oxide.computer/blog/index.xml"
 }

@@ -2,22 +2,29 @@
 permalink: blog/index.xml
 eleventyExcludeFromCollections: true
 ---
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-  <title>{{ site.site_title }}: Blog</title>
-  <subtitle>Thoughts, ramblings, insights and everything in between from the Oxide Computer Company team.</subtitle>
-  <link href="https://oxide.computer/blog/index.xml" rel="self"/>
-  <link href="https://oxide.computer" />
-  <updated>{{ collections.post | rssLastUpdatedDate }}</updated>
-  <id>{{ metadata.url }}</id>
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0">
+<channel>
+  <title><![CDATA[ {{ site.site_title }}: Blog ]]></title>
+  <description><![CDATA[ Thoughts, ramblings, insights and everything in between from the Oxide Computer Company team. ]]></description>
+  <image>
+    <url>https://oxide.computer/images/favicon/light/apple-icon-touch.png</url>
+    <title>{{ site.site_title }}: Blog</title>
+    <link>https://oxide.computer/blog/</link>
+  </image>
+  <link>https://oxide.computer/blog/</link>
+  <atom:link href="https://oxide.computer/blog/index.xml" rel="self" type="application/rss+xml"/>
+  <ttl>60</ttl>
+  <lastBuildDate>{{ collections.post | rssFeedLastUpdatedDate }}</lastBuildDate>
   {%- for post in collections.post %}
-  {% set absolutePostUrl %}{{ post.url | url | absoluteUrl(metadata.url) }}{% endset %}
-  <entry>
-    <title>{{ post.data.title }}</title>
-    <link href="{{ absolutePostUrl }}"/>
-    <updated>{{ post.date | rssDate }}</updated>
-    <id>{{ absolutePostUrl }}</id>
-    <content type="html">{{ post.templateContent | htmlToAbsoluteUrls(absolutePostUrl) }}</content>
-  </entry>
+  {% set absolutePostUrl %}{{ post.url | url | absoluteUrl("https://oxide.computer" + metadata.url) }}{% endset %}
+  <item>
+    <title><![CDATA[ {{ post.data.title }} ]]></title>
+    <description>{%- if post.data.description -%}{{ post.data.description | addCDATA }}{%- else -%}{{site.site_tagline | addCDATA}}{%- endif -%}</description>
+    <link>{{ absolutePostUrl }}</link>
+    <pubDate>{{ post.date.toUTCString() }}</pubDate>
+    <guid isPermaLink="false">{{ absolutePostUrl }}</guid>
+    <content:encoded>{{ post.templateContent | htmlToAbsoluteUrls(absolutePostUrl) | addCDATA }}</content:encoded>
+  </item>
   {%- endfor %}
-</feed>
+</channel>
+</rss>
