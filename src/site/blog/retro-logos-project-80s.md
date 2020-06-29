@@ -1,6 +1,6 @@
 ---
 title: 'Retro Logos Project: 80s'
-date: 2020-06-29T03:09:26
+date: 2020-06-30T03:09:26
 tags: ['post', 'design', 'fun']
 authors: ["jessie-frazelle"]
 social_image: https://oxide.computer/images/blog/retro-logos/social/80s.png
