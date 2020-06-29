@@ -30,6 +30,8 @@
     <meta media="(prefers-color-scheme:dark)" name="theme-color" content="#222">
 
     <!--Twitter Card-->
+    <!-- be sure to test custom blog social cards -->
+    <!-- and podcast audio cards -->
     {%- if podcast_file -%}
         <meta name="twitter:card" content="player">
         <meta name="twitter:player" content="{{ iframe_link }}">
@@ -50,6 +52,8 @@
     <meta name="twitter:domain" content="{{ site.site_url }}">
     <meta name="twitter:url" content="{{ site.site_url }}{{ page.url }}">
 
+    <!-- Linkedin Settings (as well as others) -->
+    <!-- be sure to test custom blog social cards -->
     <meta property="og:site_name" content="{{ site.site_title }}">
     <meta property="og:url" content="{{ site.site_url }}{{ page.url }}" />
     <meta name="title" property="og:title" content="{%- if title -%}{{ site.site_title }}: {{ title }}{%- else -%}{{ site.site_title }}{%- endif -%}" />
