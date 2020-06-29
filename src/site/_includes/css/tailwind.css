@@ -390,23 +390,23 @@ h3 {
   Base styles for lists
 */
 
-.content ul,
+/* .content ul,
 .content ol {
-  /* @apply my-6; */
-  /* @apply ml-3; */
-}
+  @apply my-6;
+  @apply ml-3;
+} */
 
 .content ol li {
   @apply list-decimal;
   @apply pl-2;
 }
 
-.content li {
-  /* @apply list-disc; */
-  /* @apply list-outside; */
-  /* @apply break-normal; */
-  /* @apply leading-normal; */
-}
+/* .content li {
+  @apply list-disc;
+  @apply list-outside;
+  @apply break-normal;
+  @apply leading-normal;
+} */
 
 .page .content ul,
 .page .content ol {
@@ -443,6 +443,15 @@ h3 {
 
 .teaser-post-item:last-of-type {
   @apply border-none;
+}
+
+
+/* Hack for styling lists in Markdown  */
+
+.page.blogpost .copy ul li {
+  @apply ml-6;
+  @apply list-disc;
+  @apply list-outside;
 }
 
 
