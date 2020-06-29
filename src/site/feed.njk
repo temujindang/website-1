@@ -4,8 +4,8 @@ eleventyExcludeFromCollections: true
 ---
 <rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0">
 <channel>
-  <title><![CDATA[ {{ site.site_title }}: Blog ]]></title>
-  <description><![CDATA[ Thoughts, ramblings, insights and everything in between from the Oxide Computer Company team. ]]></description>
+  <title type="text">{{ site.site_title }}: Blog</title>
+  <description type="text">Thoughts, ramblings, insights and everything in between from the Oxide Computer Company team.</description>
   <image>
     <url>https://oxide.computer/images/favicon/light/apple-icon-touch.png</url>
     <title>{{ site.site_title }}: Blog</title>
@@ -18,12 +18,12 @@ eleventyExcludeFromCollections: true
   {%- for post in collections.post %}
   {% set absolutePostUrl %}{{ post.url | url | absoluteUrl("https://oxide.computer") }}{% endset %}
   <item>
-    <title><![CDATA[ {{ post.data.title }} ]]></title>
-    <description>{%- if post.data.description -%}{{ post.data.description | addCDATA }}{%- else -%}{{site.site_tagline | addCDATA}}{%- endif -%}</description>
+    <title type="text">{{ post.data.title }}</title>
+    <description type="text">{%- if post.data.description -%}{{ post.data.description }}{%- else -%}{{site.site_tagline}}{%- endif -%}</description>
     <link>{{ absolutePostUrl }}</link>
     <pubDate>{{ post.date.toUTCString() }}</pubDate>
     <guid isPermaLink="false">{{ absolutePostUrl }}</guid>
-    <content:encoded>{{ post.templateContent | htmlToAbsoluteUrls(absolutePostUrl) | addCDATA }}</content:encoded>
+    <content type="html">{{ post.templateContent | htmlToAbsoluteUrls(absolutePostUrl)}}</content>
   </item>
   {%- endfor %}
 </channel>

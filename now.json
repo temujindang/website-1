@@ -19,6 +19,10 @@
       "dest": "/about/"
     },
     {
+      "src": "/blog/feed",
+      "dest": "/blog/index.html"
+    },
+    {
       "src": "/careers/hardware-engineers",
       "dest": "/careers/hardware-engineering"
     },
