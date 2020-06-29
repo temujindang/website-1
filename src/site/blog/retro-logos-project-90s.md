@@ -11,12 +11,12 @@ description: |
 
 👋 Hello!
 
-When we originally were deciding on the logo for the company, the designer
-working on it returned us an amazing logo that looked so awesomely 80s that, of
-course, I fell in love with it. Ultimately, it was not the logo we decided to use
-for the company but it did inspire creating a collection of logos encompassing
-the design style of each era. Over the next few days, we will unveil some logos 
-from eras past. We are starting today with the 90s! 
+When we were deciding on the logo for the company, the designer we worked with 
+showed us an amazing version that looked so awesomely 80s, I of
+course fell in love with it. Ultimately, it was not the logo we went with 
+but it gave us the idea to create a collection of logos that represent
+the design style of different eras in computing history. Over the next few days, 
+we will unveil some Oxide logos from eras past. We are starting today with the 90s! 
 
 The 90s were a great time for personal computers and innovation. Let's go over
 some of the innovations in computing that happened in the 90s. By no means is
