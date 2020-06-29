@@ -12,8 +12,8 @@ description: |
 👋 Hello!
 
 When we were deciding on the logo for the company, the designer we worked with 
-showed us an amazing version that looked so awesomely 80s, I of
-course fell in love with it. Ultimately, it was not the logo we went with 
+showed us an amazing version that looked so awesomely 80s. I, of
+course, fell in love with it. Ultimately, it was not the logo we went with 
 but it gave us the idea to create a collection of logos that represent
 the design style of different eras in computing history. Over the next few days, 
 we will unveil some Oxide logos from decades past. We are starting today with the 90s! 
