@@ -3,6 +3,7 @@ title: 'March 2020 Update'
 date: 2020-03-23T03:09:26
 tags: ['post', 'update']
 authors: ["jessie-frazelle"]
+social_image: https://oxide.computer/images/site/team.jpg
 description: |
     Updates from the warehouse for March 2020 including hiring, our office, 
     research, talks, a trip to the Computer History Museum, and new developments.
