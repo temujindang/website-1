@@ -16,7 +16,7 @@ eleventyExcludeFromCollections: true
   <ttl>60</ttl>
   <lastBuildDate>{{ collections.post | rssFeedLastUpdatedDate }}</lastBuildDate>
   {%- for post in collections.post %}
-  {% set absolutePostUrl %}{{ post.url | url | absoluteUrl("https://oxide.computer" + metadata.url) }}{% endset %}
+  {% set absolutePostUrl %}{{ post.url | url | absoluteUrl("https://oxide.computer") }}{% endset %}
   <item>
     <title><![CDATA[ {{ post.data.title }} ]]></title>
     <description>{%- if post.data.description -%}{{ post.data.description | addCDATA }}{%- else -%}{{site.site_tagline | addCDATA}}{%- endif -%}</description>
