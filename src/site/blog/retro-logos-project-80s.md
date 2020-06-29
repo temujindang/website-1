@@ -3,7 +3,7 @@ title: 'Retro Logos Project: 80s'
 date: 2020-06-30T03:09:26
 tags: ['post', 'design', 'fun']
 authors: ["jessie-frazelle"]
-social_image: https://oxide.computer/images/blog/retro-logos/social/80s.png
+social_image: https://oxide.computer/images/blog/retro-logos/social/80s-combined.png
 description: |
   Continuing our retro logos project and going through the 80s with some fun
   computer history.
@@ -11,8 +11,8 @@ description: |
 
 Welcome back!
 
-As promised today we will be going back in time another decade to the 80s! The
-80s had some great designs for computers and lots of innovations! These
+As promised, today we will be going back in time another decade to the 80s! The
+80s had some great computer design and lots of innovation! These
 are a few moments from computer history in the 80s:
 
 - 1980: The Sinclair ZX80 was introduced in the UK as a small home computer. It
@@ -42,12 +42,19 @@ are a few moments from computer history in the 80s:
 
 It's fun to see how many innovations from the 80s still exist today, like
 Mathematica, Word, Verilog, and more.
-This doesn't include _every_ awesome innovation from this decade. Be sure to s
-hare your favorite moments from the 80s with us 
+This list doesn't include _every_ awesome innovation from the 80s. Be sure to 
+share your favorite moments from the 80s with us 
 [@oxidecomputer](https://twitter.com/oxidecomputer)!
 
-For this decade, we have not one but two awesome logos. You should be able to
-guess what inspired each logo! Hint: they are mentioned above!
+For this decade, we have not one but two awesome logos. Can you
+guess what inspired each one? Hint: they are mentioned above!
+
+<div class="my-8 border-4 border-oxide-green">
+  <picture>
+    <source srcset="/images/blog/retro-logos/80s-alt-narrow.png" media="(max-width: 767px)">
+    <img src="/images/blog/retro-logos/80s-alt.png" alt="retro-logo-80s" />
+  </picture>
+</div>
 
 <div class="my-8 border-4 border-oxide-green">
   <picture>
