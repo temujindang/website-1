@@ -37,8 +37,8 @@ We are now in the 70s! Let's dive into some of the innovations from this decade:
 Please share your favorite moments from the 70s with us 
 [@oxidecomputer](https://twitter.com/oxidecomputer)!
 
-It should be easy to pinpoint exactly what inspired the logo we came up for this 
-decade :) We'll let you all guess for yourselves!
+This logo is inspired by a few different companies, let's see if you can guess
+which ones!
 
 <div class="my-8 border-4 border-oxide-green">
   <picture>
