@@ -20,7 +20,7 @@ We are now in the 70s! Let's dive into some of the innovations from this decade:
     Processor Element Memory (PEM) which stored 16,834 bytes in each of it's 64
     processors. Xerox PARC invented the laser printer.
 - 1972: The C programming language is released.
-- 1974: The Xerox PARC Alto is introduced, which featured the first WYSISYG 
+- 1974: The Xerox PARC Alto is introduced, which featured the first WYSIWYG 
     editor. The Alto is what inspired Apple's Lisa and Macintosh.
 - 1975: Altair 8800 kit appeared in Popular Electronics. Tandem computers
     released the Tandem-16.
