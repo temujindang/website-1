@@ -3,7 +3,7 @@ title: 'Retro Logos Project: 50s'
 date: 2020-07-03T03:09:26
 tags: ['post', 'design', 'fun']
 authors: ["jessie-frazelle"]
-social_image: https://oxide.computer/images/blog/retro-logos/social/50s.png
+social_image: https://oxide.computer/images/blog/retro-logos/social/50s-combined.png
 description: |
   Continuing our retro logos project and going through the 50s with some fun
   computer history.
@@ -27,8 +27,7 @@ Let's jump into some of the innovations from this decade:
 - 1957: DEC was founded. FORTRAN is developed at IBM. 
 - 1958: LISP is invented by John McCarthy at MIT.
 
-Be sure to 
-share your favorite moments from the 50s with us 
+Be sure to share your favorite moments from the 50s with us 
 [@oxidecomputer](https://twitter.com/oxidecomputer)!
 
 For this decade, we have two logos! We couldn't decide on just one so we went
@@ -41,9 +40,18 @@ with two! Can you guess the inspiration for both of these?
   </picture>
 </div>
 
-Huge thank you to [Lizzo](LINK TO SOMETHING) for creating all these amazing logo
-designs! 
 
-Thanks for going back in time with us this week! We sure have come a long way
+<div class="my-8 border-4 border-oxide-green">
+  <picture>
+    <source srcset="/images/blog/retro-logos/50s-alt-narrow.png" media="(max-width: 767px)">
+    <img src="/images/blog/retro-logos/50s-alt.png" alt="retro-logo-50s" />
+  </picture>
+</div>
+
+It was a pleasure to work with [Lizzo Ponzielli](https://www.instagram.com/lizzoart/) 
+on all these amazing retro Oxide logos! 
+
+Thanks for going back in time with us this week! It was a ton of fun to imagine 
+what our logo would have looked like in the past. We sure have come a long way
 from the 1950s. I cannot wait to see what innovations lie ahead for the next 50
 years! The future of computer history has yet to be written.
