@@ -38,8 +38,7 @@ decade:
 - 1969: Apollo Guidance Computer read-only rope memory is launched into space 
     with Apollo 11. UNIX is developed. 
 
-Be sure to 
-share your favorite moments from the 60s with us 
+Be sure to share your favorite moments from the 60s with us 
 [@oxidecomputer](https://twitter.com/oxidecomputer)!
 
 The inspiration for this logo is very near and dear to my heart since I have a 
