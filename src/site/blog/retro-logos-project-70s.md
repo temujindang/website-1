@@ -34,7 +34,6 @@ We are now in the 70s! Let's dive into some of the innovations from this decade:
     in the world.
 - 1979: Atari introduced their Model 400 and 800 computers.
 
-
 Please share your favorite moments from the 70s with us 
 [@oxidecomputer](https://twitter.com/oxidecomputer)!
 
