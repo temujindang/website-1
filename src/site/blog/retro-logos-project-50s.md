@@ -22,7 +22,7 @@ Let's jump into some of the innovations from this decade:
     use magnetic core memory.
 - 1954: IBM introduced the 650 magnetic drum calculator.
 - 1956: The first implementations of keyboards are developed at MIT. An early
-    experiment was named a Flexowriter. IBM shipped the RAMRAC computer with
+    experiment was named a Flexowriter. IBM shipped the RAMAC computer with
     magnetic disk storage.
 - 1957: DEC was founded. FORTRAN is developed at IBM. 
 - 1958: LISP is invented by John McCarthy at MIT.
