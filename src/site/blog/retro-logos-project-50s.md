@@ -15,7 +15,7 @@ Let's jump into some of the innovations from this decade:
 - 1950: Magnetic drum memory is developed for the US Navy.
 - 1951: The first Univac 1 is delivered to the US Census Bureau. Univac
     introduced the UNISERVO tape drive for the Univac 1. It was the first tape
-    storage for a commercial computer. Alan Turning created the Turing Test.
+    storage for a commercial computer. Alan Turing created the Turing Test.
 - 1952: On November 4th, the Univac computer predicted the outcome of the
     election.
 - 1953: Whirlwind core memory is developed at MIT. It was the first computer to
