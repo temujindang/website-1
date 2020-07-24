@@ -207,17 +207,24 @@ p {
   @apply text-gray-300;
 }
 
+hr {
+  @apply my-8;
+  @apply border-gray-700;
+}
+
 .ascii pre {
   font-family: monospace;
   white-space: pre;
 }
 
 .content blockquote {
-  @apply bg-gray-800;
-  @apply border-l-8;
+  @apply bg-gray-900;
+  @apply border-l-4;
   @apply border-oxide-green;
-  @apply mb-12;
-  @apply p-4;
+  @apply my-8;
+  @apply py-4;
+  @apply px-8;
+  /* quotes: "\201C"; */
   quotes: "\201C""\201D""\2018""\2019";
 }
 
@@ -225,18 +232,49 @@ p {
   @apply mr-1;
   @apply text-6xl;
   line-height: 0.1em;
-  vertical-align: -0.4em;
+  vertical-align: -0.2em;
   @apply text-oxide-green;
   content: open-quote;
 }
 
+.content blockquote:after {
+  @apply ml-0.5;
+  @apply text-3xl;
+  line-height: 0.1em;
+  @apply text-oxide-green;
+  content: close-quote;
+}
+
 .content blockquote p {
   @apply inline;
-  @apply text-2xl;
-  @apply font-semibold;
-  @apply tracking-widest;
-  @apply leading-tight;
+  @apply text-xl;
+  @apply tracking-wide;
+  @apply leading-snug;
   @apply text-white;
+}
+
+.content code {
+  @apply text-base;
+  @apply text-oxide-green;
+}
+
+.content pre {
+  white-space: pre;
+  @apply my-4;
+  @apply py-4;
+  @apply px-8;
+  @apply overflow-x-auto;
+  @apply overflow-y-auto;
+  tab-size: 4;
+  hyphens: none;
+  @apply bg-gray-800;
+  @apply text-gray-100;
+
+}
+
+.content pre code {
+  font-family: monospace;
+  @apply text-gray-100;
 }
 
 
@@ -325,7 +363,7 @@ h3 {
 .content a {
   @apply text-oxide-green;
   @apply border-b-2;
-  @apply border-transparent;
+  @apply border-oxide-green;
   transition: all 40ms ease-in-out;
   /* background-image: -webkit-gradient(linear, left top, left bottom, color-stop(70%, transparent), color-stop(70%, rgba(101, 125, 225, .4)));
   background-image: linear-gradient(180deg, transparent 70%, rgba(101, 125, 225, .4) 0); */
@@ -334,7 +372,27 @@ h3 {
 .content a:hover,
 .content a:focus {
   @apply border-b-2;
+  @apply border-transparent;
+  transition: all 40ms ease-in-out;
+}
+
+.content nav a,
+.content li a,
+.content .rss-follow a {
+  @apply border-transparent;
+}
+
+.content nav a:hover,
+.content nav a:focus,
+.content li a:hover,
+.content li a:focus {
   @apply border-oxide-green;
+}
+
+.content .rss-follow a,
+.content .rss-follow a:hover,
+.content .rss-follow a:focus {
+  @apply border-transparent;
 }
 
 .content a.social-share-button {
@@ -398,7 +456,6 @@ h3 {
 
 .content ol li {
   @apply list-decimal;
-  @apply pl-2;
 }
 
 /* .content li {
@@ -414,8 +471,12 @@ h3 {
   @apply ml-0;
 }
 
-.page .content ul li,
-.page .content ol li {
+/* Fixes nested lists, like a TOC */
+.page .content ul li ul {
+  @apply m-0;
+}
+
+.page .content ul li {
   @apply list-none;
   @apply list-inside;
 }
@@ -448,12 +509,15 @@ h3 {
 
 /* Hack for styling lists in Markdown  */
 
-.page.blogpost .copy ul li {
+.page.blogpost .copy ul li,
+.page.blogpost .copy ol li {
   @apply ml-6;
+}
+
+.page.blogpost .copy ul li {
   @apply list-disc;
   @apply list-outside;
 }
-
 
 /*
   Navigation links
