@@ -231,7 +231,7 @@ $ git push origin 0042
 ```
 
 After your branch is pushed, the table in the README on the master branch will
-update with the new RFD. If you ever change the name of the RFD in the future,
+update automatically with the new RFD. If you ever change the name of the RFD in the future,
 the table will update as well. Whenever information about the state of the RFD
 changes, this updates the table as well. The single source of truth for
 information about the RFD comes from the RFD in the branch until it is merged.
