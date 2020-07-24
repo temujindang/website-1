@@ -137,7 +137,7 @@ Once (or if) discussion has converged and the Pull Request is ready to be merged
 it should be updated to the `published` state before merge.
 Note that just because something is in the `published` state does not mean that 
 it cannot be updated and corrected.
-See the  [Making changes to an RFD](#making-changes-to-an-RFD) section for more 
+See the  [Making changes to an RFD](#making-changes-to-an-rfd) section for more 
 information.
 
 The `prediscussion` state should be viewed as essentially a collaborative 
