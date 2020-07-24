@@ -377,7 +377,8 @@ h3 {
 }
 
 .content nav a,
-.content li a {
+.content li a,
+.content .rss-follow a {
   @apply border-transparent;
 }
 
@@ -386,6 +387,12 @@ h3 {
 .content li a:hover,
 .content li a:focus {
   @apply border-oxide-green;
+}
+
+.content .rss-follow a,
+.content .rss-follow a:hover,
+.content .rss-follow a:focus {
+  @apply border-transparent;
 }
 
 .content a.social-share-button {
