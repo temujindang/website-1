@@ -34,6 +34,7 @@ describe RFDs is with "RFD 1 Requests for Discussion." Below is that RFD.
 - [Tooling](#tooling)
   - [Short URLs](#short-urls)
   - [Chat bot](#chat-bot)
+  - [API](#api)
   - [Shared RFD Rendered Site](#shared-rfd-rendered-site)
 
 ---
