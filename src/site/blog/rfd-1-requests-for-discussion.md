@@ -279,7 +279,8 @@ If you move your RFD into `discussion` but fail to open a pull request, a friend
 bot will do it for you. If you open a pull request but fail to update the state
 of the RFD to `discussion`, the bot will automatically correct the state by moving
 it into `discussion`. The bot will also cleanup the title of the pull request to
-be `RFD {num} {title}`.
+be `RFD {num} {title}`. The bot will automatically add the link to the pull
+request to the `discussion:` metadata.
 
 After the pull request is opened, anyone subscribed to the repo will get a 
 notification that you have opened a 
