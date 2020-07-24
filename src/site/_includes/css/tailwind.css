@@ -207,6 +207,14 @@ p {
   @apply text-gray-300;
 }
 
+hr {
+    margin: 20px 0 !important;
+}
+
+hr::before, hr::after {
+    border-color: #555;
+}
+
 .ascii pre {
   font-family: monospace;
   white-space: pre;
