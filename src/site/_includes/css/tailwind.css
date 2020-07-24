@@ -213,11 +213,13 @@ p {
 }
 
 .content blockquote {
-  @apply bg-gray-800;
-  @apply border-l-8;
+  @apply bg-gray-900;
+  @apply border-l-4;
   @apply border-oxide-green;
-  @apply mb-12;
-  @apply p-4;
+  @apply my-8;
+  @apply py-4;
+  @apply px-8;
+  /* quotes: "\201C"; */
   quotes: "\201C""\201D""\2018""\2019";
 }
 
@@ -225,17 +227,24 @@ p {
   @apply mr-1;
   @apply text-6xl;
   line-height: 0.1em;
-  vertical-align: -0.4em;
+  vertical-align: -0.2em;
   @apply text-oxide-green;
   content: open-quote;
 }
 
+.content blockquote:after {
+  @apply ml-0.5;
+  @apply text-3xl;
+  line-height: 0.1em;
+  @apply text-oxide-green;
+  content: close-quote;
+}
+
 .content blockquote p {
   @apply inline;
-  @apply text-2xl;
-  @apply font-semibold;
-  @apply tracking-widest;
-  @apply leading-tight;
+  @apply text-xl;
+  @apply tracking-wide;
+  @apply leading-snug;
   @apply text-white;
 }
 
