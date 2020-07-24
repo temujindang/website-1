@@ -24,7 +24,7 @@ describe RFDs is with "RFD 1 Requests for Discussion." Below is that RFD.
   + [Push your RFD branch remotely](#push-your-rfd-branch-remotely)
   + [Iterate on your RFD in your branch](#iterate-on-your-rfd-in-your-branch)
   + [Discuss your RFD](#discuss-your-rfd)
-  + [Push your RFD branch remotely](#push-your-rfd-branch-remotely-1)
+  + [Push your RFD branch remotely](#push-your-rfd-branch-remotely-2)
   + [Open a Pull Request](#open-a-pull-request)
   + [Discuss the RFD on the pull request](#discuss-the-rfd-on-the-pull-request)
   + [Merge the Pull Request](#merge-the-pull-request)
