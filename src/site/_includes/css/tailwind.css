@@ -444,7 +444,6 @@ h3 {
 
 .content ol li {
   @apply list-decimal;
-  @apply pl-2;
 }
 
 /* .content li {
@@ -493,12 +492,15 @@ h3 {
 
 /* Hack for styling lists in Markdown  */
 
-.page.blogpost .copy ul li {
+.page.blogpost .copy ul li,
+.page.blogpost .copy ol li {
   @apply ml-6;
+}
+
+.page.blogpost .copy ul li {
   @apply list-disc;
   @apply list-outside;
 }
-
 
 /*
   Navigation links
