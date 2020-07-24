@@ -31,9 +31,10 @@ describe RFDs is with "RFD 1 Requests for Discussion." Below is that RFD.
   + [Making changes to an RFD](#making-changes-to-an-rfd)
   + [Committing to an RFD](#committing-to-an-rfd)
 * [Changing the RFD process](#changing-the-rfd-process)
-* [Short URLs](#short-urls)
-* [Chat bot](#chat-bot)
-* [Shared RFD Rendered Site](#shared-rfd-rendered-site)
+* [Tooling](#tooling)
+  + [Short URLs](#short-urls)
+  + [Chat bot](#chat-bot)
+  + [Shared RFD Rendered Site](#shared-rfd-rendered-site)
 
 Writing down ideas is important:  it allows them to be rigorously formulated 
 (even while nascent), candidly discussed and transparently shared.
@@ -344,7 +345,9 @@ if you want to change the process itself, you can apply the RFD process to
 its own RFD: chime in on the discussion link or open an issue as dictated by 
 its current state!
 
-## Short URLs
+## Tooling
+
+### Short URLs
 
 As you can imagine, keeping track of RFDs and their links is unweidly at scale.
 To help, we have short URLs. You can link to any RFD on GitHub with
@@ -356,7 +359,7 @@ Any discussion for an RFD can be linked with
 
 These short URLs get automatically updated when a new RFD is opened. 
 
-## Chat bot
+### Chat bot
 
 In chat you can use `!rfd {any text} | {rfd number}` to return information about
 that RFD. For example, `!rfd 1` returns links RFD 1, it's discussion (if it is in
@@ -365,7 +368,7 @@ RFD is often hard so any strings you pass to the bot will be fuzzy matched
 across RFD titles. `!rfd user api` will return the RFD which title matches. In
 this example, it is RFD 4.
 
-## Shared RFD Rendered Site
+### Shared RFD Rendered Site
 
 As a way to share certain RFDs with other parties like potential customers,
 partners, and friends of the company, we have created a website that renders the
