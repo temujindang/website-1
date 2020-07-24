@@ -248,6 +248,30 @@ p {
   @apply text-white;
 }
 
+.content code {
+  @apply text-base;
+  @apply text-oxide-green;
+}
+
+.content pre {
+  white-space: pre;
+  @apply my-4;
+  @apply px-8;
+  @apply py-4;
+  @apply overflow-x-auto;
+  @apply overflow-y-auto;
+  tab-size: 4;
+  hyphens: none;
+  @apply bg-gray-500;
+  @apply text-gray-900;
+
+}
+
+.content pre code {
+  font-family: monospace;
+  @apply text-gray-900;
+}
+
 
 /*
   Global headings conventions
