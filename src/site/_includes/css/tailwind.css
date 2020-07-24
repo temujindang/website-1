@@ -207,6 +207,11 @@ p {
   @apply text-gray-300;
 }
 
+hr {
+    margin: 20px 0 !important;
+    border-color: #555;
+}
+
 .ascii pre {
   font-family: monospace;
   white-space: pre;
@@ -459,7 +464,13 @@ h3 {
   @apply ml-0;
 }
 
-.page .content ul li {
+/* Fixes nested lists, like a TOC */
+.page .content ul li ul {
+  @apply m-0;
+}
+
+.page .content ul li,
+.page .content ol li {
   @apply list-none;
   @apply list-inside;
 }

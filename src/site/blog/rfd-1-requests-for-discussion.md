@@ -24,7 +24,7 @@ describe RFDs is with "RFD 1 Requests for Discussion." Below is that RFD.
   + [Push your RFD branch remotely](#push-your-rfd-branch-remotely)
   + [Iterate on your RFD in your branch](#iterate-on-your-rfd-in-your-branch)
   + [Discuss your RFD](#discuss-your-rfd)
-  + [Push your RFD branch remotely](#push-your-rfd-branch-remotely-1)
+  + [Push your RFD branch remotely](#push-your-rfd-branch-remotely-2)
   + [Open a Pull Request](#open-a-pull-request)
   + [Discuss the RFD on the pull request](#discuss-the-rfd-on-the-pull-request)
   + [Merge the Pull Request](#merge-the-pull-request)
@@ -93,7 +93,7 @@ It'd look like:
 
 ```
 ---
-authors: Andy Hertzfeld <ah@cs.brown.edu>, Neal Firth <nealf@dg.com>
+authors: Andy Smith <andy@example.computer>, Neal Jones <neal@example.computer>
 state: prediscussion
 ---
 ```
@@ -137,7 +137,7 @@ Once (or if) discussion has converged and the Pull Request is ready to be merged
 it should be updated to the `published` state before merge.
 Note that just because something is in the `published` state does not mean that 
 it cannot be updated and corrected.
-See the  [Making changes to an RFD](#making-changes-to-an-RFD) section for more 
+See the  [Making changes to an RFD](#making-changes-to-an-rfd) section for more 
 information.
 
 The `prediscussion` state should be viewed as essentially a collaborative 
@@ -173,8 +173,9 @@ $ scripts/new.sh 0042 "My title here"
 If you wish to create a new RFD by hand, or understand the process in greater 
 detail, read on.
 
-**NOTE:** Never at anytime through the process do you push directly to master.
-Once your PR with your RFD in your branch is merged into master, then the RFD will be shown.
+**NOTE:** Never at anytime through the process do you push directly to the
+master branch. Once your pull request (PR) with your RFD in your branch is 
+merged into master, then the RFD will appear in the master branch.
 
 ### Reserve a RFD number
 
@@ -229,6 +230,12 @@ $ git commit -m '0042: Adding placeholder for RFD <Title>'
 $ git push origin 0042
 ```
 
+After your branch is pushed, the table in the README on the master branch will
+update automatically with the new RFD. If you ever change the name of the RFD in the future,
+the table will update as well. Whenever information about the state of the RFD
+changes, this updates the table as well. The single source of truth for
+information about the RFD comes from the RFD in the branch until it is merged.
+
 ### Iterate on your RFD in your branch
 
 Now, you can work on writing your RFD in your branch.
@@ -272,7 +279,8 @@ If you move your RFD into `discussion` but fail to open a pull request, a friend
 bot will do it for you. If you open a pull request but fail to update the state
 of the RFD to `discussion`, the bot will automatically correct the state by moving
 it into `discussion`. The bot will also cleanup the title of the pull request to
-be `RFD {num} {title}`.
+be `RFD {num} {title}`. The bot will automatically add the link to the pull
+request to the `discussion:` metadata.
 
 After the pull request is opened, anyone subscribed to the repo will get a 
 notification that you have opened a 
