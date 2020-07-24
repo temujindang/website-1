@@ -22,7 +22,7 @@ describe RFDs is with "RFD 1 Requests for Discussion." Below is that RFD.
   + [Create a branch for your RFD](#create-a-branch-for-your-rfd)
   + [Create a placeholder RFD](#create-a-placeholder-rfd)
   + [Push your RFD branch remotely](#push-your-rfd-branch-remotely)
-* [Iterate on your RFD in your branch](#iterate-on-your-rfd-in-your-branch)
+  + [Iterate on your RFD in your branch](#iterate-on-your-rfd-in-your-branch)
   + [Discuss your RFD](#discuss-your-rfd)
   + [Push your RFD branch remotely](#push-your-rfd-branch-remotely-1)
   + [Open a Pull Request](#open-a-pull-request)
@@ -229,7 +229,7 @@ $ git commit -m '0042: Adding placeholder for RFD <Title>'
 $ git push origin 0042
 ```
 
-## Iterate on your RFD in your branch
+### Iterate on your RFD in your branch
 
 Now, you can work on writing your RFD in your branch.
 
