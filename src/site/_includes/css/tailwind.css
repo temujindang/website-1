@@ -209,9 +209,6 @@ p {
 
 hr {
     margin: 20px 0 !important;
-}
-
-hr::before, hr::after {
     border-color: #555;
 }
 
