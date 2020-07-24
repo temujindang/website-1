@@ -381,7 +381,7 @@ this example, it is RFD 4.
 
 ### API
 
-Because RFDs are so core to everything we do, we publish a CSV file of all the
+Because RFDs are so core to everything we do, we automatically update a CSV file of all the
 RFDs along with their state, links, and other information in the repo for easy
 parsing. We then have functions in rust that allow us to easily get this
 information and automate or program tooling with RFD data.
