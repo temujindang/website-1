@@ -32,6 +32,7 @@ describe RFDs is with "RFD 1 Requests for Discussion." Below is that RFD.
   - [Committing to an RFD](#committing-to-an-rfd)
 - [Changing the RFD process](#changing-the-rfd-process)
 - [Tooling](#tooling)
+  - [API](#api)
   - [Short URLs](#short-urls)
   - [Chat bot](#chat-bot)
   - [Shared RFD Rendered Site](#shared-rfd-rendered-site)
@@ -357,6 +358,13 @@ its current state!
 
 ## Tooling
 
+### API
+
+Because RFDs are so core to everything we do, we automatically update a CSV file of all the
+RFDs along with their state, links, and other information in the repo for easy
+parsing. We then have functions in rust that allow us to easily get this
+information and automate or program tooling with RFD data.
+
 ### Short URLs
 
 As you can imagine, keeping track of RFDs and their links is unweidly at scale.
@@ -378,13 +386,6 @@ RFD is often hard so any strings you pass to the bot will be fuzzy matched
 across RFD titles. `!rfd user api` will return the RFD that title matches the
 text. In
 this example, it is RFD 4.
-
-### API
-
-Because RFDs are so core to everything we do, we publish a CSV file of all the
-RFDs along with their state, links, and other information in the repo for easy
-parsing. We then have functions in rust that allow us to easily get this
-information and automate or program tooling with RFD data.
 
 ### Shared RFD Rendered Site
 
