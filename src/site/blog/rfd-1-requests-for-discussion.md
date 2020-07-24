@@ -113,11 +113,11 @@ We keep track of three pieces of metadata:
 
 1. `authors`: The authors (and therefore owners) of an RFD.
 They should be listed with their name and e-mail address.
-2. `state`: Must be one of the five states discussed below.
+2. `state`: Must be one of the states discussed below.
 3. `discussion`: For RFDs that are in or beyond the `discussion` state, this should be a link to the PR to integrate the RFD;
 see below for details.
 
-An RFD can be in one of the following five states:
+An RFD can be in one of the following six states:
 
 1. `prediscussion`
 2. `ideation`
