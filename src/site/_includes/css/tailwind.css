@@ -207,6 +207,11 @@ p {
   @apply text-gray-300;
 }
 
+hr {
+  @apply my-8;
+  @apply border-gray-700;
+}
+
 .ascii pre {
   font-family: monospace;
   white-space: pre;
