@@ -370,6 +370,18 @@ h3 {
   transition: all 40ms ease-in-out;
 }
 
+.content nav a,
+.content li a {
+  @apply border-transparent;
+}
+
+.content nav a:hover,
+.content nav a:focus,
+.content li a:hover,
+.content li a:focus {
+  @apply border-oxide-green;
+}
+
 .content a.social-share-button {
   @apply inline-flex;
   @apply items-center;
