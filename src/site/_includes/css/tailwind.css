@@ -459,8 +459,7 @@ h3 {
   @apply ml-0;
 }
 
-.page .content ul li,
-.page .content ol li {
+.page .content ul li {
   @apply list-none;
   @apply list-inside;
 }
