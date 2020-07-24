@@ -89,7 +89,9 @@ module.exports = function (eleventyConfig) {
   });
 
   // Markdown helpers
-  eleventyConfig.setLibrary("md", markdownIt(options));
+    eleventyConfig.setLibrary("md", markdownIt(options).use(require("markdown-it-anchor"), {
+        level: 1,
+    }));
 
   // Layout aliases for convenience
   eleventyConfig.addLayoutAlias('default', 'layouts/base.njk');
