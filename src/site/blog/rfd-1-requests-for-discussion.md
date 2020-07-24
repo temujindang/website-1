@@ -173,8 +173,9 @@ $ scripts/new.sh 0042 "My title here"
 If you wish to create a new RFD by hand, or understand the process in greater 
 detail, read on.
 
-**NOTE:** Never at anytime through the process do you push directly to master.
-Once your PR with your RFD in your branch is merged into master, then the RFD will be shown.
+**NOTE:** Never at anytime through the process do you push directly to the
+master branch. Once your pull request (PR) with your RFD in your branch is 
+merged into master, then the RFD will appear in the master branch.
 
 ### Reserve a RFD number
 
