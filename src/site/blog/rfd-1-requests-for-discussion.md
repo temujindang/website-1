@@ -93,7 +93,7 @@ It'd look like:
 
 ```
 ---
-authors: Andy Hertzfeld <ah@cs.brown.edu>, Neal Firth <nealf@dg.com>
+authors: Andy Smith <andy@example.computer>, Neal Jones <neal@example.computer>
 state: prediscussion
 ---
 ```
