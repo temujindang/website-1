@@ -8,7 +8,15 @@ description: |
 ---
 
 One of the first things we did in setting up the company was create a repo
-named "rfd." This repo houses our requests for discussion. The best way to
+named "rfd." This repo houses our requests for discussion. Bryan teased this to
+the internet...
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">To the point of this piece, the first thing we actually built at <a href="https://twitter.com/oxidecomputer?ref_src=twsrc%5Etfw">@oxidecomputer</a> was infrastructure for design documentation and discussion -- which, like many problems, is peskier than it might seem! <a href="https://t.co/w8ecNNUN0I">https://t.co/w8ecNNUN0I</a></p>&mdash; Bryan Cantrill (@bcantrill) <a href="https://twitter.com/bcantrill/status/1286005213065703424?ref_src=twsrc%5Etfw">July 22, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+...and folks asked for our process, so we are going to share it!
+
+The best way to
 describe RFDs is with "RFD 1 Requests for Discussion." Below is that RFD.
 
 ---
