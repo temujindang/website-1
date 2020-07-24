@@ -362,8 +362,8 @@ These short URLs get automatically updated when a new RFD is opened.
 ### Chat bot
 
 In chat you can use `!rfd {any text} | {rfd number}` to return information about
-that RFD. For example, `!rfd 1` returns links RFD 1, it's discussion (if it is in
-discussion), and information about it's state. Remembering the number for an
+that RFD. For example, `!rfd 1` returns the links to RFD 1, its discussion (if it is in
+discussion), and information about its state. Remembering the number for an
 RFD is often hard so any strings you pass to the bot will be fuzzy matched
 across RFD titles. `!rfd user api` will return the RFD that title matches the
 text. In
