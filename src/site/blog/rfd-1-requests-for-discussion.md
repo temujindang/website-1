@@ -1,7 +1,7 @@
 ---
 title: 'RFD 1 Requests for Discussion'
 date: 2020-07-24T08:09:26-07:00
-tags: ['engineering', 'development']
+tags: ['post', 'engineering', 'development']
 authors: ["jessie-frazelle"]
 description: |
     A look inside our internal Requests for Discussion process.
