@@ -332,7 +332,7 @@ Any discussion for an RFD can be linked with
 
 These short URLs get automatically updated when a new RFD is opened. 
 
-== Chat bot
+## Chat bot
 
 In chat you can use `!rfd {any text} | {rfd number}` to return information about
 that RFD. For example, `!rfd 1` returns links RFD 1, it's discussion (if it is in
@@ -341,11 +341,13 @@ RFD is often hard so any strings you pass to the bot will be fuzzy matched
 across RFD titles. `!rfd user api` will return the RFD which title matches. In
 this example, it is RFD 4.
 
-== Shared RFD Rendered Site
+## Shared RFD Rendered Site
 
-As a way to share certain RFDs with other parties, like potential customers,
+As a way to share certain RFDs with other parties like potential customers,
 partners, and friends of the company, we have created a website that renders the
-RFD markdown or asciidoc into HTML in a nice format.
+RFD markdown or asciidoc into HTML in a nice format. This is a nice way to get
+feedback without adding everyone to the repo (as well as nicely formatting the
+content).
 
 And that's a wrap! Hopefully, this is helpful if you ever think about doing the
 same type of process internally!
