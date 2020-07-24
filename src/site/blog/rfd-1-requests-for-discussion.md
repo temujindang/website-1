@@ -13,6 +13,28 @@ describe RFDs is with "RFD 1 Requests for Discussion." Below is that RFD.
 
 ---
 
+**Table of Contents**
+
+* [When to use an RFD](#when-to-use-an-rfd)
+* [RFD Metadata and State](#rfd-metadata-and-state)
+* [RFD life-cycle](#rfd-life-cycle)
+  + [Reserve a RFD number](#reserve-a-rfd-number)
+  + [Create a branch for your RFD](#create-a-branch-for-your-rfd)
+  + [Create a placeholder RFD](#create-a-placeholder-rfd)
+  + [Push your RFD branch remotely](#push-your-rfd-branch-remotely)
+* [Iterate on your RFD in your branch](#iterate-on-your-rfd-in-your-branch)
+  + [Discuss your RFD](#discuss-your-rfd)
+  + [Push your RFD branch remotely](#push-your-rfd-branch-remotely-1)
+  + [Open a Pull Request](#open-a-pull-request)
+  + [Discuss the RFD on the pull request](#discuss-the-rfd-on-the-pull-request)
+  + [Merge the Pull Request](#merge-the-pull-request)
+  + [Making changes to an RFD](#making-changes-to-an-rfd)
+  + [Committing to an RFD](#committing-to-an-rfd)
+* [Changing the RFD process](#changing-the-rfd-process)
+* [Short URLs](#short-urls)
+* [Chat bot](#chat-bot)
+* [Shared RFD Rendered Site](#shared-rfd-rendered-site)
+
 Writing down ideas is important:  it allows them to be rigorously formulated 
 (even while nascent), candidly discussed and transparently shared.
 We capture the written expression of an idea in a **Request for Discussion** 
@@ -184,10 +206,12 @@ $ git checkout -b 0042
 Now create a placeholder RFD.
 You can do so with the following commands:
 
- $ mkdir -p rfd/0042
- $ cp prototypes/prototype.md rfd/0042/README.md
- # OR IF YOU PREFER asciidoc
- $ cp prototypes/prototype.adoc rfd/0042/README.adoc
+```
+$ mkdir -p rfd/0042
+$ cp prototypes/prototype.md rfd/0042/README.md
+# OR IF YOU PREFER asciidoc
+$ cp prototypes/prototype.adoc rfd/0042/README.adoc
+```
 
 Fill in the RFD number and title placeholders in the new doc and add your name as an author.
 The status of the RFD at this point should be `prediscussion`.
