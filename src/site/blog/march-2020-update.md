@@ -91,7 +91,7 @@ Tom Krazit at Protocol published a feature on what we are working on:
 We have gotten some amazing mugs from folks for our collection, thank you all
 so much! 
 
-<div class="grid grid-cols-1 row-gap-4 lg:gap-8 md:grid-cols-2 mt-4">
+<div class="grid grid-cols-1 gap-y-4 lg:gap-8 md:grid-cols-2 mt-4">
   <div class="col-span-1 flex justify-center items-center">
     <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Thanks to <a href="https://twitter.com/davidmedberry?ref_src=twsrc%5Etfw">@davidmedberry</a> for the Cray mug and book! We will put it to good use <a href="https://twitter.com/oxidecomputer?ref_src=twsrc%5Etfw">@oxidecomputer</a>! <a href="https://t.co/QNPrIGEzbB">pic.twitter.com/QNPrIGEzbB</a></p>&mdash; Jessie Frazelle (@jessfraz) <a href="https://twitter.com/jessfraz/status/1237463947604668416?ref_src=twsrc%5Etfw">March 10, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
   </div>
