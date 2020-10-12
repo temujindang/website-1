@@ -44,7 +44,8 @@ run: build ## Runs the build.
 shell: build ## Pop into a shell in the container.
 	docker run --rm -i $(DOCKER_FLAGS) \
 		-v $(CURDIR):/usr/src/website \
-		--net host \
+		-p 8181:8181 \
+		-p 3001:3001 \
 		--entrypoint bash \
 		$(DOCKER_IMAGE)
 
