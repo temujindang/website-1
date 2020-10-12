@@ -9,7 +9,7 @@ pageClass: page podcast
 <span class="leading-tight text-xl">Subscribe</span>
 {% include 'components/podcast-share.njk' %}
 <ul>
-    {%- for item in collections.podcast | reverse -%}
+    {%- for item in collections.podcast -%}
     {% include 'components/teaser-podcast.njk' %}
     {%- endfor -%}
 </ul>
