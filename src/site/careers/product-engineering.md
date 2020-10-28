@@ -1,66 +1,18 @@
 ---
-title: Product engineering and design
-subtitle: Are you a technologist or designer with a passion for exquisite user experiences?
+title: Product engineering
+subtitle: Are you a technologist with a passion for exquisite user experiences?
 tags: job
 application_link: https://forms.gle/xss6RjsAnPaqi6Wp9
 pageClass: page career
 ---
 
-We are building a small and ambitious UX team. We are looking for an engineer
-who loves amazing design and a designer who loves to code experiences and
-interfaces.
+Oxide is seeking a user interface engineer to help us build our rack-scale computer.  
 
 <!--more-->
 
-### About the product UX team
+Oxide is a different kind of company: to our marrow, we believe that the best products result from designing software with hardware.  As a user interface engineer, you represent the important last mile of that vision:  delivering the complexities of cloud infrastructure with a beautiful and functional interface that delights our customers.  You have likely spent much of your career developing data-rich browser-based interfaces and, while versed in modern frameworks (and likely being opinionated about them), you are enough of a veteran to see beyond the framework of the day.
 
-We believe the best product teams are made up of engineers and designers who
-take the opportunity to learn from and build on each other's work. We value a
-sharp attention to detail and are looking for members of our tribe who share
-this value! We love working with folks who have a passion for making the
-impossible possible. If you love developer tooling and making the lives of
-operators easier through great user experience excites you, please apply!
-
-### About the roles
-
-We are looking for a UX Engineer who focuses on things like HTML, CSS, &
-JavaScript, semantics and accessibility, frameworks, architecture,
-preprocessors, responsive design, backend development, testing and debugging,
-package management, build tools, version control, CI/CD, etc.
-
-We are looking for a UX Designer who focuses on things like user and market
-research, personas and scenarios, information architecture, wireframes,
-prototyping (light HTML, CSS, & JavaScript), and usability testing.
-
-This team will take complex ideas and make them simple for users to understand
-and use intuitively. We work directly with our customers to provide solutions
-for their needs. You will be working primarily on the user-facing interfaces
-like our API and management dashboard.
-
-### Requirements
-
-- Understanding of cloud technologies/infrastructure
-- Front-end experience (HTML, CSS, and JS)
-- Backend experience (primarily for the UX Engineer role)
-- Experience using Git and terminal
-- Attention to detail and a great sense of design taste for building intuitive
-    interfaces and experiences that are awesome to use
-- Experience with design and collaboration tools like Figma, Sketch or XD and
-    Abstract or Invision
-- Experience with prototyping tools like Framer or Principle
-
-We expect you to have detailed knowledge of preferred languages, tools, or
-systems, but that you are also able to quickly pick up new ones as needed.
-And while experience is essential, enthusiasm and interest can outweigh
-experience. We are willing to take a chance on people who want to step up.
+You have both a strong engineering sense and a strong design sense (and you may have called yourself either or both over the course of your career), but you especially value collaboration with those who call themselves one or the other: you know that our best work represents a confluence of technical and aesthetic sensibilities.  In any other company, you might call yourself "full-stack" -- but in a company that includes engineers writing everything from the lowest layers of firmware through hypervisors, a control plane, and API endpoints, you know that full-stack takes on an entirely new dimension. Indeed, you find yourself excited by this dimension rather than terrified by it:  you are enough of a generalist to appreciate the challenges of hardware and of elastic infrastructure, but also sufficiently specialized to know how your expertise can play a uniquely important role in providing a superlative product to our customers.
 
 Oxide is based in Emeryville, California, but we support remote work as well.
 
-PS Do you know someone who makes you better at what you do and has helped you
-achieve things you couldn't imagine achieving on your own? Someone who has
-motivated and inspired you? Someone who complements your strengths and makes
-up for your weaknesses? Stripe experimented with this. They called it BYOT —
-Bring Your Own Team. In the end, it didn't work for them — coordinating career
-moves for one person is complicated enough. That said, if you are applying for
-one of these roles and know the peanut butter to your jelly, please let us know
-because we'd love to meet them.
