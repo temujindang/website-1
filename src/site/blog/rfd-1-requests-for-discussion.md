@@ -134,12 +134,12 @@ quickly on the RFD in its branch in order to advance the RFD to the `discussion`
 
 A document in the `ideation` state contains only a description of the topic
 that the RFD will cover, providing an indication of the scope of the eventual
-RFD. Unlike the `prediscussion` state, there is no expectation that is
-undergoing active revision. Such a document is scratchpad for related ideas.
-Any member of the team is encouraging to start active development of such an
-RFD (moving it to the prediscussion state) with or without the participation
-of the original author. It is critical that RFDs in the `ideation` state are
-clear and narrowly defined.
+RFD.  Unlike the `prediscussion` state, there is no expectation that it is
+undergoing active revision. Such a document can be viewed as a scratchpad for
+related ideas.  Any member of the team is encouraged to start active
+development of such an RFD (moving it to the `prediscussion` state) with or
+without the participation of the original author. It is critical that RFDs in
+the `ideation` state are clear and narrowly defined.
 
 Documents under active discussion should be in the `discussion` state.
 At this point a discussion is being had for the RFD in a Pull Request.
