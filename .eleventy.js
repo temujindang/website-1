@@ -1,9 +1,9 @@
 const { DateTime } = require('luxon');
 const util = require('util');
-
 const fs = require("fs");
 const CleanCSS = require("clean-css");
 const { minify } = require("terser");
+const htmlmin = require("html-minifier");
 
 // Helper function to escape HseTML
 const escape = (unsafe) => {
@@ -143,6 +143,21 @@ module.exports = function (eleventyConfig) {
             // Fail gracefully.
             callback(null, code);
         }
+    });
+
+    // Minify the HTML
+    eleventyConfig.addTransform("htmlmin", function(content, outputPath) {
+        // Eleventy 1.0+: use this.inputPath and this.outputPath instead
+        if( outputPath.endsWith(".html") ) {
+            let minified = htmlmin.minify(content, {
+                useShortDoctype: true,
+                removeComments: true,
+                collapseWhitespace: true
+            });
+            return minified;
+        }
+
+        return content;
     });
 
     // Static assets to pass through
