@@ -39,7 +39,9 @@ pageClass: home
         </div>
         <ul class="font-semibold">
           {%- for i in collections.post | reverse -%}
-            {% include 'components/teaser-post-title.njk' %}
+             {%- if (loop.index < 5) -%}
+                {% include 'components/teaser-post-title.njk' %}
+            {%- endif -%}
           {%- endfor -%}
         </ul>
       </div>

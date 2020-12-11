@@ -1086,6 +1086,11 @@ audio {
     border-bottom-color: transparent;
 }
 
+.podcast-error {
+    margin: 20px 0px;
+    font-size: 1rem;
+}
+
 /* purgecss start ignore */
 
 @tailwind components;
