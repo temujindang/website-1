@@ -163,7 +163,7 @@ module.exports = function (eleventyConfig) {
     // compress and combine js files
     eleventyConfig.addFilter("jsmin", require("./src/utils/minify-js.js"));
 
-    // minify the css output when running in prod
+    // minify the css output
     eleventyConfig.addFilter("cssmin", function (code) {
         return new CleanCSS({}).minify(code).styles;
     });
@@ -172,7 +172,6 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.addPassthroughCopy({ "./src/site/_includes/fonts": "fonts" });
     eleventyConfig.addPassthroughCopy("./src/site/images");
     eleventyConfig.addPassthroughCopy("./src/site/robots.txt");
-    eleventyConfig.addPassthroughCopy("./src/site/css");
 
     return {
         dir: {

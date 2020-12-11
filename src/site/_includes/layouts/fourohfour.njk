@@ -44,8 +44,11 @@ O:::::::OOO:::::::O    X:::::X      X:::::X     II::::II  DDD:::::DDDDD:::::D   
     <meta charset="utf-8">
     <link rel="stylesheet" href="/css/styles.css">
     {% set css %}
-    {% include "css/styles.css" %}
+    {% include "styles.css" %}
     {% endset %}
+    <style>
+        {{ css | cssmin | safe }}
+    </style>
     {% include "head-meta.njk" %}
   </head>
   <body class="container mx-auto mb-12 max-w-none lg:max-w-6xl bg-oxide-gray text-white">
