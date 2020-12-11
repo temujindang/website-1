@@ -131,7 +131,7 @@ module.exports = function (eleventyConfig) {
                 if (speaker && time && (time.startsWith('0') || time.startsWith('1') || time.startsWith('2') || time.startsWith('3') || time.startsWith('4') || time.startsWith('5') || time.startsWith('6') || time.startsWith('7') || time.startsWith('8') || time.startsWith('9'))) {
                     content += '<p class="transcript-line" id="t='+time+'"><a href="#t='+time+'"><span class="timestamp">'+time+'</span></a><span class="speaker"><strong>'+speaker+'</strong>'+ line.replace(time, '').replace(speaker, '') + '</span></p>';
                 } else if (speaker && time) {
-                    content += '<p class="transcript-line">'+ line.replace(time, '').replace(speaker, '') + '</p>';
+                    content += '<p class="transcript-line">'+ line + '</p>';
                 }
             }
         });
