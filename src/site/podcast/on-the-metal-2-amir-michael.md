@@ -12,6 +12,7 @@ description: |
     industry-wide movement -- with many exciting tales in between!
 podcast_file: https://media.transistor.fm/4a4a1ee6.mp3
 iframe_link: https://share.transistor.fm/e/34e16a32
+transcript_file: 002-amir-michael.txt
 ---
 
 On this episode of On the Metal, we interview Amir Michael.  Join us as we 

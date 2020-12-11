@@ -13,6 +13,7 @@ description: |
     listening, we will be back soon!
 podcast_file: https://media.transistor.fm/204d8793.mp3
 iframe_link: https://share.transistor.fm/e/4d030faf
+transcript_file:
 ---
 
 Welp, that's a wrap for the first season of the On the Metal podcast. Join us 

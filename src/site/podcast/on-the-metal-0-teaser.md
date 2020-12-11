@@ -13,6 +13,7 @@ description: |
     and kept us wanting more, we can't wait to share them with you! Stay tuned!
 podcast_file: https://media.transistor.fm/8396a7b2.mp3
 iframe_link: https://share.transistor.fm/e/055722a9
+transcript_file: 000-teaser.txt
 ---
 
 Welcome to our new podcast, On the Metal! As a part of starting Oxide Computer

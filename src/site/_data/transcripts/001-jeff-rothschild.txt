@@ -1,0 +1,571 @@
+[music]
+00:00:10 Bryan: Welcome to On the Metal Tales from the Hardware/Software Interface. I'm Bryan Cantrill with me, as always is Jess Frazelle. Hey, Jess.
+00:00:18 Jess: Hey, Bryan.
+00:00:19 Bryan: Joining us is our boss, Steve Tuck. Hey, Steve.
+00:00:22 Steve: Lucky to be here.
+00:00:23 Bryan: All right, keep us in line. Jess, you want to tell us who's joined us in the garage today?
+00:00:28 Steve: Yes, today we have Jeff Rothschild. Very fortunate to have him and we have brought him into the garage and we actually already started talking about some stuff that we have in here, one of which was in IBM basic manual.
+00:00:41 Bryan: Jeff, first of all, Welcome to On the Metal.
+00:00:45 Steve: It's great to have you.
+00:00:45 Jeff: Thank you.
+00:00:46 Bryan: You immediately started looking at our manuals. I know that a lot of them have personal resonance for me and personal resonance for you. I know you saw the IBM manuals, and those were great manuals, weren't they? The boxes?
+00:00:59 Jeff: They were. It felt very impressive to have that whole row of boxes sitting on your desk next to the IBM PC, it felt quite official.
+00:01:08 Bryan: All right. Tell us when you first had those manuals and tell us about some of those manuals that meant something to you?
+00:01:13 Jeff: I bought an IBM PC right when it came out. I just figured this was going to be an important platform and I should know everything there was to know about it. I figured if I knew a little bit more than somebody else, there might be some advantage to that. First thing I did was I noticed there was a disassembler. I disassembled MS-DOS. I laid out 20 feet of paper listing on the floor of my apartment and got to work commenting it.
+00:01:40 Bryan: Wow, that was must have been--All right, your apartment, so you're an adult at this point?
+00:01:44 Jeff: Sort of. Yes. I was in my 20s.
+00:01:48 Bryan: You're in your 20s. Perfect timing for the PC. What did you learn from MS-DOS? That must have been an incredible educational experience for you?
+00:01:57 Jeff: I understood how the file control blocks worked, I recognize that there was state associated with an open file that persisted past the close of the file. Oddly enough, I did find that very useful later because some applications would operate on a file would officially do a close, and then continue to move the file pointer and do reads and writes, because it didn't matter. That state was not eliminated on close. The FCB based IO, I had to understand it, I needed to understand stack switching moving between the user stack and the system stack. It was quite useful to have that commented code.
+00:02:36 Bryan: Wow. Did you do that solo?
+00:02:38 Jeff: On my own.
+00:02:39 Bryan: Wow. It's disassembly, obviously. That does not come with even-- Do you have symbols? Do you have identifiers? What did you have to go on?
+00:02:48 Jeff: No, I just created my own. There was numeric identifiers in the disassembly, but then I created my own symbols. Once I figured out what something did, I create a name for it. Oddly enough, many years later, I did see portions of MS-DOS and had to go back and check and my names weren't that different, in most cases.
+00:03:07 Bryan: You don't still have that?
+00:03:09 Jeff: No, of course not.
+00:03:10 Bryan: It would be invaluable, I think, to actually learn how it worked.
+00:03:14 Jess: That's so cool.
+00:03:16 Jeff: I also used it in order to do an IO redirector. One of the first products I did on were MS-DOS was a file redirector for moving data to moving file ops to a Unix system. Effectively like a primitive version of NFS, but there was no VFS interface in MS-DOS, so I created something like that in order to do a product called PC Interface that allowed a MS-DOS program to use a Unix host as its remote file system.
+00:03:46 Bryan: What year is that?
+00:03:47 Jeff: Oh, early '80s.
+00:03:49 Bryan: Wow. That's early.
+00:03:51 Jeff: That technology was purchased by Sun Microsystems and became the client side of PC/NFS.
+00:03:57 Bryan: Wow.
+00:03:58 Jeff: Because the protocol was close enough to what eventually [unintelligible 00:04:00] did as NFS.
+00:04:02 Bryan: Do you ever wonder if that software's still running anywhere today?
+00:04:04 Jeff: Oh, I'm sure it is. I'm sure in some government agency, there's a machine somebody hasn't touched in 30 years. It's not on the internet, so nobody needs to update it. I suspect it's still running somewhere.
+00:04:17 Bryan: That is amazing. This is all real mode, correct?
+00:04:23 Jeff: Oh, yes.
+00:04:23 Bryan: This is all, effectively, 16-bit disassembly?
+00:04:26 Jeff: That's correct.
+00:04:27 Bryan: Not a lot of registers to work with.
+00:04:29 Jeff: No, you know I had to do this in a few number of bytes. Most machines at that time were sold with 64kbytes of RAM, so you couldn't waste anything. I did a simple IP/UDP implementation, all in assembler in about 2.5k.
+00:04:49 Bryan: That thing would fly today.
+00:04:53 Jeff: No, TCP. I couldn't have done that in that.
+00:04:56 Bryan: TCP would've been tough.
+00:04:57 Jeff: That would have been harder.
+00:04:57 Bryan: All with those constraints
+00:04:58 Jeff: Simple IP/UDP and ARP and reverse ARP, all at about 2.5k.
+00:05:06 Bryan: That's amazing. What kind of machine were you talking to?
+00:05:09 Jeff: This was a-
+00:05:10 Bryan: 3B2?
+00:05:10 Jeff: -3B2. Exactly. It was the AT&T 3B2.
+00:05:15 Bryan: A machine that if memory serves correctly, stacks grew up on the 3B2. Is that right?
+00:05:23 Jeff: That's lost for time. I don't remember.
+00:05:26 Bryan: The only reason I said it is because I ripped out some code that rely-- We historically allowed stacks to grow up or down. I determined the only reason that upward stack growth was there was for the 3B2. Back in the day
+00:05:39 Jeff: I can believe that. It was a fun machine. It was very Unix and C centric. That detail, luckily have forgotten.
+00:05:47 Bryan: That's right.
+00:05:49 Jess: Was that machine the favorite machine that you ever owned or did you have another one?
+00:05:54 Jeff: Oh, machines I've owned. I can't say that the machines I've owned, I've ever had a favorite. I enjoyed working on a Xerox Sigma 7 when I was in school which was a great computer, impressive for what you could do with it, of course, very little basic hardware performance.
+00:06:12 Bryan: Wow. What was the Sigma 7 based on?
+00:06:16 Jeff: The Scientific Data Systems was the company that developed the architecture, they sold that to Xerox, it was a 32-bit machine.
+00:06:24 Bryan: 32-bit machine, that is very early for 32-bits.
+00:06:26 Jeff: Yes, it's an early 32-bit machine, early '70s development. I think about probably a megabyte of memory and used a fixed-head disk, what they called a drum and could support 40, 50 terminal user. People were limited by the speed of the input device. You're typing on a Teletype 110, so nothing was very fast. It was a university shared resource.
+00:06:54 Bryan: That's amazing. You think that that machine had a megabyte of RAM, and then a decade later, you're buying a machine with 64k of RAM. It shows you how dichotomous computing was in terms of the computers that you would use versus the computers you could buy.
+00:07:08 Jeff: Of course.
+00:07:09 Bryan: It's amazing.
+00:07:11 Jess: It's almost interesting then how people just consume resources without even thinking about them today.
+00:07:17 Bryan: Yes, that's a commonly held attitude, I think. Especially growing up in that era, you must view us as being just profligate users of everything today.
+00:07:25 Jeff: Of course, terribly wasteful, but it's sort of a lost skill, and maybe it should be lost. I remember when people would grade papers when I was in school, if somebody could show that you could eliminate 20 bytes, you lost half a grade, because every byte mattered. Today, it doesn't.
+00:07:47 Bryan: I feel like there's still pockets where every byte matters.
+00:07:50 Jeff: Of course, when you're dealing with obviously, large amounts of data, then the representation of each individual data element, clearly every byte matters, but when you're writing a piece of functional code, it's more, I'd say, readability and your ability to maintain and enhance that code is more important as to whether you achieve the utmost compact representation.
+00:08:13 Bryan: Was the Sigma 7, was that your first real big machine that you used?
+00:08:17 Jeff: It was, yes. I then moved from there to the PDP-10.
+00:08:20 Jess: Oh, I have a PDP-11 replica inside and a PDP-8, but not a 10.
+00:08:25 Jeff: Well, I use the eight as well. In fact, I worked on the eight in paper tape.
+00:08:30 Jess: That's cool.
+00:08:32 Jeff: That was also an interesting challenge, do your development of paper tape. PDP-10, a 36-bit machine. It was an interesting beast. I actually used to have fun coding the PDP-10, not using the assembler, because I, for some reason that I can't explain, it may have been, in fact, it may be indicative of a social defect, but I thought it was fun to learn the machine language and code without the assembler. I just opened up an octal editor and could write some fairly simple programs. That's a useless trick. Again, if I saw someone doing that today, I would be worried, but that just seems fun.
+00:09:13 Bryan: I was just going to ask, is everything done with an assembler today? Is that unheard of that you would not use an assembler?
+00:09:19 Steve: Certainly, when Jeff was saying, I didn't use the assembler, I was saying, "Wow, you're using a higher-level language," but no, it's like he's actually going lower. The assembler takes the actual instructions to the CPU and encodes them in the binary representation. What Jeff was manipulating was actually the binary representation, albeit.
+00:09:39 Jeff: I wrote it in octal. I'm not a primate here. Obviously, I would write in octal not binary.
+00:09:49 Jess: That's cool.
+00:09:50 Bryan: That's amazing. You must have had the opcode; you probably still know some of those opcodes.
+00:09:54 Jeff: No, I don't. I luckily have forgotten that. There's a finite amount, I think he can start. That register has been cleared and reused many times.
+00:10:05 Bryan: Thank God. You run the PDP and how many years did you work on the PDP?
+00:10:12 Jeff: Oh, just while I was in school for two, three years.
+00:10:15 Bryan: Where did you head to after school?
+00:10:18 Jeff: Oh, I went to work at Honeywell. I spent a year at Honeywell's large Information Systems Division. This was the old General Electric computer company. Their system was a 36-bit machine as well. A real memory system at the point that I joined though they were working on trying to add a virtual memory capability. Interesting machine. It had six-bit bytes, eight-bit bytes, and nine-bit bytes so you could choose how many characters to pack into a word. Of course, it meant that each piece of software had to identify its conventions for byte encoding, which wasn't that unusual in the day. We had both ASCII and EBCIDIC that they could use nine-bit at the same time.
+00:11:04 Bryan: Right. EBCIDIC is probably worth explaining. I know, Steve, there's no way you know EBCIDIC. I hope not. [chuckles]
+00:11:09 Steve: No, I have no idea. What's EBCIDIC?
+00:11:11 Jeff: It's a character encoding that IBM was using through, I guess, the 50s and 60s.
+00:11:19 Bryan: It is a decimal encoded as binary. It doesn't make a whole lot of sense but it lives on today because the EBCIDIC 6 still has instructions for binary-coded decimals, kind of crazy.
+00:11:32 Jeff: Very good.
+00:11:33 Bryan: ASCII before multiply my favorite [unintelligible 00:11:35]. Then for the a nine-bit words, what was that? The nine-bit bytes, excuse me. What was that to allow? Was that a parity bit?
+00:11:43 Jeff: If they fit evenly into 36, so you get four characters in the word eight, eight didn't go in as quite as nicely. [chuckles] but the six-bit, of course, would fit in the 36-bit.
+[inaudible 00:11:58] Bryan: What Honeywell machine is this at this point?
+00:12:02 Jeff: I don't remember the model numbers. It was a Honeywell mainframe, ran the G course operating system implemented in 7400 Ls logic.
+00:12:12 Bryan: 7400 Ls?
+00:12:14 Jeff: Yes.
+00:12:14 Bryan: What does that denote?
+00:12:16 Jeff: If you remember the Texas Instruments TTL data book, the yellowish binder that-- You don't have one on your shelf here. [crosstalk] That's when you need to buy and these were series of small scale and medium scale integration components and most machines in the 70s were built out of this logic family. You had 7400, 7400 S, which was faster implementations [unintelligible 00:12:47] implementation and then the low power Trotsky.
+00:12:50 Steve: I'm embarrassed to say I didn't know Honeywell was ever in the computer business because I think of Honeywell as thermostats and particularly the family business being in heating, air conditioning, ascribe them to that but they were a computer company.
+00:13:04 Bryan: They were definitely a computer company and they were the H in the bunch. At one point, the computer industry was IBM and the bunch, Burroughs, UNIVAC NCR, Control data and Honeywell.
+00:13:16 Jeff: That's correct.
+00:13:17 Steve: Got it.
+00:13:17 Jess: Like Fangs today?
+00:13:17 Bryan: The Fang today. Yes. That's exactly right. 1970s Fang is the bunch.
+00:13:23 Jess: That's cool.
+00:13:24 Bryan: Of course, all those companies are more or less out of the computer business. Actually Honeywell, although this would probably predate you, the H200, I imagine would predate you at Honeywell, they made an IBM 1401 clone called the H200, which was transistorized and forced IBM to really get-- IBM was very slow on transistorized 1401.
+00:13:47 Jeff: That's a machine I wasn't familiar with. I stayed at Honeywell a little less than a year and it was interesting, they'd given me a relocation bonus when I left school. Once I understood the state of the company and where the where this organization was going to be going, I decided to calculate how much money could I save and how was my relocation bonus being amortized because each month I owed them a little bit less and when the two lines crossed, I left.
+00:14:16 Bryan: You left, so you decided pretty quickly you did not want to work at Honeywell.
+00:14:19 Jeff: The year I was there they were building a current mode logic version of their architecture so CML. At the time ECL was a more broadly accepted technology, higher performance than 7400 LS. However, this was to be their first micro coded machine.
+00:14:38 Bryan: Oh, interesting.
+00:14:39 Jeff: The CML implementation was very expensive for them. They had their own foundry, their building, their own chips. The microarchitecture was 10 times faster than the previously directly implemented logic. Unfortunately, you had about 10 microinstructions and each target is [unintelligible 00:14:59].
+[laughter]
+The effect was a machine that cost an order of magnitude more and delivered exactly the same performance.
+00:15:07 Bryan: Interesting. Maybe worth explaining microcode because I feel microcode is something that we don't really have an analog of that today I know. I'm looking at Steve who I'm sure-
+00:15:17 Steve: I can come up with a couple but I like your answer.
+00:15:21 Jeff: Oh, microcode is simply you have a low-level interpreter that is interpreting the target instruction set of the machine. That was a very common implementation technique.
+00:15:31 Bryan: This is probably still used underneath. It is used under the hood for EBCIDIC six obviously has its own microcode [unintelligible 00:15:36].
+00:15:35 Jeff: Yes, of course.
+00:15:36 Bryan: -but you can't write that microcode today.
+00:15:38 Jeff: That's correct. You couldn't then either, but the implementers of this system architecture were implementing the target instruction set in micro instructions about 10 instructions per target instruction. It all netted out to approximately the same performance.
+00:15:54 Bryan: The same performance, interesting. You were actually writing microcode at that point?
+00:15:57 Jeff: No, I was on been an architecture team that really didn't do much of anything. I was just simply calculating but my two lines would cross.
+00:16:07 Bryan: There you go.
+00:16:07 Jeff: My savings and my debt crossed, and I was off to Intel.
+00:16:12 Bryan: Oh, Intel was the next stop?
+00:16:13 Jeff: Yes, it was.
+00:16:14 Jess: That's dope. What did you work on at Intel?
+00:16:17 Jeff: Intel used to be a large producer of memory and they produced DRAM. Not all the DRAM was good. Every process has some waste. Intel was producing a disk emulator for IBM mainframes called the 3805. It had a very interesting memory controller that could deal with chips that were partially correct and mask that. It was a great place to pack in memory, possibly memory that you weren't able to sell at retail and then deliver a solid-state disk. Something that sat on an IBM channel, and provided presumably better performance.
+What was interesting was that it didn't, it was actually significantly slower than the fixed head disk. I interviewed at Intel and they told me about this project and they said that they had a serious issue. They had a backlog of a quarter of a billion dollars for these systems and everyone they'd shipped had been returned for being slower than the physical disk that the solid-state device was emulating.
+00:17:31 Bryan: That's bad.
+00:17:32 Jess: That's so bad.
+00:17:33 Jeff: Yes, and it didn't make any sense to me. Being a somewhat cocky 22-year-old, I said, I could fix that. All I got to do is just maybe there was sloppy code. I didn't know but I very confidently said I could deal with that. I went back to finish my two weeks at Honeywell and I looked in industry rag called computer world, which is still around but was very popular in the late 70s. I saw an interview with the head of this group, the fellow I just interviewed with. In there, he said, "Yes, it's true. We have this backlog, but we have a solution in hand and we're going to be shipping it in a month." I said maybe they don't need me. I called him up and said he said, [crosstalk] Exactly. I was the solution.
+[laughter]
+I said, "Are you sure you need me? It sounds like you solved this."
+00:18:24 Bryan: Wow, they're like, "We definitely need you. You are the solution."
+00:18:26 Steve: This created a PR crisis.
+00:18:28 Jeff: I hadn't really drunk a lot before then but for the next two weeks, I needed a little bit of help getting to sleep at night. I wasn't sure that I really could follow through that.
+00:18:37 Bryan: You renegotiated your offer and what happened?
+00:18:40 Jeff: I showed up and looked at this machine, scratched my head for a bit and stayed up all night with it for probably two or three weeks with a logic analyzer trying to find out why this simple 8086 instruction path was slower than the physical disk that should be easy to D. It turned out it was one instruction; it was a repeat move string byte that was used to reinitialize a condition code table for the channel control program and it didn't catch the one instruction. That was adding sufficient extra time that it made it slower than the fixed-head disk.
+There were two factors in play there. One, their control path was slower but the other was they didn't understand how the operating systems used to fix that disk. They figured what the rotational latency was, they knew the switching time is close to zero so they assumed that the average performance would be approximately half the rotational latency. Of course, IBM had many years to perfect this technology and the OS is sorted, the sector, so the control program would organize the requests so that it would be doing position one, position two, position three. So, assuming let's say there were three tracks, three-block positions on a single track, they would always go, let's say modular three and order them zero, one, two, zero, one, two. Then, the other operating systems, they had one [unintelligible 00:20:13] sharing system, they'd used a little bit different strategy, but also was able to effectively get the rotational latency to close to zero. They just-- they put in some spacer records that handled the head switching time and the time for the control program so that the effective rotational latency was zero. The folks at Intel who are great in microcontrollers and in process technology, that wasn't their specialty, they didn't know what operating system designers at IBM had cooked up, so, they set their target to low, the product was simply released before they had achieved it, what was a useful performance metric for their customer.
+00:20:49 Bryan: Wow.
+00:20:50 Jess: Wow.
+00:20:50 Steve: Wow.
+00:20:51 Jess: That is insane.
+00:20:52 Bryan: Leading to a quarter billion dollars.
+00:20:54 Jeff: There's so much in there that's mind-blowing.
+00:20:57 Jess: [laughs].
+00:20:57 Bryan: I'm going to have to go back and unpack that a little bit. First of all, it's a solid-state disc, this is what we now call an SSD, but this is long before solid-state desks were-
+00:21:09 Jeff: This is 1979.
+00:21:11 Bryan: Was it-- but it was still volatilized on.
+00:21:14 Jeff: Yes. It had a motor generator, so, the wall power was plugging a rotating generator-- a motor that was running a generator and provided generated power to the memory. That was to avoid potential corruption from glitches and wall power.
+00:21:33 Jess: That's cool.
+00:21:33 Bryan: Wow. This thing was loud.
+00:21:36 Jeff: Oh yes. It was just data center equipment; you weren't supposed to care.
+00:21:39 Bryan: Then on an actual power failure, what would it-- did it have any way of getting that out to non-volatile storage?
+00:21:47 Jeff: The assumption was the environment it would be had battery backup, so, this would carry it through those transitions.
+00:21:54 Bryan: Wow. Interesting. What was the capacity of this thing?
+00:21:57 Jeff: That I can't tell you. This again-- that register was filled and reused many years ago.
+00:22:03 Bryan: Yes, no problem [unintelligible 00:22:03] and I latch on to the same and you latch on Steve about the backlog, quarter of a billion dollars of backlog.
+00:22:08 Steve: One instruction said led to a quarter billion dollars of backlog.
+00:22:11 Jeff: Well, they eventually delivered against that backlog. They were held up for a number of months while trying to understand this performance issue and again, it was two-sided. One is they had set the release criteria too high, so, they were thinking three, four milliseconds was going to be fine when in fact they needed to be a fraction of a millisecond due to the strategies that the OS was using in scheduling IO. Then, they were also too slow, simply due to repeat moves, string byte.
+00:22:44 Bryan: Right. Steve, for context, it may help to know that this is an instruction, a single instruction that can do a lot of work.
+00:22:51 Jeff: In this case, 256 bytes at a time. Well, it could have been 128 words, this was a 16-bit machine, that would have already set it up, but the truth was only a half a dozen entries in that table would typically need to be reset following a single IO request. The way the table was used was, given the instructions that were in the channel program, there were only certain instructions that were legal for the next instruction, and then following that instruction, there were other instructions that were legal. This was determining whether the opcodes that were used in the IBM channel program were legal at that point in the program. At the end of the IO request, you would have to reset that back to an initial state. Clearly, you could track what changes had taken place and then reset those half a dozen invalid operations at the end of the request.
+00:23:45 Bryan: That's interesting.
+00:23:45 Steve: Is there an analog to something that you've seen or that we've seen recently that would map to that low-level single instruction set that had so far-reaching indications of [unintelligible 00:23:59]?
+00:23:59 Bryan: Single instruction just to be clear.
+00:24:01 Steve: Single instruction.
+00:24:01 Bryan: Yes, not even [unintelligible 00:24:02] a single instruction that was-- A single instruction can still do a lot of damage today, I think.
+00:24:08 Jeff: It can, but this was somewhat unique, we were dealing with slower memory systems, so, anything that moved 256 bytes of memory had a pretty significant delay. For someone reading a simpler code, an instruction looks like every other instruction. They seem fairly equivalent, you don't recognize that there is a two order of magnitude potential disparity between one instruction and the next one that followed it in the listing, and I think that's what through the team that was working on.
+[00:24:35] Steve You had a pretty successful first two weeks of work.
+00:24:38 Jeff: It was a lot of fun. I have to admit, it was like two or three in the morning and I'm staring at a logic analyzer and I'm tracking it down, and suddenly I get to that page and the listing, and there's a repeat [unintelligible 00:24:50] byte and I smiled [unintelligible 00:24:51].
+00:24:51 Steve: Oh, that must have been glorious. [crosstalk]
+00:24:57 Jeff: I was pretty excited. It took a bit, about 15 minutes to code up the alternate implementation and I got to sleep that night without a little bit of cognac.
+00:25:06 Bryan: That is amazing and you do not admit a howl, I'm impressed with your self-control. I've been known to howl over much smaller funds. Two bits of interesting context there, one, so channel programs are something-- Jess, you probably don't know what a channel program is.
+00:25:23 Jess: No.
+00:25:23 Bryan: Yes, so this is the way, you have to explain what a channel program is, yes.
+00:25:27 Jeff: The IO is performed by a second computer that had an interface to the mainframe and executed simple programs for doing IO and they could deal with the tape operations and knew the intricacies of tape, but you didn't program the IO controllers directly from the main instruction set, you'd create a program and deliver that to the channel controller.
+00:25:54 Bryan: This is something that's coming back a little bit, not channel per se, but the idea of having compute spread away and pushing compute elsewhere to actually-- so when you look at like all the offload that we do right on the NICs, for example, smart NICs are a modern channel program in a different form. The only thing that's interesting is that is the [unintelligible 00:26:14] versus risks so the complete instruction set versus a reduced instruction set. What Jeff found was a single instruction doing a lot of work, and this is predated risk, obviously, risk is wouldn't happen for another couple of years, right?
+00:26:28 Jeff: That's true, but what we did at that point because removing that instruction certainly moved the product forward and they were able to start making deliveries. It still could have been faster and wasn't meeting [unintelligible 00:26:39] potential of the architecture. We reimplemented the control program using the AMD 2900 series logic family. We created a bit slice processor and were able to achieve much better performance than we could with an AD 86
+00:26:55 Bryan: The AMD 29K isn't really risk-- That is a risk [unintelligible 00:26:58].
+00:26:58 Jeff: Yes, well this was the 2,900 series.
+00:27:01 Bryan: Not the 29K.
+00:27:01 Jeff: Yes, so this was a bit slice model where you could really define--You had an opcode controller, then you had-- you could choose the register sets separately and you could almost design your own instruction set out of the 2900 series.
+00:27:15 Bryan: That was an amazing architecture. I would like to point out there's an AMD 29K manual about eight inches behind you.
+00:27:22 Steve: Well, listen, I'm just very-- this is-
+00:27:23 Jeff: Maybe I hope I'm not-- I'm remembering it correctly, it's 2900 versus 29K.
+00:27:27 Bryan: I know, I never programmed it. It just-
+00:27:30 Jeff: Maybe it's the same logic family, so.
+00:27:32 Bryan: My own read on it was, it was always viewed as this real great step forward and [unintelligible 00:27:37] you designed that never really caught on. Is that a fair read?
+00:27:39 Jeff: Well, there were actually quite a few target machines that were implemented in the AMD families. They used the bit-slice processor for the microinstructions and you-- and then implement the target instruction with that logic family. It was an interesting architecture, my role on the project, I wrote the assembler that the others on the team used in order to write instructions for this 2900 family instruction set and that was a fun process because I knew who my target audience of developers were.
+I would put-- I wouldn't call them Easter eggs, I would put targeted error messages in that scolded the developers based on my knowledge of their habits.
+[laughter]
+00:28:23 Bryan: Do you remember any examples of a particular developer that was scolded in this way?
+00:28:28 Jeff: Oh, one fellow, I don't remember what his habit was, but I knew he would eventually do it and I just addressed him by name and said, to err is human, but you're a programmer or something to that effect.
+00:28:43 Jess: [laughs] that's good.
+00:28:43 Bryan: That is great.
+00:28:45 Jeff: People were working on what's called an Intel development system. These were single-user workstations, so, you don't have-- your machine is not network-connected, so, to have the tool that you've been using for a month or two suddenly address you by name is a particularly unnerving experience.
+[laughter]
+In a network-connected computer, your first thought is I've been hacked but this is a workstation sitting on your desk connected to nothing.
+00:29:11 Steve: It's beautiful.
+00:29:12 Jess: That is amazing. That is giving me ideas.
+00:29:15 Steve: I was going to say.
+00:29:15 Jess: [laughs].
+00:29:16 Bryan: That is amazing. I know I love the [unintelligible 00:29:18] messages, but you got to think way in advance, that's very impressive that you knew that the error messages, the [unintelligible 00:29:25] errors that people were going to hit. We're going to take a quick break and then we will be back with more Jeff Rothschild.
+[music]
+00:29:35 Jess: On the metal is brought to you by the Oxide Computer Company.
+00:29:38 Bryan: Wait, did you say computer company?
+00:29:40 Jess: Ah, yes, indeed.
+00:29:41 Bryan: Wait a minute, everyone run to the public cloud. Jeff Bezos owns and operates every computer on the planet, why would anyone start a computer company?
+00:29:47 Jess: That is so not true. I have spent a bunch of time talking to folks who are still running on-premise and actually, the consensus among all of them, it's just a feeling of neglect because everyone thinks that everything. is moving to the public cloud but it's not.
+00:30:01 Bryan: If you're still running on-premises it's because you haven't heard of the cloud, right?
+00:30:05 Jess: No, there're really good reasons for running on-premise still, for security, for latency strategic reasons, for your business.
+00:30:13 Bryan: Wow, the people running on-premises must feel like everyone has ignored them.
+00:30:17 Jess: They do, indeed. If this is you, please head on over to our website oxide.computer sign up for a mailing list and we would love to get in touch and hear your stories.
+00:30:27 Bryan: We acknowledge that you exist and you've got some really hard technical problems that we're solving oxide.computer, come join us. All right welcome back we're all sitting slack-jawed listening to some terrific stories of the hardware/software interface from Jeff Rothschild. Jeff, you were talking about customizing air messages with the assembler.
+00:30:50 Jeff: Well, the fun thing with the assembler was that we were trying to squeeze every cycle out of the machine. The only piece of novel technology that I had in there was that I could look forward in the assembly program and see, for example, when a condition code would get used. I might see that it was used in the next instruction, so I would increase the time for the current instruction to allow that condition code to settle through the ALU and then be settled in the condition code. Whereof the result of the arithmetic operation was two or three instructions later then I can start the next instruction without any additional delay. It was a pipeline [crosstalk]
+00:31:30 Bryan: Yes, right. It really was that's amazing and this is [crosstalk]
+00:31:33 Jeff: That was fun to do.
+00:31:34 Bryan: What would happen if your assembler didn't make that authorization, what would happen [crosstalk]
+00:31:38 Jeff: You would have to have default. If you set everything too short, then you would have a test and the test may give the wrong result because the condition code hadn't propagated through the ALU.
+00:31:52 Bryan: Wow, assembler is actually are load bearing here, the assembler is responsible for correctness.
+00:31:56 Jeff: That's correct. The assembler of course in modern processors, these type of instruction scheduling and variable delays are all done by the microinstruction set but this was done in the assembler.
+00:32:10 Bryan: Wow, that is scary. Do you think your assembler had any bugs in it that were found the hard way?
+00:32:20 Jeff: I've never written anything that didn't have bugs in it, so the odds are yes.
+[laughter]
+00:32:24 Bryan: Debunking that must have been a challenge.
+00:32:27 Jeff: Well, clearly you could start by putting in very conservative values and then you'd always have a test version, so you could make the worst-case assumption and then determine whether your optimization had introduced a problem.
+00:32:41 Bryan: Are you at Intel at this time?
+00:32:43 Jeff: This is at Intel working using [unintelligible 00:32:45] [crosstalk]
+00:32:46 Bryan: I just wanted to check myself. I don't know if anyone else has the same [crosstalk]
+00:32:49 Jess: I didn't put the two and two together until I was like, "Wow this is weird.
+00:32:53 Jeff: Our whole team had to go to AMD headquarters which was just down the street and take a training course on the AMD that's slice architecture and in the AMD training they asked everyone to say who they worked for. Of course, it was all various countries building companies, building control processors and they got to the Intel group and it was one person from Intel, second person from Intel, third from Intel, I think the last member of the group said, "So and so from Intel corporate espionage."
+[laughter]
+Right out there.
+00:33:25 Jess: That's good.
+00:33:25 Jeff: Are Intel and AMD even considered to be competitors at this time or? Of course, they are.
+00:33:29 Bryan: Oh, they're okay.
+00:33:30 Jeff: They are the only competitors in that space.
+00:33:34 Bryan: At that time they were competitors?
+00:33:36 Jeff: They didn't compete for the-- AMD did not have an X86 processor in 1981 or 1980 but [crosstalk]
+00:33:46 Bryan: Does Intel even think of themselves as a microprocessor company in 1981?
+00:33:51 Jeff: Of course [crosstalk]
+00:33:51 Bryan: Oh, they did, okay, [crosstalk]
+00:33:52 Jeff: Intel had had their [crosstalk]
+00:33:54 Bryan: [unintelligible 00:33:54]
+00:33:55 Jeff: Their ADA4004 and then the ADAD6 and ADAD8 [crosstalk]
+00:34:00 Bryan: This is still pre-PC.
+00:34:02 Jeff: This is post PC.
+00:34:03 Bryan: Post PC. Or about the time that the PC had come out which's in ADAD8 based [unintelligible 00:34:08] initially.
+00:34:09 Bryan: That I assume changed everything inside of Intel. I would assume maybe not?
+00:34:12 Jeff: Yes, they became a PC company.
+00:34:13 Bryan: Right. Were you working at Intel when you bought the PC?
+00:34:16 Jeff: I had left Intel. I had gone off on my own but it was interesting, Intel had the potential to have been a PC company. The work stations that I made reference to a few moments ago were PCs. Intel development station ran a MS-DOS, like operating system. All of these were influenced by RT-11. If you were a user of DEC RT-11 you would recognize many aspects of the OS interface and the software development process on the machine.
+Intel was selling these at $10,000 or $15,000 a seat. They weren't interested in undercutting their existing market. I think if they'd understood the potential for personal computing, they could've rebranded that machine and dropped them on the market. It was not that fundamentally different than an IBM PC. It was blue. Other than that, it was the same thing.
+00:35:09 Bryan: Interesting. What was the operating system it was running, was it Intel authored or?
+00:35:14 Jeff: It was an Intel operating system but very similar to what you'd have found on an RT-11 system.
+00:35:19 Bryan: Was the slash pointing the right direction?
+00:35:22 Jeff: That I can't tell you.
+00:35:23 Bryan: I'm still trying to figure out where humanity went so wrong and the forward slash somehow fell over, I guess it was CPM.
+00:35:29 Steve: What it used to be.
+00:35:31 Bryan: On Windows and DOS, it's a backslash, not a forward slash to delineate path names and Unix famously it was a forward slash.
+00:35:39 Jeff: That was of course a challenge in building this DOS to Unix fileserver was dealing with equivalents of forward and backward slashes. Then had to deal with a number of the different semantics between the Windows although access and I should say-
+00:35:56 Bryan: The DOS.
+00:35:57 Jeff: -the DOS environment and the Unix environment. I made a mention to the file control block on DOS that programs will do IO after they close the file. Well, that doesn't work on you so if your server program which is serving IOs on the Unix side, does a file close, all the context for that close is gone but I had to implement a cash of previously opened files [crosstalk]
+00:36:24 Bryan: To accommodate us. Oh my God.
+00:36:25 Jeff: In order so that when a read came in on the old file descriptor, I would be able to uniquely identify it was for that file descriptor and then reopen the file.
+00:36:34 Bryan: Would this be considered a bug, was the interface that you were allowed to do this deliberate or was it [crosstalk]?
+00:36:41 Jeff: It would deliver some of the top-selling applications of the Daylite DBase made common use of this thing. They closed the file and there were some advantages to closing the file assume in cleanliness and I'd be able to flash buffers but then continue to do reason rights on the file.
+00:36:58 Bryan: What handle do they have back to operate on that file, do they have an FD equivalent or?
+00:37:02 Jeff: It's just like an address of file control block.
+00:37:04 Bryan: Is that address reference going to-- How is this safer at any speed is what I'm trying to grab my mind around, sorry.
+00:37:09 Jeff: I don't think it was. This is was a real memory system. If you roll it over the file control block it would have random information in it, you do IO on it, you're changing random spots on the disk.
+00:37:21 Bryan: The machine would reboot. Would triple fault or you'd just get random corruption or anything else.
+00:37:25 Jeff: Then you'd reinstall, yes. This was not a protected memory system. One other fun bug in building the PC interface product was that it was on a DOS system, you can truncate a file by writing to-- I remember how this worked, but you would be able to write zero bytes in an arbitrary location in the file I think that truncate. That's one reason people would write on a closed file, they would know that a portion of that file was unused space because they'd compacted it, for example, and then they would do a zero byte write after the last byte that was in use and then that would truncate the size of the file.
+00:38:23 Bryan: You had to honor that?
+00:38:24 Jeff: Oh, we had to. Well, the first implementation of that on Unix was to rewrite the file and just write it up to the point where the truncate occurred then you'd close it but of course [crosstalk]
+00:38:38 Bryan: Now performance is terrible.
+00:38:39 Jeff: Well, it is particularly terrible if the application you were supporting is one that was going through a compaction algorithm and wanted to be back in a clean state after each phase of the compaction algorithm. Well, there maybe 1,000 phases in compaction, so there'd be 1,000 of these truncates. Now you're copying the file over itself basically copying to a new file and then renaming and deleting the first one and then doing it again 1,000 times on the Unix side. Some very simple fast operations when DOS were taking days on the Unix side. We had [unintelligible 00:39:14] implement a truncate operation [crosstalk]
+00:39:16 Bryan: That's f.truncate.
+00:39:17 Jeff: Which is still there.
+00:39:18 Bryan: Yes f.truncate is still there.
+00:39:19 Jeff: f.truncate was added in order to support this behavior on DOS.
+00:39:22 Bryan: Oh my God. That's the origin story of f.truncate?
+00:39:25 Jeff: That's correct.
+00:39:26 Steve: What is f.truncate today?
+00:39:27 Bryan: f.truncate is the Unix interface to truncate a file but it's explicit about it and what Jeff is pointing out is prior to the introduction of the f.truncate, there was no way to truncate a file. You'd have to rewrite it. You could open an old truncate but that might not have existed. f.truncate it's certainly-
+00:39:45 Jeff: No, this is why it was added it was because [crosstalk]
+00:39:48 Bryan: That's amazing.
+00:39:49 Jeff: AT&T was sponsoring this work [crosstalk]
+00:39:51 Bryan: Right on the 3B2.
+00:39:52 Jeff: On the 3B2 and so they added the truncate operation because closing a DBase file took days.
+00:40:00 Bryan: See, is this system three? Or is this seventh edition? Where are we here?
+00:40:05 Jeff: This would have been 81 Or 82 maybe. Right in that timeframe. It's probably 83. I think that would have been system three.
+00:40:13 Bryan: Sorry, Jess. We're still five years before Jess is born.
+[laughter]
+We're still pre-Jess, but we definitely post me. Not on Unix. That is amazing. That's the origin story about f.truncate.
+00:40:26 Jess: That is actually amazing. I've used that a lot.
+00:40:30 Bryan: f.truncate, yes.
+00:40:31 Jeff: I can probably only lay claim to one other Unix system call. This was for a project I did a few years later for a company called, I think was PowerOffice. They were a division of ICL, which is a British computer company. International Computers Limited. This was a group based in Virginia. They called me out because they had a performance problem. They said there was a virtual memory issue.
+The system was flopping. It was over-committing memory. I went ahead and just put a logic analyzer on it. That was how I used to debug things and quickly determined that no, this was not a virtual memory issue. They were simply out of CPU instructions, but why were they out of CPU instructions was the interesting part. It was simply the cost of handling every keystroke. This was an office automation system.
+When the engineers developed it, they typed at one speed, but the customers were much more talented and could type three or four times faster. A system that was sold as a 20-user system was only supporting seven users because these seven users really could type. They could hit the 50 words a minute and the engineers developing it simply could not. We're mere mortals, we were not able to type at that speed.
+The challenge was, do you optimize the trap interface or simply handle less characters? I remember thinking about this problem and said, “Okay, what you really need is better line editing because, really, all you're doing is echoing a character back 90% of the time.” When a special character is hit that goes into the control language of the word processor, or you reach the end of line, then you needed to do something a little special.
+Since they'd built their own terminals, you could have an intelligent terminal that could do local echo, but the only choices we had for terminal IO were cooked or raw, so I proposed Gourmet mode. There were a very few versions of Unix that were shipped for a number of years that had Gourmet mode as a TTY line discipline.
+00:42:37 Bryan: This is a different line discipline and you would indicate that I'm using Gourmet mode.
+00:42:42 Jeff: You'd specify what the escape characters were. What were the characters that would cause you to move out of Echo mode and back into a raw mode, and what the condition was for going back into this local echoing mode?
+00:42:56 Bryan: Gourmet mode has been lost, yes? Do we still have Gourmet mode?
+00:42:58 Jeff: I have no idea. I hope it's been lost.
+[laughter]
+It doesn't necessarily benefit anyone today. The ability to handle keystrokes through the trap interface is no longer a [unintelligible 00:43:14].
+00:43:15 Bryan: Our CPU performance is no longer the limiter based on the number of keystrokes you can hit. That is amazing. Yes, so much of that stuff did survive and, of course, long outlives its original intent. Then can come haunt us in modern times.
+00:43:31 Jeff: Yes, I think I saw it in system five Unix at one point, but I don't think it's made its way into Linux or more modern versions.
+00:43:38 Bryan: Truthfully, f.truncate actually caused me a very painful bug because there are multiple ways to truncate a file in Unix. O_trunc being a common one, f.truncate being a lot less common. I made a modification to the kernel, I missed the f.truncate code path and, as a result, had this really nasty bug because I had missed f.truncate.
+00:44:01 Jeff: I will indirectly apologize.
+00:44:02 Bryan: No. No apology required. It was my mistake missing it, but it's just interesting in how these abstractions are added. With Gourmet mode, you interacted directly with the group to go implement Gourmet mode or how did you implement it?
+00:44:17 Jeff: We worked with the kernel group within ICL. They implemented the Gourmet [unintelligible 00:44:27] handling in the TTY controller and also in their terminals.
+00:44:33 Bryan: Does ICL have their own Unix at this point?
+00:44:37 Jeff: They had their own Unix version. They had a few pretty solid engineers who were supporting kernel development.
+00:44:43 Bryan: They're taking AT&T code and modifying, in fact.
+00:44:46 Jeff: Yes.
+00:44:47 Bryan: Where after ICL?
+00:44:49 Steve: Yes, was it their toss after that?
+00:44:51 Bryan: ICL was just a one-month assignment. I just parachuted in because they had a product problem.
+00:44:58 Steve: Because they had just done a press release stating that they had a big problem.
+[laughter]
+00:45:00 Bryan: They had a solution for-
+00:45:02 Jeff: One of the folks from Intel who had worked with earlier was running that group and he had a problem and I said, "Okay, this worked once before so I got that contract" I was just contracting.
+00:45:13 Bryan: That's great. Where next?
+00:45:18 Jeff: I worked with a group called Locus Computing Corporation. Locus was based in Santa Monica, California, it was a group that had spun out of UCLA run by Jerry Popac, he was a professor at UCLA. The locus is a distributed Unix, and you can read a lot about locus today.
+00:45:36 Bryan: Really? Wow.
+00:45:39 Jeff: The team is still around. They're not as a team today but many of the individuals who contributed to it are still around. It was really a groundbreaking product. This was a fully distributed Unix. It normalized and globalized all identifiers, process identifiers; file handles, pipes, references to memory, actually, it's like memory segments across a cluster of machines and then you can migrate processes between machines, you were able to build a distributed software that behaved the same on multiple machines as it would on a single node.
+00:46:21 Steve: When is this?
+00:46:22 Jeff: This was early '80s, so '83, '84.
+00:46:26 Jess: That is cool.
+00:46:27 Jeff: It was a great project; you might want to dig into this with some of the Locus teams.
+00:46:34 Bryan: Definitely want to dig. I had never heard of it.
+00:46:37 Jeff: Charlie Klein is living in the Bay Area. He's one of the early architects of this product, they did a phenomenal job. They sold it to IBM and IBM did release it but I think it was a very limited release and was really just an investigative system.
+00:46:52 Bryan: I'm trying to think of it distributed Unixes, and that is extremely early.
+00:46:58 Jeff: It was. This was definitely groundbreaking stuff and it was fascinating. The work I did with PC interface was done with Locus; they had the contract with AT&T.
+00:47:10 Bryan: This is over what network substrate? This is like so early.
+00:47:15 Jeff: This was ethernet, coax ethernet.
+00:47:20 Bryan: Okay but ethernet itself is very young at this point.
+00:47:21 Jeff: Very young, yes.
+00:47:23 Bryan: That is just amazing.
+00:47:24 Jess: That is crazy because that's something that people move processes from one computer to another still today but that in the 80s it's cool.
+00:47:31 Jeff: I remember when a new developer would join the team that they generally had never seen ethernet before. I would explain, "Okay, here's this coax cable, we have a tap on the cable but you always need to keep a terminator at the end of the line because if you don't the ether leaks." That was the joke that this was a pressurized cable. You need to keep it kept in order to keep that in the wire.
+00:47:57 Bryan: Meanwhile you've got someone who's terrified of taking the cap off because the ether is going to leak everywhere.
+[laughter]
+Steve don't worry. It's fine. Please don't take the cap off but that's just an amazing system. You're describing the migration we do today. We do but we don't share a process namespace across multiple machines.
+00:48:18 Jess: That's actually super groundbreaking.
+00:48:22 Bryan: It is. Was it commercialized? It sounds like it was commercial.
+00:48:26 Jeff: Well, it was productized by IBM. I don't know what level of commercial acceptance it had achieved but it certainly advanced the science forward and a lot of people were influenced by the work that Locus and IBM did there.
+00:48:42 Bryan: Yes, I can imagine. Where did these folks end up? What do they end up doing afterwards with the next systems?
+00:48:45 Jeff: Various things. Really great team and they did some great work. Again, all of this came out of UCLA.
+00:48:52 Bryan: Out of UCLA, yes. I'm just going through and thinking of [unintelligible 00:48:58] he called it. [unintelligible 00:48:58] but was not a Unix like system but another transparently distribute system, but [unintelligible 00:49:01] was in it for another almost decade, right?
+00:49:04 Jeff: This was this Unix.
+00:49:06 Bryan: Yes, that's actually Unix. It was actually derived from AT&T Unix.
+00:49:13 Jess: So cool. We should get them on the podcast too.
+00:49:15 Jeff: We'll take care of that.
+00:49:17 Bryan: Yes, exactly. I would love to get that. That would be really interesting and just interesting to capture. I'm sure they must have pioneered a bunch of abstractions. That's wild. You had an early view of what a distributed system could go do at a time when people were probably not really appreciating them?
+00:49:35 Jeff: I think that was the issue. I don't think that it was necessarily a solving a problem people had at that point. Unix had far more substantive limitations that were keeping it out of commercial computing. In early 80s, Unix was starting to achieve success in desktop engineering, workstations, and scientific computing but it really wasn't until 1990 that we started to see widespread commercial adoption for enterprise computing replacing the IBM, HP, and DEC, mid-range OSs.
+00:50:09 Bryan: Yes. I'm just thinking about all the ways in which-- I know Unix was immature in the early '80s, and to make that thing distributed, that's amazing. Where does this find you then in the '80s?
+00:50:21 Jeff: Interestingly, I moved to the Netherlands, and had some fun. After we licensed PC interface to Sun for NFS, I could look forward a bit and saw a revenue stream for a number of years, I took a royalty on that product. I didn't know if there's a time in your life to do some traveling, this might be it. I've worked with Philips Data Systems in Holland, that's actually where I met my wife, Marieke. We've moved back together.
+When returned to the US, it was to restart a company that I had helped start before I left the country. This was a firm that was originally called Tolerant Systems, and Tolerance was to be a fault-tolerant computer company, they're [crosstalk] made a name for itself and was achieving commercial success. The feeling was that if you could do this at a lower cost, there'd be a market for a highly available lower-cost computer.
+The notion was to build shoebox machines that you would put multiples of them on a network, and then you did some replication between them, and you could [unintelligible 00:51:24] for environments that needed lower performance, but higher availability like process control systems, this could be an interesting solution. For a variety of reasons, I'd actually decided to move to Europe at that point, I have to enjoy the fact that I knew I could be supported for a few years, be irresponsible for at least once in my life.
+The company evolved in a little bit different direction. It's hard for people not to compete against others who are in the similar space, and the dimension that we frequently compete on is performance. It got bigger and it got bigger and eventually was a multi-hundred thousand dollar per node computer system. About the time people started to discover that fault-tolerant computing really wasn't a sector, people weren't buying these machines because they needed to have true nonstock capability.
+What they needed was better availability, and data integrity than a typical Unix system could offer. When I'm moving back to the US, I was speaking with co-founders of the company, those who I started the company with years earlier. They were thinking that what they really needed was a software company that could provide higher availability and a better file system, and data integrity than the Unix platform was capable of delivering in 1988. This became Veritas Software.
+We first created a company called Tolerant Software that was going to be fully owned by Tolerant Systems, and about a month later, Tolerant Systems came crashing down around us. We took over the company effectively, we were a five-person software company, and then started to build that up. We didn't actually use a single line of code from the Tolerant Systems product, that was a very heavily customized version of Unix, we really did need to build something that used well defined existing interfaces.
+So the System V VFS interface for the file system, the block and character device interface for the logical volume manager, and to be able to deliver these in a format that the Unix system OEMs were capable of receiving it. That was the genesis of Veritas Software.
+00:53:40 Bryan: Wow. Veritas software.
+00:53:42 Jess: That's so cool.
+00:53:43 Bryan: That it came out of this failed effort, that’s interesting. Was Tolerant making hardware or they were just making software?
+00:53:51 Jeff: Tolerant was a hardware company. We were Tolerant Software for probably about six, seven months. We brought in a new CEO, who had been on the board of Tolerant Systems, we decided he needed a full-time job, and that was Mark Leslie. Mark was a transformative CEO for us. The first day on the job he says, “Guys, Tolerant has a bad name. You can't be Tolerant anymore.”
+00:54:15 Bryan: We’re intolerant.
+[laughter]
+00:54:18 Jeff: We held a contest to come up with a new name, we all picked the name out of the hat. Oddly, the one Mark suggested won.
+00:54:28 Bryan: Weird. “Oh, look it this, it’s the name that I put in there.”
+00:54:30 Jeff: Exactly.
+[laugther]
+00:54:31 Bryan: It's a good name.
+00:54:32 Jeff: It was a great name
+00:54:33 Bryan: It really is a good name
+00:54:35 Jeff: We became Veritas Software, and of course, it really did reflect that we were trying to provide a statement of truth.
+00:54:40 Bryan: WHat you were trying to do.
+00:54:43 Jeff: We built a logical volume manager, supported replication, and it even eventually supported software Raid 5. More importantly, it allowed you to grow and shrink a volume dynamically. Our file system, the Veritas file system, didn't require a structural fsck on system restart. You have to think back to 1989, disks are getting bigger, they're no longer five megabyte hard drives, we're now dealing with 50 and hundred megabyte hard drives.
+The structural fsck that used to take 35 minutes was sometimes taking 12 hours to complete. Imagine you deployed a Unix system in a mission-critical environment, let's say the paint shop at an auto factory, and that system has a glitch, it crashes, it happens sometimes, but the recovery from that crash could take you half a day. Clearly, it's a nonstarter, you never would have deployed the Unix system in that environment because it didn't meet the availability needs of the application.
+Or, imagine you had a system, which ran out of space in one of its file systems, and now you need to add additional space. How would you do that in 1989? The answer was pretty simple. You back everything up the tape, you repartition your disks, you create a new file system, and then you recover from your backup because the backup and restore process is error-prone. You potentially are putting your data at risk simply to change the capacity, and rebalance capacity between file systems.
+This was a nonstarter, it was the reason why Unix had not achieved its potential in the commercial market. As a company, Veritas was there to enable OEMs to be able to deliver their systems into environments that required high data integrity, and high availability. With VxFS, we used an intent log for all metadata changes to the file system. On system recovery, we reapplied the intents and recovered to a clean state without having to do a structural scan.
+00:56:51 Bryan: Is this the origins of what’s commonly known as Raid now? This isn't Raid, but this is the first real commercial implementation of a log-structured file system. I think it was [crosstalk]
+00:57:00 Bryan: It wasn't a log-structured file system.
+00:57:02 Bryan: Oh, interesting.
+00:57:02 Jeff: No. In fact, it was an extent backed file system, but the metadata, the file system control information was logged. The log didn't include actual changes to file contents.
+00:57:14 Bryan: It is only metadata.
+00:57:15 Jeff: It was strictly metadata.
+00:57:16 Bryan: Okay.
+00:57:17 Jeff: It obviated the need for the structural fsck, you could recover in seconds as opposed to hours. I had seen large systems that took two days to recover from a power failure. There were a lot of attempts that others had made to solve these problems by, let's say, having a clean bid that they would periodically set in the file system. Then, if the system crashed while the bid was still set clean, you could avoid the fsck.
+The problem is that a bid is never set, in a busy system there's always I/Os outstanding. In fact, you were still doing your structural fsck. This was VxFs, the file system, and VxVM, the logical volume manager. The logical volume manager did implement Raid, but most customers used it to be able to migrate and move storage. If you had a disk that was showing errors, you could take the used slices on that disk and simply drag them to other disks, where there was free space. The storage would migrate, you would be notified when the disk was empty, you were free to replace it. Previously, those had been major disruptions on system availability.
+00:58:26 Bryan: That's actually still a challenge for us today, is actually being able to remove a device that's in either a Raid set or [unintelligible 00:58:34], what have you is the challenge. Raid at this time is still mainly hardware. You guys were doing software Raid effectively.
+00:58:42 Jeff: There really wasn't much hardware doing Raid either at that point.
+00:58:44 Bryan: Really? Interesting, okay. Because Raid is what? David Patterson in the mid-80s, right? Early '80s.
+00:58:52 Jeff: Yes. A fellow at CMU, I’m blanking on his name now, that's terrible. Garth? I'll think of it in a moment. He had written a groundbreaking paper on Raid as well. The use of the Veritas Volume Manager was largely storage migration. Effectively, it's virtual memory for disk and offers you the same basic advantage that virtual memory did on RAM. You no longer are dealing with physical extents, but there are logical extents, which then you map onto physical extents, and you're free to change the physical locations of those logical extents without impacting availability of the applications.
+00:59:33 Bryan: All right, we're going to take another quick break, and we'll be right back with Jeff Rothschild.
+[music]
+00:59:41 Bryan: On The Metal is brought to you by the Oxide Computer Company, where we're going to try a new feature, shamelessly ripped off of reply all yes, yes, no, our boss, Steve Tuck brings us a tweet he does not understand, and Jess and I tried to explain it to him. Steve, do you have a tweet?
+00:59:56 Steve: I sure do.
+00:59:57 Bryan: Go for it.
+00:59:57 Steve: The tweet and question. UEFI pre-boot network stack engaged the onboard NIC in such a way that it would write back DMA to particular physical memory pages sometime after control was passed to the bootloader. Corruption would occur somewhere in the user parts of the RAM disk. No idea.
+01:00:15 Bryan: No idea. Jess, do you understand this tweet.
+01:00:18 Jess: I understand definitely the part about the UEFI pre-boot networking stack, but the part about DMA is in 'question mark' it's like, I guess you're not really sure where that's going.
+01:00:29 Bryan: You're overthinking it, I understand this tweet, running on-prem is painful, this is dealing with it is awful, awful firmware bug. The firmware has overwritten part of the operating system in a way that is extremely painful to debug.
+01:00:42 Steve: Who do you go to, in that case?
+[01:00:43] Bryan: Who do you go to?
+01:00:44 Jess: You definitely strangle one of your vendors.
+01:00:47 Bryan: You strangle one of our vendors. Unfortunately, your vendor is a PC vendor because all the existing computer companies aren't selling personal computers. What we need is a new computer company.
+01:00:57 Steve: This is just saying, I'm an intense pain, trying to run systems on-premises.
+01:01:02 Bryan: That's exactly what it's saying. Steve, what can someone do if they're in intense pain running on-premises?
+01:01:05 Steve: Well if someone is running in intense pain on-premises, what they should do is go over to oxide.computer to learn a little bit more about how we are going to take that pain away.
+01:01:14 Bryan: Help is on the way. Join us at oxide.computer.
+01:01:17 Jess: You are not alone.
+[music]
+01:01:24 Bryan: All right. We're back at, On the Metal with terrific tales in the hardware-software interface. I feel I could go on for days, this is getting-- Jeff you're holding--
+[laughter]
+01:01:34 Jeff: That's odd.
+01:01:35 Bryan: Exactly. You're holding us just mesmerized. Veritas, we're talking about Veritas, total groundbreaking technology, truly years ahead of its time. It would take a long time for any of the other folks to really catch up with Veritas.
+01:01:52 Jeff: It was pretty much the end of the decade before you started to see other logical volume managers and file systems that preserved structural integrity coming into the market.
+01:02:01 Bryan: Yes. I can tell you being on the inside of one of those companies, it's Sun, where son loved Veritas until--
+01:02:07 Jeff: And hated Veritas.
+01:02:09 Bryan: And hated Veritas, the frenemy relationship, not that uncommon, right?
+01:02:13 Jeff: It absolutely was.
+01:02:16 Bryan: As the years went by really wanted to, we can we do our own, and boy, there were a bunch of attempts at it and they were not good. You saw I think people really appreciated how much had been done and how hard it was to actually get all this stuff correct. How long were you at Veritas?
+01:02:36 Jeff: We started the software company at the end of '88, beginning of '89. I left end of '94, about a year after the IPO or just after the IPO. I left largely because the internet was happening. I was really excited about what you could do that might be a lot of fun. I will admit that there was a point where I didn't want to talk to people about device drivers anymore.
+[laughter]
+I used to do a bit of sales at Veritas, so I wore many hats, prototype engineering, I did a little engineering management, I would do product management and I would also grab a bag and go on the road. One day I was sitting in a meeting, and I think it was my fourth meeting that day talking about the BDEV switch, CDEV switch, and how the I/Os were scheduled or something to that effect and I just said to myself, tomorrow I'm doing something different.
+I left in order to start something that would be fun and the fun thing I thought about was online multiplayer games. Started a company to do online multiplayer gaming because it seemed like the most fun thing you could do with the internet.
+01:03:51 Bryan: In 1994.
+01:03:52 Jeff: 1995, in fact. Yes.
+01:03:54 Bryan: Wow.
+01:03:54 Jess: That's early.
+01:03:56 Bryan: That's early.
+01:03:56 Jeff: Well, it was early and actually you could put that on the SCF tag on the company.
+[laughter]
+We were too early, we were doing this, people had 1440 dial-up modems, the latencies were very high and we put a lot of energy into dealing with latency, we had matchmakers that would very carefully look at the latency of individual players and group people into game sessions, based on their proximity and space to each other that is in network space, not physical space, though there's a relationship.
+We worked with some early internet service providers in co-locating equipment was an interesting exercise because the first time we approached an internet service provider about co-locating our game servers in their network, the head of operations for this company said, "Over my dead body will any customer ever put a machine in my data center."
+01:04:55 Bryan: Wow. That's been out there.
+01:04:56 Jeff: Of course, in five years that was their business, but it was an interesting response and we finally found one provider who, when we asked the question said, "I don't know why you want to do this, but I've taught myself that if somebody asks me for something, listen and work with you." That was PSINet. PSINet worked with us to create optimized traffic, we were able to prioritize the game traffic on their network, and we located game servers throughout their network geographically dispersed in order to manage for latency because latency mattered.
+We also did a lot of work in the client to game server link that would be irrelevant today, we were squeezing 2, 3 bytes at a time out of the game protocol, and today that would be irrelevant. We were working with the game developers on algorithms they could employ to hide latency so when you fire a weapon make sure there's a big explosion and a lot of smoke because that gives you time to resolve state between all the clients so that when the smoke clears everybody sees the same players dead.
+Again, in a first-person shooter game, you would be sure that if you were shot or if you shot someone, one hit wasn't a kill because a single hit required precision in how you adjudicate and distribute state, but if it takes multiple hits then there's time to figure it out and the lack of precision in the network, and in your protocol was hidden by a lack of precision in the game experience itself.
+01:06:37 Bryan: That's great.
+01:06:38 Jeff: We worked with the developers and on helping them build multiplayer gaming, we actually had one of our fellows spend a month in Mesquite, Texas with its software, converting Quake from IPX/SPX to IP. It was originally written for the Novell network protocol-
+01:06:57 Bryan: LAN.
+01:06:58 Jeff: -LAN protocol, and so we converted that to the internet capable game.
+01:07:03 Bryan: So you could play Quake over the internet.
+01:07:05 Jeff: The first version of Quake had had an MPlayer splash screen on it, giving us credit for that work.
+01:07:11 Bryan: Wow.
+01:07:11 Jess: Wow.
+01:07:12 Bryan: You said the company itself, this was too early?
+01:07:15 Jeff: We were too early. Eventually, it divided up, and assets were sold to different companies. It did go public, but that was 1999 and just like there was an era in baseball, everybody's record has an asterisk on it-
+[laughter]
+-I think a lot of companies should have asterisks on their 1999--
+[crosstalk]
+Exactly. The '99 IPOs, I don't think deserve the same credit as before and after.
+01:07:43 Bryan: It was a very different era, that's for sure. Then so what was next for you after that?
+01:07:49 Jeff: I did a few projects, just as a consultant to the projects, I helped with walmart.com and a company which did a storage controller that was eventually purchased by Brocade called Rhapsody Networks.
+01:08:05 Bryan: The storage controllers, so your back in the device genre, of course.
+[laughter]
+01:08:11 Jeff: Yes, in a way. I should have erased all that from my resume so people would forget but it kept coming back to haunt me so I couldn't get out of that industry. Let's see, early 1995 or 2005 rather, I got a call from folks that Accel Partners asking if I could help out with a company that invested in a few guys from Harvard who had started a social network and my first response is social network, "Have you ever looked at Friendster?"
+[laughter]
+They said, "No, this is different. It has nothing to do with that." I figured I'd hang out their office for a few weeks and help out with recruiting and we spent 10 years there.
+01:08:52 Jess: That's cool.
+01:08:53 Bryan: Really, what was your first impression walking into Facebook?
+01:08:57 Jeff: Small team, I love small teams I love people doing things from the seat of the pants and not having a lot of process, not having a lot of rules, and there were no rules, this was a development team, and we're sitting around a small table today, well that was pretty much the environment. If somebody was going to edit a file, they'd say "Okay I'm in home.php." Nobody would touch it until they said they close it. No source code control, no auditing, but that's small teams.
+I've done the same thing 100 times, you start the project with one, two developers and, and then you have to introduce layers of process and eventually release management and testing and frameworks and the rest but early days you have a blank slate to start with, but it was a lot of fun. What impressed me about Facebook because I really wasn't intending to work there, I was really going to help recruit a VP of Engineering and someone to run operations and I was bringing a few people in, the chemistry just wasn't clicking, they were great folks who've really gone on to do fantastic things.
+I couldn't sit in the office and watch people work and then not say, "Let me show you a different way to do that." I was diving in on a few of the engineering issues and at the same time I was looking at the inbox. I wanted to understand what are the problems this site has, what type of issues are the users running into. I read the unread mailbox and there were 75,000 unread messages because the person who was assigned to read that only worked weekends, she was a student, and worked weekends and read some messages and responded to them and of course the rate of arrival was much greater than that she would ever be able to meet.
+People were writing love letters. They were writing poems. People were saying, "I showed up at school and I was so afraid I wouldn't know anyone. Using your site, I've met so many people and I feel like they're all my best friends now.
+01:11:06 Jess: That's so nice.
+01:11:06 Bryan: It's a different era in social networks for sure.
+01:11:07 Jeff: Somebody would write a note saying, "Well, I showed up at college, and I was so sad at missing my friends from high school, but I now know what they're doing. They'd post things on a daily basis and I understand what they're up to. I still feel so close to them."
+01:11:22 Jess: That's so good.
+01:11:23 Jeff: I read this and I thought about it and said, "Veritas, sort of big company, 6,000 employees, one and a half billion in revenue, thousands of customers but I never saw a love letter from a system administrator saying your volume manager made me happy."
+01:11:40 Steve: I used to be afraid of losing my data until I met you.
+01:11:42 Bryan: I've never seen fs check run so quickly.
+01:11:45 Jeff: I thought of that a little more and said, "Well, companies spend hundreds of millions of dollars a year trying to convince people that their products make them happier. Here's a company that spent nothing. They simply built a product and their users are saying, "I use you because it makes me happy." I thought about Coca Cola and Pepsi. When you look at their ad campaigns, it's all about how their flavored water, their sugar water is going to make your life better.
+Here was a product where people were saying in concrete terms, their life is better because they're more connected to their friends. The truth is that is what matters. What really matters in your life? It's the connection you have with people, it's not the number of friends you have, it's how close you are to them. If you have a friend and you never talk to them, then they're not adding to your life, you're not adding theirs, and what Facebook was doing was increasing that information flow between people, and that enhanced those relationships and in turn, procreated happiness for folks. I wanted to be part of that.
+01:12:53 Bryan: That's great. Obviously the power in that, and that's in 2005.
+01:12:58 Jeff: That's 2005.
+01:13:00 Bryan: At that point, because I first met you in 2007 when you were pretty well entrenched at Facebook. At that point, Facebook was really catching on and lots of people were-- it felt like it was exploding in all the right ways.
+01:13:21 Jeff: It was.
+01:13:22 Bryan: Of course I remember meeting you very viscerally because I was talking to you when my wife was about to have our second kid and I was going to come down and meet you, I think the day before she was due, and you gave me a warning based on your- was it second kid or a third kid?
+01:13:37 Jeff: Our second was born very quickly, yes. We showed up, my wife woke me up I think 6:30 and we were on the way to the hospital at 6:45. We got there at 7.00 and we were really ready to go home at a quarter of eight.
+01:13:53 Bryan: Steve, you've got three kids, that is-
+01:13:56 Steve: That's record time.
+01:13:57 Bryan: That is terrifyingly fast. I was definitely like, "Wow, I know this is On The Metal, not On The Pregnancy, but wow that was scary, that woke me up. I think I postponed the meeting.
+01:14:11 Jeff: I think you were telling me that the due date is tomorrow.
+01:14:14 Bryan: I was very blase about it.
+01:14:15 Jeff: You were two hours away.
+01:14:17 Bryan: I had plenty of time and you're like, "Well, hold on youngster. Let me slow your roll a little." No, it definitely, but it was a lot of fun to get down there with you and the team. Facebook, you quickly got to some of the same deep technical problems back in the device drivers, but you got back to the metal.
+01:14:35 Jeff: Of course we did. In fact, one of the first really interesting problems that we dealt with was our use of Memcache. For those of you don't know, Memcache is a distributed cache table, and it has an operation called a multi-gate, with multi-gate you take a collection of keys and the driver then will understand that the hash function will sort those keys across a collection of servers and then make a request to the servers in the pool to respond with the corresponding data values.
+Well, we worked really hard on the Memcache code. We had to improve its scalability. We had to improve its performance. We made it multithreaded and in doing all of this work, we actually made it faster. We reduced the total instruction path of Memcache down to a minimum, which meant that its variability was less as well. That is request to request variability was less because the total time required for a request was less. What this meant was if you made a request to a Memcache pool, let's say a pool of 200 machines and you were doing a large multi-gate that had maybe a thousand keys, you're probably hitting most of those 200 machines.
+Inside of microseconds, you would have 200 machines firing back their responses to your client, which is in fact, a web server, so your client is making this request, it gets all the responses back and they all meet for the first time at the top of rack switch on top of your web server. Of course the next step is buffer overflow. You drop some packets and then you make the next request, you're using TCP.
+TCP has variable retries and the retries keep getting longer. Soon these requests are taking milliseconds to perform because of the retry logic, because even on the second round, you started getting buffer overflow as well. This was a very challenging problem. It took a long time to really understand. After that, a fellow named Mark [unintelligible 01:16:37] implemented just a fantastic solution. It was a sort of a UDP version of congestion control.
+If you made a broad request and you dropped data, then you would make fewer numbers of requests from fewer servers the next time, and it was adaptive. If you got a response back from those servers and nothing was dropped, then it would try to go to a larger number of servers. It would break it into a multi-phase request and it would adapt to the quality of the network and the size of the buffers relative to the size of network speed.
+01:17:11 Bryan: In all UDP, so implementing these checks.
+01:17:13 Jeff: Everything done in UDP.
+01:17:14 Bryan: Congestion control itself, not falling into any of-- because TCP was really designed to protect the network. You don't want to protect the network you want to get the best latency for the most users.
+01:17:23 Jeff: That's correct.
+01:17:24 Bryan: Interesting. How long did it take to fully understand what was happening there?
+01:17:29 Jeff: Too long. I'd say the better part of a year before we really tracked it down. Initially the first suspicions were it was problems in the network, issues with switches, problems with libraries. Eventually we understood that this was simply because we were making the memcache code faster. You have less variability in a faster code path. If you're talking about a half a millisecond code path, then it's going to be plus, or minus 50 milliseconds, but if it's a 50-microsecond code path you're 15 nanoseconds.
+01:18:02 Bryan: Interesting. By making it more deterministic, you were increasing the odds of actual buffer overflow at the top rack.
+01:18:09 Jeff: That is exactly correct. It took us a bit to understand why the problem is getting worse over time because we were getting better.
+01:18:15 Bryan: You'd improve the performance and the performance would degrade enormously.
+01:18:18 Jeff: Yes.
+01:18:19 Bryan: That must've been frustrating.
+01:18:20 Jeff: Yes.
+01:18:21 Bryan: Wow. Interesting.
+01:18:21 Jeff: That was probably one of the first hard problems we had. We had other issues. We had one that, I'm talking a little out of school here, but we had one where the release code for configuration management missed installing mod PHP on a server. The PHP code was simply delivered of NDU, you ship it.
+01:18:47 Bryan: Oh God.
+01:18:48 Jeff: That was pretty ugly. That happened once. I think there's still fragments of that code floating around the net.
+01:18:56 Bryan: Hard to scrub the internet of all that one.
+01:18:58 Jeff: That just sort of reinforces the importance of getting configuration management right and making sure that it's verified.
+01:19:04 Bryan: That's funny to think that for a misconfiguration, we accidentally shipped the source code. That's like a new kind of failure mode at that time. That's not something we think of in a non-system, certainly.
+01:19:15 Jeff: It elevates the importance of configuration management. People sometimes think that these are basic problems, they're not the exciting problems, but in fact, if you don't get them right you can't do anything.
+01:19:30 Steve: I have to imagine the single instruction found back at Intel was maybe up there, but was there one that was the most gratifying bug you found and resolved in your career?
+01:19:41 Jeff: I would say that if I had to point to the one that we spent the most time on, I'd say the problem, I just mentioned trying to understand why it is the better we made Memcache that in some ways the worst it performed. We could increase the total number of requests per second that a server could deliver, but these error rates continue to increase. I think that took longer than it should to shake out.
+01:20:06 Bryan: Well, also you're a long way from being able to just use a logic analyzer to figure it out. It's a big, complicated system.
+01:20:12 Jeff: We had to understand the switches and get the right metrics out of the switches to understand what was happening.
+01:20:19 Bryan: That must have been frustrating, I assume.
+01:20:21 Jeff: Yes, that was a big one.
+01:20:24 Bryan: To actually figure out what was going-- When was the genesis of the Open Compute Project then at Facebook, was that a couple of years later?
+01:20:30 Jeff: Oh, that was many years later. Many, in internet time, two years later, three years later. The Open Compute Project, Jonathan Heiliger was one of the drivers of that project. There, of course, we're already at a scale where it's simply made sense to have hardware that was optimized to task. Of course, in the early days, you're buying things off the shelf because your scale doesn't warrant doing anything else.
+01:20:59 Bryan: Interesting. I think that in the modern era, we think of the hardware as not being important anymore, but it still is the underpinning of everything. What do you see going forward? First of all, do you throw up in your mouth a little bit when you see serverless and cloudless and all this other nonsense?
+01:21:18 Jeff: Serverless, I'm still grappling with.
+[laughter]
+01:21:22 Jess: That makes two of us. Three.
+01:21:24 Jeff: I'm sure there's a rationale there and I'm sure it's just my inability to understand it.
+01:21:29 Bryan: Oh, don't be so sure. You've got a kindred spirit in Jess.
+01:21:33 Jeff: I'm still trying to work that one through. Everything tends to repeat itself. Ideas which you saw 30, 40 years ago suddenly become new again. Today, we're looking at what do we do with the non-volatile RAM? Intel's Optane technology is an example. There'll be interesting applications for that. I think back to an early system I used called Multics. This was at the GE Computing Group, which became Honeywell. They were participants in the Multics Project with Bell Labs and MIT. This was a system that supported a single-level virtual store.
+There were no opens and closes, reads, and writes. You simply attach to a memory segment and you used it, and then you detach from the memory segment and it was stable. You wrote I/Oless software. We're actually at a point today where we can do that. That really changes the application paradigm. The state of the application could be in the app itself. You're not having to think about storage management, but also you avoid the semantic gap between read and write and what you're really trying to do with the storage, so blocking and unblocking and marshaling of data, putting it in a serialized formats, all of these things suddenly aren't important to the app anymore.
+Simply, the data lives in the application, a view of the data structure, and never in the storage view of the data structure. I think that's going to offer some-- For the right applications, that can be groundbreaking.
+01:23:15 Bryan: That'll be interesting because it allows for that abstraction to obviously be shifted. You're still going to have to think about the non-volatility of that state though. If you leave yourself in an inconsistent state--
+01:23:26 Jeff: You obviously have to have paradigms for managing consistency and for logging and changes. Not all of the overhead of a traditional database for example goes away, but you're going to implement this very differently. One of the ways I like to think about databases is to saying, "How well do they use their memory?" A database that really makes effective use of its memory is probably performing.
+One where the working set of the application is distributed across a large number of blocks where there's maybe other used data in the blocks. You don't view it as internal fragmentation, but the other data in the block may not be part of the working set, but because of the way you needed to structure your index, it was inevitable that you had this on disc organization.
+Well, that database may not be as effective as it could be because they're limited by the size of RAM. If your RAM is allocated to data that doesn't matter, then you're not going to get all that you potentially could out of the hardware architecture or out of your overall spend on infrastructure. Thinking about new models for the database where it's all record-oriented, you never have this notion of blocking. Blocking doesn't matter in this type of a single-level virtual store? I think there's going to be a lot of opportunities there.
+01:24:49 Bryan: Interesting. It'll be the databases themselves that implement it. It's not that everyone's going to need to think about that non-volatile consistency, but it's that we'll be able to--
+01:25:00 Jeff: Or maybe new databases. Think about it. This might be enough of a paradigm shift that it says that new databases will take advantage of this change in order to enter the market.
+01:25:13 Bryan: Interesting.
+01:25:14 Jeff: It may be some of the old ones are able to adapt to this model. That's a future I don't think I can predict, but I just feel that this is disruptive.
+01:25:22 Bryan: Certainly, it feels like something that we're ripe for, [unintelligible 01:25:26] non-volatility of main memory or we're getting main memory speeds with non-volatility. It feels like it would shake things up quite a bit.
+01:25:32 Jeff: There's the potential. This is like flash disk shook up the storage market. Then, there are these technologies that are highly disruptive, and they create the opportunities for new players in the market. I think this is one as well.
+01:25:44 Bryan: Given the number of trends that you've been early on, let me know when you're going to the store to buy the Optane. Maybe it's now. I feel like we got to be following Jeff wherever he goes.
+01:25:55 Steve: The database company is falling out of that.
+01:25:57 Bryan: Exactly.
+01:25:58 Jeff: Like everything else, unless you're wrong, some reasonable percentage of the time, you're probably too slow. I don't know if that's a good investment strategy. I'm wrong too.
+01:26:10 Bryan: That's a relief.
+01:26:11 Jeff: I'm wrong enough to have confidence that I'm not moving too slow.
+01:26:14 Bryan: Because it feels like you've been right a bunch of times and you've certainly have been at the epicenter of some of the biggest shifts we've seen in computing and right on the metal all of those times. Jeff, thank you very much for your time today.
+01:26:30 Steve: This was terrific.
+01:26:31 Jess: Thank you. This has been amazing.
+01:26:34 Steve: This was amazing. I learned an important lesson is make sure you limit engineers to no more than three sales meetings a day.
+[laughter]
+01:26:42 Bryan: I think you drew the long lesson from that. Jeff, thank you very much. If people want to, in terms of learning more about you or your career or some of the technologies you're interested in, is there a particular place they should go to or are you--
+01:26:56 Jeff: There would be if I put something like that together, but I have to and I have not.
+01:27:00 Bryan: Maybe go check out-- [unintelligible 01:27:02] sounds like, for sure.
+01:27:02 Jeff: Maybe I need to make that as a resolution this year to document some of what I've done, but [crosstalk]
+01:27:10 Bryan: If we can help you document it, we'd love to, because I think there's just a lot in here. Thank you very much for your time today.
+01:27:16 Jeff: Thank you very much for having me.
+01:27:18 Bryan: Thank you, dear listener, for joining us for what was a terrific episode of On the Metal. I am Bryan Cantrill. With me again, it's Jess and Steve. Adios. Thank you.
+01:27:29 Jess: Bye.
+01:27:30 Bryan: You've been listening to On the Metal tales from the hardware/software interface. For shoutouts, to learn more about our guests, or to sign up for our mailing list, visit us @onthemetal.fm. On The Metal is a production of Oxide Computer Company and is recorded in the Oxide garage in Oakland, California. To learn more about Oxide, visit us at oxide.computer.
+On The Metal is hosted by me, Bryan Cantrill, along with Jess Frazelle, and we are frequently joined by our boss. Steve Tuck. Our original and awesome theme music is by JJ Wiesler at Pollen Music Group. You can learn more about JJ and Pollen at pollenmusicgroup.com. We are edited and produced by Chris Hill and his crew at HumblePod. From Jess, from Steve, from me, and from all of us at Oxide Computer Company, thanks for listening to On the Metal.
+[music]
+[01:28:47] [END OF AUDIO]

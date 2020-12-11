@@ -12,6 +12,7 @@ description: |
     expect the supremacy of the quantum blockchain.
 podcast_file: https://media.transistor.fm/f037142a.mp3
 iframe_link: https://share.transistor.fm/e/ad9a87ec
+transcript_file:
 ---
 
 On this episode of On the Metal, we interview Jon Masters, computer 

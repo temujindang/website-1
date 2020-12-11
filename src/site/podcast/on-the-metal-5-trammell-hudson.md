@@ -13,6 +13,7 @@ description: |
     evil maid attacks, and more.
 podcast_file: https://media.transistor.fm/9d0cafea.mp3
 iframe_link: https://share.transistor.fm/e/a9256054
+transcript_file:
 ---
 
 On this episode of On the Metal, we interview Trammell Hudson. 

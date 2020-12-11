@@ -1,0 +1,698 @@
+[music]
+00:00:12 Bryan Cantrill: Welcome to On The Metal Tales from the hardware software interface. I'm Bryan Cantrill, with me as always, Jessie Frazelle. Hey, Jess.
+00:00:20 Jessie Frazelle: Hey, Bryan.
+00:00:21 Bryan: Joining us as well is our boss, Steve Tuck. Hey, Steve.
+00:00:24 Steve Tuck: Present.
+00:00:25 Bryan: All right. Keep us in line. Jess, you want to introduce who we have in the garage with us today?
+00:00:30 Jessie: Yes. Today we have Amir Michael. We're hanging out in the garage like usual, talking about hardware and going to production with hardware. We're really excited to hear all the stories that he has to tell because he has a lot of experience in this area.
+00:00:44 Bryan: Amir, welcome to the garage.
+00:00:46 Amir Michael: Thank you. It's great to be here.
+00:00:47 Bryan: You are a true child of Silicon Valley. You grew up here. You're a local.
+00:00:53 Amir: I am born and raised in Foster City, California.
+00:00:55 Bryan: There you go. Your parents must have been in tech.
+00:00:58 Amir: My dad was in tech. My mom was a teacher. My dad came here in the early, early '70s and studied at Berkeley, and joined Fairchild Semiconductor. He had a couple of internships and once he finished, he joined one of the pioneers of Silicon Valley when they were actually making silicon in the valley.
+00:01:16 Bryan: That is amazing. Do you remember him working at Fairchild?
+00:01:21 Amir: Not at Fairchild, by the time I was born and have memories, he was already at AMD.
+00:01:27 Bryan: Wow. You must have had stuff lying around the house. Was he bringing home interesting things?
+00:01:32 Amir: Yes, they had wafers that they went through the third process, and which got rejected. He would bring them back home in carriers. I'd take the wafers and hang them up on the wall with some some tape. That's how I decorated my room, with wafers.
+00:01:47 Jessie: Wow, that is so dope. Instead of those glow in the dark stars, it's so much better.
+00:01:53 Bryan: How old are you at this point, putting wafers up on the wall?
+00:01:56 Amir: I was in elementary school, I think.
+00:01:58 Bryan: What is your childhood of Silicon Valley? This is a true child of Silicon Valley.
+00:02:03 Jessie: That is dope.
+00:02:04 Bryan: A bedroom adorned with wafers
+00:02:07 Steve: Versus posters.
+00:02:08 Amir: Yes, exactly. He'd also bring back these small plastic boxes that they would put finished chips in them. I would take the chips and store them somewhere else and use the boxes to keep my Legos in them.
+00:02:23 Bryan: That is awesome. Were you messing around with electronics then at that age? How are you getting into it?
+00:02:27 Amir: Oh, yes. I think by the time I was in fifth grade, I had already learned how to solder. My dad taught me how to connect some batteries to motors and lights and the wires would keep popping off. Eventually, he trusted me with a soldering iron. I learned how to solder wires and devices together. I'd try and fix toys sometimes with solder, didn't always stick but I've been doing electronics since a really young age.
+00:02:54 Bryan: This is post PC revolution, right? Because we're in the late '80s at this point. I don't mean to date you too much here, but late '80s or early '90s even?
+00:03:03 Amir: Yes.
+00:03:03 Bryan: Okay. A lot of kids are playing with software at this point, but you're in the hardware.
+00:03:08 Amir: Yes, not that I didn't play computer games. XT was my first computer. I think it ran at two megahertz and maybe a little faster when you hit the turbo button. I was into electronics, I loved building circuits. I loved attaching motors to different devices, making them spin if it was Lego, like put a fan on it and blow the car around the living room or wherever it was. I just always liked the physical nature of it. Being able to put something together and actually feeling and touching it.
+I would buy kits and go to Radio Shack and buy parts and put together different types of kits and sensors. I remember once I put a motion sensor onto a buzzer and hid it under my bed, anytime anyone walked by it, it would start to beep and startle them. My mom was not happy, especially when she came in to clean my room or vacuum or whatever. It would annoy her. Those are the types of things I loved doing.
+00:04:08 Bryan: That is great. Jess, do you know what the turbo button is? He mentioned a turbo button.
+00:04:12 Jessie: I, of course, know what the turbo button. I had a computer.
+00:04:14 Bryan: You don't have to be so indignant. There's a generational divide. You don't always know what the--
+00:04:19 Jessie: I have a computer inside with a turbo button.
+00:04:21 Bryan: I have found there's an entire generation that does not know what the turbo button is. Just wanted to--
+00:04:25 Jessie: I'm not a part of that generation.
+00:04:26 Bryan: All right, that's fine. There's gonna be future generations, they're not going to know what Radio Shack is, sadly, that's that's another one that's a little more recent. Grew up messing around with hardware, scaring your mom. When you went to school, you knew this is what you were interested in?
+00:04:42 Amir: Yes, even before that. We had our own computer, took a while until my dad agreed to upgrade that. When he was willing to fund it, then I had fun picking out parts and deciding what I wanted to build. Obviously, it was all what they call today white boxes, where you'd go and buy your own motherboard or CPU, hard drives and you piece everything together. I built my first computer myself, which was a good experience. The types of friends I had were really into that as well. We'd talk about graphics cards and monitors and processors and what we wanted to get and how we'd update them.
+00:05:21 Bryan: I'm envisioning little rascals Foster City, mid-'80s, like Silicon Valley youth gang, making their own machines. It sounds like a dream childhood, honestly.
+00:05:35 Jessie: That's really dope.
+00:05:36 Amir: Of course, we'd swap around floppy disks with different programs or games on them. Once everyone-- my first friend got a modem, that was a game changer. We'd dial into different BBS's, you'd get programs or whatever it was.
+00:05:54 Bryan: Don't flip out on me, Jess.
+00:05:54 Jessie: I know what a BBS is. I knew it was coming.
+00:05:59 Bryan: Again, it's a generational thing. It's not a condemnation. Did you ever use a BBS?
+00:06:05 Jessie: Okay, I know what they are, but no, it's almost like how I have the IBM basic manual. It wasn't my manual.
+00:06:10 Bryan: It is a reasonable question to ask you what a BBS is?
+00:06:11 Jessie: Yes.
+00:06:14 Bryan: Steve, you and I are roughly same vintage, but I think you were probably too cool to be using BBS's.
+00:06:17 Steve: I don't know about too cool, but I was not using BBS's.
+00:06:20 Bryan: Steve was too cool. Which is good. That's a compliment. That's praise. Tell us about the machine, that early machine that you pulled the motherboard for and everything else.
+00:06:31 Amir: Yes. It was a Pentium 100 megahertz. I think I had maybe eight megabytes of RAM on it, which was a lot in the days. Maybe a couple of hundred megabytes on the hard drive. I don't quite remember then. I eventually installed the modem and that guy too and started dialing in and playing different online games with my friends too. Online wasn't quite the word, it was point to point. You would dial their home and their computer would pick up, and then you'd play your multiplayer game that way.
+00:06:59 Jessie: That was cool.
+00:07:01 Bryan: It got to be in the early '90s at this point with 100 megahertz. You can always date someone from their clock speed.
+00:07:09 Amir: I think I got that in '95.
+00:07:12 Bryan: '95, right, something like that. The internet is beginning to happen.
+00:07:18 Amir: Yes.
+00:07:18 Bryan: You're actually able to do some interesting things online. Cool, then you head off to school?
+00:07:25 Amir: Yes. I went to UCSB, studied electrical and computer engineering. Again, was good as far as developing good social relationships with other hardware geeks like myself. That's primarily what we did, is we had something called the LAN at the time in the dorms.
+00:07:43 Bryan: Could you repeat that word?
+00:07:45 Amir: A LAN, a Local Area Network.
+00:07:46 Jessie: You're saying this because I like to call it WAN.
+00:07:51 Bryan: Jess calls it a WAN.
+00:07:53 Jessie: It's only for troll.
+00:07:56 Steve: Okay, you're doing it on purpose.
+00:07:55 Bryan: Can we describe, the word that Amir just gave you.
+00:07:58 Jessie: I know. I saw it.
+00:08:01 Steve: I did not know this. That is trouble.
+00:08:05 Bryan: You like to call it a WAN. It is a LAN.
+00:08:08 Jessie: It is a LAN. I will admit that, but I do like to say WAN because it makes the cringy look.
+00:08:19 Bryan: It's very cringy. Those cringes are social cues that you should stop doing it. Amir, I'm so sorry. You never know, you can step on a landmine around here-- [crosstalk]
+00:08:28 Amir: Or a Wanmine.
+00:08:31 Bryan: Yes. You're on the LAN.
+00:08:37 Amir: It made it even easier to share files and being even more geeky with your friends. Obviously, back then, you were doing a lot of things like running wares, where you would share programs that maybe you weren't supposed to be sharing with your friends, and you had corporations you paid for software, but almost no one else did pay for software then.
+00:08:59 Bryan: You're raising an important point about the role of mischief. Certainly, when I look back, mischief played an important-- and if it was phone phreaking or if it was wares sharing. As a parent, I'd want to discourage mischief. As a kid, mischief was an important part. You're talking about scaring your mom. Mischief plays an important role.
+00:09:22 Amir: Yes, that's how you learn. If you wanted to do cool things, you had figure-- you didn't have money back then, you had to figure how the technology works, and how to get it to work in your favor. CD burning was a big one too.
+00:09:33 Bryan: That's right. Now, I'm not even going to ask for that one.
+00:09:36 Jessie: I also know of wares. I got in trouble for that a lot.
+00:09:39 Bryan: I can imagine.
+00:09:41 Steve: I thought you were going to ask about CD burning.
+00:09:43 Amir: She didn't know that.
+00:09:45 Bryan: You're messing around on the LAN and presumably doing things in software as well, doing both computer science and computer engineering.
+00:09:52 Amir: Yes, software started actually early. Another hobby I had was radio controlled cars, I loved them, and that's how I learned actually a lot of electronics too, and mechanics. There wasn't much software, which was a problem, because you'd want to race your friends, and how did you know who was faster. On my XT, that slow computer, I actually built a program that tracked the time of these cars going around this course, and you'd get lap times from them. it would show you who was faster. In the end of the race, it would tell you who did the most laps in the least amount of time. I would drag my computer out to the field with some extension cords, and my friends would get our cars set up, and then someone had to be behind the keyboard to key in--
+00:10:38 Bryan: I was going to ask.
+00:10:39 Amir: -appropriate buttons when the car crossed the start/finish line. I wrote a program. I called it Race Master.
+00:10:44 Bryan: Race Master. That is such an 11-year-old name for a program.
+00:10:50 Amir: Yes. I wrote it in Turbo Pascal.
+00:10:52 Bryan: Turbo Pascal. You're close to a Turbo Pascal manual. I think off to your right somewhere, there's a Turbo Pascal manual. I've got such fond memories of Turbo Pascal.
+00:11:02 Amir: That was the first program I wrote. I was living in Israel at the time. My dad had relocated there for a job over at National Semiconductor, and I had a group of friends who liked to race cars and were geeks as well. We wanted to be able to keep time. I said, my friend had taken up private class in Turbo Pascal programming. It was popular then for parents to get programming tutors for their middle school kids, I don't know why.
+00:11:33 Bryan: It's awesome.
+00:11:33 Amir: He had a book and I said, "Can I just borrow the book?" And taught myself how to program Turbo Pascal.
+00:11:39 Bryan: All right. Do you remember what version of Turbo Pascal?
+00:11:41 Amir: No idea.
+00:11:41 Bryan: I would assume like 5.5, are we talking?
+00:11:43 Amir: I don't remember.
+00:11:44 Bryan: Turbo Pascal is amazing. It was then, fast. This is Anders Hejlsberg, who--
+00:11:52 Jessie: Oh, of Text Group?
+00:11:54 Bryan: Yes, and of Microsoft [unintelligible 00:11:55]. Anders was at Borland, where they did Turbo Pascal, and it was very fast on a PC AT, or on a 3-D 6SX, or on 100 megahertz Pentium. We should get Turbo Pascal running today on a modern CPU.
+00:12:13 Jessie: What happened to it?
+00:12:14 Bryan: It would travel backwards in time. It was so fast. I don't know what happened to it. Where the actual artifact is?
+00:12:20 Bryan: I don't know.
+00:12:22 Bryan: It was [inaudible 00:12:22].
+00:12:22 Amir: I know. There is a current player on the Golden State Warriors, Eric Pascal, and the nickname that people are trying to get to stick is Turbo Pascal.
+00:12:29 Bryan: Turbo Pascal, that is awesome.
+00:12:31 Amir: That would be amazing.
+00:12:32 Bryan: That is awesome. That is trying to connect two demographics that I'm not sure-- In the Bay Area, you could pull it off. God, Turbo Pascal-- I'd go to a Warrior's game just to watch Turbo play.
+00:12:45 Bryan: To watch Turbo.
+00:12:45 Steve: Just to watch--
+00:12:47 Bryan: That's great.
+00:12:48 Amir: That's awesome.
+00:12:48 Bryan: All right. You messed around with software with Turbo Pascal?
+00:12:52 Amir: Yes. In school, I was somewhat disappointed. The first programming class that was on the curriculum was Fortran. I was trying to figure out why in '97, they were teaching incoming freshmen Fortran. I did eventually figure it out. The instructor we had many years before had written a book on Fortran, and likely needed to increase his book sale. That was the first class we took.
+00:13:22 Bryan: Okay. F77 or F90? Do you remember?
+00:13:26 Amir: No.
+00:13:27 Bryan: There's still a lot of Fortran being written.
+00:13:32 Jessie: Yes. People definitely use Fortran.
+00:13:33 Amir: I believe it.
+00:13:35 Bryan: Because they got these mathematical codes correct, especially in the sciences, Fortran being written is maybe a bit strong. There's a lot of Fortran that's out there.
+00:13:44 Amir: Maintained.
+00:13:45 Bryan: Why am I defending your teachers terrible decision to teach you Fortran? I'm sorry, I don't want a dig-- All right, you were being deprived with Fortran programming in high school or?
+00:13:53 Amir: In college.
+00:13:54 Bryan: In college. College, that is bad. I don't know why high school feels like it's less child abuse than college.
+00:13:59 Amir: Yes, maybe because the teacher had also been as part of the College of Engineering in the electrical engineering department, not necessarily computer science. Perhaps thought it was a better lower-level language, I'm not sure.
+00:14:13 Bryan: No. All right. You're getting a bad taste for software from Fortran?
+00:14:17 Amir: Yes. Luckily, it was only a quarter as worth, and then quickly moved on from there to more modern languages, call it C, for example.
+00:14:27 Bryan: You were lucky using C because I feel that that is a time that is net-- because now we're in the 2000s, maybe the the early 2000s. I feel like Java kind of displaced everything from out there.
+00:14:38 Amir: Yes. In coming freshmen in computer science started with Java. Electrical and computer engineers started with Fortran and then C.
+00:14:47 Bryan: Fortran and then C. I actually think you kind of got the better half of that deal.
+00:14:51 Amir: I agree.
+00:14:51 Bryan: Fortran is a little bit of an annoying price to pay, but at least you got something that's closer to the metal with C.
+00:14:59 Amir: Yes. I actually wrote some code for Facebook, I'd say, probably in 2010 for Memcached that was all in C. That came in handy.
+00:15:08 Bryan: Oh God, I was so hoping that was going to be Fortran. I was really, really. Since you went first, I'm like, "Please, let there be some Fortran on Facebook, but no. There we go, it came in handy. Coming out of school, you were doing hardware [unintelligible 00:15:23] in school.
+00:15:24 Amir: Yes. I graduated in 2001. Basically did hardware, built a four-bit microprocessor. It's one of our final projects.
+00:15:32 Bryan: That's great, and it's so much fun.
+00:15:34 Amir: That was a tough one. I remember it was due basically the week before finals, and we had spent maybe three weeks in the lab on the fifth floor of engineering building. You stare down from the engineering building at the beach below. You had all the history majors and communication majors, studying "on the beach".
+00:15:56 Bryan: On the beach, throwing Frisbees.
+00:15:57 Amir: In the sand, and we were up in the lab trying to finish this project. We did finish it, and it worked.
+00:16:03 Bryan: See, the cruelty there is that you had Windows. They should have had Windows. If there were no Windows, then you would have been just in a cell.
+00:16:09 Amir: Yes, you wouldn't have known anything about the reality outside.
+00:16:12 Bryan: Right. I think most engineering campuses, they just have no windows. What was the four-bit microprocessor? Was that an FPGA that you were putting into, or what were you--
+00:16:21 Amir: One portion was an FPGA. A lot of the glue logic was done in FPGA, but the majority of it was just in discrete logic chips. We had an LU, we had some memory, we had shift registers, we had muxes, probably, we built it on breadboards. Those are boards, plastic usually, with lots of holes and conductors underneath. You could put in a DIP package, a dual-inline package, which is how a lot of microchips used to be packaged back then. Basically, a piece of plastic with these small conductors coming out of them that you'd stick into these boards with holes in them, and they would make-- it would conduct underneath. Then you take wires, or old telephone wires, and then connect between the chips that way.
+00:17:06 Bryan: Spent a lot of time in the logic analyzer on that project, for sure?
+00:17:09 Amir: Logic analyzer, Scylla scopes, voltmeters, everything. You would take this and we had three breadboards. Think about maybe something that was, I don't know, maybe 18 inches by 12 inches of a big rat's nest of wires. It was hard to debug. We started off very neat, but once it was fairly complex, we had a lot of wires going everywhere.
+00:17:33 Bryan: It was a group project or an individual project?
+00:17:34 Amir: It was a group project, three of us. You would write, then came up with your own assembly code that would run the processor. Then you would program that into some eprom, which is like, today, you might think of eprom as flash, perhaps. Your goal was to have it execute a certain series of its instructions. That was actually fun because--
+00:18:00 Bryan: It must have been glorious to get it all working.
+00:18:01 Amir: Yes. Once it was working, it was, you didn't want to sneeze on it because, if one of the wires came loose, it would have been hard to figure out what happened. Then, you could adjust the clocks manually, and you basically would turn it up to see how faster, how much you could overclock that little four-bit processor.
+00:18:19 Bryan: What did you get it to?
+00:18:20 Amir: I think we got it to about eight megahertz.
+00:18:21 Bryan: That is great. What a project? I've always fantasized about having a project where you build your own microprocessor, then you build your own operating system, you build your own command. Have an entire system's curriculum where you build it all from the bottom. You learn much about the way things work from that.
+00:18:42 Amir: Yes, you have to get into every little detail. That's amazing. It was a fun project, for sure. A good way to finish off four years of undergraduate electrical engineering.
+00:18:51 Bryan: Yes, Meanwhile, that history concentrator that was out there throwing the frisbee around, they're wishing they understood the four-bit microprocessor like that.
+00:18:59 Amir: I'm sure they have.
+00:19:00 Bryan: I'm just pointing off into the distance, I'm not pointing-- First of all, Wisconsin was too cold for the frisbee ice.
+[00:19:06] Stevewith sweaters and sweatpants.
+00:19:09 Bryan: Exactly.
+00:19:10 Amir: Yes. The best part was, you called the project the BURP, the Basic Undergraduate Risk Processor. That is--
+00:19:17 Jessie: Whoa, that is a good name. That's a good name.
+00:19:21 Bryan: The BURP is good. Then you are now into your career?
+00:19:26 Amir: Not really. I graduated in 2001. Dot com bubble had just exploded. In the first part of my senior year, I had offers for jobs. I had interned at Cisco Systems for two years. HP wanted to interview me for a position in their AIO department, which was all in one printer, scanner or fax machine, whatever it was. That was when I started my senior year. Things were great. I said, "Look, I'm not going to decide where I'm going to work now. Let's talk towards the end of my year." Then January came around, everything had crashed.
+00:20:06 Bryan: [inaudible 00:20:06]
+00:20:06 Amir: Oh man, I called a bunch of these companies and said, "Look, we're not hiring, we're actually laying off people." I graduated without a job.
+00:20:18 Bryan: It's amazing to think about that, about that time. I feel like this is our role. I think, just this is too old for you. In 2001, you were not in the Labor Market, certainly.
+00:20:31 Jessie: No.
+00:20:31 Amir: No.
+00:20:31 Bryan: Yes. You don't know what it was like. I feel like, Steve, you, Amir and I were children of depression in this regard, explaining actually--
+00:20:38 Steve: Yes. I got there in late '99 and went to Dell in October '99 just to watch the bottom Fallout.
+00:20:44 Amir: Yes. You got there when the times were still good for a few months.
+00:20:49 Bryan: I hired an undergraduate in 2001, and it had to be approved by the CEO. It was a huge deal to get a single undergraduate hired.
+00:20:57 Jessie: That's insane.
+00:20:57 Bryan: It was bad. You come out without a job?
+00:21:00 Amir: Yes. I had friends who'd graduated with a four-year engineering degree and went to go work at BestBuy.
+00:21:05 Jessie: Whoa, whoa.
+00:21:06 Amir: That's their part-time job.
+00:21:07 Bryan: A good job.
+00:21:08 Amir: I decided I didn't want to work at BestBuy. Instead, I spent a year volunteering. I did a program similar to Peace Corps in Israel, where you work both with Jewish and Muslim children, and some coexistence programs. Largely, if you're an English speaker there, you're naturally going to be used for teaching English. I taught English for a year to kids in marginalized neighborhoods, both inside a Bedouin village, a lot of fun.
+00:21:41 Bryan: That is amazing.
+00:21:43 Steve: An amazing experience.
+00:21:44 Bryan: I'm now embarrassed about the way that I and the rest of humanity spent that year, just wishing for the bubble to come back. Meanwhile, you were actually doing something meaningful, demonstrating--
+00:21:56 Steve: Cursing the fact you can only get one undergrad.
+00:21:58 Bryan: Exactly. All right, exactly. I'm cursing the fact that that must been a hell of a year.
+00:22:02 Amir: Yes, a lot of fun. Came back from that. I started a small little company. I made battery chargers for model airplanes, and they actually plugged into the parallel port of the PC and kept statistics on the batteries that you were charging.
+00:22:17 Bryan: Are your parents concerned for you at this point? Like, "Mom, don't worry, I've got a plan. I know the economy has cratered, and there's no future for engineering. I'm starting a company to recharge model planes."
+00:22:29 Amir: Yes. I didn't know much back then, didn't know how to size up markets. I was like, "This is a cool device."
+00:22:37 Bryan: What's the [unintelligible 00:22:37] on that one?
+00:22:38 Amir: "I'm going to use this because I love flying model planes. I want this. Other people must want it too. I'm going to do this." My dad gave me a couple thousand bucks to help build the first one.
+00:22:48 Bryan: God. Good for dad. That's great.
+00:22:50 Amir: Yes, it was awesome. Then, I quickly found out-- I think I sold six of them, and in--
+00:22:55 Bryan: You dominated the market.
+00:22:56 Amir: You saturated the market.
+00:22:56 Bryan: Dominating the market.
+00:22:59 Amir: Exactly. I didn't realize most of the people who flew these planes were retirees, and didn't see the need for using a computer to charge batteries. Probably still the case today.
+00:23:10 Steve: Plenty of time on their hands.
+00:23:11 Amir: Yes. I had a girlfriend at the time. I'd started looking for a job. She found an ad on Craigslist for a company that needed someone to help them repair servers. I said, "Great, I can do that. Not a problem." Then, I sent in my resume and I get a response. The recruiter was from this company called Google.
+00:23:35 Bryan: Wow.
+00:23:36 Amir: I said, "Well, the search engine, I guess they should have quite a bit of servers. Should be a lot of work to do there." Funny part is, first time, I sent in my resume. I didn't get a response. I sent it in again. I don't remember why, but I updated it. I wrote some of the experience I had working with Linux the second time, and that got me a response from the recruiter.
+00:24:01 Bryan: Really? It's like, "I'm sorry, I implemented BURP. That doesn't wake you up, but like, by the way, I know how to administer Linux." Like, "Oh-oh, now we're interested." Okay.
+00:24:12 Amir: I interviewed and got the job there, and then I was thrown immediately into the trenches. There was almost a hazing there from the other data center technicians, where, to be a part of that culture, they would give you a hard time over some of the work you did. I remember once I got yelled at by a senior technician because I put too much grease on the CPU, thermal compound.
+00:24:35 Jessie: Oh my god.
+00:24:36 Amir: Yes. That was a hard one to get over. It's your first job, and you take that seriously initially.
+00:24:42 Bryan: Do you know what he's talking about, in terms of the thermal grease?
+00:24:46 Jessie: The grease? No.
+00:24:47 Bryan: No. Okay. This is like-- You should explain the thermal grease, because you're actually connecting the CPU into the socket at that point.
+00:24:54 Amir: Yes. This is actually something that would come back to bite me later on, but the CPU has a metal casing around it, and that interfaces a heatsink, which dissipates the heat that the CPU generates. To make that connection between the metal case of the CPU and the heatsink more efficient, you can put thermal compound, which conducts thermal energy from one material to the next, and it creates a better connection between the CPU and the heatsink itself.
+Makes the cooling more efficient. You can put too much. If that layer is too thick, it doesn't conduct heat as well. If it's just right, it conducts heat really well. I put too much and that barrier between the CPU and the heatsink was not as efficient as a result. It would have worked fine, but someone was looking for something to pick at.
+00:25:48 Bryan: Was it more than an aesthetic issue? Because there's an aesthetic issue too, if you put too much on. I do not have the guts to do this myself out--
+00:25:54 Amir: Since [unintelligible 00:25:54] the side, it's not a big deal.
+00:25:56 Bryan: Yes. Sits on the side, okay, not a big deal, but there was an actual efficiency consequence.
+00:26:01 Amir: Yes. You won't conduct as much heat, and then your fans need to spin up to compensate.
+00:26:07 Bryan: Wow. In 2002, is that the year at this point? 2002, 2003?
+00:26:12 Amir: Yes, I started in 2002.
+00:26:13 Bryan: In 2002, in the Google Data Center. This is a newbie mistake, I guess.
+00:26:19 Amir: Yes.
+00:26:19 Bryan: Then the hazing begins. One day in the hot aisle, one day in the cold aisle.
+00:26:23 Jessie: Yes. It lasted about three months.
+00:26:25 Bryan: How long have you been sitting on that one?
+00:26:26 Jessie: Wow.
+[laughter]
+00:26:28 Amir: Yes. Eventually, you get past that and you're no longer the new guy. At that point, things get easier, and then you're training other people. That was an interesting time. We couldn't get RACs into data centers fast enough. It was expansion, expansion, expansion. It changed quickly from repairing the fleet that they had to building out more and more clusters of servers. These were crazy times.
+00:26:51 Bryan: This is after the Velcro days, right? Or is this other--
+00:26:55 Amir: No, there was still Velcro, then.
+00:26:56 Bryan: There was still Velcro. Do you know about the Velcro? Do you guys remember the Velcro?
+00:26:59 Jessie: No.
+00:27:00 Bryan: You should explain the Velcro. The Velcro is definitely a big part of Google Lore, for sure, right?
+00:27:04 Amir: For sure. If you think about hardware back then and scale out servers, they didn't really exist. You could buy RAC mount servers. They weren't at all cost-effective. Even from the founders, from Larry and Sergey, they had decided that they weren't going to pay the enterprise premium on servers. A lot of their initial Google servers were built from components which they had purchased from a local hardware retailer called Fry's Electronics. They would go there--
+00:27:33 Bryan: Fries.
+00:27:34 Jessie: Wow.
+00:27:35 Bryan: Oh, fries.
+00:27:36 Jessie: That's going to become a thing of the past, too.
+00:27:37 Bryan: It is.
+00:27:38 Steve: Oh, it's there.
+00:27:38 Bryan: It is. It's a carcass right now. That's sad.
+00:27:42 Amir: They'd buy 20 motherboards and CPUs and drives and UM, and put them together, and put them on what they called cork boards. If you think about-- There was something before that too. You think about a bread RAC at a bakery. They have these tall RACs that you can slide, basically, pans into and bake bread in volume. They took that concept and said, "Look, we're going to use that same idea to hold servers. We're not going to buy traditional 19-inch RACs, we're just going to build these very inexpensive bread RACs, and have a tray, and then snap the motherboards on there and the CPUs, and put some DRAM, some drives and some fans, and that will be our server. Those were largely built from commodity components that you could buy at Fry's.
+00:28:33 Bryan: True, not just commodity, but consumer-grade.
+00:28:35 Amir: Consumer, yes.
+00:28:36 Bryan: This is check--
+00:28:37 Amir: You can buy motherboards, whatever was there. The initial versions had a layer of cork between the metal RAC and the motherboard in order to insulate it so it wouldn't conduct. That worked fine, except for the inspector, the Fire Marshal who would come by the data center, saw the cork, and it was a flammable material which you weren't allowed to have out on the data center floor. Eventually, we had to get rid of the cork. The cork boards were phased out, and they had these things called bread RACs instead that held the motherboards on standoffs instead.
+That solved that problem, but there was this ongoing evolution of very inexpensive consumer hardware being brought into data centers and being used for enterprises, for an enterprise-- call it a scale out application at the time. That was really the first version of scale out hardware that I think started at Google. It was super-cheap. The joke was they would buy DRAM that was swept off the floor at the factory, because it was cheaper and it had more errors, but if you wrote good software that could take into account the errors, it would be cheaper. The premise was, you couldn't rely on the hardware. The software had to accommodate that, but as a result, you get cheaper hardware.
+00:29:59 Bryan: This is non- ECC DRAM.
+00:30:00 Amir: Oh no.
+00:30:01 Bryan: This is bad non-ECC DRAM.
+00:30:03 Amir: No error correction at all.
+00:30:04 Bryan: There's only much that software can do. For Byzantine DRAM, that can be a challenge.
+00:30:11 Amir: Yes, if it caused a kernel panic or something, that's fine because the software could just use another server instead.
+00:30:17 Bryan: Just don't bother debugging that one. That one will be strange.
+00:30:21 Amir: Exactly. The debug process was very crude. You would just, on mass, rip out components and replace them until you found the combination network. You would throw--
+00:30:34 Bryan: Really, first principle is kind of operation there.
+00:30:36 Amir: You would throw a lot of good components into that [unintelligible 00:30:38] into the return bin. I'm sure that the false positives on bad hardware was probably very large at that point.
+00:30:47 Bryan: Right. It truly is penny-wise and pound-foolish. You're actually-- Does the Velcro predate the court? Let's say the port.
+00:30:54 Amir: That's right, we started with Velcro. No, Velcro was, from the beginning, the cork boards and in the bread RACs. Basically, you needed a way to hold these hard drives in place. They would just have a simple mount for the drive, and you would just use a strap of Velcro to tie it into place. The interesting thing, the whole premise of that was that you wanted to make this server, they had many of them, easy to maintain. You had armies of data center techs trying to fix unreliable hardware. You had lots of failures, and if you could save a few minutes on the maintenance, it was a win-win. They made everything really easy for the technicians to maintain, to rip components in and out. Velcro was a key component of that.
+00:31:37 Bryan: But the Velcro did not survive?
+00:31:40 Amir: Yes, it did not survive. At some point, they became more serious about the hardware, and they started using ECC. The principle of easy maintenance remained, they found other solutions that still made the service just as easy, but just I have Velcro.
+00:32:01 Bryan: All right, we're going to take a quick break, then we are going to be right back with some terrific tales in the hardware software interface, with Amir Michael.
+On the metal is brought to you by the Oxide Computer Company, where we're going to try a new feature shamelessly ripped off of replies, yes, yes, nowhere our boss, Steve Turk, brings us a tweet which he does not understand, and Jess and I try to explain it to him. Steve, do you have a tweet?
+00:32:26 Steve: I sure do.
+00:32:27 Bryan: Go for it.
+00:32:27 Steve: The tweet in question, UEFI Pre-Boot Network Stack engaged the onboard Nick in such a way that it would write back DMA to particular physical memory pages sometime after control was passed to the bootloader. Corruption would occur somewhere in the user parts of the RAM disk. No idea.
+00:32:46 Bryan: No idea. Jess, do you understand this tweet?
+00:32:48 Jessie: I understand definitely the part about the UEFI Preboot networking stack, but the part about DMA is in question mark. It's like, I guess you're not really sure where that's going.
+00:32:59 Bryan: You're overthinking it. I understand this tweet. Running on-prem is painful. This is dealing with an awful, awful firmware bug. Firmware has overwritten part of the operating system in a way that is extremely painful to debug.
+00:33:12 Steve: Who do you go to in that case?
+00:33:13 Bryan: Who do you go to?
+00:33:15 Jessie: You definitely strangle one of your vendors.
+00:33:17 Bryan: You strangle one of your vendors. Fortunately, your vendor is a PC vendor, because all the existing computer companies are selling personal computers. What we need is a new computer company.
+00:33:28 Steve: This is just saying, I am in intense pain trying to run systems on premises.
+00:33:32 Bryan: That's exactly what it's saying. Steve, what can someone do if they're in intense pain running on premises?
+00:33:36 Steve: If someone is running in intense pain on promises, what they should do is go over to oxide.computer to learn a little bit more about how we are going to take that pain away.
+00:33:44 Bryan: Help is on the way. Join us at oxide.computer.
+00:33:48 Jessie: You are not alone.
+[music]
+00:33:54 Bryan: All right, we're back. All right. Amir, we were with you at Google, and Google was beginning to realize that having junk components everywhere might not be the best long-term approach.
+00:34:11 Amir: Yes, there was some change in philosophy around that. I think at some point, the supply chain perhaps drove a lot of that when they started negotiating for hardware directly with the actual vendors. They realized that they could get-- There just wasn't enough DRAM on the floor of the factory that they could get.
+[laughter]
+00:34:37 Bryan: There's not enough bad DRAM to sell you?
+00:34:39 Amir: The scale had grown so much. You had to work with the vendors directly, meaning you had to be a little bit more grown up at that point.
+00:34:46 Bryan: It's like we have to buy legit DRAM because there's not enough bad DRAM, that's pretty funny.
+00:34:51 Amir: There was that, and quite frankly, the hardware and the designs had started to show some weak points too. Not a lot of time was put into the engineering behind it. For example, we had servers that were over-cooled, meaning we were running too much air through them, which made the facility run less efficiently. The power supplies, for example, that we wanted to use, we wanted to increase efficiency on them. You had to start doing custom designs at that point.
+00:35:20 Bryan: Interesting.
+00:35:21 Amir: Everything had sort of matured, and along with the supply chain, along with the designs. When you're at that scale, you're going to spend more time on the design so that you have less risk involved. If you made a mistake early on, it wasn't that bad because you didn't have that much hardware, but if you're deploying tens of thousands of servers and there's a bug, that's a fairly expensive mistake at that point.
+00:35:46 Bryan: You would come into Google as kind of a data center tech answering a Craigslist ad, but at this point, it sounds like you're moving on to the design side.
+00:35:54 Amir: Yes. After around nine months to a year of traveling, debugging servers, deploying new servers in the data centers, they started becoming more serious around the hardware design. That's really what I wanted to spend my time on. A lot of the work that they were focusing on was around efficiency. They saw big inefficiencies and how traditional servers and data centers worked at scale together. A lot of the ideas were around combining the two, the facility, the actual building, the power distribution, the cooling in the building, and the servers. That's a really important principle. That's actually what I brought forward into open compute as well, which happened later on in my career. When you can control both the facility and the server, you can do fairly amazing things as far as efficiency goes.
+00:36:45 Bryan: Really, not just RAC scale design, but really, at that point, even thinking about data center scale design of the machine.
+00:36:52 Amir: Yes. They called it warehouse computing at that time.
+00:36:54 Bryan: Warehouse computing, yes.
+00:36:54 Jessie: Oh, yes. Thanks. That's like the book from us.
+00:36:57 Amir: Yes. That's where it came from.
+00:36:59 Bryan: Yes. That thinking was really very early then. That's in 2005, it sounds like? Is that-- Maybe even earlier.
+00:37:05 Amir: Yes, somewhere around 2004. I remember we had a number of different brainstorming sessions. I got to participate in a few of them over how they were going to make this holistic design way more efficient. We looked at things as far as putting micro-turbines on the roof to generate electricity, around different types of cooling systems, backup solutions. The container was an interesting one as well, the shipping containers. The first custom server facility that they wanted to put together was in a shipping container. That was about a year that we spent on with optimized cooling, optimized power distribution--
+00:37:49 Bryan: In the shipping container?
+00:37:50 Amir: In the shipping container.
+00:37:51 Jessie: That shipping container is in the Google New York office. You can have meetings in it. It was my favorite spot.
+00:37:57 Bryan: I wonder if that was-- It sounds like this thing called Operation or Project Blackbox, that was a bunch of compute in a shipping container.
+00:38:05 Amir: Everybody had a shipping container at one point.
+00:38:07 Bryan: All right, listen, I find it--
+00:38:08 Jessie: It was a hot thing.
+00:38:09 Amir: That was the run.
+00:38:09 Bryan: It was nothing special. I was never inside it when it was operating. The airflow that you have to get inside the shipping container, it's like a tornado inside the shipping container in order to keep things cooled. A shipping container is not a great place to put a data center, was kind of my [unintelligible 00:38:26]. Is that a fair assessment or no?
+00:38:28 Amir: It is, in some ways, a very good place. There are some operational things that make it a challenge. We were watching other containers as well. We were ahead of them, I think, by around six months to a year. The principles that went into that were really important. It's power that had to travel a short distance. It's a very short loop for your cooling air. The further you have to move air, the more energy you're going to spend. The container made that loop very short, and so, you spent a lot less energy on moving air. It made everything in a nice tight package that we thought would be useful for quickly deploying infrastructure at the time.
+Shipping containers are cheap. At the time, we bought an old container for $2,000 or $3,000. Fabrication was fairly expensive. There was a vendor who did a lot of fabrication, drilling holes in the side, putting up Unistrut, which is a metal bracing that was used to hold up a lot of the RACs and things like that inside. We had to do a custom cooling system with control algorithms for the fans, valves, controlling how much water went in and out of the container. The first version had 1,200 servers in it. It was fairly dense--
+00:39:50 Bryan: Yes. [crosstalk]
+00:39:50 Amir: -in a small package. Yes, it was downstairs in the garage, in the Google garage. At that point they were at the campus in Mountain View, the old SGI buildings.
+00:39:59 Bryan: Yes, right.
+00:40:00 Amir: We lifted up some grates and we got a big crane, and it dropped the container down into the garage. Then we put tarps on top, so you couldn't see it from above, and we surrounded it with a cage, a fence, and it had a security guard in front. In the winter, it dripped. Rain would drip on top of it, and we had a table outside that would get wet from the rain, but we did a lot with-- that was a good learning experience.
+Google did eventually deploy tens of those into a data center into Atlanta. The important part were the principles. The efficient cooling, the efficient power distribution, the lack of a UPS or uninterruptible power supply, a traditional system that you had in the data center was in the container, all the servers had their own local batteries on them too. There was a lot of learning, you learned what not to do, you learned how to make things more efficient. Ultimately, it was the platform that carried forward into their next-generation designs.
+00:41:08 Bryan: Why do we not have shipping container-based DCs today? What were the problems with the form factor?
+00:41:13 Amir: The idea behind it was that you could put it down anywhere that had power and water, and some of the initial concepts had them out laying in fields, and you would just run a spine of power and water and plug these containers into them. That didn't sit too well with some of the management, and they were concerned about security, and they wanted to put them inside of a warehouse. So you're building another shell around your existing container, and you've in a sense, built two roofs around them. Also, moving them inside of that warehouse was challenging.
+There was a custom crane system that was built to move the containers, and it ended up being, overall, more expensive. You also needed redundant fire suppression both in the container and in the warehouse too.
+00:42:00 Bryan: Interesting.
+00:42:01 Amir: The cost actually went up.
+00:42:03 Bryan: It's nothing about the form factor per se, and if you wanted to drop it into a field, it would have been fine. I always assumed that there was something about the actual physical form factor that made that a non-server, because a bunch of folks investigated at the same time and all came to the same conclusion, but it sounds like it's got nothing to do, it's management.
+00:42:22 Amir: Yes, yes, it's more on the facility cost around it, which ended up being too high. We looked into look lots of great engineering principles here, let's take those, but let's just do them in a standard warehouse or a standard-- It wasn't really a standard data center, but in a data center, but we'll call it a data center.
+00:42:40 Bryan: Interesting.
+00:42:40 Amir: We took out the shell of the container, but kept almost everything else.
+00:42:43 Bryan: Kept everything. Interesting. What year is it now? We are now 2007 maybe?
+00:42:50 Amir: Yes, probably around there. Yes.
+00:42:53 Bryan: You learned a lot from the container experience, and now we're beginning to take out the shell of the container and just taking it by the RAC effectively into DCs. What was the education from that? It sounds like that approach is obviously working at that point.
+00:43:11 Amir: Right. Bringing the water as close as you can to the loads so you can minimize the distance of the air travel to cool the servers, getting rid of building-wide UPS systems so that you can have localized UPSs on every server, just overall, how do you design a more thermally efficient system running with as few power conversions as possible? In traditional data center you have high voltage coming in to medium voltage transformer outside the building, and then smaller transformers inside the building, feeding each server, and so, can you take out some of those?
+Then you'd have your traditional UPS system doing a AC to DC, DC to AC conversion. Can you take out as many of those conversions? Everyone, you might lose 5%, but if you can get rid of those conversions, you can be even more efficient. That was part of the learning. Serviceability, how do you deploy them quickly in data centers? How do you repair them quickly? All those were the main learnings from that project?
+00:44:09 Bryan: Were you engaged at all with the traditional vendors in the space? The tragedy is that, today, if I go buy a machine from an extent company, it doesn't have any of that education in it for doing the power. You've got all these different power conversions and everything else, had you already come to the conclusion that the existing vendors we're not going to really--
+00:44:33 Amir: The existing vendors were never really-- I think of traditional server vendors were never really a part of the story at Google, because it had started from home-built hardware or in-house built hardware. Those vendors were never really a part of the conversation--
+00:44:47 Bryan: [unintelligible 00:44:47].
+00:44:48 Amir: They went straight to the vendors that were willing to do custom work for them. It typically meant going straight to Taiwan.
+00:44:54 Bryan: Yes. When did you go to Facebook, about this time or?
+00:44:59 Amir: 2009.
+00:45:00 Bryan: 2009. Okay. What is the Facebook that you arrive at? What are they running at that point?
+00:45:06 Amir: They were working with traditional vendors at the time, and they were in colocation, so a shared data center. They had a few facilities that they had occupied themselves entirely, but were still leasing them from vendors, traditional data center vendors like Digital Realty Trust, or whoever it was. What was similar was the growth curve. They had projections around how much infrastructure they would need, and it appeared to be very large. The cost of that was a challenge going down the traditional route.
+I credit the leadership a lot at Facebook at this time, they said, "Look, we need something more cost-efficient, come in and figure it out. What do we need to do? How do we reduce the price so that we can continue to scale Facebook while still maintaining a business that allows us that we can operate without paying so much for the infrastructure itself?" I was there, there was another engineer who had done a lot of work on data center design and construction before Jpark, and we basically sat together for six months and said, "Look, if we can start from scratch, what would we build? How would we do this integration of the server and the facility again? What do we know not to do?"
+We spent six months coming up with ideas, I came up with slide decks and projections around what efficiency savings would be both on energy consumption, on cost, and presented that to leadership and they said, "That's great. You guys want to--" The proposal was to do everything from scratch. You come to them, and you say, "Hey, we'd like to just do a whole new server and building design. If it doesn't work, we'll be in a lot of trouble because we need this capacity and we've also, breaking ground on a facility isn't a cheap proposal. You're talking a $200 million project, and if it doesn't work, you're out of luck." They said, "Okay, we trust you guys. Go ahead and try to make this big bet work for us."
+00:47:17 Bryan: There must have been a moment you were like, "Oh, shit, they bought it." I just think back to times of my career, you make some big, audacious proposal. You're so focused on making that proposal. You don't know, you think about like, "Oh, my God, what if they buy it?" They bought it.
+00:47:36 Amir: They bought, and that feeling stayed with me for the next year and a half as we were actually building it.
+00:47:41 Jessie: Oh my God.
+00:47:42 Amir: I could never take my foot off the gas pedal because, what if it didn't work in the end, and it was a big bet, and they were willing to take big bets.
+00:47:53 Bryan: How many people were involved at that point?
+00:47:56 Amir: We expanded the team. I think by the time we had launched or went to production with the first set of servers in the custom facility, there were probably 10 people on the hardware team, and probably a similar number on the data center facility team.
+00:48:11 Bryan: Surely, some things went very wrong en route.
+00:48:16 Amir: Things did go wrong along the way. Every single one of the things, we were able to overcome them.
+00:48:21 Bryan: Right, of course. There must have been something memorable though.
+00:48:25 Amir: There was a lot of luck that when we actually went in there and put in, we called them the Marines, the first thousand or so servers and powered them on, and they actually worked. I'm sure a lot of luck was involved, but we did have some very hairy moments where we thought everything was not going to work.
+00:48:45 Bryan: All right, so take us through. There's got to be hairy moments, we love the hairy moments.
+00:48:48 Jessie: The best ones.
+00:48:49 Amir: Yes. There was a couple. We did a lot of very aggressive things with the design. Part of that was a custom motherboard, and when we were doing a custom motherboard. Basically, everything we did was custom, from the power supply. Even the power strip was custom, but this motherboard was interesting. We picked a completely different form factor, 13 by 13 inches, that was an industry standard, and we were lining up with Intel's Nehalem processor, which was the first time Intel had connected the DRAM directly to the CPU. Typically, it went through a Northbridge, another chip. This was the first time they'd connected the DRAM directly to the CPU.
+00:49:26 Bryan: That's via QPI, is that right?
+00:49:28 Amir: Not QPI, QPI was inter-processor communication. This was a standard DRAM interface. They did that, and we had brought up a couple of boards, and we did our PVT, our production verification tests, which was, when you have several hundred systems and you're making sure that you don't have bugs at a larger scale. There're things that get by in earlier phases of development like EVT or DVT, which were the first two phases of test. They're smaller volumes, so you may not see bugs that crop up on only 2% of the servers, but if 2% of the servers have a bug, that's a big deal. In PVT, we came across this bug where we would boot the boxes and half the memory was missing. This is on several hundred systems, and we're trying to figure out exactly what it is that's going on.
+00:50:25 Bryan: The operating system is booting normally, everything is fine. It's just only seeing half the DRAM that's physically in the box?
+00:50:31 Amir: Yes. A couple of DEMs would just go missing. They would physically be in there, but just wouldn't recognize them. What made this so challenging was that we had a deadline that we needed to approve the motherboard design in order to hit our mass production date. It was only about a week away, so we needed to figure out this bug as soon as we could. We basically all went down into a mode where everyone just focused on this one particular bug. There were long nights in the data center, with a lot of smoke breaks outside in between.
+00:51:06 Bryan: Is it reproducible once one machine only sees half the DRAM? Will that machine only see half the DRAM, or does a power reset change what it sees?
+00:51:15 Amir: It was intermittent, so sometimes it would come back, sometimes it wouldn't. It happened on a very small percentage of machines, so every time it happened, we would try and capture what was going on. We had excellent partners who were helping us out. Quanta, who was doing the motherboard design, and Intel whose platform it was based on, all went in with us and they were working a lot with us too.
+00:51:36 Bryan: You have them at least somewhat convinced that this might be their problem?
+00:51:41 Amir: Yes. It didn't take any convincing. Everyone wanted us to succeed, and they said, "Look, if there's a problem, we're going to jump in and help you."
+00:51:47 Bryan: That's great.
+00:51:47 Amir: It was great. Eventually, we roped in the DRAM manufacturers as well. It took a lot of engineering resources. Eventually, what we found out was that, the DRAM when it starts up, the BIOS takes it through a training portion, and it tests the DRAM and it does different test to understand at what speed it can clock the DRAM at. That procedure, I'll just tell you what the problem was, was causing some vendors’ DRAM to go into a debug mode. [crosstalk]
+00:52:24 Bryan: The training of DRAM was causing the team to code. It's exactly the opposite of training.
+00:52:32 Amir: Exactly. The DRAM manufacturer didn't necessarily-- There's a device on there called an SPD on the DRAM that is responsible for setting clock speeds and everything else, went into this training mode, and as a result, it didn't initialize the DRAM properly. The BIOS said, "Well, there must not be any DRAM there." Then the DRM disappeared.
+00:52:52 Bryan: Wow. Now, that software that's doing the training. That's very proprietary software, historically. Did you guys have access to that?
+00:53:02 Amir: We did not have access to the actual code, but intel--
+00:53:04 Bryan: Intel did?
+00:53:05 Amir: -who had written it was helping us debug it. Together with the DRAM vendor, they figured this out after lots of probing of logic signals and things like that. Made a quick change to the DRAM and the problem went away.
+00:53:19 Amir: Was that a software change then, did you mean?
+00:53:22 Amir: I can't recall if they actually changed the SPD on the DRAM, or if they changed the training to accommodate for that defect in the DRAM. Before we had solved it, I got a call. I remember it was a Friday night, I was at a family dinner. The vendor, Quanta, called and said, "Look, we need to make a call. Are we going to move forward with manufacturing or not?" I needed to decide, together with my team, if we felt confident we'd find a solution or not.
+00:53:52 Bryan: The hardware problem or a software problem? They’re asking you. Right?
+00:53:55 Amir: Exactly. Do we go forward with manufacturing thousands of these boards, knowing we may have to rework them later on, or perhaps trash them even, or are we confident we're going to find the solution? The deadline actually come before we'd found the solution, and so we decided to go forward with production. Luckily--
+00:54:13 Bryan: You were all in, this can be fixed in software?
+00:54:16 Amir: Yes. It worked and everything from there was relatively smooth-sailing.
+00:54:22 Bryan: Wow.
+00:54:23 Speaker: That was cool.
+00:54:24 Amir: That--
+00:54:24 Steve: Taking a page out of your Google days.
+00:54:26 Amir: Exactly.
+00:54:28 Bryan: We talk about bugs at the hardware software interface a lot, but that's an exciting one because, you're having to make a bet that, "Whatever this defect is, we will be able to work around it effectively without popping the hardware."
+00:54:42 Amir: Correct.
+00:54:43 Jessie: That’s fucking crazy.
+00:54:45 Amir: Hardware engineers I'm sure go through this quite often. You don't hear about these stories often.
+00:54:50 Bryan: Right. You really don't.
+00:54:52 Amir: It wasn't the last time that happened.
+00:54:54 Bryan: From a software perspective, we are not often at that point of actionability, where it's just like, "No, no, this hardware is already broken. Figure out a way to deal with it." It's like, "All right, we're just going to have to work around it in some way." To actually be at that decision point, it must have been a very anxiety per se.
+00:55:11 Amir: There was a lot on the line.
+00:55:13 Bryan: Well, good for you. Boy, that must have been a great sense of relief, when that was found.
+00:55:19 Amir: Good choice. It was. The actual first deployment, we didn't call them OCP servers at the time, it was called project freedom, because we wanted freedom to do our own designs. Other people had taken that and interpreted that as freedom to escape from Dell and HP, which were our vendors. That's not why we called the project freedom. We wanted the freedom to do our own designs.
+00:55:44 Bryan: Those are the same thing? Are they a little bit the same thing? If you want to take it that way.
+00:55:50 Amir: Not necessarily. We were looking for good vendors who could work with us. Had traditional vendors stepped up and said, "Look, we like your designs. We'll build them for you." That would have been fine too. We didn't have a bias around who would've worked with us at the time. We ended up going with vendors who we thought would be most flexible to deliver what it was we asked for.
+00:56:11 Bryan: I'm not saying I don't want to be your child anymore, I'm just saying I don't want to live at home.
+00:56:15 Amir: You could say that or, "You should remodel your home if you'd like us to continue living here."
+00:56:20 Bryan: There you go. Exactly. It sounds like no remodel was forthcoming or?
+00:56:25 Amir: There were. They came a little bit late. We needed to have a contingency plan, so we had built this custom facility that couldn't work with a standard 19-inch server any longer. It didn't have a UPS system. There were vendors who had RAC-level UPSs at the time, and we had built up a contingency plan with them to use our custom motherboards inside of their own RACs.
+00:56:51 Bryan: Can you talk about the RAC width a little bit? Because the 19-inch RAC obviously dates back to whatever.
+00:56:56 Amir: Old Telco days.
+00:56:57 Bryan: Old Telco days. Yes. Dates back to the railroads, right? It's a super data notion. I guess that's false.
+00:57:03 Amir: Yes. That's false.
+00:57:04 Bryan: That’s false. We've been over this.
+00:57:05 Amir: That's an internet false.
+00:57:06 Bryan: That's like a Snopes [crosstalk] I keep perpetrating. The point is, it's a very old idea, the 19-inch RAC. It sounds like you guys put everything on the table. What did you come with in terms of the RAC width?
+00:57:17 Amir: The first RAC design was a three-column Rac. A lot of the principles that drove the efficiencies came from marginal gains, and a lot of those marginal gains came from amortizing cost of infrastructure across more servers. If you can have a Rac, and instead of putting 40 servers in it, you could put 120 servers in it, the cost of that Rac is amortized across more boxes. Everything becomes cheaper at that point. We said, "Let's put three columns of servers together and roll them in." The cost of the Rac went up, but we had more servers, and so the actual cost per server went down of the Rac. It also made it faster to deploy. You're deploying three columns at a time instead of just one at a time.
+00:58:01 Bryan: Why three? Why not two or four? That was where the sweet spot was?
+00:58:07 Amir: Yes. We looked at how you'd line them up in the aisles of the data center, three made sense. A lot of it had to do with our backup system, which was a single column of lead acid batteries. We thought we had enough capacity in that localized UPS, in that column of lead acid batteries to maintain power to three columns of servers on one side, and then another three columns of servers on the other side, so six servers. We would sandwich a stack of batteries between three columns of servers. A lot of it came down to network ports too, how do you use all the network ports on a switch and amortize the cost of the switch across more servers? Three made sense there too.
+00:58:49 Bryan: Got it. The three made sense there too. Does the width then come from that?
+00:58:55 Amir: The width we decided we could be arbitrary. We said, "Let's do what makes sense, and not try and fit it into any constraint that was defined by the facility."
+00:59:03 Bryan: Got it.
+00:59:05 Amir: That was interesting design, because the weight also went up, so packaging became a challenge, and shipping them became a challenge. Not so much with compute servers, because they didn't have hard drives in them, which meant they didn't weigh too much. In some of our initial calculations around doing a storage server and filling up, we called it a triplet, a triplet Rac with hard drives, you were looking at the weight of a Rac that was almost equivalent to a large SUV. Pushing an SUV down your data center floor didn't seem like a good idea.
+00:59:42 Bryan: You also have issues depending on how you are going to load those spindles and how high they're going to be. You end up with a lot of weight, potentially high up in the Rac that it can be-- You end up with a lever basically you can put the Rac tipping over.
+00:59:57 Amir: Right. You'd put your heavier weights towards the bottom, so you get a 
+lower center of gravity. It is a consideration.
+01:00:03 Bryan: It's a consideration.
+01:00:04 Amir: More so, how do you remove that off of a shipping truck onto a loading dock, and then from the loading dock into your data center? That [crosstalk]--
+01:00:11 Bryan: That is real systems thinking. You have to think of end to end about all those different steps.
+01:00:17 Amir: Yes.
+01:00:18 Bryan: Wow. Did you end up making the rack a bit smaller as a result of that?
+01:00:22 Amir: Yes. The second-generation rack, which was the open rack, which came after the triplet, was built on a single column. That lent itself better for storage servers. It increased the cost of the rack per server more, but that was a tradeoff you had to make.
+01:00:36 Bryan: Is that the rack we have today? That 600-millimeter rack, does that come from that?
+01:00:40 Amir: That form factor came from that.
+01:00:41 Bryan: That form factor, yes.
+01:00:42 Amir: We're on two different versions of open rack. There's v2 and whatnot. It came from that.
+01:00:46 Bryan: It seems like the width has stayed somewhat constant over the--
+01:00:49 Amir: Yes. At some point, data centers are built around floor tiles, which are 24 by 24 inches. You want the rack to take up two-floor tiles because then you can put them in standard data centers.
+That was something that, when we first started OCP, we said, "It doesn't matter what kind of floor tiles you're going to have. We're not going to have floor tiles in our data centers. They're going to be on concrete floors, and therefore you can go for any sort of width you want." Once we had realized that there are benefits to allow deployments in traditional data centers, we moved back to the standard floor tile width for the rack. That made it easier for other people to adopt OCP, or our designs as well.
+01:01:33 Bryan: Interesting. We're going to take another quick break, and we'll be back with Amir Michael On the Metal.
+[music]
+01:01:41 Steve: On the Metal is brought to you by the Oxide Computer Company. Bad news, I just got back from a meeting with the attorneys.
+01:01:47 Bryan: Oh, boy.
+01:01:48 Steve: They are not going to let us say much in these ads. We can't talk about the customer experience today for on-premises infrastructure.
+01:01:56 Jessie: We can't do my idea to be like, "Are you being gaslit by your vendors?" because that's what they're doing. They're gaslighting people into thinking that these bugs only exist on one of their machines when it exists on everyone's.
+01:02:07 Steve: God, no. They called that, I think, "a third rail."
+01:02:10 Bryan: They must be following Jess on Twitter. I knew that that was a bad idea to let the lawyers follow Jess on Twitter.
+01:02:15 Steve: They also said we can't talk about public cloud customer experience.
+01:02:18 Bryan: Oh, come on. We can't talk about the rapacious bandwidth pricing. It's practically criminal.
+01:02:22 Steve: No, can't talk about the unit economics of that at all.
+01:02:24 Bryan: Can we use the word criminal with respect to public cloud vendors?
+01:02:27 Steve: Definitely not.
+01:02:27 Bryan: Oh, boy. What can we do?
+01:02:29 Steve: They did say, they gave us a statement we can use, which is-
+01:02:32 Bryan: Are you going to read from it?
+01:02:33 Steve: -Oxide Computer Company is building something that should help some people.
+01:02:39 Bryan: That seems very direct. Come on. Can we at least send them over the oxide.computer?
+01:02:43 Steve: We can. We can. The other bit of bad news is, all the lawyers were there in the meeting?
+01:02:47 Bryan: Wait a minute. Not just the cheap one, but the expensive one?
+01:02:50 Steve: Yes, they were all there.
+01:02:51 Bryan: We paid a fortune to get this terrible ad. Oh my God, please. Listen, or go to oxide.computer and learn what we're actually doing.
+All right, we're back. We were talking a little bit about OCP and the open compute project, how did that get going?
+01:03:06 Amir: That was a result of the efforts-- Project Freedom was the name of the first custom design. We looked at that and said, "Wow, that's great savings." It was 38% more energy efficient, 24% more cost efficient. There was an idea that other people should have access to that, as well.
+If you thought about Facebook's business model, it wasn't at all based on their ability to deploy efficient infrastructure. It was based on social network. The two things were completely different. As a matter of fact, the social network was built on many opensource technologies that Facebook was able to benefit from in deploying their own infrastructure, like Memcached, like MySQL.
+Why should we give this amazing innovation for ourselves? Because it's not our competitive advantage, let's let everyone have those same efficiencies. It's better for the next generation of companies. It's better for the environment; you're using less energy. We said, "Great, let's open-source this."
+01:04:09 Bryan: I feel this is something that gets a little bit misinterpreted out there. I think people treat Facebook's inception of the OCP pretty cynically, as like, "Oh, they're just trying to make their own gear cheaper," or what have you. My read on it is that this is exactly what you said, that there's a very earnest desire to give back this important innovation.
+01:04:30 Amir: That was the primary driver. There was always an idea that if other people adopt it, volumes go up, prices go down. That was maybe 10th on the list.
+01:04:39 Bryan: Interesting.
+01:04:40 Amir: Other things there were collaboration. "Hey, maybe we don't need to engineer everything. If other people adopt, we can work together with them, build the next generation together." Creating collaboration across engineers is always interesting. It makes you an attractive employer. Engineers like to work on projects that are out in the open. You can hire an engineer easier if you tell them, "You're going to work on this public project, and you're going to be able to drive it." That's always another benefit, too.
+01:05:07 Bryan: It is a benefit, isn't it? I think maybe everyone's got different motivations, but I'm sure some of the motivation for that is the like, "I want people to see the work that I do." I always say that-
+01:05:18 Jessie: Also, it has more of an impact. It has impact-
+01:05:21 Bryan: I just said more than that.
+01:05:22 Jessie: -outside just the company that you're working at.
+01:05:25 Steve: Because they're selling here to do internally. Were there folks that were concerned about opening it up?
+01:05:30 Amir: Surprisingly enough, there was very little resistance internally. Everyone just got on board and said, "This is the right thing-
+01:05:35 Bryan: This makes sense.
+01:05:36 Amir: This is the right thing to do.
+01:05:37 Bryan: That's great.
+01:05:37 Amir: Legal, obviously, we needed to give us the sign off. There was some hesitation, but even that went fairly smoothly with them. There was more, call it challenges trying to figure out what to call the project. Then it was if we should actually do it or not.
+01:05:53 Bryan: What were some of the other names?
+01:05:56 Amir: I don't remember any of them specifically. We couldn't decide within the immediate team that was running the project. I think someone was having a chat with Mark Zuckerberg about the name, and he said, "You should just call it the open compute project." It came back and--
+01:06:14 Bryan: There's a reason he's the boss. It makes sense. It's a good name.
+01:06:18 Amir: Yes. That's really where the name came from. Interesting.
+01:06:20 Bryan: Yes. It's a good name. It's definitely a good name. I think I would love to know what some of the dust-binned names were, but that's a good one. Are we like 2011? Is that right?
+01:06:31 Amir: That was 2011, correct. In April 2011, is when they did the public launch of the project.
+01:06:37 Bryan: I remember, that it turned a lot of heads. The vision was great, but it's just slow-going to get people bought into it, is what is my read on that.
+01:06:50 Amir: Yes, a lot different than an opensource software project, which you can just download and start using. This is hardware. It moves slower. People have existing solutions. A big part of it is the ecosystem. Who am I going to buy from? Who's going to support it? That doesn't really exist as much in software today.
+I remember the first as OCP summit we did had a couple hundred people there. It was largely vendors, too, who wanted to combine see what Facebook was up to. There were more progressive companies who ran large infrastructures; some banks. Rackspace was one of them too.
+We said, "Look, we buy a lot of this stuff. We don't have the resources to do our own custom design. Let's work together." We sort of latched on to a lot of those partners too. From there, it just slowly, slowly started to grow. The second summit was maybe a little bit bigger, and then the third little bit bigger. Eventually, other large infrastructure companies, I'm talking some of the mega-scalars like Microsoft and Google, said, "Hey, this is actually a good thing. We need to take a lot of these principles in and do them on our own designs. Let's start working together."
+01:08:09 Bryan: For those who haven't been to OCP Summit, I think Steve, Jess and I can all recommend it. It's--
+01:08:15 Jessie: Super fun.
+01:08:16 Bryan: It was fun. The technical communities there are really great. We walked into some of those breakout rooms. They were just great. The vibe was great. It was people--
+crosstalk]
+01:08:29 Bryan: It was big.
+01:08:30 Steve: It was well-attended.
+01:08:30 Amir: Very well-attended.
+01:08:31 Bryan: Yes, it's fun, and it's got a lot of neat hardware on the floor. It does feel like it's one of these things that is kind of been slowly growing, but it's actually getting-- These things take longer to build than anyone wants, but it feels like it's got some critical mass.
+01:08:44 Jessie: The hardware on the floor is great, seeing all of the racks from Facebook, and then comparing those with racks from other places.
+01:08:51 Bryan: There's a lot of nutty ideas that-- There was a rack that was being dunked in water, like--
+01:08:56 Amir: No, mineral oil.
+01:08:56 Bryan: Mineral oil, right. Exactly.
+01:08:56 Jessie: That one was insane.
+01:08:58 Amir: Fully submerged.
+01:08:59 Bryan: Fully submerged.
+01:09:00 Amir: Yes. Then the demo was, "Ask for your cell phone and drop your cell phone in there," and you're like, "Whoa, whoa, whoa, okay."
+01:09:06 Bryan: Okay. No, thank you.
+01:09:07 Jessie: It's like some sort of weird oil, though, because there's a resin. I just put my finger in it.
+01:09:13 Bryan: I think the thing that, just like the [unintelligible 01:09:14] OCP summit is, no Kubernetes talks.
+01:09:16 Jessie: It was great. It was refreshing. Then actually having like a physical thing, like you were saying, that you can touch and feel. I felt badly because I made one of the people at the Facebook group pull out this slide 14 times so that I could see it. He was like, "You know this thing is fairly heavy."
+[laughter]
+01:09:36 Bryan: "Sorry about that. I was just wondering, could you just do it maybe two or three more times?"
+01:09:39 Jessie: It was like a bunch of GPUs. It was dope.
+01:09:42 Bryan: That's right. One question to you about software, because software was not a big part of OCP. Was there any thought in terms of firmware and OCP, or maybe it was just one step at a time in terms of--? It's hard to get something like that launched?
+01:09:55 Amir: Yes. The initial deployment was designed to be plug and play with--
+01:10:02 Bryan: That's just a low-flying Oakland Police Department helicopter. That's nothing to be alarmed about.
+01:10:06 Amir: Nothing to be worried about.
+01:10:07 Bryan: If someone jumps through the backyard, it's fine.
+01:10:09 Amir: Yes. The initial deployment was designed to be plug and play with existing infrastructure that Facebook had had. Changing the software wasn't really part of the equation at that point. Also, with a relatively small team, you had to understand we took a lot on as far as scope goes, and you had to understand what not to do as well.
+01:10:27 Bryan: It makes sense. It was not deliberately trying to keep software out of it. It was just like, "This is the part we can go do now." It makes sense.
+01:10:35 Amir: Right, not at all. Eventually, it did make its way in through different initiatives, through other companies, through Facebook as well, but not a large part of it. A lot of it started coming into play when networking became bigger and bigger inside OCP.
+01:10:47 Bryan: Yes. That seems like that was where OCP had its first really big impact across the industry. In terms of the networking, that seems where it's had a really outsized impact.
+01:11:02 Amir: Yes. That was a lot of fun to experience, where servers, for a long time, had become commoditized, and networking gear still came at a premium. A lot of the same thoughts around taking things, and just doing them yourself, and realizing that a lot of the networking gear became much simpler to implement and less specialized, really changed the landscape of how you built networks.
+A lot of it had to do with the infrastructure going from specialty high-speed switches that were large, and required a vendor to really put together a fairly complex project to taking top of rack switches, and joining them together in a mesh network to be able to replace some of the larger switches there. Really brought together the networking project in a way which allowed to do a lot of the same things that commoditized hardware.
+01:11:59 Bryan: Right, and basically bringing that revolution. With the silicon, obviously you need that top Iraq silicon, but you don't need that expensive surround around.
+01:12:08 Amir: Correct, exactly.
+01:12:10 Bryan: That's great. Where to, then, beyond? You had your own company. You did the startup journey.
+01:12:19 Amir: I did. After four years, we had gone from a world where Facebook had purchased servers from the traditional OEMs to going to 100% custom servers. It was a four-year evolution there, starting off with compute, then storage, and then flash. Eventually, everything was brought under one roof.
+The organization had grown significantly. It was no longer a team of 10 people. There was probably around 200 people if you took into account the engineering, and the supply chain, everything that required Facebook to continue to deploy their infrastructure, the physical infrastructure at least.
+Things had slowed down a little bit. Obviously, when you're larger, you have your business model figured out, and you tend to take less risks on these things. That was a good natural progression. That's really where you want to get to because you know that you've won at that point. You figured out a good formula, and now we're just repeating that, and we still get to benefit and gain from all these cool innovations [crosstalk]--
+01:13:27 Bryan: That must be very satisfying. "I've come a long way from the guy who got chewed out for using the thermal paste incorrectly at the Google DC."
+01:13:36 Amir: Yes, exactly. I think most satisfying was really seeing the impact it had as far as energy usage, as far as costs, as far as the community that was built around it, and allowing other people to benefit from the same benefits that Facebook had.
+The feature I like the most is really the energy efficiency that came with it. That, at a high level, is a problem that doesn't get a lot of attention.
+01:14:06 Bryan: It doesn't, and it should. Think about the greenhouse gas emission from our DCs effectively. These are coal-burning, natural gas-burning power plants that are providing power to these things.
+01:14:17 Amir: Right. The last statistic I heard is 2% of all energy produced goes to feed data centers. There's some estimates that say it'll get up to 10%. That's a big deal.
+01:14:27 Amir: It's a big deal.
+01:14:28 Jessie: That's huge.
+01:14:28 Amir: It's not a good thing for society, or our world in general. People don't focus on that. Even within the OCP really, it enabled a whole new supply chain, a whole new set of vendors, but really what I like to think about is all the emissions that it offset. How do you continue that? How do you get OCP into more hands and more people? Doesn't even need to be OCP, just the same design principles.
+01:14:52 Steve: Energy efficiency designs.
+01:14:53 Amir: Exactly. [crosstalk]
+01:14:54 Bryan: Yes. It does feel like it, there's a lot still to be done there in terms of getting-- Some of these designs, it's not controversial that having fewer places for power conversion, for example, is so much more efficient, and yet it's still not yet as mainstream as it should be.
+01:15:11 Amir: Yes. I think focusing on that part of it, you can try and push that along through the OCP foundation. I don't think you'll find very many people who will disagree that it's a good thing in general. Enabling traditional vendors or ODMs to build those designs is really a problem that I'm interested in how do you get that into the hands of more people.
+01:15:39 Bryan: Interesting, yes.
+01:15:40 Amir: It's too important not to pay attention to. There's too much on the line.
+01:15:43 Bryan: There is too much on the line. We don't talk about it enough. I've always wondered, we as software engineers, you can have a software bug that effectively results in a lot more power being consumed, and a lot more greenhouse gas emission, albeit very indirectly, and we don't really think of it that way right now, but we should.
+01:16:02 Amir: Yes. Every line of code uses some amount of energy. You can count the number of joules that it's using to execute your for loop, or whatever part of code you're writing.
+01:16:13 Bryan: I feel, with cryptocurrency, that got a bit more attention, where people begin to realize, "This is really stupid that we are spending this much energy trying to solve math problems."
+01:16:25 Amir: Yes. I hope that's how people view it. I'm not sure yet.
+01:16:29 Bryan: [chuckles] Right.
+01:16:30 Amir: It is a very inefficient way of solving a problem that could be done more efficiently. It's fairly sad to see these big crypto farms popping up, consuming massive amounts of energy without much thought to that part of it.
+01:16:45 Bryan: Without much thought. Let's hope that the consequences for that will be natural, and self-enforcing. Was that part of what drove you to Coolan, to solving that problem more broadly?
+01:16:57 Amir: Yes, we were talking about my company then. No, that wasn't it. Naturally, going back to where we were at Facebook, things had slowed down. We were making good progress. I always had, growing up in the Valley, this bug that I needed to do a startup. It was something that I was just curious about, something that I wanted to experience. I decided after my--
+01:17:22 Bryan: We empathize with this issue, by the way, if it's not obvious.
+01:17:26 Amir: I can tell. [chuckles] My younger daughter was born, and I figured I had a new baby at home, what a better time to go ahead and start a startup at that point.
+01:17:38 Bryan: Perfect.
+[laughter]
+01:17:39 Jessie: That's [crosstalk]--
+01:17:41 Amir: Yes. I have a very supportive family. I left my job at Facebook, and I became more or less an entrepreneur in residence at a VC firm. I spent about a year thinking about what it was I wanted to do. A lot of what I thought about was, how do we get efficient designs and efficient management of servers downstream? Larger companies had great engineering teams, lots of resources that could build management systems.
+A big part of running efficient infrastructure is utilization. One metric we looked around was mean time to repair; how do you get a server back online after it's failed as quickly as possible, so it's not sitting there idle consuming resources? You needed good management tools. Management tools that existed were designed for enterprise. We're talking scales of maybe several hundred servers. Nothing was really designed to allow the management of thousands of servers.
+We built systems both at Google and at Facebook to manage thousands, hundreds of thousands, a million servers at a time. Is that a product that we can actually sell? Is that something we can sell? As these more and more companies are beginning to scale out, can you sell a product like that that'll help them manage their fleet, so they don't need to reinvent the wheel around that?
+01:19:02 Bryan: And manage a hardware fleet. You're going to be writing software that is going to be talking to a lot of firmware, a lot of BMCs, a lot of biases out there.
+01:19:12 Amir: Yes.
+01:19:13 Bryan: Interesting. Presumably, discovering how the rest of the world was living in terms of the [laughs]-- I don't know, Jess, you coined the term- I'm not sure coined it, but you talk about the infrastructure privilege that folks at Google and Facebook had. Had you realized just how little things have progressed since you built your own server back in the day?
+01:19:35 Amir: That's really when I started realizing that. When I started digging and seeing who's deploying OCP, is there anything meaningful out there as far as deployment goes, what are people still buying today, it really hadn't changed.
+01:19:48 Bryan: It had not changed.
+01:19:49 Amir: It looked very similar to the world five years prior.
+01:19:52 Bryan: Five? [unintelligible 01:19:53] fries, right? I assume you assembled that box from fries.
+01:19:59 Amir: Yes, traditional 19-inch one-use servers. There's lots of reasons why that's not a good design, but it's what people were used to. It does work; not efficiently, but it does work. That was eye-opening. It wasn't part of the problem we were trying to solve [crosstalk]--
+01:20:16 Bryan: Right, exactly.
+01:20:20 Amir: Raised some venture funds, built a small team around it, built a product that, again, had lots of ways that could go wrong, but surprisingly enough, it worked fairly really well, and was able to collect millions and billions of data points from large server fleets.
+01:20:40 Bryan: Again, you must have discovered some really strange hardware behavior as part of doing this.
+01:20:48 Amir: For sure. I think the its first behavior we discovered was that people weren't necessarily paying attention. There was so little known about their fleets. The most interesting one was just utilization, and just how poor it was. It's something we tracked at scale at larger companies fairly closely, but smaller companies just didn't have time to pay attention to that.
+01:21:10 Bryan: Interesting.
+01:21:11 Amir: You would think they would. If they're buying, how do they know how many servers to buy? Where's the capacity planning if your utilizations are that low, are within 2%, 3%? One engagement we had, we actually discovered CPU utilization hovered around 3%. Drives were only around 10% full for spinning drives. Flash was just slightly higher than that. If you think about the millions of dollars you spend on infrastructure, and you're only using it 10% of the time, or 10% of its capacity, that's a lot of money you are leaving on the table.
+01:21:43 Bryan: Right. You can see why a lot of those folks honestly went to utility computing, went to the cloud, where it probably does make sense for a bunch of those folks to--
+01:21:50 Amir: Yes, although in traditional cloud deployments, you can make those same mistakes there, too.
+01:21:53 Bryan: Sure, right.
+01:21:54 Amir: You reserve an instance. You buy, check out an instance, and you can still just under-utilize it as well. Fortunately, in that scenario, the cloud provider may realize and add more tenants on to that particular box. At least someone is utilizing it.
+01:22:10 Bryan: It get the utilization.
+01:22:10 Amir: Yes, but you've paid for the full utilization, which you may not be getting.
+01:22:14 Bryan: You do wonder, if we could just be omniscient for a moment, how much DRAM is actually being used? If I provision a four-gig instance in AWS, I'm not going to get- that DRAM is not going to be that oversubscribed. I'm basically going to have four-giga DRAM, more or less. How much of that DRAM is actually being used, and how much inefficiency is there, and under-utilization is there? How many capacitors are we lighting up that we actually do not need to be lighting up?
+01:22:42 Amir: I think that's a very true statement, where most of it is not being utilized. With certain things like DRAM, the problem is that there's no power variability. If you're using it or not, it's consuming the same amount of power.
+01:22:55 Bryan: It's got to be refreshed to the same frequency.
+01:22:58 Amir: At least CPUs can adjust, but things like DRAM cannot.
+01:23:02 Bryan: That must have been interesting to discover, that the rest of the world was not as deliberate about their infrastructure.
+01:23:09 Amir: I guess I wasn't too surprised, but we did see a couple of interesting trends. Utilization was low. There was a constant battle at some of these- vendors like to call them second-tier companies. They're not quite hyperscalers, they're a step below, running maybe 5,000, to 100,000 servers.
+The resources they had to run efficient fleets were very small relative to the hyper-scalars. There was no good solutions for them on the market to help them run that efficiently. A lot was lacking there. There was very little awareness at the leadership level at these companies. That was actually a problem. A lot of them were just happy running the way they were. Education and awareness was a big part of that.
+The challenge there is then, once you show them that there's an inefficiency, how do you get them to change. Those solutions were lacking as well. We were more of a visibility solution. There were actions around, "Hey, here's how you can repair this server faster. Here's the error we saw, therefore, this component must be swapped," but to actually get them to put in operational procedures to do those things were a challenge too.
+01:24:20 Bryan: Also, if I'm managing physical infrastructure, I'm a little bit afraid of your software. I don't know that I want your software to show [crosstalk]--
+01:24:25 Amir: All the dark corners?
+01:24:26 Bryan: All the dark corners, and to show that just how poor my utilization is. There's a kind of a human fear of this, almost.
+01:24:33 Amir: Yes. I see why.
+01:24:36 Bryan: Absolutely.
+01:24:38 Amir: I need to keep myself employed. We didn't run into that very often. Most of them were very open to understanding what their infrastructure was doing, and then use that in order to make a case that they needed more resources, which was good.
+There was a trend that we were battling, which was the cloud. A lot of people, like you mentioned, were just fed up and said, "Look, it's easier to do these types of things in the cloud because we get all these amazing tools that help us manage. The hairy problems that we don't want to deal with, our cloud vendor takes care of that hardware and things like that."
+For many businesses, this is absolutely the right decision to make, to go into the cloud. Not for every business. There are those with requirements where they can be a lot more efficient on their own, too. It's all case by case. We would help customers understand that, and at least provide more data they can make a decision that was right for them.
+01:25:32 Bryan: Did you find that it was hard? One of the challenges that you have is you're writing this layer of software that's sitting pretty low in the stack. You're talking directly, I assume, you're talking to firmware to get a lot of information out of the box.
+01:25:44 Amir: Yes.
+01:25:45 Bryan: You must discover things that are, or numbers that are wrong, things that are being--
+01:25:51 Amir: Yes. When it comes down to low-level firmware, there's a lot of areas where vendors don't do a good job writing the firmware. Some examples that made things a challenge, really basic things. You would get a box, or a customer would have a fleet of systems from HP. You would query a field that was supposed to tell you what vendor manufactured the box. Sometimes you would get Hewlett-Packard. Sometimes you get HP. Sometimes you get Hp. Sometimes you get different spellings of different things. It made it hard to actually understand what you were dealing with.
+We solved a lot of that through software. We would look at the different variations, and then understand that they were the same thing, and then normalize those variables. The customers always like that. Lots of DRAM vendors would forget to program registers that identified their part number. You had to stick with DRAM and you'd look at the model, and-
+01:26:52 Bryan: It's zeros-
+01:26:52 Amir: -it would be zeros.
+01:26:53 Bryan: -or it's OEM.
+01:26:55 Amir: Exactly, or something else. Consumers wouldn't realize this. No one looks at those details until you actually want to do something with that and say, "Hey, I'd like to find out where all of my micron memory is," but surprise, surprise, it's not all labeled. If you have an error, that's very costly because you don't know which boxes to swap if you needed to, for example.
+Those were some of the things that we came across. It's hard to solve those in software. It requires humans to do the right thing in writing specifications, and asking vendors to follow the specifications.
+01:27:37 Bryan: I think we in software, we're the ones that end up having to paper over it- I don't know, like, make the different spellings of Hewlett-Packard look the same. You have to end up having to bury all the bodies there.
+01:27:48 Amir: Yes. Depending on what version of firmware you had, errors would be reported differently. For example, you could count single-bit errors in DRAM which were covered by ECC, but then you wanted to understand which ones had more errors.
+The counting of the errors was different. Some of them would report a wrong number. Some of them would count 1 error for every 10 physical errors, so you didn't know if you had 1 error or 10, and just the standards that were fairly lax across all of the firmware vendors. It was always a challenge to really understand what was going on with the hardware. Oftentimes, you'd have to go to the vendor and ask what they were doing.
+01:28:26 Bryan: This stuff is super important because those error accounts, those can be your wisps of smoke that can indicate something serious-
+01:28:33 Amir: Exactly.
+01:28:33 Bryan: -that those collectibles may actually be the thing that you need to be able to react to, to be able to resolve a serious problem.
+01:28:42 Amir: Right. You'd like to know what the trends are. We found really interesting trends. If error stayed somewhat constant, at a constant rate, the DRAM would usually chug along. As soon as there was an uptick in those errors, you knew it was going to fail within a certain confidence level. If you can't even count what they are, it's going to be a hard time.
+01:29:01 Bryan: Even if you know that something's going to fail, you can actually react in advance. You can actually take action.
+01:29:06 Amir: That was a lot of our selling points. "Look, we will predict the failure." You can do that fairly well today on hard drives, on DRAM, and things like that. There's a number of papers that are written about it. There's one company called Backblaze.
+01:29:17 Bryan: Their stats are great, aren't they?
+01:29:19 Amir: They share a lot of those.
+01:29:21 Bryan: They share a lot of them, I know. It's so great.
+01:29:23 Amir: That was a good way for us to train some of our algorithms, initially.
+01:29:27 Bryan: You used the Backblaze data?
+01:29:28 Amir: Yes.
+01:29:29 Bryan: Interesting.
+01:29:29 Amir: We worked with them on that. We found a number of things--
+01:29:32 Bryan: Jess, have you looked to the Backblaze data?
+01:29:33 Jessie: No, I didn't realize that it was open, but I know of Backblaze. [crosstalk]
+01:29:36 Bryan: They basically looked at their failure rates across the fleet, and they basically name and shame ultimately by-
+01:29:45 Jessie: That's open.
+01:29:46 Amir: Yes. [crosstalk] everything.
+01:29:46 Bryan: -by spin on firmware rev and speaking as someone for whom a particular firmware rev from a particular drive vendor had a serious impact [01:29:54] in my life, this is great information. I'd have to go look at it.
+01:29:58 Steve: That it would nervously anticipate the release of the next report.
+01:30:00 Bryan: Oh, absolutely. I think you are terrified if you [crosstalk]- especially if they don't buy very many. If they buy a hundred of them, and two of them fail, their numbers are going to be off the charts. It's like, you want to sell Backblaze nothing, or you want to sell them as much as you physically can because then the numbers are-- and because not many folks do that. They don't--
+01:30:27 Amir: I definitely tip my hat to them for starting that trend. The idea with Coolan, every customer that sent us data, part of our legal agreement was that we could use that data anonymously.
+01:30:37 Bryan: Really? Oh, interesting.
+01:30:38 Amir: The idea was to do what Backblaze was doing, but do it across more components at a larger scale too. Now you have it coming from different environments, different systems. How does one drive interact with one particular motherboard? How does one firmware fan control algorithm which cools differently in an HP system than a Dell system result in failure rates across different components? To have a much larger pool of data and be able to share that anonymously, because there's only so much data you can crunch yourself, but with the community was part of the idea too.
+01:31:12 Bryan: That's a great idea.
+01:31:14 Amir: We didn't quite get to that, unfortunately.
+01:31:17 Bryan: It's a hard one, because you would-- Ideally, all the vendors should want to collaborate to get these problems solved. That's not always what [crosstalk] should want.
+01:31:28 Amir: What we found was that vendors wanted access to the data. Some of them were even willing to pay for it because it's hard for them to get field data. That was step one that we discovered. We didn't quite get to publicly posting any of the data. That basically had to do with the business of the startup. It would have taken a few more years to get there, and continuing the business became a challenge for us.
+01:31:59 Bryan: It's tough. It's a tough software to write, and then it's tough to sell. Fortunately, Salesforce obviously saw a lot of value in it.
+01:32:09 Amir: At some point we came to- you get funding. This is a good pointer for you guys, and that's when the clock starts ticking.
+[laughter]
+You have a certain window for where you need to show enough value so that other investors will come and agree to give you more money. You can get enough revenue from customers to keep yourselves afloat, or you can shut down the company, or you can sell the company.
+We got far along enough where we had some value. We had revenue coming in. We had a hard time raising more money from ventures, primarily because a lot of venture operators had this thesis that things were moving to the cloud and owned infrastructure was going away.
+01:32:59 Steve: We are familiar with this thesis.
+01:33:01 Jessie: We're very contrarian.
+01:33:03 Steve: We've heard this a couple of times.
+01:33:05 Amir: I had a hard time convincing them that infrastructure was going to continue to run outside of the hyperscalers. Some of them weren't even interested in hearing some of the reasoning behind it. They said, "Sorry, we operate in this way. We're not going to entertain a conversation."
+01:33:23 Bryan: When you phrase it like, "Do you believe that Jeff Bezos is going to own and operate every computer on the planet?" Well, no. Of course not. We just think that everything is moving to the public cloud, and that public cloud is going to be AWS, like, "Okay."
+01:33:34 Amir: Exactly. Like I said before, there's many reasons why running your own infrastructure makes sense. Before, you didn't have a choice. Now, you have a choice, and you have to make the evaluation, if it makes sense. I don't know if you want to go into the reasons of when it does, but it does in some cases. I don't think many companies are equipped to make that evaluation on their own. It's a fairly thorough evaluation. I've done it several times.
+There will be infrastructure outside of the cloud. There's no doubt about that.
+01:34:06 Jessie: Totally. We definitely believe that.
+01:34:07 Bryan: Even as that expertise is being lost. I remember in- it was in 2011 at Serge asking show of hands, how many people had stood up their own physical infrastructure. Only a quarter of the hands went up in 2011. That number's not going-- I think that's part of the challenge is that those people that are still deploying physical servers feel like the world has left them behind.
+01:34:31 Amir: It doesn't need to be that way. Look, it's not rocket science. With a team of 10 people, we did a completely custom rack and server and power supply design for Facebook. You're not sending an order to the moon or anything like that. You're building server infrastructure. With talented software engineers, you can manage it well. It doesn't require huge [unintelligible 01:34:50].
+01:34:49 Bryan: Thank you very much for differentiating this from the Apollo program.
+laughter.
+I get so sick of being like, "Wow, this is a moonshot." It's easy, easy, easy. This is not a moonshot. The Apollo program was actually-
+01:35:06 Amir: A little more tricky.
+01:35:06 Bryan: A little more tricky, little more ambitious. The flip side of all of this is that the infrastructure is more accessible than ever before. OCP, you look at how much is available via OCP; open-source software, open source firmware and if people want to get interested in this stuff, it's way more accessible than it ever has been.
+01:35:29 Amir: You have to have right sponsorship, right leadership directions, a small willingness to invest in smart people to do this, but it's totally possible.
+01:35:36 Bryan: A lot of people worked out some of the really hard problems. You were like the busbar in the OCP design. You had a great anecdote about the safety of that.
+01:35:48 Amir: A lot of it, I would call it fun. Fear, uncertainty, and doubt. That came up many times throughout the development of the project. The busbar you mentioned runs 48 volts. It was used to back up the servers when the main primary power source failed, and so you'd get these large copper busways. This was in the battery cabinet with thousands of amps running through them at 48 volts. It's counterintuitive, but 48 volt isn't enough potential to draw enough current through the human body to cause any sort of-- you don't even feel it. [crosstalk]
+01:36:23 Bryan: It's like you can [unintelligible 01:36:24] 48 volts. On the other hand, thousands of amps is enough to absolutely kill you. You got to like, "You touch that first."
+01:36:32 Amir: We'd sit there and almost play chicken. "Who wants to touch it?" We know it's not going to do anything.
+01:36:38 Bryan: I'm the software guy. I'm at the back of the line. I will let everyone else touch it first. Who touched it first?
+01:36:43 Amir: Our power engineer, Pier Luigi said, "Come on guys. We--"
+01:36:47 Bryan: Get out of my way.
+01:36:48 Amir: He stepped aside, touched the busbar as we were discharging the batteries into it, then nothing happened. I said, "Oh, cool." I went and touched it. I think we're the only two who touched it. The fear of something could happen, I don't quite understand it, I don't see it, definitely was a factor there. It kept going for many things within the project too.
+One other thing we did, a quick anecdote, was we took off the BMC from the server. How do you run a server without a management controller?
+For those who don't know, it's a small little processor that sits on the server, and it pulls a couple of bits of information, and sends them back over a management network. You could still control the server, even though your operating system had crashed, or your Colonel had crashed. We looked at it and we said, "Look, it's primarily used to reboot boxes, and that is all." No one was using it for much more other than that.
+If you want to collect metrics from the box, it's always better to go through the operating system. You get way more information that way. You're limited by whoever wrote the BMC firmware or the management controller firmware did. They never thought of every bit of information you wanted to pull from the box so you just went from the operating system.
+We said, "Great, we're just going to get rid of this BMC because we're not using it, except for rebooting the box." Of course, up in arms.
+01:38:11 Bryan: Right. Heresy. Heresy.
+01:38:12 Amir: "What if someone messes something up and you need to get to the box and the colonel's crashed?" I said, "Look, then you've got other problems. We'll be able to reboot the box."
+What we did is we took this thing called the magic packet which was a special ethernet packet you could send to a host, and it would cause the host-- at the time, it was designed to cause it to wake. You'd put a host in a sleep state, and you sent it to magic packet and it would wake-on-LAN, is what we called it.
+01:38:43 Bryan: Wake on LAN.
+01:38:43 Amir: LAN.
+01:38:45 Jessie: It depends.
+01:38:46 Bryan: It doesn't depend. It's wake-on-LAN. It doesn't matter anything. It's not wake online.
+01:38:51 Jessie: It depends.
+01:38:52 Bryan: LAN is the magic packet for Jess. That's what actually wakes Jess up.
+01:38:57 Steve: Exactly.
+01:38:58 Amir: Nice. Instead of tying that to the wake-on-LAN signal from the ethernet controller, we tied it to the reboot signal. Obviously, we did some things to make it secure because you don't want to broadcast this packet across your network.
+01:39:14 Bryan: Oh my God, what a story that would be. What a story that would be.
+01:39:18 Amir: We didn't want the whole cluster to reboot. We implemented that in the first version of OCP. We cut out $40 from the bill of materials from a box, which was fairly significant, and we deployed and it worked. It was working just fine until the--
+01:39:34 Bryan: The BMC industrial complex got wind of this.
+01:39:37 Amir: [chuckles] No, not quite. Until someone fat-fingered a command and re-IPed several hundred memcache servers in the cluster. The memcache server sits between the database and the web server, and it serves out 99% of the queries because everything's hot and cached and your database tier can be much smaller at that point. These memcached servers went offline and you take [crosstalk]--
+01:40:02 Bryan: "No problem. Just go to the database."
+01:40:04 Amir: [chuckles] It doesn't work. You take the cluster down. To bring it back up takes about 24 hours because you have to warm up the memcached servers again.
+That happened. Luckily this had happened in an older cluster that didn't have OCP servers. What did they do to fix it? They logged in through the BMC and re-IPed all the machines to their proper addresses that way, because you could get console access through the BMC and re-IPed them and said, "Look, thank God, we had this BMC."
+It didn't require us to wait 24 hours to restart this cluster. They came to me and said, "Look, Amir, this is a problem. See what happened? This is why you need a BMC on the box." I said, "Is that really the problem, or is the problem that you allowed someone to re-IP a bunch of servers and didn't have any safety protections in there?"
+01:40:53 Bryan: They don't want to hear that answer [crosstalk]--
+01:40:55 Amir: That wasn't the problem.
+01:40:56 Bryan: Yes, yes, exactly.
+01:40:56 Amir: [crosstalk] The problem was the BMC.
+01:40:57 Bryan: Exactly, the problem is the BMC.
+01:40:59 Amir: In the next generation of servers, the BMC came back.
+01:41:02 Bryan: The BMC returned.
+01:41:02 Jessie: Nice.
+01:41:05 Bryan: Interesting. In terms of going forward, we feel that the lost art of deploying hardware is going to come back. What's your take on it?
+01:41:17 Amir: I don't think it ever disappeared. I think people's willingness to want to do that had has been diminishing, but the talent is still there. The ability to do that is even more so present today than it used to be with, like you mentioned, lots of opensource tools that can help you deploy--
+01:41:37 Bryan: You can make your microprocessor. It's amazing how much you can go do.
+01:41:44 Amir: Yes.
+01:41:45 Bryan: People being able to do FPGAs on their own. A logic analyzer is $100 now, or whatever.
+01:41:53 Amir: Yes. You have to have the right people and the willingness to do it, but it's definitely possible. For the right cases, you can save a ton of money, and be more efficient that way too.
+With that, it's going to be a constant pool. If you think about who's making the decisions oftentimes, it's not necessarily an infrastructure-based decision always. It's around agility, and your ability to put your product out on the market faster.
+If you don't have a team that's performing well, and as far as your infrastructure goes and you want to release a product and then it become a bottleneck, well, it doesn't really matter. You're just going to go to the cloud because you have a business to run and your business is selling a product. If you don't have a factory internally that can build your product for you, then you go to the cloud.
+If there's an easy way to do that, I think then there's a much better case for building your own infrastructure.
+01:42:52 Bryan: That someone should start a company. Talking about it [crosstalk]--
+01:42:54 Steve: Agree. I like the way you're thinking, Amir.
+01:42:56 Jessie: Good.
+01:42:57 Bryan: That is great. Well, Amir, this had been great. This has been a lot of fun to hear about your career, and a lot of interesting, exciting stuff at the hardware-software interface. If people want to learn more about your- what's your social media of choice?
+01:43:15 Amir: You can find me at facebook.com/Amir. On Twitter, I'm DigiAmir, D-I-G-I Amir. More than happy to connect.
+01:43:26 Bryan: Awesome. Thank you very much for your time. Thank you for joining us in the garage. This has been a lot of fun.
+01:43:32 Jessie: Yes, thank you.
+01:43:32 Steve: Thank you.
+01:43:33 Amir: My pleasure. Thanks for having me.
+[music]
+01:43:35 Bryan: You've been listening to On the Metal. Tales from the Hardware-Software Interface. For shoutouts to learn more about our guests or to sign up for our mailing list, visit us at onthemetal.fm.
+On the Metal is a production of Oxide Computer Company. It is recorded in the Oxide garage in Oakland, California. To learn more about Oxide, visit us at oxide.computer.
+On the Metal is hosted by me, Bryan Cantrill, along with Jessie Frazelle, and we're frequently joined by our boss, Steve Tuck. Our original and awesome theme music is by JJ Wiesler at Pollen Music Group. You can learn more about JJ and Pollen at pollenmusicgroup.com. We are edited and produced by Chris Hill and his crew at HumblePod.
+From Jess, from Steve, from me and from all of us at Oxide Computer Company, thanks for you listening to On the Metal.
+[music]
+[01:44:50] [END OF AUDIO]

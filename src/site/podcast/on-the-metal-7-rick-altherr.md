@@ -12,6 +12,7 @@ description: |
     that right!
 podcast_file: https://media.transistor.fm/ceda47c6.mp3
 iframe_link: https://share.transistor.fm/e/71644107
+transcript_file:
 ---
 
 On this episode of On the Metal, we interview Rick Altherr, 

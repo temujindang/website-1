@@ -1,7 +1,3 @@
-// btnHandler('.btn-log', function () {
-//   console.log('👋 Oh, hello there you!');
-// });
-
 // Code for back to top button.
 document.querySelector('.elevator-button').addEventListener('click', function () {
     scrollTo(document.body, 300);
@@ -56,7 +52,3 @@ function isElementInViewport(el) {
             rect.bottom <= (window.innerHeight || document.documentElement.clientHeight))
     );
 }
-
-// var hero = document.getElementById('hero').clientHeight;
-// document.getElementById('radialWide').style.height = (hero + 248) + "px";
-// document.getElementById('radialNarrow').style.height = (hero + 128) + "px";

@@ -4,38 +4,49 @@ pageClass: page podcast
 ---
 {# This is the single podcast page #}
 <div class="podcast-container">
-  <h1 class="heading">{{ title }}</h1>
-  <div class="post-metadata my-6">
-    <div class="author uppercase">
-      {% set comma = joiner() %}
-      {%- for author in authors %}
-        {{ comma() }} {{ team[author].name }}
-      {%- endfor %}
+    <h1 class="heading">{{ title }}</h1>
+    <div class="post-metadata my-6">
+        <div class="author uppercase">
+            {% set comma = joiner() %}
+            {%- for author in authors %}
+            {{ comma() }} {{ team[author].name }}
+            {%- endfor %}
+        </div>
+        <time value="{{ item.date }}" class="text-gray-400">{{ date | readableDate }}</time>
     </div>
-    <time value="{{ item.date }}" class="text-gray-400">{{ date | readableDate }}</time>
-  </div>
-  <div class="podcast-share mt-12 mb-6">
-    <span class="leading-tight text-xl">Subscribe</span>
-    {% include 'components/podcast-share.njk' %}
-  </div>
-  <div class="podcast-file my-12">
-    <span class="leading-tight text-xl">Listen</span>
-    <div class="w-auto mt-4 mb-8 py-6 lg:py-6 border-t border-b text-base">
-      <audio class="object-center" src="{{ podcast_file }}" controls preload="auto" />
+    <div class="podcast-share mt-12 mb-6">
+        <span class="leading-tight text-xl">Subscribe</span>
+        {% include 'components/podcast-share.njk' %}
     </div>
-  </div>
-  <div class="mb-4">
-    {{ content | section | safe }}
-  </div>
-  <div>
-    {{ content | section('remainder') | safe }}
-  </div>
-  {# {% include "components/blog-discuss.njk" %} #}
-  {% include "components/social-share.njk" %}
-  <div class="mt-12 pt-2 text-gray-400 text-sm border-t border-gray-300">
-    <p>
-      You can listen to more from Oxide Computer Company on our <a href="/podcast">podcast</a> page.
-    </p>
-  </div>
+    <div class="podcast-file my-12">
+        <span class="leading-tight text-xl">Listen</span>
+        <div class="w-auto mt-4 mb-8 py-6 lg:py-6 border-t border-b text-base">
+            <audio class="object-center" src="{{ podcast_file }}" controls preload="auto" />
+        </div>
+    </div>
+    {% if transcript_file %}
+    <div class="toc">
+        <h2 id="table-of-contents">Table of Contents</h2>
+        <ul>
+            <li><a href="#show-notes-and-highlights">Show notes and highlights</a></li>
+            <li><a href="#transcript">Transcript</a></li>
+        </ul>
+    </div>
+    {% endif %}
+    <div class="mb-4">
+        {{ content | section | safe }}
+    </div>
+    {% if transcript_file %}
+    <div>
+        <h3 id="transcript">Transcript</h3>
+        {{ transcript_file | doTranscript | safe }}
+    </div>
+    {% endif %}
+    {% include "components/social-share.njk" %}
+    <div class="mt-12 pt-2 text-gray-400 text-sm border-t border-gray-300">
+        <p>
+        You can listen to more from Oxide Computer Company on our <a href="/podcast">podcast</a> page.
+        </p>
+    </div>
 </div>
 

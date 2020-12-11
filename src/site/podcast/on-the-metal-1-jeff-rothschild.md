@@ -15,6 +15,7 @@ description: |
     the origin story of ftruncate, and more.
 podcast_file: https://media.transistor.fm/ee45f70b.mp3
 iframe_link: https://share.transistor.fm/e/6fa1eaa4
+transcript_file: 001-jeff-rothschild.txt 
 ---
 
 On this episode of On the Metal, we interview Jeff Rothschild. Jeff has had a 

@@ -1,0 +1,18 @@
+[music]
+00:00:12 Bryan: Hey, I am Bryan Cantrill, I'm here with Jess Frazelle? Hey Jess.
+00:00:16 Jess: Hey, Bryan.
+00:00:17 Bryan: Where are we right now?
+00:00:20 Jess: We are in my garage.
+00:00:22 Bryan: Not just any garage, though. This garage--
+00:00:24 Jess: This garage is filled with a bunch of old floppy disks, and an oscilloscope and a tape drive, and then a bunch of old computer manuals.
+00:00:34 Bryan: I look around this garage and I think this garage is a perfect garage in which to start a company.
+00:00:39 Jess: A computer company.
+00:00:40 Bryan: A computer company, and Jess and I along with Steve Tuck have started Oxide Computer Company, which we're very excited about. As part of doing that, we got ourselves some podcasting microphones and we also thought, "Hey, this is a good opportunity to make the podcast that we've always wanted, right."
+00:00:53 Jess: The nerdiest podcast on the face of the planet.
+00:00:56 Bryan: Absolutely. For that, for Jess and for me, and I dare say for Steve, the kind of nerds we are we like to talk about the hardware/software interface because that's where we think interesting things happen. Hard problems. Hardware is hard. The stories there are interesting and so we started a podcast called On The Metal, Tales from the Hardware/Software Interface. We are going to have folks that have done interesting things to the hardware/software interface. Some have done it over decades, some have done it over just the last few years but they all have one thing in common, they all have interesting stories to tell.
+00:01:28 Jess: Yes and we love stories. I personally love any story involving computers or bugs so this is going to be great.
+00:01:35 Bryan: Oh, it's going to be so much fun. These are the kind of stories that honestly are hard to come by. These are the stories that you hear in the hallway tracks of conferences, you will hear at the bar, you will hear when someone is ranting about a particular firmware revision that nearly ruined their lives but you don't hear very frequently. We're excited. We're going to have some great guests and some great conversations and a lot of fun.
+00:01:56 Jess: Stay tuned.
+00:01:57 Bryan: Stay tuned for On The Metal, Tales from the Hardware/Software Interface.
+[music]
+[00:02:40] [END OF AUDIO]

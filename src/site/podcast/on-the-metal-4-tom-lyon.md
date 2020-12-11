@@ -14,6 +14,7 @@ description: |
     favorite editors, and hard tabs.
 podcast_file: https://media.transistor.fm/f11defc9.mp3
 iframe_link: https://share.transistor.fm/e/e89c3b37
+transcript_file:
 ---
 
 On this episode of On the Metal, we interview Tom Lyon, Sun Microsystems 
