@@ -48,9 +48,10 @@ O:::::::OOO:::::::O    X:::::X      X:::::X     II::::II  DDD:::::DDDDD:::::D   
 
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="/css/styles.css">
+    {% set css %}
+    {% include "../../css/styles.css" %}
+    {% endset %}
     {% include "head-meta.njk" %}
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
   </head>
   <body id="top" class="{% if pageClass %}{{ pageClass }}{% endif %} container mx-auto mb-12 max-w-none lg:max-w-6xl bg-oxide-gray text-white">
     {% if page.url == "/" %}

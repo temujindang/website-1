@@ -7,7 +7,7 @@ const scrape = require('html-metadata');
 const path = require('path');
 const CleanCSS = require("clean-css");
 
-// Helper function to escape HTML
+// Helper function to escape HseTML
 const escape = (unsafe) => {
     return (unsafe === null) ? null :
         unsafe.replace(/&/g, "&amp;")
