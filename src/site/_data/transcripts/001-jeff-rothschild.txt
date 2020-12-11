@@ -83,11 +83,11 @@
 00:10:05 Bryan: Thank God. You run the PDP and how many years did you work on the PDP?
 00:10:12 Jeff: Oh, just while I was in school for two, three years.
 00:10:15 Bryan: Where did you head to after school?
-00:10:18 Jeff: Oh, I went to work at Honeywell. I spent a year at Honeywell's large Information Systems Division. This was the old General Electric computer company. Their system was a 36-bit machine as well. A real memory system at the point that I joined though they were working on trying to add a virtual memory capability. Interesting machine. It had six-bit bytes, eight-bit bytes, and nine-bit bytes so you could choose how many characters to pack into a word. Of course, it meant that each piece of software had to identify its conventions for byte encoding, which wasn't that unusual in the day. We had both ASCII and EBCIDIC that they could use nine-bit at the same time.
-00:11:04 Bryan: Right. EBCIDIC is probably worth explaining. I know, Steve, there's no way you know EBCIDIC. I hope not. [chuckles]
-00:11:09 Steve: No, I have no idea. What's EBCIDIC?
+00:10:18 Jeff: Oh, I went to work at Honeywell. I spent a year at Honeywell's large Information Systems Division. This was the old General Electric computer company. Their system was a 36-bit machine as well. A real memory system at the point that I joined though they were working on trying to add a virtual memory capability. Interesting machine. It had six-bit bytes, eight-bit bytes, and nine-bit bytes so you could choose how many characters to pack into a word. Of course, it meant that each piece of software had to identify its conventions for byte encoding, which wasn't that unusual in the day. We had both ASCII and EBCDIC that they could use nine-bit at the same time.
+00:11:04 Bryan: Right. EBCDIC is probably worth explaining. I know, Steve, there's no way you know EBCDIC. I hope not. [chuckles]
+00:11:09 Steve: No, I have no idea. What's EBCDIC?
 00:11:11 Jeff: It's a character encoding that IBM was using through, I guess, the 50s and 60s.
-00:11:19 Bryan: It is a decimal encoded as binary. It doesn't make a whole lot of sense but it lives on today because the EBCIDIC 6 still has instructions for binary-coded decimals, kind of crazy.
+00:11:19 Bryan: It is a decimal encoded as binary. It doesn't make a whole lot of sense but it lives on today because the EBCDIC 6 still has instructions for binary-coded decimals, kind of crazy.
 00:11:32 Jeff: Very good.
 00:11:33 Bryan: ASCII before multiply my favorite [unintelligible 00:11:35]. Then for the a nine-bit words, what was that? The nine-bit bytes, excuse me. What was that to allow? Was that a parity bit?
 00:11:43 Jeff: If they fit evenly into 36, so you get four characters in the word eight, eight didn't go in as quite as nicely. [chuckles] but the six-bit, of course, would fit in the 36-bit.
@@ -115,7 +115,7 @@ The effect was a machine that cost an order of magnitude more and delivered exac
 00:15:07 Bryan: Interesting. Maybe worth explaining microcode because I feel microcode is something that we don't really have an analog of that today I know. I'm looking at Steve who I'm sure-
 00:15:17 Steve: I can come up with a couple but I like your answer.
 00:15:21 Jeff: Oh, microcode is simply you have a low-level interpreter that is interpreting the target instruction set of the machine. That was a very common implementation technique.
-00:15:31 Bryan: This is probably still used underneath. It is used under the hood for EBCIDIC six obviously has its own microcode [unintelligible 00:15:36].
+00:15:31 Bryan: This is probably still used underneath. It is used under the hood for EBCDIC six obviously has its own microcode [unintelligible 00:15:36].
 00:15:35 Jeff: Yes, of course.
 00:15:36 Bryan: -but you can't write that microcode today.
 00:15:38 Jeff: That's correct. You couldn't then either, but the implementers of this system architecture were implementing the target instruction set in micro instructions about 10 instructions per target instruction. It all netted out to approximately the same performance.
