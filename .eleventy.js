@@ -162,11 +162,8 @@ module.exports = function (eleventyConfig) {
     // compress and combine js files
     eleventyConfig.addFilter("jsmin", require("./src/utils/minify-js.js"));
 
-    // TODO: minify the css output when running in prod
     // minify the css output when running in prod
-    // if (process.env.NODE_ENV == "production") {
-    //   eleventyConfig.addTransform("CleanCSS", require("./src/utils/minify-css.js"));
-    // }
+    eleventyConfig.addTransform("CleanCSS", require("./src/utils/minify-css.js"));
 
     // Static assets to pass through
     eleventyConfig.addPassthroughCopy({ "./src/site/_includes/fonts": "fonts" });
