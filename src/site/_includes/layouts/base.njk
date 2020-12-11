@@ -49,11 +49,9 @@ O:::::::OOO:::::::O    X:::::X      X:::::X     II::::II  DDD:::::DDDDD:::::D   
   <head>
     <meta charset="utf-8">
     {% set css %}
-    {% include "styles.css" %}
+        {% include "styles.css" %}
     {% endset %}
-    <style>
-        {{ css | cssmin | safe }}
-    </style>
+    <style>{{ css | cssmin | safe }}</style>
     {% include "head-meta.njk" %}
   </head>
   <body id="top" class="{% if pageClass %}{{ pageClass }}{% endif %} container mx-auto mb-12 max-w-none lg:max-w-6xl bg-oxide-gray text-white">

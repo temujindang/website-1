@@ -69,13 +69,6 @@ file for the specific author in [`_data/team`](_data/team).~~
 Make sure to add a `description` to your post for the main pages as well as social 
 media cards.
 
-#### Rich links
-
-If you want to use rich links add them to a post in this format:
-```
-{{"https://oxide.computer/podcast/on-the-metal-10-season-1-wrap-up/" | linkPreview | safe}}
-```
-
 ### Team members
 
 Add a json file to [`_data/team`](data/team) in the following format:
