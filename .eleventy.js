@@ -5,6 +5,7 @@ const fs = require("fs");
 const crypto = require("crypto");
 const scrape = require('html-metadata');
 const path = require('path');
+const CleanCSS = require("clean-css");
 
 // Helper function to escape HTML
 const escape = (unsafe) => {
@@ -163,7 +164,9 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.addFilter("jsmin", require("./src/utils/minify-js.js"));
 
     // minify the css output when running in prod
-    eleventyConfig.addTransform("CleanCSS", require("./src/utils/minify-css.js"));
+    eleventyConfig.addFilter("cssmin", function (code) {
+        return new CleanCSS({}).minify(code).styles;
+    });
 
     // Static assets to pass through
     eleventyConfig.addPassthroughCopy({ "./src/site/_includes/fonts": "fonts" });
