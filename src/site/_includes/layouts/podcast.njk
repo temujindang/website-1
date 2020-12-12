@@ -19,7 +19,9 @@ pageClass: page podcast
         {% include 'components/podcast-share.njk' %}
     </div>
     <div class="podcast-player">
-        <audio src="{{ podcast_file }}" controls preload="auto" />
+        <audio {% if transcript_file %}class="with-transcript"{% endif %} controls preload="auto">
+            <source src="{{ podcast_file }}" type="audio/mpeg">Your browser does not support the audio element.</source>
+        </audio>
     </div>
     {% if transcript_file %}
     <div class="toc">

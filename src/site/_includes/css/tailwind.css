@@ -663,6 +663,7 @@ Components
 audio {
     box-sizing: border-box;
     width: 100%;
+    outline: none;
 }
 
 .podcast-container ul {
@@ -1094,6 +1095,13 @@ Animations
 
 .transcript-line a {
     margin-right: 10px;
+    color: #888;
+    border-bottom: none;
+    underline: none;
+}
+
+.current a {
+    color: #48d597
 }
 
 .toc {
