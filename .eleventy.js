@@ -127,7 +127,11 @@ module.exports = function (eleventyConfig) {
 
     // Minify the css output.
     eleventyConfig.addFilter("cssmin", function (code) {
-        return new CleanCSS({}).minify(code).styles;
+        if (process.env.NODE_ENV === "production") {
+            return new CleanCSS({}).minify(code).styles;
+        } else {
+            return code;
+        }
     });
 
     // Compress and combine js files.
@@ -135,30 +139,36 @@ module.exports = function (eleventyConfig) {
         code,
         callback
     ) {
-        try {
-            const minified = await minify(code);
-            callback(null, minified.code);
-        } catch (err) {
-            console.error("Terser error: ", err);
-            // Fail gracefully.
+        if (process.env.NODE_ENV === "production") {
+            try {
+                const minified = await minify(code);
+                callback(null, minified.code);
+            } catch (err) {
+                console.error("Terser error: ", err);
+                // Fail gracefully.
+                callback(null, code);
+            }
+        } else {
             callback(null, code);
         }
     });
 
     // Minify the HTML
-    eleventyConfig.addTransform("htmlmin", function(content, outputPath) {
-        // Eleventy 1.0+: use this.inputPath and this.outputPath instead
-        if( outputPath.endsWith(".html") ) {
-            let minified = htmlmin.minify(content, {
-                useShortDoctype: true,
-                removeComments: true,
-                collapseWhitespace: true
-            });
-            return minified;
-        }
+    if (process.env.NODE_ENV === "production") {
+        eleventyConfig.addTransform("htmlmin", function(content, outputPath) {
+            // Eleventy 1.0+: use this.inputPath and this.outputPath instead
+            if( outputPath.endsWith(".html") ) {
+                let minified = htmlmin.minify(content, {
+                    useShortDoctype: true,
+                    removeComments: true,
+                    collapseWhitespace: true
+                });
+                return minified;
+            }
 
-        return content;
-    });
+            return content;
+        });
+    }
 
     // Static assets to pass through
     eleventyConfig.addPassthroughCopy({ "./src/site/_includes/fonts": "fonts" });

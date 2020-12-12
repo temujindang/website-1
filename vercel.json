@@ -3,6 +3,9 @@
   "github": {
     "enabled": true
   },
+  "env": {
+    "NODE_ENV": "production"
+  },
   "routes": [
     {"src": "/.well-known/matrix/(.*)",
       "headers" : {

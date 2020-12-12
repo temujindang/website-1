@@ -6,7 +6,7 @@ RUN apk --no-cache add \
 COPY . /usr/src/website
 WORKDIR /usr/src/website
 
-ENV NODE_ENV production
+ENV NODE_ENV development
 
 RUN npm install
 

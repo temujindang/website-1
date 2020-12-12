@@ -18,11 +18,8 @@ pageClass: page podcast
         <span class="leading-tight text-xl">Subscribe</span>
         {% include 'components/podcast-share.njk' %}
     </div>
-    <div class="podcast-file my-12">
-        <span class="leading-tight text-xl">Listen</span>
-        <div class="w-auto mt-4 mb-8 py-6 lg:py-6 border-t border-b text-base">
-            <audio class="object-center" src="{{ podcast_file }}" controls preload="auto" />
-        </div>
+    <div class="podcast-player">
+        <audio src="{{ podcast_file }}" controls preload="auto" />
     </div>
     {% if transcript_file %}
     <div class="toc">
