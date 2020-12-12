@@ -125,12 +125,12 @@ module.exports = function (eleventyConfig) {
     });
 
 
-    // minify the css output
+    // Minify the css output.
     eleventyConfig.addFilter("cssmin", function (code) {
         return new CleanCSS({}).minify(code).styles;
     });
 
-    // compress and combine js files
+    // Compress and combine js files.
     eleventyConfig.addNunjucksAsyncFilter("jsmin", async function (
         code,
         callback

@@ -1,3 +1,14 @@
+// Code for menu
+var menu = document.getElementById('menu');
+document.getElementById('open-menu').addEventListener('click', function () {
+    menu.classList.remove('hidden');
+    menu.classList.add('block');
+});
+document.getElementById('close-menu').addEventListener('click', function () {
+    menu.classList.remove('block');
+    menu.classList.add('hidden');
+});
+
 // Code for back to top button.
 document.querySelector('.elevator-button').addEventListener('click', function () {
     scrollTo(document.body, 300);
@@ -22,7 +33,6 @@ var scroll = window.requestAnimationFrame ||
 var elementsToShow = document.querySelectorAll('.show-on-scroll');
 
 function loop() {
-
     Array.prototype.forEach.call(elementsToShow, function (element) {
         if (isElementInViewport(element)) {
             element.classList.add('is-visible');
@@ -39,7 +49,6 @@ loop();
 
 // Helper function from: http://stackoverflow.com/a/7557433/274826
 function isElementInViewport(el) {
-
     var rect = el.getBoundingClientRect();
     return (
         (rect.top <= 0

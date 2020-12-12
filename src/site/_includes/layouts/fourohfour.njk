@@ -60,20 +60,10 @@ O:::::::OOO:::::::O    X:::::X      X:::::X     II::::II  DDD:::::DDDDD:::::D   
     {% include "footer.njk" %}
 
     {% set js %}
-      {% include "js/alpine.js" %}
       {% include "js/elevator.js" %}
       {% include "js/main.js" %}
     {% endset %}
     <script>{{ js | jsmin | safe }}</script>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id={{site.google_analytics}}"></script>
-    <script async>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', '{{site.google_analytics}}');
-    </script>
   </body>
 </html>
 

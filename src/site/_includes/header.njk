@@ -1,6 +1,6 @@
 
 <div id="navigation" class="relative z-50">
-  <div x-data="{ open: false }" class="relative pt-6 lg:pt-20 pb-16 md:pb-20 lg:pb-24">
+  <div class="relative pt-6 lg:pt-20 pb-16 md:pb-20 lg:pb-24">
     <nav class="relative max-w-screen-xl mx-auto flex items-center justify-between px-6 sm:px-6 fade-in">
       <div class="flex justify-between items-center flex-1">
         <div class="flex items-center justify-between w-full md:w-auto">
@@ -8,7 +8,7 @@
             {% include "components/wordmark-svg-dark.njk" %}
           </a>
           <div class="-mr-2 flex items-center md:hidden">
-            <button @click="open = true" type="button" class="appearance-none inline-flex justify-center p-2 text-gray-100 hover:text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out" aria-label="Menu">
+            <button id="open-menu" type="button" class="appearance-none inline-flex justify-center p-2 text-gray-100 hover:text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out" aria-label="Menu">
               <span class="mr-1 leading-normal">Menu</span>
               <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <title>Menu icon</title>
@@ -31,15 +31,15 @@
       </div>
     </nav>
 
-    <div :class="{'block': open, 'hidden': !open}" class="absolute top-0 z-50 inset-x-0 p-2 hidden md:hidden">
-      <div x-show="open" x-transition:enter="duration-150 ease-out" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100" x-transition:leave="duration-100 ease-in" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95" class="rounded-lg shadow-md transition transform origin-top-right">
+    <div id="menu" class="absolute top-0 z-50 inset-x-0 p-2 hidden md:hidden">
+      <div x-transition:enter="duration-150 ease-out" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100" x-transition:leave="duration-100 ease-in" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95" class="rounded-lg shadow-md transition transform origin-top-right">
         <div class="rounded-lg bg-white shadow-xs overflow-hidden">
           <div class="px-5 pt-4 flex items-center justify-between">
             <a href="/" class="h-6 w-auto sm:h-8 border-none">
               {% include "components/wordmark-svg-light.njk" %}
             </a>
             <div class="-mr-2">
-              <button @click="open = false" type="button" class="appearance-none inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out" aria-label="Menu">
+              <button id="close-menu" type="button" class="appearance-none inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out" aria-label="Menu">
                 <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <title>Menu icon</title>
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
