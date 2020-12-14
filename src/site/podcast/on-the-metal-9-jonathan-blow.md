@@ -14,7 +14,7 @@ description: |
     of his own creation.
 podcast_file: https://media.transistor.fm/754f684f.mp3
 iframe_link: https://share.transistor.fm/e/9c4b292f
-transcript_file:
+transcript_file: 009-jonathan-blow.txt
 ---
 
 On this episode of On the Metal, we interview legendary game designer and 
