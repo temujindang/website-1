@@ -1,0 +1,389 @@
+[music]
+00:00:13 Brian Cantrill: Welcome to On The Metal, tales from the hardware/software interface. I'm Brian Cantrill. With me, as always, is Jessie Frazelle. Hi, Jess.
+00:00:21 Jessie Frazelle: Hi, Brian.
+00:00:23 Brian: Joining us today is our boss, Steve Tuck. Hey, Steve.
+00:00:25 Steve Tuck: Glad to be here.
+00:00:27 Brian: Keep us in line. Jess, you want to introduce who we've got with us in the garage?
+00:00:30 Jessie: Today, we have Kenneth Finnegan. I found out about him through his blog years ago,
+00:00:36 Kenneth Finnegan: Two years ago.
+00:00:38 Jessie: He does interesting things with-- I'll let him describe himself better.
+00:00:44 Brian: No pressure, Kenneth.
+00:00:44 Jessie: [crosstalk] at data centers, and just a really good maker.
+00:00:49 Brian: Welcome to the garage, Kenneth.
+00:00:50 Kenneth: Hey, thanks for having me.
+00:00:52 Brian: Go for it. Jess has given you a lot to live up here.
+00:00:55 Kenneth: Oh, geez. I'm one of those people that is a jack-of-all-trades as like, I started in mechanical engineering during college. It was all the things that going into college, I literally only picked mechanical engineering because I figured that computer science, you can do with just a laptop, and electrical engineering, you just need one bench, and only the mechanical engineering students got access to the machine shop.
+00:01:20 Brian: I love it. Bigger toys.
+00:01:22 Kenneth: I figured, well, I can't fit a metal lave in my apartment. Clearly, I need to major in mechanical engineering.
+00:01:27 Brian: The idea is I can always go do computer science later?
+00:01:29 Kenneth: Yes.
+00:01:30 Brian: There you go.
+00:01:33 Kenneth: One of these things I realized earlier on that disciplining yourself into one thing wasn't going to be productive. To say that I'm a pure mechanical engineer was-- it pigeonholes you and that's not what's actually useful these days.
+I had this strong emphasis on do one thing during your day job, and then do something completely different as your hobby. Many times now, that has proven that I accidentally, several years later, turned that into my day job.
+Jesse discovered me several years ago at the beginning of my latest hobby that is now turning into my day job transition, which was, while I was working-- My last career was that I worked in [unintelligible 00:02:15] conductor as an electrical engineer. That started as a test engineer at a solar cell startup. We were designing, cutting-edge gallium arsenide-based solar cells that were more than twice as efficient as silicon solar cells.
+From there, I went over to Lam Research. Lam Research is a 600-pound gorilla in semiconductor fab equipment companies. They're the ones that make the tools for Intel, Samsung, TSMC.
+00:02:41 Brian: Is applied materials, are they still around it? When I moved out to Silicon Valley, it was Lam and Apple Mac were the two like big folks.
+00:02:48 Kenneth: Absolutely, yes. Amat still exists. Our two main competitors that from Lam were Amat Intel and Tel- not Intel, but Tel out of Japan.
+00:02:56 Brian: I just love it. Three companies that most people haven't heard of doing incredibly sophisticated machine [crosstalk]--
+00:03:01 Kenneth: It's crazy. Semiconductor capital equipment, the stuff that goes into a silicon wafer fab, is about $32 billion a year. About a quarter of that business comes from Lam. It is an enormous company that is just one layer removed from any marketing because we have 12 customers.
+Everyone's heard of Samsung. Everyone's heard of Intel because they need to sell their products to everyone. Semiconductor fabs have gotten so outrageously expensive and hard when you're down in the single-digit nanometer feature sizes that--
+00:03:37 Brian: You tuned back your social a little bit, your social marketing?
+00:03:43 Kenneth: Yes. At that point, we only have 12 customers.
+[crosstalk]
+00:03:49 Brian: They got 12 followers on Twitter, so they're good.
+00:03:49 Jessie: It's perfect.
+00:03:50 Brian: 100%.
+00:03:53 Kenneth: I worked there for three years. During that, one of my good friends from amateur radio projects I worked on, his old career for the last 15 years was working at Cisco in their technical application center, TAC, which is a customer buys a really expensive tool, they think they found a bug in the operating system. They go back to someone like Javier and say, "Hey, I think I found this actual defect." Then they work together to prove out. He worked for Cisco for 15 years, and during that was involved with the internet.
+Where Jessie discovered me was right at the beginning of my kickoff into this project of I realized that for a lot of my projects, it didn't make sense to be using AWS or digital ocean for my own projects. Lam, their campus is only three blocks away from Hurricane Electric, Hurricane Electric being a major tier two worldwide internet carrier. They can sell you internet in 190, or they're probably up to about 200 data centers that you can buy internet from them. Plus, they happen to run co-lo in Fremont because that's where they started.
+Since that was only three blocks away, it made sense that if I split the cost of a cabinet with one of my other friends, the two of us can get a whole 44 U rack of data center and fill it with hard drives. It doesn't cost you anything beyond the cost of the hard drive to stick on the hard drive in there.
+Javier, my friends said, "Well, yes, but if you're going to get a cabinet and a data center, you should go one step further because that's not ridiculous enough. You should run the rack, just the one rack, as its own ISP."
+The internet is made up of ISPs. The technical term is an autonomous system. AT&T, that you buy your internet from, is one autonomous system. Cloudflare is another autonomous system. The internet is made by this fact that you interconnect all of these 61,000 different autonomous systems.
+00:05:55 Brian: Which is kind of amazing when you think about it. These are actually a bunch of little small internets. It is truly an internet.
+00:06:03 Jessie: It combines together. That's the fascinating part to me about it is that it's just tis cabal of network people that form the internet. It's not like something fancy.
+00:06:15 Kenneth: It's very hippy, really. It was one of the things; they got a lot of things conceptually right in that the key to the internet and making the internet a scalable entity is that you draw very clear lines on an administrative boundaries for where your business ends and where someone else's business begins.
+BGP, border gateway protocol, which is used to route between every single separate network in the internet, is not really so much a routing protocol as it is a business policy expression protocol. That's why it has been so successful because it lets your business side of your business actually dictate policy that you can then implement on the internet.
+Much more of the internet than you want to think about is politics and money. Engineers, don't like to think about that, but they've managed to get that right in the protocol that the protocol can express either optimal engineering design, or some- you can move that slider anywhere as far over as you want into business policy for money.
+Javier says, "Hey, Kenneth, this will be really funny if you filled out the paperwork, and bought a Cisco router on eBay, and applied for an autonomous system number." He had enough friends in the internet that he's like, "I can get you some address base, no problem."
+The challenge with starting an ISP in 2017 is that the five regional internet registry is the handout. The numbers have nominally run out of IP addresses for IPV4. He's like, "We can solve that problem. We got Wiz." I did it. Instead of just being a co-lo customer for Hurricane Electric, I became my own ISP in the building.
+The autonomous system numbers are just literally serial numbers. If you go actually look in the core of the internet, every single network has some number assigned to them. Hurricane Electric is AS6939, one number. It's one of these things that, traditionally people were always like the smaller ASs are more appealing because it makes you look like you've been around longer.
+When I applied for an AS number, I was expecting to get something up at about the 300 thousands, which is where they're currently handing them out. Just by dumb luck, this architecture firm had gone out of business exactly two years before. Their AS number of 7,034.
+00:08:49 Brian: What is an architecture firm doing with an AS number?
+00:08:53 Kenneth: That was the whole concept of the internet. You have all of weird little entities like this, like architecture firms and cement plants.
+00:08:59 Brian: When you're talk about architecture, we're talking about built architect.
+00:09:03 Kenneth: A design office somewhere with little models.
+00:09:05 Jessie: How do they run that themselves? How do they run that themselves?
+00:09:08 Brian: I have so many follow-up questions.
+00:09:09 Kenneth: I have so many questions too, but they're gone. They're pout of business. They freed up their AS number. Two years later, I happened to time my application just right that I got a small AS number.
+I was like, I'm nowhere near as legitimate as I look having now run this one cabinet ISP that is AS7034. That's how I got into it. Then it was for most of my projects like this, where I'm doing something ridiculous or silly, I wrote up this blog post saying how to start your own autonomous system for fun and profit. It hit the front of Reddit r/Homelab or. Jessie found it, and her 120,000 followers.
+[laughter]
+That wasn't where the joke ended because then the problem was, once you're your own autonomous system, you're no longer dependent on any one other network for your internet connection. At home, you don't run an autonomous system. You are totally dependent on Comcast, or AT&T, or whoever your consumer ISP is for internet.
+As my own autonomous system, I can connect to more than one other network and become part of the whole mesh that is the internet. I asked Hurricane Electric to put me in the same co-lo aisle as the rest of a few of our other friends that also happened to have their networks come into the building, and so we were all just in one little aisle. We were calling ourselves the aisle six cabal. We were just a couple of guys there running our own autonomous system.
+00:10:32 Brian: You're all on your autonomous system, effectively?
+00:10:34 Kenneth: Each one of us is on our own autonomous system.
+00:10:36 Steve: Everyone had their own.
+00:10:36 Brian: Oh, everyone had their own.
+00:10:37 Kenneth: Everyone had their own. [unintelligible 00:10:38] every ones, right.
+00:10:39 Brian: This is like the homebrew autonomous system [unintelligible 00:10:41]?
+00:10:42 Kenneth: Yes. This is like if Reddit r/Homelab finally got over this concept of getting old as hell Dell servers on Craigslist and actually did something interesting. That's what we're actually doing but we don't bother posting on Homelab because that form is just awful. Anyways--
+00:11:00 Brian: We're building our own internet. We actually don't want to be on the internet. Terrible things happen on the internet.
+00:11:04 Kenneth: No. We're not building our own internet. We're building part of the Internet. This is upper case [crosstalk]--
+00:11:08 Brian: We actually don't want to use this to actually get [crosstalk]--
+00:11:10 Kenneth: We're not screwing around. This is the actual internet, and so are those guys. My cabinet was PhirePhly Design, which is my consulting company. Next to me, we've got Helmet, which is a few of my friends. Then we've got Loma Broadband, which is one of our friends that runs a wireless ISP. You just [unintelligible 00:11:29] on the aisle. We're all just right next to each other; six solid cabinets of buddies.
+Any time anyone's in town, we'll go and have dinner. Since I worked three blocks away, they all loved it because they could pay me in beer to go there after work and swap hard drives for them.
+00:11:44 Brian: I assume you've got the lowest ID of any one of these guys.
+00:11:47 Kenneth: One of the started a [unintelligible 00:11:47] job that once a month, he sends me an email saying, "You asshole, with your lower ASN number than me."
+00:11:53 Brian: I love it. You've got the only OG autonomous system number here?
+00:11:57 Kenneth: For a long time, I was the lowest AS number on the aisle. Someone finally beat me out recently. There's six of us, and we are running our own ASNs, which means that we can all cross-connect to each other. Any traffic that leaves one of our cabinets and is ultimately destined for another cabinet doesn't have to go through the whole internet, the cloud that is the internet and back down.
+00:12:22 Steve: You just peer.
+00:12:22 Kenneth: You can peer directly. Hurricane Electric is one of the best deals on cross-connects in the Bay Area. If you go to an actual Equinix data center, which is the major incumbent data center provider, they charge you $300 per month for cross-connect. If you want a fiber run from your cabinet to someone else's cabinet, it's $300 per month for the piece of fiber to sit in a cable tray.
+00:12:51 Brian: It's one of those I'm-in-the-wrong-business moments.
+00:12:53 Kenneth: Yes. They ultimately end up selling this $20 piece of fiber for about $8,000 across this whole service, assuming they don't reuse the fiber, which Equinix probably would. Hurricane Electric is a really good deal. They just do a single-time fee. They're legitimate. It's going to cost us about $50 to run a copper ethernet cable down the aisle for you. We charge you $50 for it, and that's it.
+00:13:17 Brian: One time?
+00:13:19 Kenneth: One time, $50, very fair. We are a cabal, and we're all right next to each other, and we're on the end of the aisle. We weren't really disturbing anyone else, and so we just didn't feel pain.
+00:13:30 Brian: Who's going to notice a cable?
+00:13:31 Kenneth: We slowly slipped a cable up into the cable rack between two of our networks, which no one should do this.
+00:13:39 Brian: Hey, kids, don't do what Kenneth does.
+00:13:41 Jessie: [chuckles]
+00:13:42 Kenneth: Do what I say, not what I do, because this was one of the things that you're violating the contract for the co-lo, so it's like, you should not do this.
+We started slipping cables up there. The problem is, when you've got six networks, a densely-connected mesh is an n-squared problem. The number of cross-connects that you need to connect everyone to everyone goes quadratic.
+00:14:02 Brian: It's hard to keep these cables on the slide.
+00:14:03 Kenneth: Yes, and we weren't even using the same color cable as Hurricane Electric. When we got up to 25 cables up in this cable tray, it started getting pretty obvious that we were not paying Hurricane Electricity for these cross-connects that we're supposed to. It got to the point where--
+00:14:16 Brian: How often do they see illegal cabling in their co-lo? Is that a common problem?
+00:14:20 Kenneth: Oh, there are all sorts of horror stories about illegal cabling.
+00:14:23 Brian: These are like stories from prison.
+00:14:25 Kenneth: Yes. The thing is in real data centers that would charge you on a monthly fee, there's a huge business incentive to try and somehow bypass these cross-connects. People would try and get two cabinets next to each other, and then you would rock the cabinets a little bit off the seismic holdings to get enough of a gap underneath the cabinet that you would slip fiber in between your two cabinets between them.
+There's people that have gotten a cabinet one floor above, directly above another cabinet, and gone in there with a concrete drill and drilled through the floor.
+00:14:57 Brian: How much are you saving?
+00:14:58 Jessie: This is a prison. This is a prison because what you would do in prison is drill through the floor to get out.
+00:15:02 Kenneth: You'd drill through the concrete floor because you're saving $300 per month. That is thousands of dollars a year, assuming that you only want one piece of fiber. If you're running some sort of high-density 5 by 10 gig--
+00:15:16 Steve: You're breaking in at night with a concrete drill. [chuckles]
+00:15:17 Kenneth: You come in anytime you want because these facilities are all 24 hours.
+00:15:22 Brian: There's this other rack that's smuggling fruit out of the commissary and making hooch.
+00:15:25 Kenneth: It's all loud as hell in there anyway, so what is a concrete impact hammer drill compared to all the [crosstalk]?
+00:15:32 Jessie: How does no one notice, oh it is a [crosstalk]?
+00:15:34 Kenneth: There's no one in there.
+00:15:36 Brian: If you look like you know what you're doing with the concrete and impact drill, people are going to leave you alone.
+00:15:39 Jessie: They're going to be like, "They weren't there."
+00:15:41 Kenneth: I can say from firsthand experience that a high vis vest, a white hardhat, and clipboard can get you into so many places with a look of intense like you're supposed to be there will get you anywhere.
+00:15:50 Brian: It's like, "Oh, the concrete drill guy is here." "That's good. Let him in."
+00:15:54 Kenneth: "Yes, I'm here to run some conduit." There's all sorts of these [unintelligible 00:15:58] floors. Hurricane Electric, bless their soul, they are a light touch co-lo provider. The technician is walking me in to unlock my cabinet.
+00:16:08 Steve: Hurricane Electric, we look the other way.
+[laughter]
+00:16:11 Kenneth: I want this to be like a sitcom. This is like a community or whatever. [crosstalk] He comes in and points up with this bundle of 25 different cables that are various colors. A lot of these cables were coming from the E-waste bin on my day job. These weren't just normal ethernet cables which are triple-shielded semiconductor fab grade, armored ethernet cables. It was really obvious what was going on.
+00:16:35 Brian: These are cables that have been actually dug out of an actual trash bin?
+00:16:38 Kenneth: Yes. They're like, "You can leave them here, but you need to knock this off. This needs to stop now."
+00:16:45 Steve: You'll need to be a little more discreet. You're making me look bad."
+[laughter]
+00:16:48 Brian: I'm trying to be cool and you're making it really hard.
+00:16:51 Kenneth: This is getting out of hand. We're sitting there, "Well, okay." The thing is we have no business need for these cross-connects because we're all web hosting providers. We're all running web servers. These cross-connects are literally trading three kilobits per second of BGP keepalive signals to have our two routers tell each other they're still there. We're never actually moving any traffic processes. There's no justification for the $50 cross-connect. We don't actually need it.
+We're like, "Okay." Kenneth's cabinet is in the middle of our block of the cabal and the router that I bought happened to come with 150 ethernet ports on it just because that was the switch I ended up with. It was like, "Okay, Kenneth is in the middle aisle. He's got a bunch of ethernet ports. We've got some spare /24s laying around for other projects. Let's just start our own internet exchange."
+The internet exchanges are essentially the dots on the web of the internet, where a whole bunch of lines meet and become these clearinghouses. I have traffic destined for some other network on the internet. I can either hand it to my transit provider who's going to be the huge global networks that go all the way around the world, but you can also go to one of these internet exchange points which are literally just an ethernet switch that a lot of people connect to.
+If you have traffic that happens to be destined for anyone else on that exchange, you can put it on that exchange directly and not pay your transit provider to hopefully hand it off to the actual destination somewhere close and not on the other side of the world.
+00:18:26 Steve: Forgive the stupid question, but what is the overlap between autonomous systems and internet exchanges? Are internet exchanges composed of different autonomous systems?
+00:18:33 Kenneth: The internet exchange is where the autonomous systems all come to meet. It is the edge between all the different autonomous systems. The internet exchange itself has an autonomous system number that is really just one ethernet switch that everyone connects to.
+00:18:47 Brian: Got it.
+00:18:48 Kenneth: We applied for an autonomous system number. We got 33,459 or 495, something like that. I don't know.
+00:18:59 Brian: Yes. I was thinking the same thing.
+00:19:00 Kenneth: We were like, "Okay, this will be funny. We can rip out 20 of the cables. We'll leave five of them, all go into Kenneth's cabinet. We're looking for domains that are available, and cfix.net is available. We register for the Fremont Cabal Internet Exchange. We started this thing as a joke because it's we've solved the cable problem. All six of us are on there. We're peering. We're sending our BGP hellos. We're moving a whole 25 kilobits of traffic. This is great.
+If anyone doesn't happen to know Hurricane Electric, Hurricane Electric is notorious on the internet infrastructure side for being the most peered network, the best-connected network in the world. Their business policy is we'll try and get money from customers that are willing to pay us money for our services, but we will also peer with anyone.
+If you have a network and you want to peer with Hurricane, they won't give you the whole internet over that period, but they'll give you access to their customers over that. Hurricane Electric loves peering. They love internet exchanges. They're connected to more than 200 internet exchanges worldwide, which is phenomenal. They are the most connected network.
+One of the members of the Cabal, a couple of weeks later, was having dinner with the owner of Hurricane Electric and mentioned to him over dinner, "Yes, we solved that cabling problem we had on our aisle. We just started our own internet exchange." The owner of Hurricane Electric, Mike, goes, "That's fantastic." He was this energetic guy. "That's amazing. We want in."
+Hurricane Electric wants a port on the internet exchange. We're sitting there, "Oh, shit."
+00:20:40 Brian: It's like, "Wow, dad wants to party with us?"
+00:20:43 Kenneth: We were not prepared for this turn of events. We weren't doing any filtering or security on it because we're six of us and we all knew each other. Really, how a lot of the internet works anyways is everyone knows each other. There's about 100 of us. There's 100 people running the internet, and they all know each other. They move from company to company but it's the same 100 people all the time.
+We all knew each other. We weren't going to be doing anything. We also were six cabinets, so the blast radius of the Fremont Cabal Internet Exchange was pretty small. The blast radius of the Fremont Cabal Internet Exchange just became the entire world. I was like, "We need to sit down and read some more stuff about internet exchanges."
+Since it was in my cabinet, it became my job on my free time to now run the Fremont Cabal Internet Exchange. Hurricane Electric is like, "Okay well we want 10 gig into your exchange." 10 gig is the new 1 gig. My router happened to have four 10 gig interfaces on them. We're like, "Okay great, we can give them a 10-gig interface."
+Hurricane Electric, apparently unbeknownst to us, sent a mandate to their sales people that anytime that you talk to any other autonomous system customer in the building, pitch that they also join the Fremont Cabal Internet Exchange. Because it's an internet exchange in our building, of course we want it to be successful.
+00:22:00 Brian: What is the internet incentive in this? It's just to give you a reason to be in Hurricane Electric? Is there any real traffic going in any of your networks?
+00:22:09 Kenneth: At the time, we're each our own little web server, so we're moving 100, 200 megabits. The huge incentive for Hurricane Electric, not as a worldwide carrier transit provider, but as the co-lo provider, the co-location data center arm of Hurricane Electric, has a huge incentive to encourage us in the internet exchange to be in the building.
+If there's an internet exchange, it means that it's easier for any other network to come in if they're in the market not for co-lo space to run servers, but they're there in the market for a data center to get them connected to the rest of the internet. Internet exchange is a fantastic place to give them more connectivity than they could ever buy in a data center.
+In Hurricane Electrics Data Center, they have six carriers between Hurricane Electric, Comcast business, AT&T. You have six carriers. You get an internet exchange in there, and all of a sudden someone can come and buy worldwide connectivity from two carriers and then get connected to however many more people are happening to be on the internet exchange as well.
+00:23:12 Steve: It makes their co-lo more valuable.
+00:23:14 Kenneth: It makes their co-lo much more attractive from this connectivity perspective. Your typical co-location customer now, they're either coming in to buy connectivity to the rest of the internet, or they're coming in typically to run some hybrid cloud thing.
+It's like you've started an AWS and you realize that stores are expensive or computer's expensive., if you're coming in, you're getting [crosstalk]-- You're coming in and you're getting 30 cabinets to do something else. That first market segment of the people that are coming in for connectivity and internet exchange makes you hugely more valuable to them.
+Hurricane Electric starts pushing all their other members in the building, "Hey, you should join this Fremont Cabal Internet Exchange," which was really easy to convince them to do it because we had decided earlier on that, "Hey, we all have day jobs and this is just a funny joke. We can't charge for this because if we charge for this and it breaks, I'm not fixing it until 7:00 PM. I'm not fixing it until I get home from work because I have a day job."
+Selling ports on the exchange was real easy for Hurricane Electric to do because it was free. Hurricane Electric was like, "Yes, I actually won't charge you anything to connect to the ethernet switch. We'll waive the $300 five-across connect fee."
+00:24:26 Steve: That's just who we are.
+00:24:27 Kenneth: Hurricane Electric loves peering.
+00:24:29 Brian: Hurricane Electric loves to party.
+00:24:30 Kenneth: What's $350 for the fiber compared to increasing the volubility of their building? They're 100% on board. They are easily our biggest sponsor. It's like, "Now we got a problem." We started getting one or two applications per week. We went from 6 to 7 to 10 till 12 to 13 to 15.
+We were your typical fiber ethernet switch. You've got what we call SFP cages which are small form-factor pluggables. It's a little hole that you can then plug any fiber transceiver you want into it. This is because unlike a copper ethernet switch that you're used to where you just have a APHC-RJ45 jack on it, there's many different mixes of fiber.
+You have your multimode fiber, single mode fiber. Do you want to go 10km? Do you want to go 40km? The switches are modular. Then you take these optics and plug them into it based on what you want. At this point, we had, on eBay, bought a SFP line card for my router, and were digging into the bottom of every single one of our junk bins to try and find every single SFP possible.
+We were very rapidly running out of spare junk SFPs because, although Hurricane Electric was giving the fiber, they were not giving us the optics. That's our network. I was like, "We need to catch them somehow." This was becoming a problem. I'm like I got to go on weird Chineseum, eBay stuff, and I'm buying optics [unintelligible 00:26:04], "This isn't a good plan."
+10 gigabits SFPs are still expensive. We're talking $50 a piece for 10 gig and $10 a piece for one gig. It's not insignificant, but when you're doing a joke you don't want to go drop $1,000 on a couple trays of these optics.
+00:26:20 Brian: Can you become BYOSFP?
+00:26:22 Kenneth: We could have. Some internet connections just do that. They're like, "If you want to connect you've got to bring two optics, one for you and one for us." That seems like too much of putting our customer's skin in the games. If someone gives me a $50-optic and then the switch goes down, they're going to ask like, "What the hell did I give you that switch for, or that optic for?"
+I was posting on Twitter [unintelligible 00:26:41], "There's a problem we're running out of--" We get an email from Flexoptix; Flexoptix being one of the manufactures of these optical transceivers. They go, "Hey, we saw that you're running an internet exchange. This is fantastic. We want to sponsor you. How many optics do you want?" "Shoot, that solves our optics problem."
+Then the next problem is that we're running out of SFP cages and we don't have a switch dedicated to FCIX. At this point, we're starting to move traffic. We're moving one or two gigabits a second.
+00:27:10 Brian: You got to figure at least one or two of these networks has got valuable stuff on it.
+00:27:15 Kenneth: Yes. It's like okay now we're starting to run out of-- We're looking around We're looking at switches on eBay, and it's $500. $500 for some hobby thing, it's like, "I don't know if I really want to drop that."
+I get a phone call one night from my godfather's son. He goes, "Hey, I saw on Facebook that you're running an internet exchange now." I'm like, "Yes." He's like, "I work at Arista," Arista being one of the major competitors of Cisco. He's like, "We'd love to sponsor you."
+00:27:50 Jessie: So dope.
+00:27:51 Kenneth: At this point, we have Arista sponsoring the switches, we've got Flexoptix sponsoring the optics, and we've got Hurricane Electric sponsoring the fiber cross connects. All of our hardware cost just disappeared.
+00:28:00 Jessie: It's so dope. That is the power of people.
+00:28:03 Brian: It's very old school in terms of this is old school internet of people helping one another out. It's great.
+00:28:09 Jessie: It's the best.
+00:28:10 Kenneth: There is so little money in internet exchanges, because internet exchanges are just shortcuts around transit providers. The cost of transit bandwidth on the internet has gotten so-- It's one of those things that the cost of transit bandwidth drops 30% year on year for decades now. You look at the business price. You can buy a whole gigabit of transit for less than $1,000 a month.
+From a consumer side you think, "I want to pay $90 for a gigabit." On the wholesale market it's less than a $1,000 [crosstalk]--
+00:28:47 Steve: The consumer doesn't see that.
+00:28:49 Kenneth: Yes, the consumer doesn't see that, which is why--
+00:28:50 Steve: [crosstalk] high-margin areas of [crosstalk]-
+00:28:49 Kenneth: The problem is, and this is where people don't get it that the wholesale cost of a gigabit of internet is about $1,000. When you're paying Sonic or some other IFP for gigabit fiber, and you're paying $90 a month for a one-gig fiber, they're very much absolutely banking on you not using it all the time.
+They need to sell 12 customers the same one gig of internet before they can even finish paying for that wholesale market, let alone all the fiber and infrastructure and employees to get it from the data center up to your house. Once you start really understanding the wholesale internet market, the fact that ISPs can stand business just also blows my mind.
+That's why ISPs get real cranky when you saturate your port because their business model depends on you not doing that. I can see both sides of those arguments where they start putting data caps on.
+Internet exchanges are just a shortcut. There really isn't that much money in it. If you're not an absolutely enormous, hugely valuable internet exchange that has gotten past the critical mass point, and you've become as valuable as the rest of the internet because you have so many networks connected to you, if you're not up to that point yet, it's incredibly hard to run it as a business.
+All of our sponsors were more than happy to support us because we were willing to put in the effort to something that makes the internet better, but no one else wants to do it because there's no money in it. Everyone was more than happy to give us hardware. Every year, our regional internet registry fees come up for the address space we need, and that's $250. Every year around April, I pass the hat around like, "All right guys. We need $250," and everyone chucks $20, $50, $100. They're like, "Yes, $20 is great for something that's amusing."
+That's how it started. It has just been this whole cacophony of there's the root DNS servers that act as the authoritative source for the beginning of any DNS resolution. One of them is Verisign. Verisign has a little web form you can fill out and say, "Hey, I'm an internet exchange point or major peering provider. We would like one of your root DNS server appliances, which is a one-use server, shipped to us to host for an exchange." We fill out the form.
+The next morning, I wake up to an email from Verisign saying, "Congratulations, you're approved." Verisign ships us a route server. The Fremont Cabal Internet Exchange now has one of the 13 authoritative root DNS servers.
+00:31:30 Brian: You're [unintelligible 00:31:30] like the Forrest Gump of the internet.
+00:31:32 Steve: I was going to say did Ford get in? You've got that big truck outside?
+00:31:36 Jessie: [unintelligible 00:31:36].
+00:31:36 Kenneth: It's just been this whole cacophony of, "It'd be really funny if we applied for this to happen," then we apply for it and--
+00:31:45 Steve: Every single one.
+00:31:46 Kenneth: Practically everyone says yes. It's really easy to sell to customers when your product is free. It's really easy--
+00:31:53 Steve: That's a secret.
+00:31:54 Kenneth: Yes.
+00:31:55 Brian: There you go. That's easy.
+00:31:56 Brian: [unintelligible 00:31:56] and Electric.
+00:31:58 Kenneth: That's my sage business advice is if you want to sell your thing, give it away for free and make it up from volume.
+00:32:03 Brian: All right, listen, we've got to take a quick break, and then we're going to be back with more of Kenneth On The metal.
+[music]
+00:32:10 Brian: On The Metal is brought to you by the Oxide computer company where we're going to try a new feature shamelessly ripped off of our [unintelligible 00:32:16] yes, yes, no, where our boss, Steve Tuck brings us a tweet he does not understand, and Jess and I try to explain it to him. Steve, do you have a tweet?
+00:32:24 Steve: I sure do.
+00:32:25 Brian: Go for it.
+00:32:26 Steve: The tweet in question, UEFI pre-boot network stack engage the onboard net in such a way that it would write back DMA to particular physical memory pages sometime after control was passed to the bootloader. Corruption would occur somewhere in the user parts of the RAM disc. No idea.
+00:32:44 Brian: No idea. Jess, do you understand this tweet?
+00:32:46 Jessie: I understand definitely the part about the UEFI pre-boot networking stack, but the part about DMA is in question marks. I guess you're not really sure where that's going.
+00:32:57 Brian: You're all overthinking it. I understand this tweet; running on-prem is painful. This is dealing with this awful, awful firmware bug. Firmware has overwritten part of the operating system in a way that is extremely painful to debug.
+00:33:11 Steve: Who do you go to in that case?
+00:33:12 Brian: Who do you go to?
+00:33:13 Jessie: You definitely strangle one of your vendors.
+00:33:15 Brian: You strangle one of your vendors. Unfortunately, your vendor is a PC vendor because all of the existing computer companies are selling personal computers. What we need is a new computer company.
+00:33:26 Steve: This is just saying I'm in intense pain trying to run systems on-premises.
+00:33:30 Brian: That's exactly what it's saying. Steve, what can someone do if they're intense pain running on-premises?
+00:33:34 Steve: If someone is running in intense pain on-premises, what they should do is go over to oxide.computer to learn a little bit more about how we are going to take that pain away.
+00:33:42 Brian: Help is on the way. Join us at oxide.computer.
+00:33:46 Jessie: You are not alone.
+[00:33:51] Brian All right, we are back. Kenneth, when we last tuned in, you've got the Fremont Internet Cabal is growing without bounds. You've got corporate America is stumbling over itself to give you free gear.
+00:34:05 Kenneth: [crosstalk] [unintelligible 00:34:05].
+00:34:07 Brian: Exactly. I'm waiting for SoftBank--
+00:34:09 Kenneth: Where does it end?
+00:34:10 Brian: SoftBank is going to come in here and give you $200 million here. I'm waiting for that.
+00:34:13 Kenneth: It's something. It keeps going. Then you start looking at the CDNs, the content distribution networks. Someone like Netflix or Google, when video really took off, they ran into this unsolvable problem that the internet just isn't good enough for Netflix. When you look at something like YouTube or Netflix that makes up 50% of the bandwidth in the entire global internet, the internet just isn't good enough for them. They start needing to embed their servers in the end IFPs.
+00:34:47 Brian: Back in the day when people were talking about video-on-demand, the criticism was, "We are never going to solve the last-mile problem." It was always about the last mile.
+00:34:58 Kenneth: You have the last-mile problem, which is you got to get the high-quality bitstream to every single house.
+00:35:03 Brian: Then you've got to get it close enough to every single house.
+00:35:05 Kenneth: Yes. You've got the fat-tree problem that all of those 10 or 20-megabit streams are all ending up on the same pipe somewhere. You can't have too many that end up at the same pipe because ethernet hasn't gotten that fast.
+It's like you've got a huge scalability problem that the internet still can't support, naively, what we move around on it. Networks like Google with YouTube and Netflix have started doing these cache appliances that they gladly-- if your ISP is big enough, they will give you the appliance to embed inside of your network to serve YouTube content from your metro area to your customers on your network.
+00:35:52 Brian: They want to give it to you because it gives their customers a better experience. They're incentivized just to push that to the edge.
+00:35:58 Kenneth: They're incentivized to push it to the edge because it gives their customers a better user experience. They're incentivized to give it to you because it saves them transit costs because they no longer have to serve that content every single time out of their core data centers. The ISP is incentivized to give them the space and power to run that server inside of the ISP's network because they no longer have to pay their transit provider to pull in that content.
+00:36:24 Steve: They're like an original influencer model.
+00:36:26 Jessie: It's dope.
+00:36:27 Kenneth: Any ISP is looking at this going, "Wait. You're telling me that if I host your server inside of our network, our transit cost, which is $1,000 a month per gig, our transit cost drops by 30% because 30% of our traffic's coming from Netflix? Sign me up."
+00:36:47 Brian: In your case, that's not true.
+00:36:49 Kenneth: In my case, it's not true because my PhirePhly design is a one cabinet web server.
+00:36:54 Brian: That is not itself watching Netflix.
+00:36:55 Kenneth: Yes. At best, we have one or two of us VPN'd in, and we actually forgot to turn off the VPN before watching YouTube. PhirePhly design isn't making it.
+The thresholds for these cache appliances, you're talking about a couple real servers. You're talking about a couple of thousand dollars for the hardware. They're not giving these things away like candy either. There's certain thresholds like you need to have at least X number of gigabytes of YouTube traffic before they'll send you one of these appliances.
+A lot of the other small regional IFPs, which happen to be, a lot of them in the East Bay buying their internet from Hurricane because Hurricane's such a good conductivity provider, and such a good co-lo provider to start your network from, there happen to be so many small networks in the area that a lot of them were like, "Hey, Kenneth, we'd love to have a YouTube cache node, but we don't qualify."
+I actually started a conversation with Google's network engineering team about, "Hey, I know that no one of these 12 wireless ISPs are big enough to qualify, but what if you were to look at all 12 of them in the aggregate because they all are connected to this one internet exchange point?"
+I managed to work out a deal between Google's cache node that I host it on PhirePhly design, but I administratively tell the cache node that PhirePhly design isn't just the one cabinet. It's everyone that's connected to FCIX who doesn't opt-out of it.
+If someone doesn't want to participate in this cache node, for some reason they can't, but I'm feeding 12 actual IFPs worth of eyeballs into this cache node. The cache node is like, "Great" and it's serving content.
+00:38:37 Steve: At this point, Kenneth has gotten real in terms of-- Now you're talking real traffic, real people.
+00:38:42 Jessie: This is straight out--
+00:38:44 Kenneth: All of a sudden, it's like, "Wait, we have actual real IFPs with real customers behind it. There's money moving everywhere except for on FCIX. Oh my God." This has been how that project has taken off.
+00:38:58 Steve: That is hilarious.
+00:39:00 Brian: What happens? You get a couple of YouTube servers?
+00:39:03 Kenneth: Yes. Google ships to you servers. They're stuffed full of hard drives. It's about a hundred terabytes of hard drives for the cache node. It sits there. I had to sign a contract. The contract that you sign with Google says that you can't publish any of their raw statistics.
+00:39:20 Brian: I can imagine. You can't take the box apart. You're not allowed to--
+00:39:26 Kenneth: The cover might've accidentally fell off [crosstalk]--
+00:39:30 Brian: Accidents happen all the time.
+00:39:33 Kenneth: Who could even really control that? Actually, no. The Google one was actually really interesting because Google didn't ship me a server. What Google did was they ordered two Dells and shipped the Dells to me. These servers were new and boxed from Dell. Google never even saw them.
+00:39:51 Steve: These were not a Google appliance.
+00:39:54 Kenneth: Yes. When I say appliance, it was really just in the abstract. These were literally--
+00:39:59 Brian: Google was just another company in line waiting to buy your hardware, in other words.
+00:40:02 Kenneth: Yes. They bought Dell servers and they shipped them to me. Then, they emailed me a URL to a USB key image and said, "Install this operating system."
+00:40:10 Brian: Wow.
+00:40:11 Kenneth: Google has their own OS for these cash appliances that it boots up, it runs through, it has fields where it says, all right. Type in what sub-net-- Tell me how to get to the internet and where your router is to talk to your router. And then, they take it from there. Their servers then phone home and Google gets control of them and configures them and provisions them and figures out where my cash node happens to sit in the whole internet at large, then Google runs their own control plane for how they want to steer traffic- [crosstalk]
+00:40:47 Brian: Content.
+00:40:48 Kenneth: Right, content. Steer content to the end-users. If you ever really tear apart your developer's console when you look at a YouTube video and you click on the video and start playing it, you'll notice that all of the actual video content is coming from some really weird URL. It's like awholebunchofcharactersofgarbage.googlevideo.com. What it is, is that they have a different hostname for every single different server that you could ever serve a YouTube video from and their control plane tells the end client [crosstalk] which server to pull it from.
+00:41:24 Speaker 1: All right. Cool. [crosstalk]
+00:41:24 Kenneth: That's how that works. I sit there and I watch. They'll typically for these cash appliances, steer the most popular content to it so they can then cash-hit the most and serve the same video over and over and over again from in there. They shipped me these Dell servers. I racked them. I powered them on. I installed their OS, and it has been hands-off ever since. If I need to turn off-- I had a maintenance window last week, I opened a [unintelligible 00:41:52] with Google saying, "Hey, my router is going to disappear for a few hours." They drained the node then it comes back and we keep going.
+00:42:01 Brian: Wow. What is Hurricane Electric-- Did they find this amusing that you are now on Google's control plane for a video? It's not like- [crosstalk]
+00:42:07 Kenneth: Yes. They think it's fantastic because all of a sudden now, in addition-- Because there's no way- [crosstalk]
+00:42:13 Brian: Now, you're giving actual real value for ISPs to locate into Hurricane Electric. Their crazy plan has worked.
+00:42:19 Kenneth: Yes. It's extremely tangible results because one of the problems with Fremont is, it's only one millisecond from San Jose. If you go look back at the ARPANET days and the NSFNET, the original concept of the internet was that the continental US would have eight metro area. There'd be eight points of interconnection that would make the internet happen. Of course, we've grown way past that and so there's now many more than eight connectivity points to make the internet happen, but San Jose was one of them.
+If you want to take out the internet in San Jose, you want to go look at 55 Market in downtown and 11 Great Oaks which is down South San Jose on 101. Those two buildings are really what make the internet happen, which means that you've got your Facebook, Netflix, Google and Akamai and Cloudflare, they're all in just those two buildings and since Fremont is only one millisecond away from it, anyone that really needs connectivity into those networks, well, it's milisecond away, just get connectivity down to San Jose.
+We've now somehow managed to bring YouTube up to Fremont without actually getting Google to build out to Fremont because they would never do it, maybe. If anyone from Google is listening and they want to build it to Fremont, please do. [laughs]
+00:43:30 Brian: Please, do. Well, actually, well, they want to build with Fremont, they should just send you more servers it sounds like it's something [unintelligible 00:43:36] [crosstalk] You are Kenneth, is the Fremont build-out one likely someone out there is like, "Okay, I want to franchise this. I want to go do XCIX in Philly or--
+00:43:45 Kenneth: Running internet changes, is one of these really interesting things because there are, of course, many different business models to do them. If by some matrix, if you go look, you can figure there's about 600 of these things worldwide. Some of them--
+00:44:00 Brian: 600 internet exchanges?
+00:44:01 Kenneth: 600 internet exchanges.
+00:44:02 Brian: How many of these places have these YouTube appliances? How many different--
+00:44:08 Kenneth: It's hard to say because, of course, it's like--
+00:44:10 Brian: They're not going to publish that. Go ahead.
+00:44:11 Kenneth: Google wants their control plane to be proprietary because they do a lot of very intelligent things on it that-- Like how Google routes around the internet is not at all what the RFCs say they should because they just have to because you can't make the internet work at the scale that we've made it work if you follow the RFCs and the specs naively. Google doesn't want to really tell you exactly where all of their infrastructure is. No one else wants to tell you where their infrastructure is.
+The internet exchanges are really for this weird long tail of the small IFPs and the small content providers. If you're Google, the vast majority of your traffic is going to Comcast. Comcast doesn't participate in internet exchanges because anyone that's big enough that they need to serve terabytes of content to Comcast eyeballs, Comcast thinks they can get those people to pay them money. They, instead of peering with Netflix over a settlement free internet exchange, Comcast thinks, "I can get money from them instead."
+00:45:23 Brian: Get money from Netflix?
+00:45:24 Kenneth: From Netflix.
+00:45:25 Brian: Oh, interesting.
+00:45:25 Kenneth: Netflix can't depend on-- This was the whole peering dispute between Comcast and Netflix a couple of years ago, that Netflix could not depend on the internet infrastructure at large to serve their content into Comcast. The only viable way for Netflix to get video content to their consumer, to their customers inside of Comcast network was either we got a peer directly with them or embed appliances there. Comcast is like, well, that's great, but we're getting money for it. Because Comcast was more interested in money than they were with their users, customers experience on some video streaming platform that wasn't theirs. Once you start digging into this stuff, you start seeing where--
+00:46:06 Brian: Seeing how this happens?
+00:46:07 Kenneth: Yes. Then net neutrality stuff is a really hard question.
+00:46:09 Brian: Netflix is like, you know what? We've got Kenneth in our back pocket. We got a Trump card when we got Kenneth.
+00:46:15 Kenneth: All right. Getting back to the point of these internet exchanges, ours was just this mad cacophony of all these happy circumstances that all lined up, that it just worked out perfectly for us that we've been up [unintelligible 00:46:27]. [crosstalk]
+00:46:27 Brian: Starting with some messy cabling.
+00:46:29 Kenneth: Yes, it was literally, we were trying to hide some cabling because the original cabal didn't really need to peer with each other, but once you start getting a few networks on there, it's like, well, there's other networks in the building and that wanted a peer with and other networks on there--
+00:46:41 Brian: It is the actual network effect.
+00:46:42 Kenneth: It's literally this, once you hit this critical mass, everyone wants on. We've now really arguably hit that point.
+00:46:50 Brian: It's funny. It's like it's the history of the internet writ small.
+00:46:52 Kenneth: Yes. It's a very old school story of the internet. The internet happened by all of this happening time and time again.
+00:47:00 Brian: It was similar stuff maybe minus the illegal cabling, maybe not. [crosstalk] It's actually drilling--
+00:47:06 Kenneth: So many of the early peer agreements weren't supposed to happen because the original concepts of like, no, if you're going to connect one network to another, there's got to be contracts involved and written agreements. Then the network engineers went, well, yes, but it's going to take us 18 months to pound out whatever this new concept of a peering contract even looks like. Let's just plug a cable in and not tell any of the business because if the business people can't tell what a router looks like anyways.
+00:47:31 Brian: Right. Interesting.
+00:47:32 Kenneth: This is how the internet happens and it's terrifying and it's messy and it's held together with duct tape and baling wire, but this is how it actually happens. [chuckles]
+00:47:40 Brian: That's amazing. The Kenneth net, the cabal internet--
+00:47:46 Kenneth: It's FAX. It's pronounced FAX. [laughs]
+00:47:49 Brian: Oh, I like that.
+00:47:50 Kenneth: I like that.
+00:47:51 Brian: I like it. It's good. This thing is now becoming real and legit and growing.
+00:47:57 Kenneth: By any metric, we're a legit internet exchange. We just broke 50 networks on the exchange. We've got 50 different unique autonomous system numbers moving traffic.
+00:48:10 Brian: Now, people are surprised your ASN is so high. They're like, "Probably would've been a lot lower." [unintelligible 00:48:13]
+00:48:14 Kenneth: We've got 15 networks on there. We're moving. On a typical day, we're peaking at about six or seven gigabits per second to process things. We're starting to--
+00:48:24 Brian: You're actually legit.
+00:48:25 Kenneth: Yes, and it's still free.
+00:48:29 Brian: Has it broken during the day, how you had to go fix it? Now, when the [unintelligible 00:48:35] net goes down, people maybe- [crosstalk]
+00:48:38 Kenneth: People will start to notice?
+00:48:39 Brian: Yes.
+00:48:39 Kenneth: The great thing about an internet exchange is at its core, it's really simple. It's literally anything that switch.
+00:48:47 Brian: When are you going to have switches break?
+?[00:48:48] Speaker 2: Do you have two of them?
+00:48:49 Kenneth: Well, now we actually have many.
+00:48:51 Speaker 2: All right. Thank you, RISTA.
+00:48:53 Kenneth: Yes, thanks for RISTA because the problem is once we got above 48 peers, we ran out of ports on the ethernet switch. We had to set up a maintenance window and say, all right, guys. We're adding a second ethernet switch. [crosstalk] This half of you, you're going to see your port administratively go down for a few minutes, then come back up and that's because we're moving half of you to try the ethernet switch.
+00:49:15 Brian: Right, exactly. That's because the cable was actually in my hand?
+00:49:18 Kenneth: Yes. I'm physically moving you and I can't move it fast enough to let the BGPs actually not go down. I'd have a planned outage for everyone for that. We have extra convenience value-ad services running on it. If you don't want to do the whole dense mesh of setup a BGP peering session with the 49 other networks on there, we have this thing called a route server that everyone typically connects to the route server, puts the route on, and then the route server does the dense mesh for you which again, that's not a critical part of the exchange because the exchange is just the layer to ethernet switch, but it's convenient. If I accidentally or deliberately reboot that system because of a new kernel or I need to update some piece of software, yes, I see the traffic decreased a little bit but the infrastructure hasn't actually gone down so we haven't lost any packets for anyone. The internet is designed to route around damage and so it's not really that we've had an outage, it's that we've encouraged everyone to move their traffic elsewhere. Then as other parts of the internet have problems, we've seen that traffic come back.
+00:50:31 Brian: Just was ask, going into this, I assume you did not have that much experience in Internet Engineering.
+00:50:35 Kenneth: No, I didn't. The terrifying part is that some schmuck who was a logical engineer at a [unintelligible 00:50:40] company came with-- The joke was, hold my beer, I'm starting an autonomous system. I bought a book on BGP on our 14-hour flight to China, read it, and landed and ordered a router. It was a 72-hour Crash Course in BGP that got me into autonomous systems and then it was a joke that got me into internet changes. Before two years ago, I had never touched BGP and I wasn't in networking.
+00:51:08 Brian: BGP is one of those things that if you're a student, you don't learn about.
+00:51:12 Kenneth: I guess that's not true. Technically, I think I did in my one network lab for electrical engineering. We did one day on BGP, they're like, "This is the core internet."
+00:51:23 Brian: That it exists.
+00:51:24 Kenneth: It exists. There's about 100 people that ever need to touch it. Moving on.
+00:51:28 Brian: I feel like as a practitioner you begin to realize after a couple of years or whatever, like, "Wait a minute, this BGP is load-bearing for everything." Occasionally, a bad BGP route is pushed or what have you that brings down--
+00:51:42 Kenneth: Taxes.
+00:51:43 Speaker 3: For sure.
+00:51:44 Kenneth: I know that one of the big outages last year was literally caused by a cement plant. Why doesn't a cement plant run autonomous system number?
+00:51:53 Brian: Ask the out of business architecture firms.
+00:51:54 Kenneth: Right? It's the same sort of thing. It's like some overeager network engineer somewhere or they or they had some real business need for it, who knows? You start getting these things where if someone internally is doing something goofy and unfortunately, BGP being designed by academics for the university ARPANET system, it assumes trust.
+00:52:14 Brian: It assumes trust.
+00:52:15 Kenneth: It assumes trust and so if you accidentally tell someone all of Google is behind us and we have really good specific routes to Google, everyone, the rest of the internet goes, "Oh, yeah, that's great." It's terrifying how easy it is. Two years ago, I wasn't a network engineer. Then back in May, I quit my job as a logical engineer because I realized that it wasn't bringing me joy. Now I'm working as a network consultant and interviewing for various network engineering positions at companies. Once again, my hobby has accidentally become my career.
+00:52:52 Speaker 2: That's pretty interesting.
+00:52:54 Brian: Understanding much more about how the internet works, you must come out thinking on the one hand, it's much more fragile, in terms of it is all just baling wire, on the other hand, it's much more robust too.
+00:53:08 Kenneth: When you look at it in a local sense, it's incredible. What we have done and the dozen orders of magnitude that we've scaled this stuff up, it's just phenomenal.
+00:53:19 Brian: It's insane.
+00:53:20 Kenneth: Right. When a company puts the right thought into their disaster recovery and the failure modes for it, you can make your internet connection, your presence on the internet bulletproof, you really can. It's just a question of how much time and energy and the right engineers and money you want to put into it but the internet is designed to route around damage. If there's damage somewhere and you're on both sides of it, you don't see a problem.
+00:53:53 Brian: That's amazing. I just got a question we'd love to ask about. Surely things went technically wrong at some point while getting this together.
+00:54:01 Kenneth: Actually, the Fremont couple interexchange has gone unbelievably smooth. [crosstalk]
+[laughter]
+00:54:14 Speaker 1: That's impossible.
+00:54:15 Kenneth: It's conceptually so simple. All we're doing is connecting people. Have we had small problems? Yes, and most of these things are actually because basic things that you would think are absolutely true, like switches that speak ethernet should talk to each other, don't actually end up being true. We've had many problems with turning up new networks that we plug the cable in on both sides and the link doesn't come up. You would think it's ethernet. What could possibly go wrong?
+You get in these bizarre situations where I was sitting on a ranch out on the Sacramento Delta in the middle of California on the phone with a guy in Japan who was logged into his router and I was logged into my switch and we were trying to get his router for m-route another one of the authoritative DNS servers talking to the Cabal. I talked to this guy in Japan, we're trying to figure out why it's not working and we just couldn't get it to work. Finally he ended up-- It was gross, he ended up putting another ethernet switch between his router and our switch and so he has an entire rackmount switch that has one cable from his router into it and then a second cable from it into the exchange.
+00:55:32 Brian: The guy from Japan, his servers are sitting in Fremont?
+00:55:35 Kenneth: Yes.
+00:55:37 Brian: Right, I feel like it's an important detail. I was confused.
+00:55:40 Kenneth: Literally the cable ended up being like 10 meters long and this was actually hilarious because we're sitting there, we've just gotten the VeriSign j route. We're like, "All right, there's 12 other root DNS servers, how many of the other ones can we get on this exchange?" If anyone on the exchanges running a DNS resolver, having these authoritative servers means that the speed of light isn't working against you because you're in the same building. I start doing these trace routes--
+00:56:06 Brian: Now you're part of every sales call for hurricane electric because now you've got a ridiculously fast DNS.
+00:56:11 Kenneth: Honest to God, I don't know why but in the last week we've gotten 10 signups. I think it's got to be because we're coming up on the end of the year and so everyone's renewing their contracts.
+00:56:26 Brian: Sales team needs some metrics.
+00:56:27 Kenneth: Right. The Sales Team needs some metrics and we've now hit critical mass on this contract rotation that it's really easy for us. Almost all of my applications are, hey-- Because we actually in our application form put, how did you hear about us? About half the people say, we saw your stickers in the lobby, and about half of them are my sales rep for hurricane told me to join.
+[laughter]
+God, where was I going with this?
+00:56:53 Brian: On the D, so you've got a lot of the route in terms of-
+00:56:56 Kenneth: Yes, [unintelligible 00:56:56] I'm doing traceroutes to A and I'm doing traceroutes to B and C and D, they're all lettered. I finally get to M, so I do this traceroute to M, and my traceroute to the M-Route server goes to the end of aisle switch that I'm getting my hurricane transit from and then it comes back and it hits M-Route I'm like, "Wow, what?"
+00:57:14 Speaker 1: It's in the building
+00:57:15 Brian: Oh, it's in the building. What?
+00:57:16 Kenneth: I'm thinking, "Okay, how are they on the same aisle [unintelligible 00:57:20]" Let's think about it because I walked through that aisle about once every two weeks because I worked three blocks away so [unintelligible 00:57:27]. Who who in that aisle looks like a route server? And I'm thinking back. There's that one customer six cabinets down for me. They were racking it. It was two guys like their English wasn't very good and the whole cabinet was just obsessively compulsively beautifully cable laced and labeled and everything. I wonder if they're M-Route and so the next time I'm there I go.
+It was literally like I'm on hurricane's transit switch. I'm on port eight and whoever, M-Route ended up on port six, I walk over to their cabinet, I look through the grading, I see cable six, and I walk it up and I follow it and watching it go down the cable tray. It's like my cabinet, five other cabinets and that drops down into this cabinet. It's got six more new servers. I go like, "Oh, their West Coast presence happens to be in the same aisle as us."
+I email M-Route, "Hey, so I noticed that we're in the same aisle and we'd love for you to peer on the Fremont cabal internet exchange". That's how we that's why we sold the port to M-Route on the exchange. We've had lots of these little problems, but we have not yet knock on wood in the year and a half we were running FCIX had an outage there.
+00:58:39 Speaker 1: Wow.
+00:58:41 Kenneth: Firefly design itself, my network, we've had all sorts of outages. FreeNAS has been the bane of my existence because FreeNAS servers will go no, NFS servers going out and then all my VMs are sitting on the NFS server go down.
+00:58:54 Brian: It all comes back to storage problems. I'm so sorry. I know. Here I was hoping to have a networking debugging war story and it's just going to be a storage horror story.
+00:59:05 Kenneth: Hard drives suck.
+[laughter]
+00:59:07 Brian: Hard Drives are very mechanical, unfortunately. The thing is, once you get the network working and there's no reason for it to stop working effectively.
+00:59:13 Kenneth: Probably the most nuanced subtle problem we've had on FCIX-- We've had nothing at large that everyone went, oh, my god. It is going haywire. We've had just lots of weird port problems impacting single ports. We've had weird interactions between-- BGP by default has a three-minute timeout before it says, okay, this router really is gone. Just terrifyingly to think about it that if you just yank a cord somewhere, if you cut a cord and both routers and both sides can't see it, it takes them a few--
+00:59:47 Brian: Three minutes.
+00:59:47 Kenneth: It takes them a few minutes to realize this other router has probably really gone, let's route around it, which in the age of email was fine because once you sent your email, your email server only dialed in to your local transit provider few times a day, so didn't really matter if the Internet took a few minutes to route around some damage, but now do you care a little more .
+We have a security policy set on our switch that, if it sees more than one Mac address on your port, it means that-- when I sell a port-- All right. You can connect your one router to the exchange and I have the switches-
+01:00:24 Brian: When you say sell, just to be clear, you're not taking any money.
+01:00:26 Kenneth: Oh, Yes. It's free [crosstalk]. Sell in the concept that this is where the money would happen if there was money.
+[laughter]
+01:00:35 Brian: Would you open and register and close it to hear that dings? Nothing goes in [crosstalk]
+01:00:38 Kenneth: You have to any transaction opens the cash register, even if it's a credit card transaction or even zero dollars like in just the drawer opens, you have to close
+it again. Right?
+01:00:45 Brian: You just keep using that verb "sell".
+01:00:47 Kenneth: Right. I sell its port to this guy and he didn't have his router directly connected to the switch. He had a switch on his side between our switch and his router for various technical reasons that when our port saw-- he accidentally had two Mac addresses on his side, which violated our-- just only your routers connected to us, violated that source, which shut down the port for thirty seconds to say, "you're doing something wrong".
+His router, though, didn't wasn't able to see that because his router wasn't connected to the exchange, his switch was. So, switch went, huh, weird that's where the port went down but whatever, no big deal and the router is still seeing the life support to the switch. So, it's still sending BGP keep alives that aren't going through for thirty seconds then they start going through and they start not, right?. So, the first two days, this guy is every like thirty or forty minutes, all of a sudden, our session drops and we lose all our traffic, then it all comes back again--
+01:01:46 Speaker 2: We want our money back.
+01:01:47 Kenneth: Right--
+01:01:48 Brian: Exactly.
+01:01:49 Kenneth: We really want the money back. Of course. I was incredibly once I realized what happened was the thirty second interval that the ports are shutting down and then the three seconds that it comes back up, and the three minute interval that's time out, those two time outs were phasing in and out. So, about every thirty or forty minutes, his router would finally realize that the port's going down, shut it down, come back up, and then they'd start over and it would take about thirty minutes for to get in phase again to kill it. So, I was extremely apologetic. I gave him with a 200% refund. [laughs]
+01:02:22 ?Brian: Next three months for free.
+01:02:23 Kenneth: Yes, next three months for free. Okay, lesson learned there. Like you want your lower level, layer one, layer two time outs to be longer than your session time outs above it. It is like little nuance things everyone learns at the hard way but it didn't really cause that much problem because it's like when his router realized it was wrong, he routed around it and he used the rest of the Internet.
+01:02:48 Brian: Right. He used the power of the Internet to avoid seeing the problem.
+01:02:51 Speaker 2: That's great.
+01:02:53 Brian: Well, Kenneth, this has been awesome. If people want to learn more about what you've done with where's [crosstalk][unintelligible 01:03:01]
+01:03:00 Kenneth: Yes. The best place to see me long form is on my blog at blog.thelifeofkenneth.com. Then for a short short form--
+01:03:11 Brian: You're doing nothing to dispel the Forrest Gump by the way [crosstalk]
+01:03:14 Kenneth: It's not wrong.
+01:03:16 Brian: Right, exactly.
+01:03:17 Kenneth: That's why I write with long form stuff like these funny stories of like-- I handed someone my beer last week and did something else. So that's what I do in long form stuff for my short form shit posting stuff. I'm on Twitter, three letters @kwf
+01:03:31 Brian: Awesome. This has been great. It's been a lot of fun we think about on the metal as being the can compute substrate or the storage substrate but of course it's also the networking substrate. This has been great, wildly edutational.
+[laughter]
+01:03:45 Speaker 1: Edumacational.
+01:03:47 Brian: Edumacational. Thank you so much, Kenneth.
+[01:03:49]?Speaker 2:  Thank you.
+01:03:50 Narrator: You've been listening to On The Metal, tales from the hardware software interface. For shout outs, to learn more about our guests or to sign up for our mailing list, visit us a @Onthemetal.fm. On the Metal is a production of Oxide Computer Company as recorded in the Oxide garage in Oakland, California. To learn more about oxide, visit us at oxide.computer.
+On The Metal is hosted by me Brian Cantrill, along with [unintelligible 01:04:13], and we are frequently joined by our boss, Steve Tuck. Our original and awesome theme music is by JJ [unintelligible 01:04:19] at Polland Music Group. You can learn more about JJ and Poland at Polandmusicgroup.com. We are edited and produced by Chris Hill and his crew at Humble Pod, from Jess, from Steve, from me and from all of us at Oxide Computer Company, thanks for listening to On The Metal.
+[music]
+[01:05:09] [END OF AUDIO]

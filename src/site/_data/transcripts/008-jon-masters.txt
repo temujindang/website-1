@@ -1,0 +1,833 @@
+[music]
+00:00:13 Bryan: Welcome to On the Metal, tales from the hardware, software interface. I'm Bryan Cantrill, with me as always is Jess Frazelle. Hey, Jess.
+00:00:20 Jess: What's up?
+00:00:21 Bryan: Joining us in the garage is also our boss, Steve Tuck. Hey, Steve
+00:00:25 Steve: Pleased to be here.
+00:00:26 Bryan: Also, we have it On the Metal first, we have got a live studio audience consisting of Oxide Computer Company founding engineer, Robert Mustacchi. Hello, Robert, even though you're not on mic.
+00:00:36 Robert Mustacchi: Good evening, everyone.
+00:00:37 Bryan: There you go. There's also a very special On the Metal because it is after dark in the garage, this is On the Metal after hours. Jess, do you want to introduce who we've got in the garage?
+00:00:49 Jess: Today we have Jon Masters, really well known around ARM and that ecosystem,-
+00:00:54 Steve: ARM?
+00:00:54 Jess: - but also got a sweet new job.
+00:00:57 Bryan: A sweet new job, well-known around ARM, and Jon, first of all, welcome to the garage. It's great to have you.
+00:01:03 Jon: Thank you, it's great to be here.
+00:01:04 Bryan: All that's true, well-known around ARM, and well-known.
+00:01:08 Jon: I'm awesome. I know, I agree.
+00:01:10 Bryan: You and I got to know one another in a little issue they call Spectre and Meltdown. D you want to walk us through? When did you learn and how about Spectre and Meltdown? Because I think you definitely got an earlier look at this than I and we did. What was your reaction when that all went down?
+00:01:32 Jon: Yes, well, I think if anyone follows my Twitter, they can see that I'm very interested in computer architecture, and over the past few years, an interest has become an obsession. We can talk about where that ended up taking me professionally, but because of that interest in the fundamentals of how computers really work underneath, and many of the things related to my interest in architecture, I ended up tracking a lot of the academic research that was happening. There had been a lot of side-channel analysis papers using caches as a side-channel.
+There was a blog post in the summer of 2017, well, there was several, but the one I'm thinking of in particular, which basically says, "This thing could happen, and then this thing could happen, and then badness would result, but the good news is none of that's true." I read through this and I'm like, "Okay, but there's not really any reason why this is not true, it just seems like you didn't write the next part of your blog post." It turns out there were a lot of people thinking similarly and they had presumably talked with one another or other companies have been involved and they decided not to enumerate exactly what they had found, but it became increasingly concerning during the latter part of 2017 that something very, very bad was going on.
+00:02:57 Bryan: This is about you know about Spectre but not yet Meltdown?
+00:03:01 Jon: No, it's Meltdown that we were concerned about, yes.
+00:03:06 Bryan: Meltdown is just malpractice, I don't know. Spectre feels at some level like original sin, it's forgivable, we're all humans, Meltdown, I don't know.
+00:03:17 Steve: Were they found at the same time?
+00:03:19 Bryan: This is what Jon is saying here, where is the exact chronology there?
+00:03:22 Jon: I think the researchers, they did come together at the same time. The reason that they came together at the same time was because, again, these things don't happen in a vacuum.
+What happened was the security research community found many, many different issues with side channels, with caches over the course of several years, people were starting to wonder about if you can infer the state of execution or you can monitor other threads that are running. "Oh, what would happen if," and then they started thinking about this thing called speculative execution, which is how modern microprocessors give you the performance that you're used to.
+What a modern processor does in a phone or a server or pretty much any computing device, it's not a very, very simple Fitbit or widget is it will speculate ahead, and it will say, "I know this is the program you gave me, but I'd like to go faster, so I'm going to stop to guess ahead about the cost of execution while I wait for data to come in from memory or for other things to happen that would normally mean that I would have to just stop."
+00:04:24 Bryan: Right. This is the way we got around the memory wall. In the late '90s, early 2000s, we were hitting the memory wall where we were just going to be stalled from memory all the time. This is when rampant speculation became frenetic speculation became madness.
+00:04:39 Jon: A load from memory is what, a hundred nanoseconds, right? Modern computers are cool load-store machines basically. You load something from memory, you do something with it, you store it back or you write the results back. We will answer your question, I promise. If you have data in a cache in an internal memory inside the processor, accessing it is progressively faster depending on which level of cache it's in. As the cache level, as the number goes down like the L1 is super-fast but really tiny and very close to where the execution is happening.
+Then you get these caches that are further and further away from the action but they're bigger because the laws of physics say you can have small and fast or big and slow, pick one, you don't get both. Anyhow, so there was a lot of research happening in terms of abusing cache behavior because an artifact of caches is that they are designed to speed up execution by caching things, by keeping copies of data that you've recently used or recently loaded from memory or stored to memory.
+You can perform an analysis on how long it takes to read or write a value, and you can say, "If it took me this many nanoseconds, then I got it from memory" or "If I only took this many nanoseconds, then it must have been in a cache, and if it was in a cache, then that meant somebody else was using it recently." You can infer things about other execution that's happening on the processor. Many attacks had happened, exploiting that, and then Meltdown is an egregious mistake. Meltdown is basically when you have a microprocessor and you want to access some privileged data, what you're supposed to do is enforce permission-checking.
+Permission-checking is basically that you have what are called page tables in memory. They translate the addresses used by programmers into the underlying physical addresses used by the hardware. In Meltdown, what's supposed to happen is you're supposed to walk through these page tables describing these translations, and you're supposed to look at the pace tables, say, "This address maps to this address, this address maps to this address as I'm loading and storing and reading and writing memory. As part of that entry, it also has various permission information about whether I should be able to read or write that."
+To speed things up, what the vulnerable processors do is they parallelize that piece, so I will check the permission in parallel with also doing the access. Assume good intent.
+00:07:19 Bryan: [chuckles] Assume good intent. No, that is a motto in an organization, not a motto in a CPU.
+00:07:25 Jon: I was listening to one of the older Oxide On the Metal podcasts, and there was a piece about some of these older machines, an ICL 286 got mentioned, I think. I grew up in the UK, so I remember these ICL honking great machines too well. When you're at that stage of the evolutionary process, these machines really were single user. They were incredibly big and loud and slow and all these other things. You could assume they're one person using it and security is this is my computer.
+00:07:58 Bryan: They were basically Arduinos.
+00:08:00 Jon: Yes, and I have a key on the front as well. This is my computer and when I'm done, I lock it, I turn the key and everything's good. That kind of mentality is where we came from and the processors we have today just evolve versions of that. It did assume good intent because that's where we came from. Anyway, so they will optimize for the safe path and access the data that it should not access.
+Again, speculatively, meaning that this is something that you're not supposed to see even though it happened, but because it leaves these breadcrumbs in terms of the cache impact, you can then go and do this analysis afterwards, and you can say, "Oh, this data must've been accessed because the timing is different." That's what Meltdown is and in fact, if you go read Computer Architecture, which is a well-known book by Patterson and Hennessy, it actually has I think in appendix B page, I can't quite remember the page anymore, but it's an appendix B. There's actually a whole paragraph around making sure you get this permission check correct.
+00:09:08 Bryan: Yes, if you got pages ripped out of copies in Santa Clara or in Hillsborough.
+00:09:13 Jon: [laughs] I'm a very nice guy, and so I certainly did not.
+00:09:15 Bryan: That's not true. That's something close to true. You can't let the listeners come away with that inference.
+00:09:20 Jon: I certainly did not buy a copy of that book-
+00:09:23 Bryan: Okay, that might be true.
+00:09:23 Jon: - and put a bookmark on that page and have it ready, gift-wrap to send to anybody.
+00:09:30 Bryan: Right, Bob Swan has got a--
+00:09:34 Jon: I may have done that and I may have gift-wrapped it and had it ready to go for the holidays, and then I thought better in terms of self-preservation and I didn't send it, but I did have that ready to go.
+00:09:44 Bryan: This must have been Christmas of 2017?
+00:09:47 Jon: Yes.
+00:09:48 Bryan: Because I heard about it, well, the rest of the world heard about this in-
+00:09:52 Jon: January 3rd.
+00:09:53 Bryan: - January. I think the Hacker News post was on January 1st, where someone had gone through the Linux patches and was beginning to piece it together.
+00:10:01 Jon: She figured it out.
+00:10:02 Bryan: That something was going very, very wrong. It's like, have you seen Boogie Nights when it goes from 1979 to 1980, that midnight 1980, it starts with a gunshot?
+00:10:14 Jon: Yes.
+00:10:14 Bryan: That was January first, 2018 for me.
+00:10:15 Jon: There's a leap second in there somewhere, it's gone wrong, yes.
+00:10:17 Bryan: Exactly. There was a gunshot that was, especially in Meltdown. I remember reading that thinking like, "I got to go talk to Robert. This is definitely going to affect us," and then you begin to realize like, "Oh my God, we are so screwed."
+00:10:30 Bryan: I thought it would be front-page news, everybody's cell phone is broken because I was thinking, what's the exciting thing to attack today? Because Meltdown was everywhere. I'm not going to speak to exactly who had Meltdown, who didn't, but it was everywhere, and I thought that the news would be more sensationalist around, "Oh, your apps are spying on each other," and all this kind of thing.
+00:10:54 Bryan: [laughs] You felt the news was not adequately sensationalist?
+00:10:56 Jon: I thought it would be worse.
+00:10:58 Jess: I feel like it wasn't as bad for people who are outside our circle because I remember exactly where I was when I found out and I was picking out wedding dresses with my sister for her wedding. I was trying to tell her exactly the virality of this, and she was like, "No, I don't get it" and I was like, "No, this is awesome."
+00:11:19 Bryan: She's also like, "Are you trying to yuck my wedding? Why are you trying to ruin my wedding?"
+00:11:22 Jess: Yes, she was like, "Why are you distracted? Can you just fucking focus?" I really was because I was like, "Holy shit,-
+00:11:30 Bryan: This is bad, yes.
+00:11:30 Jess: - this is crazy." So you think that like The New York Times would have some sort of cover page on it.
+00:11:34 Jon: I was expecting front-page.
+00:11:35 Jess: Yes. No, but it was more the Hacker News, very under, but they're very proud.
+00:11:40 Bryan: For the first two days it was.
+00:11:41 Jon: Then it blew up.
+00:11:42 Bryan: Then it blew up. It did blow up.
+00:11:43 Jon: No, but there was no Hacker News, or there was no New York Times front page.
+00:11:47 Bryan: Damn, it felt damn near front page.
+00:11:50 Jon: It wasn't quite there.
+00:11:52 Bryan: Maybe it just felt that way.
+00:11:53 Jon: I tell you, just making that comment, she has what is it, containerize.af, right?
+00:11:58 Jess: Yes.
+00:11:58 Jon: She has these, "Please log in to my machine and break it." There was a little voice in my head that was, "I know how to break it."
+00:12:06 Bryan: No, that's not what Jess meant.
+[laughter]
+00:12:08 Jon: No, I was like, "I can't do it because it's an embargoed issue." I hasten to say, I would never actually do that, but I did think for a minute, it's like, "Oh, I can break your machine."
+00:12:17 Bryan: I am only the kind of person that buys a computer architecture manual and bookmarks the page that you ignore it and gift strap it. There we go, it's a fine line.
+00:12:26 Jon: I use this example. Another example like that. When I was in high school, we had a sailing club. I'm the kind of guy who likes to know how to break things, but I don't like to be the one who actually breaks it myself in a black hat kind of way. We had vending machines in the boathouse there where you could buy candy or whatever after you sailed. I told the other kids and I said, "If you turn it off of the wall and turn it on, it goes into a diagnostic mode for the first few minutes and dispenses free products."
+They're like, "No, can't possibly be true," but it is true.
+Don't do that, that's not good and that's not true in most modern vending machines, but it was at the time, and so they turned it off and turned it on and they cleaned the whole thing out, and we promptly got banned from ever going back. We were allowed to sail but not ever to enter the building.
+00:13:20 Bryan: What?
+00:13:21 Jon: I didn't get in trouble, though. I was the one kid who didn't get into trouble because I never actually used it.
+00:13:26 Bryan: Until now. I'm sure one of those now grown individuals who's listening who's being like, "Oh my God, that guy. He's gloating about it for getting us in some trouble."
+Let's actually turn it way back down a little bit because you obviously like to break things, you got interested in computer architecture. You're mentioning ICL, what were some of your early machines?
+00:13:48 Jon: What was my experience?
+00:13:49 Bryan: Yes, what's your first machine?
+00:13:51 Jon: I grew up in the UK, my first computer was a 6502, it was a BBC.
+00:14:00 Bryan: I was going to say, "This has got to be a BBC."
+00:14:01 Jon: Yes, it was literally a BBC Micro. The modern-day version would be the Raspberry Pi. In the '80s in the UK, every elementary school, or primary school as they would call it, you had these computers that were branded BBC as in the British Broadcasting Corporation. They were standardized in the sense that every school had one and you would learn to write basic. My ever computer experience was a BBC. Now, I had a BBC Master, which was cool because it had twice the memory of the BBC B.
+00:14:41 Bryan: The BBC Master?
+00:14:43 Jon: Yes, I get 128K of memory.
+00:14:45 Bryan: 128K?
+00:14:46 Jon: Yes.
+00:14:47 Bryan: Very good. Were you lording over the other kids with their 64K that you conned into breaking into the vending machine?
+00:14:52 Jon: [laughs]
+00:14:54 Bryan: Were you messing around? What were you doing on that machine?
+00:14:59 Jon: That was writing basic and mostly just messing around. My father was a high school computer teacher. He's actually a historian and he took a break of 26 years, 25 years while he had kids, and then in my mid-20s, he decided to go and finish his PhD, so he is now Dr. Masters. By the way, the reason I didn't do a PhD was because the only reason I wanted to have a PhD was so I could be called Dr. Masters.
+00:15:30 Bryan: It does sound pretty great, I have to tell you.
+00:15:31 Jon: Yes, but I realized that's not compelling in the trade-off. That's the reason I would have done it and it wasn't strong enough.
+00:15:40 Bryan: It’s an expensive name.
+00:15:41 Jon: It's an expensive name. So because of that, my dad had a lot of machines at home and at school that I would play on. It gets worse. He suggested when I was 11 or 12, maybe 11 that I take one of the high school exams that you normally take when you're 18 to go to college in the UK. I did an A level in computing.
+00:16:02 Bryan: Was he trying to send you a hint that he wants you out of the house?
+00:16:05 Jon: Yes, right. [laughs]
+00:16:06 Bryan: It's just like, "Boy, if I can get you out of here six years early."
+00:16:09 Jon: Yes, so that happened and I did well. Then he enrolled me in a local university or the American version of college, of course. I was enrolled as an associate when I was 13, and then I was a student there when I was 14. Briefly, I was very famous in the UK because "Computer race is off to university at the age of 14" or something was one headline.
+00:16:32 Bryan: I see you were a veritable computer prodigy.
+00:16:35 Jon: I've been called that, I would dispute. I don't know if that's true, but I've been called that in the past.
+00:16:39 Bryan: All right, so you're hanging out with a bunch of 18-year-olds, getting them into much more serious trouble, prison break, and taking university courses, and actually getting exposed to real machines at that point.
+00:16:49 Bryan: Right, a lot of Sun machines, we were reminiscing earlier about Sun. My first internship was actually with Sun UK. Weirdly enough, working with their sponsorships team. They used to sponsor sailing races.
+00:17:04 Bryan: They did, yes.
+00:17:05 Jon: Pete Goss, who was a famous sailor, we actually got to go and visit the boat. I don't really exactly remember what their use of spot was.
+00:17:15 Bryan: If I recall correctly, Sun sponsored a vessel. I want to say it was the Black Magic II, a New Zealand vessel that sank, and Sun could not afford the sponsorship on the sale, if I recall, and had a sponsorship on the keel. Iwas like, "Why are you putting your logo on the keel?" No one ever sees the keel unless the boat sinks, which it did, and the last shot was of the Sun Microsystems logo inverted going under the waves. That was a legend.
+00:17:45 Jon: Is that foreshadowing something? [laughs]
+00:17:47 Bryan: Come on, stop that.
+00:17:48 Jon: Sorry.
+00:17:48 Bryan: Can we reminisce about nice things?
+00:17:51 Jon: I actually own a very large collection of old SPARCs, but there was an acquisition a number of years ago.
+00:17:57 Bryan: Have you tried any speculative attacks on those? Part of the problem, I don't think the speculative execution was very effective for SPARC.
+00:18:07 Jon: No, not SPARC.
+00:18:07 Bryan: I'm sorry. Are there architectures?
+00:18:10 Jon: Yes, so I went through a phase a few months ago where I started buying up-
+00:18:14 Bryan: I recall that phase.
+00:18:15 Jon: Yes. [laughs] I'm going to back this up and say I have a very, very understanding fiance. She also works in tech. Hi, Sara. We have a rule now with the number of old computers that come through the apartment. They come in through the front door and they do not pass go as it’s declared, they go straight into the office.
+00:18:40 Bryan: I was going to assume that one came in the front door and one has to use the back door.
+00:18:43 Steve: Has to leave, yes.
+00:18:43 Bryan: Yes.
+00:18:43 Jon: Now you're giving her ideas.
+00:18:45 Bryan: I'm sorry.
+00:18:47 Jon: [chuckles] That has been discussed.
+00:18:51 Bryan: You're in a garage with floppy drives, and just the Mac ACin there, the 486.
+00:18:56 Jon: I feel at home right then.
+00:18:57 Bryan: Yes, exactly.
+00:18:58 Jon: We certainly have north of 30 or 40 computers in the apartment.
+00:19:03 Jess: Whoa, that's a lot.
+[laughter]
+00:19:07 Bryan: Jess is like, "I do not actually have a problem, that's a problem."
+[laughter]
+"I have got a social computer enjoyment, a hobby."
+00:19:16 Jon: Then there's the storage unit. The thing is, my fiance has never seen the storage unit because it just wouldn't end well.
+00:19:25 Bryan: God, please, let that won’t be our Storage Wars, please.
+[laughter]
+Please, do not pay for that storage unit. I love to watch their expression when they throw that one open. They'd be like, "Oh my God, it's a bunch of PR RISC machine."
+00:19:36 Jon: Actually, I have a PA RISC at home in the office. There's an 8000 in the office.
+00:19:43 Bryan: Now, as I recall, you actually spoke to some PA RISC engineers at some point.
+00:19:46 Jon: I did, yes. I went through the back catalog of different architectures and reached out to people I knew. I was like, "What do you think about this thing that you worked on? Do you think it would be horribly vulnerable?"
+00:19:58 Bryan: What did they say?
+00:19:58 Jon: They were like, "Oh, yes."
+00:20:00 Bryan: Oh my God.
+00:20:00 Jon: That thing speculated everything, I'm sure it would break. I've accrued a collection of fairly esoteric machines. I have a PA-RISC, I already owned an Itanium because, of course, you have to have an Itanium.
+00:20:17 Bryan: Yes, that puts you in rarefied air right there.
+00:20:21 Jon: I own a SPARC laptop, that puts me in rarefied air.
+00:20:23 Bryan: More SPARC laptops are Itaniums. Itania I guess.
+00:20:28 Jon: Itania, yes.
+00:20:29 Bryan: It was a true disaster. Recall that HPs Itanium was code-named McKinley, and I wanted us to code name what I think ended up being Panther but would have been competitive with McKinley. I wanted us to code name it Czolgosz after Leon Czolgosz, Kinley's Assassin.
+00:20:48 Jon: Oh, that's good.
+00:20:49 Bryan: Right?
+00:20:50 Jon: Yes.
+00:20:50 Bryan: I thought that joke did not kill. The microelectronics folks were like, "Czolgosz has got a bunch of CZs in there," and I don't know. It's a [crosstalk] guy.
+00:20:58 Jon: Mine's called Hamartia, which is a folly or something that shouldn't have happened, is what that means.
+00:21:05 Bryan: I think Hamartia’s right there with Czolgosz on code names.
+00:21:08 Jon: Yes. [laughs]
+00:21:09 Bryan: I obviously think it's great. Itanium must speculate.
+00:21:16 Jon: No. It does speculate, but it speculates under program or control.
+00:21:20 Bryan: Really?
+00:21:21 Jon: Yes, so I can say, there's a couple of instructions with--
+00:21:25 Bryan: That is so on brand for Itanium.
+00:21:28 Jon: Yes.
+00:21:29 Bryan: It's like the whole point of speculation is that you don't rely on a magical compiler.
+00:21:36 Jon: Yes, there's a couple of instructions where you have to don't ask, so you can say do this, but speculatively, and then I'll see if it would have trapped or had an exception.
+00:21:44 Bryan: That is interesting at some level.
+00:21:47 Jon: Yes, it's similar in a sense to if you think about what some of the, so a Transmeta.
+00:21:51 Bryan: Oh, very good.
+00:21:53 Jon: Yes, o course, I have the transmit.
+00:21:54 Bryan: Jess, you have a Transmeta.
+00:21:55 Jess: Yes.
+00:21:56 Bryan: Okay. Steve, Transmeta.
+00:21:59 Steve: No Transmeta.
+00:22:00 Bryan: No Transmeta? Do you want to explain Transmeta to Steve?
+00:22:02 Jon: Transmeta had what they called CMS, which was the Code Morphing Software. What they would do, this was a phase in time where entails--
+00:22:11 Bryan: Yes, take us back.
+00:22:12 Jon: Okay, all right, the sins of time, right?
+00:22:14 Bryan: We're talking like 1999?
+00:22:17 Jon: Late '90, yes, it's the end of the century.
+00:22:19 Bryan: Yes, turn of the century.
+00:22:20 Jon: Turn of the century.
+00:22:21 Bryan: All right, it's called that. Yes, right. Anyway, so it's the go-go late '90s?
+00:22:24 Jon: Yes, and the mobile performance from most of the x86 vendors was really not great, I'll put it that way, and so what the start-up Transmeta decided they could do is
+they could make a very, very energy-- This is Dave Detsil and a bunch of others that decided they could make--
+00:22:41 Bryan: At Sun.
+00:22:42 Jon: Yes. It's either Sun or its Data General.
+00:22:48 Bryan: Right, or DEC.
+00:22:48 Jon: Or DEC. I used to work at Red Hat for the last 12 and a half years or 13 years, and I used to joke, and I mean this in the nicest way, I really do because I love everyone at Red Hat.
+00:22:59 Bryan: I'm bracing for impact.
+00:23:00 Jon: It used to be like 100% reemployment for people that worked at DEC because they were some really good DEC folks. If you've ever wondered why Red Hat's engineering headquarters is in Westford mass, just look at the map and you will see why it's there.
+00:23:14 Bryan: There you go. So Dave Detsil and crew, Transmeta, the higher Linus Torvalds famously, is that Transmeta?
+00:23:22 Jon: Yes. They had footprints in the sand on the website, so you go to Linus transmeta.com and be like, "Oh, something's coming," but you don't know what it is and you read the HTML comments to see if there's anything in there.
+00:23:32 Bryan: Footprints in the sand because it was the Crusoe microprocessor.
+00:23:35 Jon: That's right, Robinson Crusoe, yes.
+00:23:38 Bryan: Robinson Crusoe, that seems like a very weird analog. Anyway.
+00:23:43 Jon: It turns out though that lots of processors have really odd names in this industry.
+00:23:47 Bryan: True. Czolgosz, it would have been a good company.
+00:23:49 Jon: Yes, it would have worked.
+00:23:51 Steve: Did they make it through the great recession, Transmeta?
+[laughter]
+00:23:54 Bryan: Oh, no.
+00:23:55 Jon: No, they got sued out of existence, I guess. Lots of things went wrong for Transmeta later.
+00:24:02 Bryan: There were lessons in Transmeta.
+00:24:03 Jon: There were many lessons in Transmeta, but their idea was to take x86, which is a very complex instruction set, and stop me if you've heard this before, translated into a risk machine underneath, but with a twist, which was that there was a lot of fancy software running underneath. It was a lot more like a JVM. When you're running Java on a modern machine, it has a just-in-time compiler, which basically looks at the code, it looks at hotspots, and says, "Oh, well, this is code that I'm interpreting all the time, and I should probably turn this into native machine code." Then it has all kinds of optimizations it runs.
+What Transmeta were doing is they would treat x86 in this kind of way and your machine would run the code. The first time it encountered some code sequence, it would just interpret it. It would say, "Okay, well, this means this," and literally programmatically interpret each instruction, which is very slow, but then it would stash translations of these into its native underlying machine code. Then it would start to do really exciting things like aggressively speculate ahead in software and say, "I've seen this sequence and I know that this sequence is probably Windows doing this thing that I know Windows does" like weird page table update or whatever sequence that you see in a game.
+It would say, "I think the next thing it's going to do is this because I know that whenever I see that, this happens." Modern processors have a lot of hardware predictors and prefectures that do similar stuff, but this was on steroids because they had infinite, well, not infinite ability, but they could do everything you can do in software, which is always a lot more sophisticated than just forcing someone to build all of that into hardware.
+00:25:48 Bryan: Very hard to do that and they clock though.
+00:25:50 Jon: Yes.
+00:25:53 Bryan: Ultimately, they could not compete. Intel did come out with a mobile version, the Mobile Celeron as I recall.
+00:25:58 Jon: Yes, and they killed them in performance, and then there was a little bit of a patent issue that they had.
+00:26:03 Bryan: A little bit.
+00:26:04 Jon: A little bit of one.
+00:26:05 Bryan: Would they BOIW under the hood?
+00:26:07 Jon: Under the hood.
+00:26:08 Bryan: They were interesting.
+00:26:09 Jon: Yes, and there were a couple of efforts over the years to reverse engineer it as well. That's another thing that I'd love to have time to really play with.
+00:26:15 Bryan: Do you have a Transmeta box?
+00:26:17 Jon: I do.
+00:26:18 Bryan: How many of those are there? That can't be that many.
+00:26:20 Jon: There's a whole bunch of one generation still on eBay, but not a lot because there were two generations of Transmeta and I've got both of those. They'll be interesting from a speculative execution analysis viewpoint because they basically speculate everything. Feeding this back, so we've got PA-RISC at home, we've got a bunch of DEC Alphas as well because they're always good for fun. Alpha was famously very aggressive in its performance optimization.
+00:26:50 Bryan: Yes, it was very aggressive.
+00:26:56 Jon: By the way, the other side of some of this is you get to work on mitigating these horrifying security disasters. You get to go and look at some of these old machines and I'm looking at the old machines just because I can write a paper there and no one's going to yell at me. No one cares really about an Alpha at this
+point.
+00:27:11 Bryan: Right, but if you wrote a paper on Transmeta, do you mean a blog entry? If they were going to publish a paper on Transmeta, that would be great.
+00:27:16 Jon: There was some interest in doing that. I talked to a bunch of security researchers about doing this. We said, look, again, if we take old machines that no one cares about anymore, we could rip them apart, we could say, "They screwed this up, they screwed that up." No one's going to sue us and no one's going to care.
+00:27:31 Bryan: Yes, actually, that'd be great.
+00:27:33 Jon: Yes, so that's a side activity.
+00:27:36 Bryan: It's like a gangster antiques roadshow. What do you call this?
+00:27:40 Jon: Speculation disasters?
+00:27:42 Bryan: There we go, yes.
+00:27:42 Jon: It's the whole series there.
+00:27:44 Bryan: Yes.
+00:27:46 Jon: The other side of this is that when you start going down this rat hole of really trying to understand how modern machines actually optimize and speculate and guess ahead and all of these things, what you also get to do is you get to go and meet some of the people that built these.
+00:28:00 Bryan: Yes, right.
+00:28:01 Jon: I got to give a presentation at Stanford as a guest lecturer at one point, which was fun.
+00:28:09 Bryan: It's great, yes.
+00:28:10 Jon: I'm chatting away and there's this guy asking a few questions and I'm like, "Oh, he seems like a very nice guy. I wonder who he is." I didn't know. Then afterward, we go and have dinner and he's sitting there chatting with me and I'm like, "Oh, yes, so who, who are you anyway?" and he's like--
+00:28:29 Bryan: John Hennessy.
+00:28:29 Jon: No, it was Dick Sites.
+00:28:31 Bryan: Okay, there you go, nice.
+00:28:33 Jon: He was involved in Alpha.
+00:28:36 Bryan: Yes, right, and Parano, did you see Parano as well?
+00:28:40 Jon: I may have, but he's written a number of papers. One of them famously is It's The Memory Stupid. Then another paper called It's Still The Memory Stupid. About how performance is tied to memory latencies and optimizations, but getting to meet some of these people was the other half of playing around with all the old machines.
+00:29:00 Bryan: That is definitely exciting. I was actually at Stanford when John Crawford, the Itanium architect was lecturing about Itanium. It's back in the day and it was an open lecture. I'm sitting there listening to Washington Crawford, and this guy at the back of the room just starts ripping him apart. In particular, he's highlighting the fact that Itanium was doing very well, and this is [unintelligible 00:29:23] this is the first embodiment of it, doing very well on all of the spec benchmarks, except for GCC, which is the only one that actually approximates a real-world workload from transmitting the memory wall.
+This guy is just ripping apart over it, and Crawford is stumbling around. The guy at the back is like, "This just seems willfully ignorant of everything we know about systems performance."
+00:29:46 Jon: [Laughs] Who was it?
+00:29:47 Bryan: I look back and he's like, "Oh my God, it's John Hennessy." It's a talk about computer architecture, gangland slaying, it's like the late '90s, it was amazing. That's great. It's fun though.
+00:29:58 Jon: I have a Hennessy story. Again, the getting to be involved in Spectre and Meltdown actually was super exciting. Now I'm sure a lot of people in the industry found it horribly painful and had lots of negatives associated with Spectre and Meltdown.
+00:30:12 Bryan: I thought it painful and exciting?
+00:30:13 Jon: Yes, okay, painful and exciting for you.
+00:30:15 Bryan: I'm looking, Robert had to implement Kernel page-table isolation for us while we were vulnerable. That's fun.
+00:30:23 Jon: It's like, "No pressure."
+00:30:24 Bryan: No pressure.
+00:30:24 Jon: I see that seat you're sitting on getting progressively warmer, but don't worry. [laughs]
+00:30:27 Bryan: Yes, exactly, but it was exciting, honestly.
+00:30:30 Steve: It was terrifying.
+00:30:32 Jon: What's that?
+00:30:32 Bryan: For Steve, it was a little terrifying, but yes, it was exciting.
+00:30:38 Jon: That's happening. You get to go and learn a lot about things that we vaguely knew things about, but really diving in and getting paid to go and figure things out. Then the ability to go and talk about it. At some point, I forget exactly how this came together, but I get an email asking, "Would you like to give a keynote at Hot Chips with John Hennessy?"
+00:31:02 Bryan: Oh, wow.
+00:31:02 Jon: I'm like, "No, I wouldn't like to give. No, actually, yes." Yes, is the only answer to that, right? What am I going to say? Of course, right?
+00:31:08 Bryan: Oh my gosh, yes.
+00:31:10 Jon: So a couple of years ago, it was his keynote and we were just hangers-on, myself and some really great co-presenters, but I fear that that could be the high point in my career. I seriously fear that that one time.
+00:31:24 Bryan: That's pretty great though.
+00:31:26 Jess: That's a good high point to have. I don't really know how you top that.
+00:31:29 Bryan: Yes, I think that's a good one.
+00:31:31 Jon: Then I'm like, "I want to take a selfie with him."
+00:31:35 Bryan: Oh, you got to take a selfie.
+00:31:36 Jon: I didn't.
+00:31:37 Bryan: I think you got to go for the selfie.
+00:31:38 Jon: No, even though I love selfies more than anyone, I'm just like, "I can't."
+00:31:43 Bryan: You know what? I think I say always go for the selfie. I think that if you'd gone for the selfie, he would remember you as the guy who took the selfie. There's no way he's going to remember you as the guy who didn't take the selfie, the self-control who did not take the selfie.
+00:31:55 Steve: A little too close to Siri.
+00:31:56 Jon: Yes, we just said, "Let me say it again, 'Hey, Siri.'"
+[laughter]
+00:32:01 Steve: She'll wake up quick.
+00:32:02 Jon: My phone was lighting up, sorry about that.
+00:32:04 Bryan: We are going to take a quick break, and then we are going to be back with more Jon Masters On the Metal.
+[music]
+00:32:10 Jess: On the Metal is brought to you by the Oxide Computer Company.
+00:32:13 Bryan: Wait, did you say computer company, Jess?
+00:32:15 Jess: Yes, indeed.
+00:32:16 Bryan: Wait a minute, everyone runs to the public cloud. Jeff Bezos owns and operates every computer on the planet, why would anyone start a computer
+company?
+00:32:23 Jess: That is so not true. I have spent a bunch of time talking to folks who are still running on-premises, and actually, the consensus among all of them is just a feeling of neglect because everyone thinks that everything is moving to the public cloud, but it's not.
+00:32:36 Bryan: If you're still running on-premises, it's because you haven't heard of the cloud, right?
+00:32:40 Jess: No, there are really good reasons for running on-premises still; for security, for latency, strategic reasons for your business.
+00:32:48 Bryan: Wow, the people running on-premises must feel like everyone has ignored them.
+00:32:52 Jess: They do indeed. If this is you, please head on over to our website, oxide.computer, sign up for our mailing list, and we would love to get in touch and hear your stories.
+00:33:02 Bryan: Oh, we acknowledge that you exist and you've got some really hard technical problems that we're solving, oxide.computer, come join us. All right, we're back. Jon, when we last left, you were ripping apart these ancient architectures. Have you actually found vulnerabilities in these things? It takes a long time is the problem.
+00:33:24 Jon: It does take a long time.
+00:33:25 Bryan: It's not easy?
+00:33:26 Jon: I left Red Hat fairly recently, but one of the things that I was doing was leading the Spectre-Meltdown mitigation efforts. Actually, the project was originally known as the Omega Project. Now, if you're a Star Trek fan, you would hopefully have the, "Yes, the Omega Directive." In Star Trek law, there is a molecule that destroys subspace, prevents faster than light travel, and so Starfleet has a hidden directive called the Omega Directive, which is if you ever encounter Omega, you must stop everything else. It must be destroyed at all costs and all knowledge of it must be suppressed. I thought that is a great name for the secret Spectre- Meltdown mitigation project.
+00:34:07 Bryan: That's very good. Better than Czolgosz. All right, so you steered the Omega Project to actually go and--?
+00:34:12 Jon: I had my boss issue the Omega Directive, which is the Star Trek thing that they do.
+00:34:15 Bryan: Oh, very good.
+00:34:17 Jon: She's like, "Why am I sending this email?" I'm like, "Just hurry and sent it."
+00:34:19 Bryan: You're like, "Just send it, it will be hilarious."
+00:34:21 Jon: It's very important because it will make me laugh, and that's funny. We had these projects going on for several years, and at the beginning, it was very aggressive like "Get ahead of this nasty disaster." Then, later on, we got better at quite getting ahead of it, but moving.
+00:34:40 Bryan: When you say it, the problem is it didn't stop.
+00:34:42 Jon: It didn't stop.
+00:34:43 Bryan: We all knew this. We all knew that when Spectre and Meltdown broke, it's like this is not the last one of these. In fact, what this is now done is, and I'm sitting as not a security person, knew that there had been hypotheses about speculation-based attacks, but until Spectre and Meltdown, none of those attacks actually borne fruit. Now all of a sudden it's a beacon to every security researcher that there are tons of vulnerabilities here.
+00:35:13 Jon: I think there was a implicit assumption that hardware was somehow safe. Until Spectre and Meltdown proved that actually if you start digging there, you will find a lot of interesting things to find. I want to come back to that. The point I was getting to with running this mitigation effort and so on for several years was that we ended up having to create reproducers. I haven't had a chance to do some of that on the older machines that I've been acquiring because I haven't been under that immense time pressure of, "Oh God, we have to figure it out."
+00:35:46 Bryan: Your reproducer for Meltdown was great by the way.
+00:35:48 Jon: Thank you.
+00:35:49 Bryan: It was just so terrifying because obviously, you know academically and not doubting the severity of it at all, but to actually run the reproducer you're like, "Holy God."
+00:36:02 Jon: Yes, so with a lot of these, it was like we were given a vague description of the actual problem. Meltdown was a bit different because we understood about that, but with a lot of the other issues, we were given a vague description like this something could happen and badness would result and you would see this thing happen.
+They wouldn't be like, "Here's how it is done" because a lot of companies, if they give you that level of detail, then that's a bad thing in their policy. I spent a lot of time creating reproducers for things that processors companies probably had internal reproduces off that they could not give to me. For example, L1 Terminal Fault.
+00:36:38 Bryan: Yes, I was going to say L1TF. I assume we're going to do the whole tour here?
+00:36:42 Jon: We can. L1TF was funny because I was sitting on a plane halfway across the Atlantic on my laptop with a privacy filter on hacking on a reproducer for this and halfway during the flight, I think I yelled out loud, "Oh, expletive, expletive, expletive," and then I'm like, "Oh, I'm on a plane, I better not do that."
+00:36:58 Bryan: Did you ring your flight attendant call button? It's like, "Excuse me."
+00:37:00 Jon: Do you understand? I just got this thing working. [laughs]
+00:37:02 Bryan: Wow. What you're doing is so, if you'll forgive the pun, it's so fundamentally speculative in terms of like, I don't know, I could dig here for a while and never actually be able to exploit it.
+00:37:15 Jon: Yes, like you know the outcome, but you don't know how close you've got. You only know if you actually made it work or you didn't make it work. None of these times am I finding these, I want to be very clear, I'm not the discoverer of these issues, but I'm given a synopsis of the problem, and then we have to go and figure out how to reproduce it. L1TF was funny. Not funny, but interesting.
+00:37:37 Bryan: Not funny haha, more like funny boohoo.
+00:37:38 Jon: Yes. I'm sitting on a plane and I'm like, "Oh, I just managed to make a VM read things it shouldn't from the host. Oh, that's a bit scary." Then it was recently an issue with VMs being able to cause badness in terms of host crashes and things that came out. I guess I can mention now that earlier this year I got that working on a laptop. I'm sitting in my living room and I'm like, "Oh, what would happen if," and finally figured it out and I'm like-
+00:38:08 Bryan: You keep playing them out.
+00:38:09 Jon: - "I'm just going to run this," and then the laptop goes boom, and I'm like, "Ooh, that's not good. That's a VM that just killed my laptop. That's not good."
+00:38:16 Bryan: That's so gratifying.
+00:38:18 Jon: It really is.
+00:38:19 Bryan: That's what I truly do miss about- I really have not done Kernel Development on my own desktop in 15 years, and I definitely miss that. That's such a great visceral feeling when you broke your own laptop. Triple faulting.
+00:38:34 Jon: Yes.
+00:38:34 Steve: Where do the names come from? Who sets the name for Meltdown, Spectre, iDRACula?
+00:38:39 Jon: The researchers decide what is the most PR and newsworthy. We get the, again, this is in my old life, it recently changed, but in my old life, what would happen is we would get the academic name. We would get MDS, Microarchitectural Data Sampling also ZombieLoad. Which one sounds better? We have this thing called MDS, it sounds like you went to the doctor and you're all okay now. ZombieLoads sounds like, "Oh God, they're coming." Then there was ZombieLoad 2 recently.
+00:39:14 Bryan: What is the vulnerability that kicked that off? Was it a Heartbleed or was it earlier? I'm trying to think of Heart-
+00:39:19 Jon: Yes, I think Heartbleed.
+00:39:20 Bryan: In terms of the branding exercise for vulnerabilities, when did that start?
+00:39:25 Jon: I think it was probably pre-Heart, but that's the one that comes to mind.
+00:39:30 Bryan: That's the one that comes to mind for me too, I'm not sure that there was one. Jess, can you think of one but before Heartbleed.
+00:39:35 Jess: No, Heartbleed was significant because it needed to have the marketing. I think some of these don't necessarily need the marketing.
+00:39:42 Bryan: It was unbelievably bad. If there's going to be a vulnerability that is going to kick it off, it might as well be Heartbleed.
+00:39:49 Jon: I can tell you a funny story about the names. Again, we would be told by the processor companies there was this thing that happens that's bad and here's how we'd like to fix it using page-table isolation or some particular fix. They wouldn't say which researcher, they say a researcher or researchers have found. They wouldn't say which researcher. I got really good at figuring out all of the academics.
+00:40:14 Bryan: Oh, interesting. Which one of that one.
+00:40:15 Jon: Which one was it, so we figured out before Spectre and Meltdown were public. We're like, "It's the folks from TU Graz." We worked out it was them, and then I went on to a reverse DNS registrar and looked at all the domains that they'd registered recently. We found, "Oh, this is your meltdown.help test domain where you did the testing for your SSL certificate on this date and then, oh, Spectre and Meltdown."
+00:40:42 Bryan: Pulled up [unintelligible 00:40:43] vulnerability marketing.
+00:40:45 Jon: They didn't do it again. I told them and they're like, "Oh, never again."
+00:40:49 Bryan: Not doing that one again.
+00:40:50 Jon: Yes, now they use anonymizers to even register the domains. Another one would be the RIDL paper which was the Rogue In-flight Data Load. That was Leuven I think did that one. They were good in almost every single way, but when we thought it might be them who were publishing, their bibliography on their departmental websites started updating itself just a little bit too soon.
+00:41:20 Steve: What was this vulnerability?
+00:41:23 Jon: RIDL was, what was the branding for that one? That was, not NDL, that was one of the other.
+00:41:30 Bryan: Did they get printing? Did eagerfpu get grading?
+00:41:33 Jon: That MDS. MDS was a whole family of them and RIDL was one aspect of that particular family. We're more than 25.
+00:41:44 Bryan: Yes, there are too many to keep track of. I remember at one point I had missed the morning call with Intel and I came in, Robert was like, "Oh God, another one." I'm like, "Okay." He's like, "What's the only unit we haven't talked about yet?." I'm like, "The FPU?" He's like, "Yes, it's the FPU." He's like, "Oh, no, it was eagerfpu." I'm like, "Okay." Because I think it was just revealing unit after unit after unit after unit, just like we hadn't considered it anywhere. None of these units had been tied carefully.
+00:42:16 Jon: Just unrolling the stacks slightly there without giving away the exact date we're recording this on, but we're recording this on the anniversary of the original FDIV bug.
+00:42:29 Bryan: FDIV bug, and it's funny you said, and I saw your tweet yesterday about that, it was 25 years ago, right?
+00:42:35 Jon: Yes, 25 years ago on this date was when IBM finally did a stop ship on Pentium.
+00:42:42 Bryan: Right, because of FDIV?
+00:42:44 Jon: Because of FDIV.
+00:42:45 Bryan: FDIV was very bad, it was the wrong results.
+00:42:48 Jon: It was very bad. I forget how many decimal places, but it was effectively, if you did a very specific division, then due to the algorithm that they used and they had these lookup tables and they missed five entries in one table in hardware. If you did a particular calculation that this professor I think in New Hampshire had found originally, Intel had discovered it internally and they already fixed it actually. By the time this was public, they had already fixed it in New Silicon, but this problem existed in the Pentium chips. This professor had found it and it was something you could reproduce in an Excel spreadsheet by typing a division.
+The average person was never going to see this or care about it. They're not doing this level of math in their typical spreadsheet, but it was a very obvious thing that you could test on your own computer and get the wrong answer. The reason I'm mentioning it is because On the Metal before, previously, there've been mentions of things like microcode and some of the tricks that are done behind the scenes, the modern era of micro coded x86 machines I think dates back to about then because post-FDIV, Intel, and others said-
+00:44:00 Bryan: We need to be able to update this.
+00:44:01 Jon: - "We need to be able to fix some of this."
+00:44:02 Bryan: Yes, interesting. When I first saw your tweet and before I did the calculation on my head of the years, I thought you might've been referring to FOOF.
+FOOF was only a couple of years later. They got very, very lucky with FOOF, so FOOF, it was an illegal instruction, but--
+00:44:21 Jon: It was a locked prefix on a bus tra--
+00:44:26 Bryan: A prefix, there was a locked prefix on a legal instruction.
+00:44:25 Jon: Right, yes.
+00:44:26 Bryan: The CPU couldn't lock the bus and then tried to evaluate the illegal instruction with the bus locked and it just didn't proceed. There was like a 72-hour moment where any user could hard hang any box before Intel. Actually, we've implemented one workaround of unmapping the first six entries of the IDC.
+00:44:49 Jon: Right, exactly, the IDT, and there was one with aligning some of that.
+00:44:58 Bryan: I was very proud of myself because I heard about this and implemented mitigation very quickly, and we beat everyone else to a mitigation. It was hairy to have the first six entries of the IDT unmapped and clean that up. I was just like, "This is going to be great." Then they're like, "Actually, we've got a much simpler mitigation." It was certainly aligned with the IDT.
+00:45:18 Jon: It was a cross-page thing or something. There was some alignment where you forced the trap if you want over.
+00:45:24 Bryan: That was the original mitigation, and then what they found is actually, I think if you make the IDT unwritable, that mitigated it. Come on, that's a much easier mitigation. I thought for a second I've already implemented the hard mitigation.
+00:45:38 Jon: I seem to recall there were six or something different mitigations at the end for FOOF.
+00:45:42 Bryan: Yes, I think that they ended up being a lot, but it was also one of those early warnings that these microprocessors are not valuable obviously.
+00:45:51 Jon: If you look at the time-frame for some of these things, so bugs that are being found in the early and mid-'90s, we don't have cloud computing, we don't have the rise of very homogenous attacks surfaces everywhere with untrusted users running third-party code on your machines.
+00:46:09 Bryan: If you think about FOOF today in the cloud, Oh my goodness, the consequences would be so much more grave. Foofing your lambda.
+00:46:18 Jon: We've come so close to that.
+00:46:20 Bryan: Serverless plus FOOF equals annihilation.
+00:46:23 Jon: It is serverless, but not in the way that they actually--
+00:46:25 Bryan: Great, it's like, "Yes, yes."
+[laughter]
+00:46:27 Jon: If it doesn't work at all, it's still serverless.
+00:46:29 Bryan: It's still serverless, "Congratulations, you are now officially serverless." No, you're right in terms of the attack surface, they're much scarier.
+00:46:39 Jon: At this point in time, we're relying a lot on technology that was built for a very different use.
+00:46:45 Bryan: How do you think we square on some of this stuff? Hyperthreading, I know a lot of us believe there has to be a burial at sea for hyperthreading because it's too intimate to ever be able to completely mitigate.
+00:47:04 Jon: Yes, so hyperthreading or SMT, simultaneous multithreading is basically when you take a microprocessor core or a thing that does the computing and you partition it into a smaller number of logical processors, threads, whatever, each of which has enough architectural state to look like a separate processor, but they share a lot of resources very closely, like their caches, for example, and a lot of other pieces. It's very tightly integrated, and the thing with hyper-threading or SMT, in general, is that it gives you about a 30% quick win in terms of performance.
+00:47:44 Bryan: It's a sugar high. It's nice.
+00:47:45 Jon: It's a sugar high, it's great. I have hated SMT for years as a concept because it's so tightly coupled. I've been an ARM fanboy forever, I think even others know. When it comes to the history of ARM servers, which I've been heavily involved in as well, there I've really pushed hard to kill SMT early on because it just seem like a really bad idea.
+It looks great, and it turns out in the context of security, I think I was right.
+00:48:16 Bryan: ARM has no SMT.
+00:48:19 Jon: There are very few ARM processors that do SMT. There's one silver processor that does, it can do SMT 1, 2, or 4 actually, so it can actually have four threads which is pretty rare, but that does happen.
+00:48:26 Bryan: Oof, yes. Whoa, yikes.
+00:48:30 Jon: ARM has one core they've announced which is threaded, but not intended for server years.
+00:48:37 Bryan: So by and large, they have avoided.
+00:48:39 Jon: By and large, they've avoided it so far.
+00:48:41 Bryan: Right, interesting. Talk about, when did you fall in love with ARM? Tell me about that. There's got to be an ARM love story here.
+00:48:49 Jon: That roots back to the 6502. That's the BBC Micro, that's Acorn, which followed on the Acorn Archimedes. Acorn as in Acorn [crosstalk] and then advanced first machines becomes ARM, becomes lots of other things I probably missed there. I think a lot of it traces back to being a kid growing up in the UK to a certain point.
+00:49:12 Bryan: Wow, it's an act of patriotism.
+00:49:13 Jon: Yes, and it's weird because I just became a naturalized American citizen. No, I still love ARM. [laughs]
+00:49:20 Bryan: You still love ARM. It's the old country. You got to bring the old country with you.
+00:49:25 Jon: I think it's because I've been a RISC fan person for a very long time.
+00:49:30 Bryan: RISC is great.
+00:49:31 Jon: RISC is great. I got very interested in the prospect for diversification. These days, there's also things like RISC-V. I was just at the RISC-V summit this afternoon.
+00:49:45 Bryan: I love RISC-V, don't you? I love the spirit of RISC. You know what? I love the Zike extra RISC-V in terms of trying to learn everything from every architecture.
+00:49:55 Jon: One, and I hate to say this and someone's probably going to send me a nasty email or a tweet or something 
+after I say this, but one risk machine is very similar to another risk machine. Fundamentally-
+00:50:06 Bryan: Aren't they each special in their own way?
+00:50:08 Jon: Yes, but each of them have weird quirks.
+00:50:09 Bryan: Okay, that's a fair review, but RISC-V has got fewer quirks, I feel.
+00:50:14 Jon: I think RISC-V is very clean. Take the original ARM, original ARM had a lot of junk in it. Even now on B7, which is their 32-bit architecture, has a lot of baggage.
+00:50:30 Bryan: Explain Thumb to me and still stay in love with ARM.
+00:50:33 Jon: I can't.
+00:50:33 Bryan: Okay, thank you. That's actually what I wanted to hear.
+00:50:36 Jon: It was about core density and I get it.
+00:50:43 Bryan: Mistakes were made.
+00:50:44 Jon: Mistakes were made. I think if you unwind that, x86 is a variable with construction set, so instructions can be as small as a single byte.
+00:50:54 Bryan: Many are.
+00:50:56 Jon: The core density is pretty good and you do waste memory with risk machines, but our memory is pretty fast these days and we have lots of tricks that we use. We do OpCode Fusion and things like this. We say, "This instruction follows this instruction and we'll just merge them together in our internal representation." We have lots of tricks we use today that actually mean that we're less worried about the need to do stuff like that like Thumb. Then ARM has a lot of other stuff. It has predicated execution where I can say, "Maybe I execute these instructions, maybe I don't." It lets you update the program counter directly which tends to have horrifying impact in implementation.
+00:51:34 Bryan: It's just one of those things that from a microprocessor architect perspective, it's just like, "Oh my God, this is brutal."
+00:51:39 Jon: Then they cleaned it up, so ARMv8 is basically a clean sheet design where they took all the things that were not great about the older architecture and they ripped them out and they've got a very clean design, which is very similar to RISC-V in the end. The reason is because I think there's only so many ways to do it, and they've all trended towards having a certain set of instructions. I think Chris, I can never get his last name right, Chelio, I'm going to butcher that, I think he did an analysis and it was 1% performance difference or 2% in the optimal case between a hypothetical perfect RISC-V versus ARM decode or something. I think they're very close.
+00:52:25 Bryan: That was interesting that in the RISC-V, the book, they really talk about core density a lot. They got a specter of core density clearly hanging over them and they compared a lot to x86. Actually, the core density is pretty similar because of the instruction sets, it's basically better. Also, x86 is getting some variable with instruction. The good variable with instruction one or two bytes. There are some monsters out there now. The seven, nine byte. What's the longest instruction in x86?
+00:52:55 Jon: 15 bytes.
+00:52:56 Bryan: Is that true?
+00:52:57 Jon: Yes, theoretical maximum instruction decode is 15 bytes.
+00:53:01 Bryan: Holy God, what instruction is that? Do you know?
+00:53:04 Jon: I don't think it exists.
+00:53:05 Bryan: Okay, this is a theoretical instruction, but they got actual instructions that are getting up there, I feel.
+00:53:10 Jon: Maybe halfway, yes, because the thing with x86 is they have all these prefixes you can add to instructions. You can do this, but also, I'd like you to lock the bus and these other things as well as you run this instruction. My interest in ARM was, I think, partly an artifact of the time and place I grew up in, and then I was living in the US when I got really interested in what could be done with ARM server because you could see the progression of these mobile devices. At the time, the BeagleBoard, just pre-Raspberry, well, maybe not pre-Raspberry Pi but a similar timeframe to the Raspberry Pi starting up.
+I'm looking at this board and I'm thinking not many generations hence, this could be an interesting server. They would need to be 64-bit, they would need lots of other things for it to actually get there, but I could see a path. My interest was born because I saw a very small competitive landscape of servers out there. Interestingly, I think that will change. I think x86 will change in the next few years because most of the original x86 patents are expiring next year.
+00:54:15 Bryan: That is interesting.
+00:54:16 Jon: That will be interesting to see.
+00:54:18 Bryan: That will definitely be interesting.
+00:54:20 Jon: Yes, I think it might be open season on people building interesting stuff there, but at the time, when I'm looking at alternatives, I'm thinking, well, ARM is a very interesting alternative because it has a lot of traction with very big companies using it in mobile phones and elsewhere, and so that will fund a lot of the investment needed to grow this up and put it into more interesting places.
+00:54:42 Bryan: Certainly interesting what AWS is up to. Graviton I thought was a pretty interesting announcement. It's a pretty interesting CPU.
+00:54:50 Jon: The Graviton2 that they just announced-
+00:54:51 Bryan: Right, you have an idea, right?
+00:54:52 Jon: - is an ARM Ares design, that's the name of the core. The thing with the Graviton2 is it is the first mainstream ARM server that anyone can just get access to without having to go through crazy hoops to do it. That's a very high performance and at a good price point. What that will do is, actually, it performs, I think, 20% better than x86. Their TCO numbers were like 40% cheaper than running an x86.
+00:55:23 Bryan: To some metrics.
+00:55:23 Jon: To some metric, yes. I'm not trying to sell AWS or Graviton, but I think it's interesting because you'll get people that will now do a comparison and they will say, "I'm not just taking my workload and giving something up." A lot of companies appear and say, "I'm going to have a sea of cores. I'm going to give you all these amazing things, but you have to take your workload and run it on a thousand cores and change everything you're running."
+00:55:53 Bryan: You got to go SeaMicro.
+00:55:55 Jon: SeaMicro, well, the interesting thing with the early ARM servers that killed a lot of them, and I was a real broken record going into these companies and trying to give them business advice. Sometimes I think I give good business advice, by the way. I would tell them, "Look, the thing is that," and at the time, I was with Red Hat, "If you are running software, you pay whether you're paying licensing or subscriptions or whatever the model is, you are paying based on the number of nodes that you're running on, number of servers you're running on."
+No company is incentivized to say, "Yes, this emerging architecture is wonderful and great and you need three times as many computers to do the same thing. We'd love to give you a three times discount, that will be fabulous." What company is going to do that? None were. The actual cost in a lot of these early machines was higher because you had to go and have three times as many and three times as many means three times as much memory. This building real machines that the cost of the processor is actually a relatively small piece.
+00:56:56 Bryan: Right, you actually want as a powerful a host CPU as you can possibly have within the limits of the system. You really do not want to waste time with this. SeaMicro did this, a bunch of companies did this, and Moonshot did this too. Remember that 32-bit ARM course for Moonshot?
+00:57:14 Jon: Moonshot, I think they had a Karl Zeder reference, but the first one they really came out with in a big way was the AppliedMicro X-Gene. It was 64-bit. Funny backstory on Moonshot. When it shift, these are little cartridges, they look like PCI cards, you could 45 of them in a 4.3, I think, U. It's not 4U, it's not 5U.
+00:57:36 Steve: 4.3.
+00:57:38 Jon: Yes.
+00:57:38 Bryan: The old 4.3U.
+00:57:39 Jon: It's the old 4.3U because everybody has that in the rack.
+00:57:42 Bryan: They had some reasonable number from a metric perspective?
+00:57:45 Jon: No.
+00:57:47 Bryan: Because a U is a goofy number to begin with.
+00:57:49 Jon: I'm going to rant here about the units of measurement. [laughs]
+00:57:53 Bryan: Go for it, we've got it coming to us. It's an imperial system of measurement. We've got it from our former overlords.
+00:58:01 Jon: No, there's British imperial units and there's US customary and they are not the same, my friend. They are not the same. They tried in 1850 to fix it, I think. Anyway, if one had read a little bit about that. Moonshot, you have these 45 cartridges in 4 point whatever U, which is a weird unit, but whatever. First, you get this problem of licensing. When they shipped the first Moonshot cartridge, they shipped it with, and this is going to sound like I'm ranting about a particularly next distribution, I'm not. It happened to be Ubuntu, this is not an anti-Ubuntu comment.
+I actually liked every Linux distro, they're all great, but they shipped this with a hacked up Linux because they're like, "Oh, it's just Linux." They did a deal with Canonical and they said, "Oh, well, you can buy this server now and it comes with a free Linux," and they hacked it up because it was still this embedded platform. The first Moonshot cartridge is a weird form factor and, oh, by the way, it only runs this one weird operating system build that stopped being supported in the future. I went back to HP, actually, what I did was I went to Applied Micro had made the processor at the time and I said, "You've got the firmware wrong. What you should have done is this." I know we joked earlier about my favorite being UEFI.
+00:59:18 Bryan: I just didn't know the pro-UEFI demographic existed.
+00:59:24 Jon: Exixsted? Yes.
+00:59:25 Bryan: It's like the same person that wants to buy a Transmeta machine so they can exploit it. Do you enjoy UEFI because it's so terrible?
+00:59:34 Jon: Yes, of course. I like the pain.
+00:59:36 Bryan: Oh, you like the pain. You like terribleness.
+00:59:38 Jon: No, I don't. The thing is, things like UEFI, these are specifications that don't have to relate to the implementation.
+00:59:46 Bryan: My colleague at Oxide, Joshua Clulow, was fond of saying that UEFI is like MS-DOS from 2099. It really does look like futuristic DOS. It is so weird.
+00:59:54 Jon: If DOS actually ever evolved over time-
+00:59:57 Bryan: Yes, parallel universe.
+00:59:58 Jon: - it would end up looking like this?
+00:59:59 Bryan: Yes.
+01:00:00 Jon: I like the UEFI specification. I think TianoCore implementation has some issues, but anyway, I said, "If you had used a standard on here, you could run anything on these platforms, and wouldn't that be great?" I thought it'd be great because I was building an operating system that was UEFI based,-
+01:00:19 Bryan: There we go. Yes, exactly.
+01:00:19 Jon: - so clearly, it would have been great because we could have run my operating system. Also, I was trying to convince Red Hat to go to market because we kept doing these dev previews and I'm like the number one ARM fanboy. Please ship this thing that we've spent years and years and years building, and they were like, "Son, when a server comes along from an OEM," and I'm like, "Great, here's the OEM. Oh, crap. You shipped it with firmware that we can't support because it doesn't have any of the specs." I went back to Applied Micro and conspired with a friend of mine over there and we hacked up a UEFI Runtime that ran from memory.
+What happened is this thing booted with U-Boot, that was its bootloader in the cartridge. It loaded something it thought was a kernel, which was actually UEFI.
+01:01:02 Bryan: Oh my God.
+01:01:03 Jon: It then reinitialize itself without retraining memory because we had to have that up. Reinitialize all the iOS and then chain loaded basically a UEFI environment, but it got better because it would load this over the network because I didn't want to rely on any local storage to make this happen because I couldn't access the flash. They locked that down in the shipping units, so U-Boot would TFTP but not the PXE TFTP, this is very important. It would load from one location that U-Boot was expecting, it would load my modified firmware, and then that would then do another network boot and then load the operating system.
+The thing is, the outcome was you could take this cartridge and you could show that it could run a standard OS.
+01:01:46 Bryan: Right, it only took 25 minutes to boot.
+01:01:48 Jon: It did take about 10 minutes to boot, but then I went to HP and said, "This is what you should have shipped."
+01:01:55 Bryan: And?
+01:01:56 Jon: They relaunched the cartridge.
+01:01:59 Bryan: Oh, with--
+01:02:00 Jon: No, it was not my firmware. They did do it professionally, it didn't have like JCM handy-dandy firmware banner printed when it loaded. They got some good firmware people and it was nothing related to my thing, but I used that as an argument to say, "Here's what you should have done" and they relaunched Moonshot. I ended up doing that a lot in the ARM server space going in and saying, "I know you think that that's how you want to do this."
+01:02:27 Steve: How often was this successful?
+01:02:29 Jon: I'm very persuasive. I can be very annoying.
+01:02:33 Steve: Just keep showing up.
+01:02:35 Jon: I would show up and these executives, these different companies would come to know me pretty well.
+01:02:40 Bryan: It's like, "Don't we have a restraining order against you?"
+01:02:42 Jon: I also became the patron saint of lost causes. I would go in when companies were shutting down various efforts and I would go and help them. I'm going to share this story anyway.
+01:02:53 Bryan: That's the spirit, that's the On The Mental spirits. Like, "Damn the lawyers, I'm going to share this story."
+01:02:59 Jon: [laughs] Broadcom had an ARM server-
+01:03:00 Bryan: Oh, here we go. Oh, yes.
+01:03:01 Jon: - called Vulcan and that effort ran out of money and patience from the executive. Avago bought Broadcom and now it's new com. It's called Broadcom, but it's not Broadcom, it's very different.
+01:03:15 Bryan: Everything is now Broadcom. Yes, sorry.
+01:03:20 Jon: Right, so that happened and they realized, "We don't really care about ARM server stuff we're investing tons of money into" because that's not the way that their economics tend to work over there. I'll put it that way. That's a very nice way to put that. They killed this project and all the OEMs were telling me, "Oh, well, it's all shut down, it's all gone," but then a couple of us who came to call ourselves the rebel alliance became very annoying. We would go and talk to CEOs around the Valley and we would try to sell this company that we were not employees of, and we were just very interested in saving and making sure it landed somewhere.
+01:03:57 Bryan: You're just trying to find a home for it.
+01:03:58 Jon: Yes, so I played, not major but a reasonably significant role in persuading those assets to land in what became Cavium's ThunderX2.
+01:04:08 Bryan: Got it.
+01:04:09 Jon: Went back to the OEM that had just told me we're shutting everything down and said, "No, just wait. We'll be back in a few weeks, this is all be fine."
+01:04:18 Bryan: Right, "I, Jon Masters, will orchestrate the future."
+01:04:20 Jon: [laughs] Some others too, it wasn't just me. I do remember that we had the design team for that part at supercomputing talking to potential customers and they had just been shut down, but they wanted to keep going. They were in my Airbnb sleeping on my couch, which is a fun backstory.
+01:04:38 Bryan: At that point, did you own the company by sharing it?
+01:04:39 Jon: No.
+01:04:41 Bryan: It's like, hey, how many nights' stay would have yielded the ideal assets at that point?
+01:04:45 Jon: [laughs] In the book version that I'm sure I'll never write because I plan to work again in this industry, there's a lot of these stories where you go into these companies and you say--
+01:04:57 Bryan: What is this book called?
+01:05:00 Jon: Fixing things the way they should be, I don't know. I would go in and I would say, "Here's the firmware you should have done" or "Here's how you should have tweaked."
+01:05:08 Bryan: A UEFI love story?
+01:05:09 Jon: Yes. I'm certain you have seen the book Savaged by Systemd.
+01:05:16 Bryan: Yes, I have. Have you seen this?
+01:05:19 Jess: Yes, I saw it on Amazon. I'm the one who showed you.
+01:05:21 Bryan: Oh, hey, that is a problem.
+01:05:24 Jon: I have it on my Kindle.
+01:05:25 Bryan: That is true, you did show me that. Okay, I'm sorry.
+01:05:27 Jon: I have it on my Kindle.
+01:05:29 Bryan: Okay, so yes.
+01:05:32 Jon: So it could be that bad.
+01:05:33 Bryan: Unchained by UEFI. I'm trying to think, Savaged by Systemd.
+01:05:38 Jess: I have that commit murder inside.
+01:05:43 Bryan: Do you feel like you're in good company there, the Systemd and UEFI? UEFI is hated, it's reviled, right?
+01:05:51 Jon: It is hated.
+01:05:52 Bryan: Okay.
+01:05:53 Jon: Yes, there's a lot of things that are hated in this world and totally relied on. I would meet people doing coreboot, for example, LinuxBoot, or various different other stuff that I ought to in all rational sense prefer. I do, but I'm like first you have to build it the boring way that the industry is used to, and then you can go and throw it away. That's also code for you also need to run things like Windows as well. If you want to be successful, you do have to run Windows.
+01:06:23 Bryan: We're going to take a quick break on that note. We're going to come back in just a bit with more On the Metal from Jon Masters.
+[music]
+On the Metal is brought to you by the Oxide Computer Company where we're going to try a new feature shamelessly ripped off of replies, yes, yes, no, where our boss, Steve Tuck, brings us a tweet he does not understand, and Jess and I try to explain it to him. Steve, do you have a tweet?
+01:06:45 Steve: I should do.
+01:06:45 Bryan: Go for it.
+01:06:46 Steve: The tweet in question, "UEFI pre-boot network stack engaged the onboard neck in such a way that it would write back DMA to particular physical memory pages sometime after control was passed to the bootloader. Corruption would occur somewhere in the user parts of the RAM disc." No idea.
+01:07:04 Bryan: No idea. Jess, do you understand this tweet?
+01:07:07 Jess: I understand definitely the part about the UEFI pre-boot networking stack, but the part about DMA is in question marks. I guess I'm not really sure where this is going.
+01:07:17 Bryan: You're overthinking it. I understand this tweet running on-prem is painful. This is dealing with an awful firmware bug. Firmware has overwritten part of the operating system in a way that is extremely painful to debug.
+01:07:31 Steve: Who do you go to in that case?
+01:07:32 Bryan: Who do you go to?
+01:07:33 Jess: You definitely strangled one of your vendors.
+01:07:35 Bryan: You strangled one of your vendors and, unfortunately, your vendor is a PC vendor because all of the existing computer companies are selling personal computers. What we need is a new computer company.
+01:07:46 Steve: This is just saying I'm in intense pain trying to run systems on-premises.
+01:07:50 Bryan: That's exactly what it's saying. Steve, what can someone do if they're intense pain running on-premises?
+01:07:54 Steve: Oh, if someone is running in intense pain on-premises, what they should do is go over to oxide.computer to learn a little bit more about how we are going to take that pain away.
+01:08:02 Bryan: Help is on the way. Join us at oxide.computer.
+01:08:06 Jess: You are not alone.
+01:08:11 Bryan: All right, we're back. Jon, you were just telling us that we've all got to run Windows. It just feels like such a terrible existence.
+01:08:18 Jess: Coreboot is now supporting the K-executive Windows.
+01:08:22 Jon: She's right.
+01:08:22 Jess: Through UEFI.
+01:08:25 Jon: She's right.
+01:08:27 Bryan: I really thought that Jess was going to come in and sell this idea that everything is got to run Windows, but actually, she's pointing out the Window of your coreboot. All right, that's okay.
+01:08:33 Jon: Windows has changed. Until Windows 10, I had not run Windows since 1995. That was my last Windows install, it was Windows 95.
+01:08:44 Bryan: Jess, go on.
+01:08:45 Jess: That was a good OS.
+01:08:46 Jon: It was a good OS. I installed it on floppy disks and it worked. Actually, it didn't work.
+01:08:53 Bryan: I feel that Bill Gates robbed me of my childhood. I really do believe this. I did not know that an MMU existed until I got to college. I did not know that. Obviously, potential DDR1 in terms of like, I just felt that computers would spontaneously reset.
+01:09:08 Jon: They still do that.
+01:09:09 Bryan: They do, but they used to do it all the time. In the DOS days and the Windows 3.1 days, they used to do it all the time. It was an act of gross negligence that we actually had memory protection in the part that no one was using.
+01:09:22 Jon: Until recently, you can extend that. You have memory management units in processors to protect memory, but for a very long time, you did not have that on the iOS side. You did not have full IOMMU isolation and we have these attacks like, "I plugged this malicious device into your laptop and because you're channeling something over, it looks like USB, but actually, it's not, I can perform DNA attacks and so on." Famously, various operating systems have embraced IOMMU use everywhere, and so on. This stuff has continued, by the way, for decades.
+01:09:58 Bryan: Yes, fair.
+01:09:59 Jon: I remember installing Windows 95 on floppy disks, fewer than my first Linux install because my first Linux install was 200 floppies, my friend. That was-
+01:10:09 Bryan: Whoa.
+01:10:09 Jon: - Slackware 96.
+01:10:11 Jess: I have a Linux box over there.
+01:10:14 Bryan: That's a lot of floppies. That's got floppies in it?
+01:10:18 Jon: It was two weeks.
+01:10:19 Steve: I think there's a CD in there.
+01:10:20 Jon: It was two weeks to download that. I had high-speed access once a week, so I downloaded it, and I took all these disks home in this little briefcase, and then discovered this, X whatever because Slackware had all these different letter and then number combinations, and I get very fast through the install, and then that it just doesn't work, and you're like, "Oh, man, it's going to be a whole week." At that point, you can't ask anyone for help. This is the point in my life where my computer would be powered off uncleanly and it would say something about needing to run fsck and inodes and other scary looking words.
+We had no general file systems, and so I would reinstall my operating system. I would reinstall my OS because I had no idea what the heck this meant. I hadn't shut it down cleanly and bad things had happened. You couldn't ask anyone because there was no one to just ask on a mailing list or Facebook chat or whatever it is now.
+01:11:18 Bryan: Yes, Facebook Messenger, my first source for any technical question.
+01:11:22 Jon: There is a Linux patches Facebook group.
+01:11:26 Bryan: That's got to be run by bots, don't you think?
+01:11:28 Jon: It's run by, who am I thinking of? Chris, what's his last name on Facebook.
+01:11:33 Jess: Oh, shit.
+01:11:35 Jon: Yes, exactly, Chris oh shit, yes. We will both think of his name in a minute, but you know who I mean.
+01:11:40 Jess: Yes, I know, totally. I have a thread with him about C-groups or something and I can't remember his last name.
+01:11:47 Jon: I like that idea though, he's like, "That's where the mon generation--" He works with Earl Mason, right?
+01:11:52 Jess: Yes.
+01:11:54 Bryan: Chris Mason the butterfaceguy? I could help you out on that one.
+01:11:57 Jon: You didn't.
+01:11:58 Steve: You did, yes, thank you.
+[laughter]
+01:11:59 Bryan: That's true. It's true.
+01:12:01 Jon: You were not helping out.
+01:12:02 Bryan: Actually, I did not help you out. All right, fair.
+01:12:04 Jon: I'm going to make that comment about Windows. I installed Windows 95 on floppy disks, it was not great, but I didn't hate Windows 95. I didn't use Windows for several decades after that for good or bad or whatever reasons. I was a true zealot, I used to run the Virtual Richard Stallman on my computers and it would tell me that I was running one piece of nonfree software. I was running the Sun Java runtime and I was a bad human being, and I felt bad, I really felt bad for running one piece of nonfree software.
+01:12:42 Bryan: Says like the UEFI jihadist. I just felt like this is so weird.
+01:12:45 Jon: [laughs] Then I got better.
+01:12:47 Bryan: You got better, there you go.
+[laughter]
+I do not understand this at all.
+01:12:49 Jon: Later on, I'm like, "Everything must be, not just open source but must be free software all the way, baby. Nothing else," and I'm still very fond of that model, I really am.
+01:13:04 Bryan: Yes, I think so. Open source firmware, come on, now's the time.
+01:13:10 Jon: I agree, but I got to a point of a bit more comfort with I'm never going to run Windows on my primary desktop or whatever, but I got a bit more comfortable with the idea that, okay, I guess proprietary software exists.
+01:13:23 Bryan: I don't know, I feel like the pigs are walking on their hind feet on this one. I feel that you're such an idealist and now-
+01:13:30 Jon: It's been crushed out of me.
+01:13:31 Bryan: - it's been crushed out of you, and now you're all about proprietary firmware. Now is the time for open-source firmware.
+01:13:37 Jon: I agree. In my new role running software at a processor startup, one of the things that we are going to do is have fully open-source firmware.
+01:13:47 Bryan: So are you joining Microsoft's open UEFI? What do you even call that thing, the open UEFI?
+01:13:52 Jon: Oh, they have a project.
+01:13:53 Jess: DK or something.
+01:13:55 Bryan: Yes, right.
+01:13:55 Jon: Yes. We're going to work on TianoCore directly and we will just contribute every change directly upstream into the TianoCore project. That's open-source firmware, it happens to be UEFI, but it's open-source.
+01:14:11 Bryan: It's open-source, that's important though.
+01:14:12 Jon: I'll give you another example of the UEFI because I know everyone hates it. U-Boot, which is a popular embedded bootloader, somebody, I think it was Alex Raph actually who started this, but somebody wrote a EUFI wrapper. So you can have U-Boot complying with the UEFI specs and not run any of that horrible stuff. I don't hate that, it boots everything the way that I want it to and doesn't touch TianoCore, great.
+01:14:38 Bryan: Right, you welcome that.
+01:14:41 Jon: Yes.
+01:14:41 Bryan: It's fine for you.
+01:14:42 Jon: Yes.
+01:14:43 Bryan: Something that gets UEFI out of the way effectively by pretending to be UEFI.
+01:14:49 Jon: They just got it working on the Raspberry Pi. You can now run a very boring on-server looking config on your Raspberry Pi. I don't know why you would want to. I can see why developers might want to do that. It's kind of fun.
+01:15:01 Bryan: You're looking at embracing open-source firmware at the microprocessor startup. Very exciting by the way.
+01:15:09 Jon: Thank you.
+01:15:10 Bryan: We think that we like crazy companies around here, so we like your crazy company. How much of the software stack are you guys going to be developing?
+01:15:20 Jon: We haven't said what the architecture is. People have guessed based on the things that I've done in the past what it might be or might not be, you never know, but the plan is to build a very high-performance server-class processor that is compliant with my favorite word, which is boring.
+01:15:39 Bryan: I think your favorite words are rampantless, speculative. Aren't those your favorite words?
+01:15:43 Jon: [laughs] Yes, but I love the word boring as well. Our head of marketing, John Kovel, he's a great guy. I'm sure he would say, "Please don't use the word boring," and I won't write that down.
+01:15:55 Bryan: You just have to hope that he had a stroke sometime while listening to this and hasn't even made it this far to the podcast.
+01:15:59 Jon: Hopefully, you're not listening this far, John. The thing is, I think computers should be boring, I think you should basically turn on your machine, unpack it, and it should look like a normal enough computer. It should have a serial console if that's what you want, it should have these things, you should be able to plug it in and do a network install and have a nonexperience, it should just work.
+01:16:22 Bryan: It's very complicated to make it just work.
+01:16:23 Jon: Yes, it is very complicated to make it just work, and I know some people that are quite good at making things just work out of the box. "I think he wants to buy a computer, please buy one now."
+[laughter]
+It's oxide.computer.
+01:16:37 Bryan: There you go.
+01:16:38 Steve: There it is.
+01:16:38 Bryan: [unintelligible 01:16:38] that's pretty good.
+01:16:40 Jess: That's great.
+01:16:42 Jon: I think that should extend to the other components in the machine as well, so the microprocessor. We think we can make really, really fast kick-ass processors that blow everybody out of the water in terms of single-thread performance because that's what people want. I'm coming back to my point earlier, you can come up with some alternative and you can say, "Please don't use your existing x86 server that you've got because I would like you to take your workload and do this thing that you're not going to do." Or you can say, "I'm going to give you something that is super fast, much faster than what you have today.
+You don't have to do very much to move your workload onto it." So we're very keen on single thread, and then we're very keen on basically embracing open source, so I came from an open-source background.
+01:17:26 Bryan: The end of Moore's law, do you view that as an opportunity to make more architectural improvements? Is Moore's Law ending?
+01:17:35 Jon: Yes.
+01:17:35 Bryan: All right, good, I was just making sure that Intel doesn't play something in your brain.
+01:17:39 Jon: Moore's Law was an observation about scaling, but regardless of whether they dig out of their manufacturing woes, let's say that they bring the scaling back, the economic piece is the issue. Can you continue to manufacture at increasingly smaller geometries, and can you do that in a way that doesn't blow up your cost?
+01:18:03 Bryan: Yes.
+01:18:04 Jon: No.
+01:18:05 Bryan: If you actually go back and read Gordon Moore's original paper, which is amazing, Moore's Law was not coined by Moore in that paper.
+01:18:12 Jon: No.
+01:18:12 Bryan: It was coined by Carver Mead 10 years later, and that paper is as much an economic paper as anything. An economic observation about the transistors per dollar. That's what we have been observing up until recently. I would say up until 14 nanometer or 20 nanometer. I'm very troubled by the lie of nanometers, does that bother you at all?
+01:18:38 Jon: Yes.
+01:18:39 Bryan: Because Intel had announced like, "Oh, yeah, we're going from three nanometer and we've got a roadmap."
+01:18:44 Jon: 1.4
+01:18:45 Bryan: "It's 1.4 nanometer to zero point--" It's like when are we going to admit that that nanometre is a lie?
+01:18:52 Jon: These are marketing numbers.
+01:18:53 Bryan: They are marketing numbers, but that's not right.
+01:18:55 Jon: No.
+01:18:55 Bryan: Right? That's not right.
+01:18:56 Jon: It's the same way that if you sell a computer to someone, they're going to say, "Ooh, this has got eight cores and not four cores," and they don't know what the difference is in terms of performance between those, but eight is better than four.
+01:19:07 Bryan: I feel this is a bigger lie. I think this is a bigger lie because the industry keeps it a bit of a secret that the actual number itself, there is nothing that is being measured.
+01:19:20 Jon: One geometry somewhere vaguely resembles that number, but the actual width of the gates, the actual structures is far bigger than the number.
+01:19:27 Bryan: It's far bigger. It's like this is the equivalent gate width if we had kept a structure from whatever, five years ago. What is it based off? It's based off of what, 22 nanometer or something like that? Where they froze in time.
+01:19:48 Jon: There used to be, I forget the exact acronym now, but there used to be the International Roadmap for Semiconductors, ISTR I think it was. Always get those letters the wrong way around, but there used to be an established roadmap that would give you the process scaling forecast for the industry. What happened was a few years ago, they realized that that didn't make any sense anymore, and they've replaced it with something else, and now that's being debated again. Fundamentally, we're hitting a point in time where everything as we used to know it is--
+01:20:21 Bryan: We're going to hit density limits however you phrase it.
+01:20:24 Jon: We're going to hit economic limits.
+01:20:25 Bryan: Economic limits, that's fair.
+01:20:26 Jon: By the way, on your point about geometry, I saw a great fake ad yesterday which had an Intel CPU and an AMD CPU, and it had a seven-nanometer and 14-nanometer and it said, "Buy the 14-nanometer because it's twice the nanometers."
+01:20:45 Bryan: There you go, exactly.
+01:20:45 Jon: I was like, "That's great. That's a really good ad." Please make that, that would be really funny.
+01:20:49 Bryan: I don't know if it just feels like the lie seems annoying. We know that Moore's Law's ending.
+01:20:54 Jon: Right. I think it's a fabulous opportunity. Firstly, I think Intel could always be challenged by the right competition, but the problem historically was that they had pretty good architecture, but they also had amazing manufacturing.
+01:21:14 Bryan: Yes, they were very good in process, and they were very good on execution. The speculative execution is a big part of the Intel story. They were better at speculative execution than anyone else.
+01:21:25 Jon: There's a guy, a total attention, called Andy Glue, who is known as Crazy Glue in the industry.
+01:21:36 Bryan: [laughs] Why have I never heard of Crazy Glue?
+01:21:37 Jon: Andy works at SiFive these days, but he's worked everywhere in the industry. He's a really smart guy, but when you go and look at some of the original patents in the early '90s, things that all have expired now, but some of the early speculative execution patents that Intel had, his name's all over. There's a few of them there. This guy, he graduates from college and then he has this prolific couple of years of his life where he's coming up with one crazy idea. That's where he gets his name.
+01:22:01 Bryan: Crazy Glue.
+01:22:02 Jon: He comes up with one crazy idea after another.
+01:22:04 Bryan: The house owner days of Crazy Glue.
+01:22:06 Jon: The thing is that a lot of this stuff dates back to the early and mid-'90s, and they've continued to innovate, but they had this fabulous period where they came up with a lot of these really advanced concepts that they then productized. That's not even the reason I think why they were where they were, it was the manufacturing.
+01:22:25 Bryan: Yes, on process.
+01:22:27 Jon: On process and nobody else had manufacturing that could even remotely challenge them.
+01:22:33 Bryan: Are we going to get a book on Cannon Lake, the disaster of Cannon? It's got to be like conflagration.
+01:22:39 Jon: Where is it?
+01:22:40 Bryan: It's like conflagration at Cannon Lake, it's like a Hardy Boys mystery.
+01:22:43 Jon: Where is Cannon Lake?
+01:22:44 Bryan: Where is Cannon Lake? The missing Cannon Lake.
+01:22:46 Jon: The mysterious absence of Cannon Lake.
+01:22:48 Bryan: The mysterious absence of Cannon Lake because that is clearly a wall-to-wall disaster inside of Intel.
+01:22:54 Jon: Yes, I'm sure it is. The very few companies that could weather the absence of a complete generation of their product, so it kind of sort of be okay.
+01:23:03 Bryan: Kind of sort of.
+01:23:04 Jon: The big problem we have as an industry even goes further than that because of the fundamental limitations on how many places actually someone can go for a third party fabbing, third party foundry service. It basically means that someone did these numbers and they said, "Look, if AMD sold every processor that they could possibly push through TSMC, Intel would still have a very large majority of the market."
+01:23:32 Bryan: Just based on Fab.
+01:23:33 Jon: Just based on Fab capacity.
+01:23:36 Bryan: I think that with the end of Moore's Law that's going to change. There's something called Wright's Law. This guy, Theodore Wright, observed that as we build more aircraft, they get cheaper. Actually, it's been Wright's Law all along. As we coalesce on the same node, whether that's seven-nanometer or five-nanometer or three-nanometer node, we'll end up with more and more fabs. Now that seven-nanometer fab is not obviated, that can continue to make leading-edge silicon and perpetuity effect away.
+01:24:08 Jon: I hope that happens. What I've been hoping is that we do see a slowing because what's happened so far is every time you've gone from one node to the next, somebody's dropped out. I'll be careful using the words like node, people probably can look this up I guess, but every time a generational improvement has happened in manufacturing, one of the companies has said, "Too rich for our blood."
+01:24:31 Bryan: GlobalFoundries.
+01:24:31 Jon: Like GlobalFoundries.
+01:24:32 Bryan: Thinking about this one.
+01:24:33 Jon: They said, "No, we're not going to continue this because it's crazy. We just can't keep the economics going," but every time this happened.
+01:24:42 Bryan: Hats of to TSMC for keeping the party going.
+01:24:44 Jon: Yes.
+01:24:45 Bryan: TSMC is like, "Pour me another drink."
+01:24:46 Jon: Yes.
+[laughter]
+01:24:50 Bryan: GlobalFoundries had to go home, not me. Not TSMC.
+01:24:54 Jon: I think there's now three. At some point they'll be two, and then they'll be one. Selfishly partly, what I'm hoping is the one remaining is in Intel and everyone else is screwed. What I'm hoping happens is that we reach a point, this equilibrium where we say you can continue down this path, but the cost increases so much, and what you get back for that decreases to a point where people pursue other ways of innovating. Maybe more architectural innovation because it's been, over the years, so easy, not for the manufacturing folks but for everybody else to just say, "Next-generation it'll get faster because they'll improve manufacturing."
+01:25:37 Bryan: Or it'll get denser.
+01:25:38 Jon: Or get denser.
+01:25:38 Bryan: We did our scaling and then a while ago, but it's gotten denser.
+01:25:42 Jon: What will happen is, over time, hopefully, you will see people focusing more on architectural innovation and then having equal access to really good manufacturing. I agree, hopefully, that will drag down the cost and it will lead to more interesting designs, hopefully, ones that are much lower power. Our focus, just plugging NUVIA a little bit, our focus is high-performance, single thread, really good multi-core, and doing it at very low energy.
+01:26:09 Bryan: Hyper-threading as far as the eye can see.
+01:26:11 Jon: Of course, oh, yes.
+01:26:13 Bryan: Absolutely. 16-way SMT. The end of Moore's Law also has consequences for DRAM, obviously. DRAM drove Moore's Law for many, many years.
+01:26:25 Jon: Yes, Intel may go back to being a memory manufacturer.
+01:26:27 Bryan: What do you think about PCM, about phase-change memory? I feel like I've been waiting my entire career for-
+01:26:35 Jon: Practical basically.
+01:26:37 Bryan: - DRAM speeds with non-volatility. Have you ever heard of a company Nantero?
+01:26:44 Jon: Yes, I may have heard of them.
+01:26:45 Bryan: Carbon nanotube-based memory?
+01:26:46 Jon: Right, yes.
+01:26:47 Bryan: They broke my heart. They're still around, they're still trying.
+01:26:50 Jon: Years.
+01:26:51 Bryan: Years.
+01:26:51 Jon: Years. They're giving Hot Chips presentation after Hot Chips presentation. If you were sitting on something that was so transformative that it would upend the entire industry, maybe you'd want to sell it or put it somewhere.
+01:27:06 Steve: Are we talking about Magic Clip?
+01:27:07 Bryan: No.
+[laughter]
+Sorry, you're just joining us.
+01:27:09 Jon: That's a good one.
+01:27:10 Bryan: This is actually real, it's carbon nanotube-based memory. It's non-volatile, it's incredibly dense, and incredibly fast on the bench.
+01:27:19 Jon: On the bench and not chipping at anything that I've seen. Again, if this was such a magical thing, one would assume it would be everywhere.
+01:27:27 Bryan: Can magic happen?
+01:27:30 Jon: Yes, magic is possible.
+01:27:31 Bryan: Magic is possible.
+01:27:32 Jon: The Easter Bunny is real.
+01:27:33 Bryan: Thank God.
+01:27:34 Jon: Santa Claus is real.
+01:27:35 Bryan: Are we going to get phase-change memory under the Christmas tree this year? Not this year.
+01:27:40 Jon: Yes, not this year.
+01:27:41 Bryan: Definitely not this year, sorry.
+01:27:42 Jon: I can confidently predict that at this point at the end of the year that that will not happen. Yes, it will happen.
+01:27:48 Bryan: Do you think there will be phase change?
+01:27:50 Jon: Unclear where that goes, but I do think that one of the key things that has limited, not just processors but has limited us for the past, goodness knows how many years now, is that you have these giant DDR interfaces that suck a lot of power. They mean that you buy processors now with 4,000 pins coming off them to give you eight channels of memory. That's crazy. There's just so many things wrong with the way that we build machines today, then you have to route. 4,000 little pins coming off a chip means 4,000 wires go somewhere, which means that these boards are, you guys know this better than me, oxide.computer, you have to route all these signals somewhere.
+You're throwing away so much energy just in pumping bits through the memory.
+01:28:47 Bryan: It's incredibly complicated to get all that to work obviously.
+01:28:50 Jon: Any innovation that happens to the memory. As I said earlier, Dick Sites, his point about it's the memory stupid. Whether that's about performance or that's a statement about economics or energy, it turns out that it's the memory stupid. If we can find ways to optimize that, optimize for cost of memory, for disaggregation, there's a lot of interest in the industry in disaggregation and saying, I have some wiz-bang fancy bus that lets me put all my memory over here and all my computer over there.
+01:29:22 Bryan: I'm going to channel Jeff Rothschild, a guest on the first On the Metal. Jeff, he's like, "Why are we calling this disaggregation. It's aggregation, not disaggregation."
+01:29:31 Jon: [laughs]
+01:29:32 Bryan: He's got a point.
+01:29:34 Jon: I used to call it nonsense and I try to be a bit nicer.
+01:29:37 Bryan: Yes, exactly. Do you think we're going to have aggregation of memory like that?
+01:29:45 Jon: No. I think one of the problems is that you have to go from the PowerPoint phase to the what's practical in real life phase.
+01:29:52 Bryan: Right. There was a system, it was in an Aussie or [unintelligible 01:29:55] paper I saw that they were doing this kind of disaggregation of memory. It's like, "Oh, it's only a 3X performance head." It's great.
+01:30:04 Jon: I think it's worth considering all things because maybe with the right memory hierarchy, we could make that work. The jury's still out on what's possible. I think there's a lot of people looking at things like HBMs, so very high bandwidth memories that you stack on top of your chip, and if you look at the number one--
+01:30:24 Bryan: Where does the heat go?
+01:30:25 Jon: Upward and outward, my friend.
+[laughter]
+Yes, this can create hotspots.
+01:30:33 Bryan: Exactly, burning data centers.
+01:30:35 Jon: It can create real problems. On the other hand, though, if you look at the number one computer in the green top 500, which is the green top 500, it’s not top 500 yet.
+01:30:45 Bryan: This is all slow terrible machines.
+01:30:46 Jon: No, so it may also end up being when it's certified one of the top 500 as well in the top 10. This is the new Fujitsu.
+01:30:53 Bryan: This is the [crosstalk].
+01:30:54 Jon: No, it’s the Fujitsu ARM supercomputer.
+01:30:56 Bryan: Okay, yes. There we go, exactly.
+01:30:57 Jon: Yes, of course, I was going to get to that. It's number one in the green top 500 and it uses HBM. You don't have lots of sticks of DDR attached to this thing, but you have to trade-off that you have a fixed amount of memory on the package and that's it, so if you can fit your workload in that, amazing. If you cannot fit your workload in that-
+01:31:22 Bryan: Very un-amazing.
+01:31:23 Jon: - very un-amazing very quickly. Imagine if you had that and you combined it with one of these memory technologies and you actually managed to get this kind of caching.
+01:31:30 Bryan: That is interesting.
+01:31:31 Jon: It could be interesting.
+01:31:32 Bryan: We pay a price for that expandability. A terrible price, so yes, maybe that's interesting.
+01:31:41 Jon: I spent the last couple of years pursuing some of these crazy advanced buses. Crazy, I don't mean that in a bad way. There's things like Gen Z, which is about letting you put your memory over here.
+01:31:54 Bryan: There's a bus called Gen Z?
+01:31:55 Jon: There's a bus called Gen Z.
+01:31:57 Bryan: Okay, but my 15-year-old is Gen Z.
+01:31:58 Jon: This is the bus for the new generation.
+01:32:01 Bryan: This is a bus that's on TikTok or something? What is this?
+01:32:04 Jon: [laughs]
+01:32:06 Bryan: This is a bus that replies? If you make a PCI request to Gen Z, it responds, "Okay, Boomer"?
+01:32:14 Jon: Yes, they have a Z-bridge, and it goes over this. I will make a TikTok joke. Intel used to call their manufacturing TikTok.
+01:32:22 Bryan: It was TikTok, yes.
+01:32:22 Jon: It became process architecture optimization, which rolls off the tongue.
+01:32:27 Bryan: Are we at the joke now? I don't know about the joke yet.
+01:32:29 Jon: I took the TikTok logo and I made a process architecture optimization.
+01:32:33 Bryan: Oh, there we go. That is funny.
+01:32:38 Jon: No, it’s not, it's really not funny unless you're you or me. [laughs]
+01:32:41 Bryan: Jess, is that funny? Jess is the arbiter of humor around here.
+01:32:44 Jon: It’s not funny.
+01:32:46 Bryan: No, Jess likes the nerdy jokes.
+01:32:49 Jess: I do, actually.
+01:32:51 Jon: There is a bus called Gen Z, which is about letting you disaggregate or aggregate or gregate things.
+01:32:58 Bryan: [laughs] Gregate.
+01:32:58 Jon: Gregates things in gregarious ways. You can put things like your PCI all over here, and your memory all over here. There's just one little issue with doing this, which is that there's the speed of light.
+01:33:08 Bryan: It's light as they say, thank you.
+01:33:09 Jon: Yes, there is this time of flight where you have to go from here to here.
+01:33:11 Bryan: As it turns out, it is actually a constant as it turns out.
+01:33:15 Jon: Really?
+01:33:15 Bryan: Yes, that’s what I keep hearing.
+01:33:16 Jon: That you need the entangled particle bus.
+01:33:20 Bryan: Yes, so we can get to entangled supremacy or whatever they're going to call. Quantum supremacy, does that term piss you off?
+01:33:26 Jon: Yes.
+01:33:27 Bryan: Thank you.
+01:33:28 Jon: Quantum computing pisses me off.
+01:33:29 Bryan: Okay, go on.
+01:33:29 Jon: Do you want another thing that pissed me off?
+01:33:30 Bryan: Yes.
+01:33:30 Jon: Blockchain, and even better is quantum blockchain.
+01:33:35 Bryan: Quantum blockchain is not a thing. Is quantum blockchain a thing?
+01:33:39 Jon: No, it's bullshit.
+01:33:40 Bryan: No, I know.
+01:33:41 Steve: Do people claim it's a thing.
+01:33:43 Bryan: That is a thing.
+01:33:44 Jon: I used to work at Red Hat and they were acquired by IBM. I hasten to add this is not an anti-IBM comment because I don't actually hate IBM. I didn't leave for
+that reason, but they're a company that's built great, amazing things over the years, and when I see the advertising around blockchain, I just feel sad because there's so many cool things, why are you trying to hype on the blockchain thing? Get over it. It's just a ledger, it's just a way of sharing things.
+01:34:14 Bryan: It's a bad distributed--
+01:34:15 Jon: It’s not a strategy. If that is your corporate strategy, please rethink it.
+01:34:19 Bryan: Is quantum blockchain a thing?
+01:34:22 Jon: I've tried to make it a thing.
+01:34:24 Bryan: Are you just making that up?
+01:34:25 Jon: Yes, I'm making that up.
+01:34:26 Bryan: Okay, so you can be angry about it.
+01:34:28 Steve: The sad thing is that it's plausible.
+01:34:29 Bryan: It's plausible, right, exactly.
+01:34:31 Jon: One thing I've done over the years, and I've done this tonight, of course, but one thing I've done over the years is invent technology that doesn't exist, and then speak very convincingly about it to see people's reaction, which I know is terrible, but I used to do this, for example, in PC stores. You go in there and they ask you, "Can I help you?" and you're like, "No, thank you, I'm fine," but then they come back. I had a rule where at about between three and five times I've told the same person, "Now, I'm not just being an asshole because you've really asked me." I used to ask them for USB frame-relay adapters.
+01:35:05 Bryan: That's great.
+01:35:06 Jon: Because it's plausible.
+01:35:08 Bryan: I feel you can make one of the Raspberry Pi.
+01:35:10 Jon: Okay. Yes, I'd love to see that. That’d be great. Okay, you probably could.
+01:35:14 Bryan: Why not?
+01:35:15 Jon: [laughs] They would go off and they would look for it, and they would diligently tried to get it and it's like, "Oh, no, but could you order it online? I've got one at home." [laughs]
+01:35:23 Bryan: Yes, right. Don't torture the poor sales associate. I used to work sales, it's a hard job.
+01:35:30 Jon: Like I said, only if you're at the three to five times, otherwise, I'm nice, but when you're at the point where I really just wanted to go and get the thing, and then I'm inventing something.
+01:35:41 Steve: Take it back and just torture machines.
+01:35:42 Jon: Blockchain, so quantum blockchain, no, it doesn't exist, but it's about as plausible as half of the rest of it.
+01:35:49 Bryan: Right, but I think quantum computing is fine, it's just extraordinarily limited in the scope.
+01:35:56 Jon: Firstly, I'm not an expert in quantum computing because I've read a bunch of stuff about as much as anybody else, vaguely interested in it. I always like to see these Twitter threads where someone who's a decade or two decades worth of studying something and they say, "Just because you read something on Wikipedia for 10 minutes does not make you the world's expert," so I'm not claiming to be an expert in anything to do with quantum computing.
+01:36:19 Bryan: But.
+01:36:20 Jon: But.
+01:36:20 Bryan: There we go, here it comes.
+[laughter]
+01:36:23 Jon: One thing I do know is that it does not replace all of the classical computing that we have. The vast majority of the computing that we do today, and we will do for many, many, many, many years to come, is going to involve little transistors switching on and off and running little state machines and microprocessors. We will also, hopefully, have these wonderful quantum supremacy machines that can solve certain problems, some of them really scary, but those will be really fancy accelerators that makes certain things go really fast.
+01:36:52 Bryan: Meanwhile, it will be a vinyl machine that actually does the heavy lifting on the side.
+01:36:55 Jon: Johnny Von Neumann, he dances under this.
+01:36:56 Bryan: Johnny Von Neumann, baby. I’m a Von Neumann dead-ender for sure. John Von Neumann it's great. I want to get a bust of John Von Neumann. I've actually wanted to do this for many years.
+01:37:09 Jon: Institute of Advanced Science, wasn't that the one that he was at?
+01:37:14 Bryan: Yes, that's right. You know what? This is Von Neumann's gift and we should not be squandering it. I think that's a great note on which to wrap it up. Jon, thank you very much for sharing all of your unvarnished thoughts, telling the stories that you maybe shouldn't have told.
+01:37:33 Jon: [laughs]
+01:37:34 Jess: Thank you, yes.
+01:37:35 Bryan: This has been terrific. Thank you so much for joining us in the garage tonight.
+01:37:39 Jon: Thank you for having me.
+[music]
+01:37:40 Bryan: You've been listening to On the Metal, Tales from the Hardware/Software Interface. For show notes, to learn more about our guests, or to sign up for our mailing list, visit us at onthemetal.fm On the Metal, is a production of Oxide Computer Company, is recorded in the Oxide Garage in Oakland, California. To learn more about Oxide, visit us at oxide.computer On the Metal is hosted by me, Bryan Cantrill along with Jess Frazelle, and we are frequently joined by our boss, Steve Tuck. Our original and awesome theme music is by JJ Wieslerat Pollen Music Group. You can learn more about JJ and Pollen at pollenmusicgroup.com.
+We are edited and produced by Chris Hill and his crew at HumblePod. From Jess, from Steve, from me, and from all of us at Oxide Computer Company, thanks for listening to On the Metal.
+[music]
+[01:38:56] [END OF AUDIO]

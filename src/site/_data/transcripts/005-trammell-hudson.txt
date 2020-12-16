@@ -1,0 +1,374 @@
+[music]
+00:00:12 Bryan Cantrill: Welcome to On The Metal, tales from the hardware/software interface. I'm Bryan Cantrill. With me, as always, is Jess Frazelle. Hey, Jess.
+00:00:19 Jess Frazelle: Hey, Bryan.
+00:00:20 Bryan: Joining us is our boss, Steve Tuck. Hey, Steve.
+00:00:23 Steve Tuck: Glad to be here.
+00:00:24 Bryan: Jess, do you want to introduce who we've got in the Virtual Garage today?
+00:00:27 Jess: Yes, today we have Trammell Hudson. He is remotely in Amsterdam, but I discovered Trammell through the internet. He does crazy cool things with computers. It always seems like he's on a train or a boat or something hacking on something, so yes, I'm very excited.
+00:00:47 Bryan: Trammell, welcome to the Virtual Oxide Garage.
+00:00:50 Trammell Trammell: I'm glad to be there. I think it's wonderful that y'all have started a Silicon Valley company in a literal garage.
+00:00:57 Bryan: In a literal garage, I know. When Jess said her garage was perfect for us to get started in, we were like, "It looks too cliché, but it's a great garage actually." It's great to have you here. Trammell, I have a little bit of a confession. I was attending a conference recently and they were asking me, "What website do you read that other people are not going to be aware of?" I go, "Boy, all right, I've got to find something really interesting now." I was thinking, "What website do I go to that other people should be aware of but maybe aren't?" I'm like, "I'm going to give them trmm.net."
+Your website is delightful and there's so much interesting stuff there. You've done so much with the hardware/software interface, how did you first discover it when you were coming up?
+00:01:46 Trammell: Right out of school, I went to work for Sandia National Labs out in Albuquerque on the high-performance computing team. At the time, we were writing a custom operating system for the supercomputers. Because performance was absolutely critical, we were running everything on the bare metal and we really had to do a lot of work to make all of the computer resources available to the users.
+As a result of spending so much time at the operating system and the message passing and the network driver layer, I really came to love that sort of interface and really realized how much capability came about just from understanding how does the machine work and how can we best take use of it from software. Plus, I really like taking things apart and it is fun to document what I learn when I'm doing that. That's really what my website is. Essentially, it's my project notebook over the past, I guess I've been running it for about 10 years now.
+The big issue is my attention span is pretty short, so a lot of these projects I work on for two, three, maybe six weeks, document them, and then move on to the next shiny thing. There's a lot of unfinished stuff there, but also, hopefully, a lot of things that people might find useful.
+00:03:16 Bryan: Yes, there's a lot of stuff there that's useful and interesting. first of all, on that supercomputer at Sandia, what kind of machine was that that you were first exploring?
+00:03:26 Trammell: The very first one that I worked on was an Intel Paragon. It was an i860-based machine and it was the world's fastest supercomputer. We were number one on the top 500 for many, many years. The fun story with that one is it shipped with a single-system image Unix called OSF/1.
+00:03:52 Jess: Whoa.
+00:03:53 Bryan: You actually ran OSF/1?
+00:03:56 Trammell: We tried to. The problem is that OSF/1 consumed about 12 megabytes of memory out of the 16 megabytes that we had per node. Remember, this is the 1990s, so there was still a lot of memory. That didn't make our users very happy to have this massive machine and so much of the resources going to the OS. What the group that I worked in did was we built our own lightweight kernel that only used a couple of hundred kilobytes, and that ended up becoming the official OS for the Paragon.
+00:04:32 Bryan: So an all i860-based. An i860 RISC microprocessor, if memory serves.
+00:04:40 Trammell: Yes, and RISC is going to change everything.
+00:04:42 Bryan: Right, and i960 was the following. Did you end up writing that as well, or by that point, they'd moved on to other CPUs?
+00:04:54 Trammell: At that point, we had moved on to another CPU. The next machine we built after that was ASCI Red. Actually, ASCI Red Storm. No, sorry, ASCI Red was the next one and that was Pentium Pro-based.
+00:05:10 Bryan: By then, yes.
+00:05:11 Trammell: The Pentium Pro was a really weird design with a multi-die package, incredibly low yields. Intel gave us a special spin of it, I think with the Xeon core in the same package, which was super buggy. My attempts to get some patches into the Linux kernel were rejected since there are only a few thousand of those, I think 50,000 of those CPUs in the world, and we had all of them.
+[laughter]
+00:05:42 Bryan: Hard for others to test.
+00:05:44 Trammell: Yes, so Linux did not accept my patches.
+00:05:48 Jess: That seems to be a common theme.
+00:05:51 Bryan: Especially when you're sitting on all of a particular breed of microprocessor that it sounds like a very strange hybrid.
+00:05:59 Trammell: It was a really weird design. Then the following from that was the ASCI Red Storm and that was Opteron-based. One of the things I really enjoyed about working the Paragon was how tightly the network was coupled to the CPU. We could use the DMA engines if we do a MM copy. It was faster to task it to DMA 128 bytes than it would be to do a bite-by-bite copy from the CPU. When you compare that to going out to PCIe where you have your 500 to 1,000 nanoseconds just to do a round trip out to that bus, you'll be able to do something so quickly. The neck was really quite fun to play with.
+00:06:43 Bryan: Especially when you have so many cores presumably harnessed together in a network, I imagine that was essential to be able to have that kind of networking performance.
+00:06:51 Trammell: Yes, and at that point because of the relatively small memory, communication was much, much more important for the HPC machines of that era.
+00:07:00 Bryan: Is this 10 megabit maybe? I'm trying to think what would be the interface speed at that time.
+00:07:07 Trammell: We spent a lot of money on the neck. With these machines, you'd usually estimate that a third of your money was just going to the network. It's been a long time, but charging back into these neurons, I think we were doing 400, and then we were able to push that to 800.
+00:07:26 Bryan: 800 megabit in the mid-'90s or late-'90s, that's something.
+00:07:29 Jess: That's really good.
+00:07:31 Trammell: That was '94 or '95.
+00:07:34 Bryan: When 16 megs is the amount of DRAM you've got to be able to push 800 megabits, that's impressive.
+00:07:41 Trammell: Yes, it was a really fun machine. The other thing though that really colored my view on how to design large-scale systems, that we partitioned these machines so that we would have some number of nodes that were connected to the outside world, and we ran an interactive OS on them. We had some number of nodes that were connected to discs and we ran file servers on those. Then most of the nodes in the middle had no external network connection and no disc connection, they were just pure compute.
+This meant that with a fairly small staff, we could maintain effectively tens of thousands or hundreds of thousands of systems.
+Where you might expect a UNIX system not to scale to quite that sort of scale, but you're doing it where there was no state on most of the nodes or there were no moving parts on most of them. They would all boot off the network, they all would reconfigure on the fly. This was a really elegant way to manage and administer hundreds of thousands of cores.
+00:08:50 Bryan: This has been very futuristic in the mid to late-'90s to have that kind of quantity. Certainly that many CPUs and managing of them, that matters. You must have wondered how anyone else was doing it. It seemed like such an elegant way to do it.
+00:09:09 Trammell: When most folks here tap out around a few dozen computers per admin, it was really quite something to be able to say, "Oh, we measure computers not in core count, but in acres."
+[laughter]
+00:09:24 Bryan: That's awesome. Was that your first exposure to firmware? When did you begin to discover all of the software that was beneath the software?
+00:09:35 Trammell: That was really where I started spending most of my time in the firmware world. I think with ASCI Red Storm, we had a coprocessor in the neck that we were able to write code for. My group developed something called portals that ran underneath MPI, the Message Passing Interface that all of the big Fortran codes use. We wrote code that ran in the neck to do all of the OS bypass and message action, offload. That really was the eye-opener that, "Oh, everything in this system is just another computer and we can program it and we can make it do what we want."
+00:10:20 Bryan: That must have been a real aha moment to realize how much software was beneath the software that you thought was the lowest level software in the system.
+00:10:29 Trammell: Yes, Ring 0 in the OS is not the bottom of the stack by far.
+00:10:37 Bryan: I don't even know where the bottom of the stack is anymore. I feel like every time I feel I've found the bottom, there's some hidden rank. Jess, you had a great article going. What, you got a Ring -3 I think?
+00:10:47 Jess: Yes. It depends who you ask though because a lot of people are like, "Those are just made-up rings" because once you've reached the lower levels, it's all just like meh.
+00:10:55 Steve: How low does it go? Is -3 the bottom?
+00:11:00 Bryan: Again, it depends on who you ask, but what you've got is this firmware that's in a very low level in the system that can control the entire system. It's hard to argue that that software isn't beneath the software that thought it was controlling the whole system.
+00:11:16 Trammell: Jess' article really did a wonderful job of laying out a lot of the hidden pieces inside the commodity machine between the SMM and the management engine. Once you get even further down with the BMC or the embedded controllers, there's just a lot of unexamined code that has way too much privilege. It's a big concern for, not just runtime security but also for things like resale and decommissioning. How do you know that the systems that you're turning over don't have any state still on them?
+More importantly, how do you know the systems that you're buying haven't been compromised somewhere in the supply chain in one of these tiny microcontrollers sitting on a porting bus somewhere?
+00:12:06 Jess: That's a good segue into your talk at, was it 34C? I always forget the numbers.
+00:12:12 Bryan: The Modchips of the State?
+00:12:14 Jess: Yes, Modchips of the State, but the notorious talk where you basically proved that what happened in the Bloomberg article is entirely possible, although it's skeptical as to whether that happened in real life. It's a great talk.
+00:12:27 Bryan: That was a terrific talk. For folks who have not seen that, they definitely should. We'll link to it in the show notes, but describe a bit what you were able to show there, Trammell.
+00:12:37 Trammell: The part that really struck me in the Bloomberg article was some of the detailed descriptions of how a hardware implant on the SPI bus between a flash chip and the BMC could take control and potentially wreak havoc. I think a lot of those details came from Fitz who was one of the consultants on the article. I set out to see, well, could we actually replace a signal conditioning coupler, in this case, a small resistor on the board with an active component that could inject its own payload into the BMC while it booted? Figuring out how to do that without power, without clock, without a lot of the niceties of the SPI bus was a really fun challenge.
+It was also my first intro into FPGAs. I've really come around to realize that they are a wonderful tool for doing a lot of these very timing-critical hardware interface things. So many of the projects that I've done with Arduinos I've gone back to and realized it would have been easier to see this with an FPGA.
+00:13:44 Bryan: Wow, not something you necessarily think of that an Arduino project would have been easier with an FPGA.
+00:13:52 Trammell: Anything that's really timing-critical in the SPI bus, which is where the firmware that the BMC or the x86 lives, is a really timing-critical bus. It needs to be able to deliver bytes in response to commands in single-digit nanoseconds. It's the sort of thing where you really need that programmable hardware to make it happen.
+00:14:16 Bryan: It was operating what, at 20 megahertz faster? What's the speed that that bus operates?
+00:14:23 Trammell: When the x86 boots up, it starts it at 16 megahertz, and then we'll ramp it up to see if the chip says it can handle it. Though I just recently ported some of these things over to one of the newer eight-speed BMCs, and they do an interesting thing where they will read a section of the flash and checksum it, then they would just increase the clock speed re-reading that section until they get a bad checksum, and then they'll back their speed down a little bit and that's the speed they'll use.
+00:14:57 Bryan: Wow, so they actually just push it to the breaking point and then concluded that that's the fastest they can operate. How fast can that stuff operate? How fast is the SPI Flash are they able to push it?
+00:15:08 Trammell: Usually 50 to 80 megahertz is a reasonable speed if you have very short connections and not a lot of loading on the passive loaded on the bus. One of the projects that I've turned the modchips talk into is something called the SPI Spy, which is now a general-purpose flash emulator that is really a lot of fun to poke at systems when they're booting because you can learn a lot both about the security of system as well as a lot of the various other components. With the SPI Spy, we can monitor the data that's going across that SPI bus, and we can also modify it or swap it out with our own content.
+00:15:52 Bryan: SPI Spy is amazing. Actually, I have to tell you that I went to see what the Hacker News discussion of SPI Spy was when it came out and was dismayed to find that it had never been submitted to Hacker News I think months after you'd released it. I'm like, "I'm going to obviously submit this to Hacker News."
+I feel that Hacker News revealed that it is not in fact Hacker News, the fact that SPI Spy was not there, which should have been a total indictment on the Orange website because it is a really terrific piece of work. It's very interesting and allows you to get this total view into this unseen part of the system.
+00:16:30 Trammell: I really like that aspect of it, that it's the microscope of what's happening during the first few microseconds when your system turns on. A lot of the security research that I've done is focused on that early-boot time. It's a fairly short window, but if malware or an attacker is able to take control during that time, they can really do a lot of nefarious things. Giving into those negative rings that Jess mentioned is definitely a possibility, giving into other hardware that perhaps trusts the firmware during the start-up phase is a possibility. There's just a lot of really difficult problems for how do we secure systems against an attacker who can modify the data on that bus that early?
+00:17:19 Bryan: Maybe it's worth explaining to folks why that bus is so critical because effectively, that is where the system is bootstrapping itself from, right?
+00:17:29 Trammell: That's where, effectively, the first instruction that the x86 is going to execute comes from. That's where the first instruction that the BMC tends to run comes from there. The management engine has an onboard ROM, so it is actually able to do some validation added before it starts, which is a nice thing for security, but also a somewhat frustrating thing in terms of user freedom. Then it means that it's not possible to swap out that code the way coreboot or LinuxBoot wants to be able to do or open BMC or micro-BMC on the BMC side of things.
+There's definitely a trade-off between how do we secure the systems against an attacker who can modify the flash versus how do we allow the computer owner to modify the flash to install their own firmware if they're in design?
+00:18:22 Bryan: This is a really important tension in terms of whose computer is it. If I bought it and it's my computer, I should be able to load arbitrary things on it, but if I
+can load arbitrary things on it, then arbitrary malware can do arbitrarily bad things to me. How do we resolve this tension?
+00:18:42 Trammell: This is where a lot of my current research is going into with the attestation that if we can have the systems prove to an outside observer what they run during start-up, then perhaps we don't care so much about who put it there as long as we can say, "This is the code that we expected to be there." I think that's an elegant way to get around a lot of that tension where a company like Apple has done some amazing work at building secure-by-default systems. They, unfortunately, have done that at the expense of user freedom.
+Things like Chromebooks I think are doing a much nicer job where you can swap out the firmware in the Chromebook, but if you go to log into Google with modified firmware, Google's able to know that, and is able to then prompt you on a different device to say, "Hey, the Chromebook that you're trying to log in on is essentially compromised. Do you still want to do it?" That attestation I think is really liberating because it allows the computer owner to swap everything out and still be able to tell exactly what was running even though it's not signed by Google so that they can sign it themselves.
+00:19:54 Jess: Yes, I love the design of the Chromebook. I remember when it came out, and also the fact that Chrome OS is entirely open source, so you can actually just go and poke it, which is something that CoreOS ended up doing. Then when I decided to make a bespoke operating system, I did as well. The design of the Chromebook I think was really revolutionary when it came to open source security because it's something that Apple had closed off for such a long time.
+00:20:23 Trammell: The Chromebooks, I think, are one of the only widespread uses of attestation in the non-local space that your computers have been chipping with TPMs for well over a decade now and most of them go unused. The Linux community's never really embraced them and windows really only uses it for BitLocker, and then only if you have a version that has that support. It was really wonderful to see Chromebooks requiring TPMS and actually using them and actually using them for this attestation. We will say this is the firmware that is running on the machine.
+00:21:01 Steve: Can I ask what a TPM is?
+00:21:04 Bryan: Yes.
+00:21:04 Steve: Thank you.
+00:21:06 Trammell: The TPM is a Trusted Platform Module. It's a small security coprocessor that can hold secrets and it can measure the code that's running on the main CPU. There's a hand-wavy there, it actually can't measure directly but it can be asked to measure things, and then it can do a cryptographic signature to prove that a real TPM has measured those values, which then allows an outside observer to say, "The firmware running on this machine matches the expected measurements, the expected hashes for the firmware that I installed, and the TPM attests that this is actually what's running there, and therefore, perhaps you can trust this computer" or this server or this Chromebook.
+00:22:01 Steve: Thank you. It sounds like a TPM is necessary but not sufficient as you were describing earlier.
+00:22:07 Trammell: The TPM definitely needs a fairly tight interaction with the early boot firmware to actually be able to get into the security guarantees that if you don't have that, malicious software could perhaps put fake measurements into the TPM and then get a quote from it. It's necessary that every stage during the boot process has to be able to measure the next stage into the TPM before jumping into it, in this case, what's called the chain of trust. The big problem right now is that most commodity firmware doesn't maintain that chain so it's possible to get unmeasured code executing during the boot process, at which point--
+00:22:49 Bryan: You're done.
+00:22:50 Trammell: Yes, the security guarantees completely evaporate.
+00:22:55 Bryan: Steve, just to make you feel better, I was relatively certain that TPM stood for tamper-proof module. I think I probably thought that for years, [chuckles] so thank you for asking the question. I'm like, "Of course, it stands for tamper-proof. No wait, Trusted Platform Module."
+[00:23:09] Steve: I was definitely expecting a "Oomph, yes, sure, we can explain that to you, Steve."
+00:23:13 Bryan: Part of the reason I thought it stood for the wrong thing is these things are designed to be tamper-proof and there's important countermeasures that go into designing these things such that if you try to actually physically tamper with one of these things, it won't actually operate.
+00:23:31 Jess: Actually, one of the things that Trammell is most widely known for, or at least I think so, the evil maid attack.
+00:23:39 Trammell: The temper resistance for TPMs is typically not particularly strong. They may have some hardening features in the chip design, but they're not tamper-proof by any means.
+00:23:53 Bryan: We're just twisting the knife a little bit.
+[laughter]
+Let me just jump in here. I don't know how anybody could think of this as tamper-proof, not even tamper-resistant.
+[00:24:04] Steve: I'm feeling better by the minute.
+00:24:05 Bryan: No, you should feel. Yes, exactly.
+00:24:07 Trammell: Going back to what Jess mentioned about evil maid attacks, there are actually quite a few physical attacks against the TPM chips that people have pulled off. Some of them are more invasive that involve decapsulating them. There's the TPM Genie that is like the SPI Spy, but it's for the LPC bus that the TPM is on and it's able to subvert that measurement process. I think Travis Romandie did a full decap on a TPM. That's pretty invasive, that's probably not a realistic threat model for most people, but someone to be able to hook some probes up to the TPM on the mainboard during boot and bypass the measured trust is a little more realistic.
+00:24:53 Bryan: Are you saying evil maid attack? Am I hearing that correctly? Like an evil maid.
+00:24:57 Jess: Yes, because if you were to leave your computer in a hotel room basically.
+00:25:00 Bryan: Oh, it's the evil maid, oh.
+00:25:02 Jess: The evil maid. [crosstalk]
+00:25:03 Bryan: The evil-maid, the diabolical state actor maid. Got it, okay.
+00:25:08 Jess: Which is why when I travel I use a Chromebook.
+00:25:10 Bryan: All right then. Hopefully, its TPM has not been decapped. I guess it's got Titan, which is good. It's got a pretty good reputation anyway.
+00:25:19 Trammell: Yes, the Titan chip has taken over several different roles in the Chromebook. It is both acting as the TPM, it is also acting as the closed case debugger, which is a really handy feature. As you pointed out, a lot of my photos are pulling apart computer while traveling, which occasionally gets weird looks on the train or the plane when you're hooking debugging probes up to computer circuit boards. With the newer Chromebooks with the Titan chip, you can actually do firmware updates and debugging through the Titan, which ensures that there's a special device externally on the USB.
+00:26:00 Bryan: That's a great feature actually, do they document that? That sounds terrifically useful.
+00:26:05 Trammell: There was a talk at OSFC 2018 about how to use it.
+00:26:10 Bryan: Oh, nice.
+00:26:10 Jess: Nice. Some of this stuff is undocumented because I know at least with my Chromebook on the side, the power button doubles as a security key. That was actually undocumented, but then people kept hacking it and adding it to two-factor auth mechanisms, and then they were like, "Okay, whatever, it's a thing."
+00:26:28 Bryan: That is awesome. Hey, so we're going to take a quick break and we will be right back with more Trammell Hudson.
+[music]
+00:26:37 Jess: On The Metal is brought to you by the Oxide Computer Company.
+00:26:40 Bryan: Wait, did you say computer company, Jess?
+00:26:42 Jess: Yes, indeed.
+00:26:42 Bryan: Wait a minute, everyone runs to the public cloud. Jeff Bezos owns and operates every computer on the planet, why would anyone start a computer company?
+00:26:49 Jess: That is so not true. I have spent a bunch of time talking to folks who are still running on-premises, and actually, the consensus among all of them is just a feeling of neglect because everyone thinks that everything is moving to the public cloud, but it's not.
+00:27:03 Bryan: If you're still running on-premises, it's because you haven't heard of the cloud, right?
+00:27:06 Jess: No, there are really good reasons for running on-premises still; for security, for latency, strategic reasons for your business.
+00:27:14 Bryan: Wow, the people running on-premises must feel like everyone has ignored them.
+00:27:18 Jess: They do indeed, so if this is you, please head on over to our website, oxide.computer, sign up for our mailing list and we would love to get in touch and hear your stories.
+00:27:29 Bryan: We acknowledge that you exist and you've got some really hard technical problems that we're solving. Oxide.computer, come join us.
+[music]
+All right, we're back with Trammell Hudson. There are some terrific tales of the hardware/software interface. Trammell, you had mentioned the OSFC, the Open-Source Firmware Conference. Jess and I went to OSFC out here in Silicon Valley, whatever it was, in the fall, it was terrific. Do you want to speak a little bit about what you're seeing in the open-source firmware movement?
+00:28:00 Trammell: Yes, it's a really wonderful resurgence in interest in building open firmware for these machines. A lot of it goes back to the LinuxBIOS project, which was started by Ron Minnich at Los Alamos National Labs. They were one of our competitors in New Mexico. He had similar problems. When they moved to commodity hardware or quantity CPUs for their large scale supercomputers, managing them with the BIOS was not really working well for them. They're trying to PXE boot tens of thousands of systems on 100 megabit ethernet, it just was not feasible.
+Ron and one of his colleagues had the idea of, "Let's just put Linux in the SPI Flash on these mainboards, then we'll be able to kexec into an actual payload." Rather than being stuck with whatever closed source PXE booting things that were shipped in their machines, they were able to take advantage of all the flexibility of Linux. That turned into a coreboot and then Google selected that for all of their Chromebooks. Unfortunately, there were really no servers that were available with coreboot due to licensing issues and NDAs from Intel for many years until just recently.
+We started a project called LinuxBoot, which took the idea that we could use just the DRAM initialization part out of Intel's proprietary FSP, their firmware support package, graph that onto the Linux, and be able to jump very quickly from the reset vector, initialize DRAM, and then let Linux do absolutely everything else. These projects attracted attention from a lot of the Hyperscale folks. Ron is now at Google, there are folks at Facebook who are also contributing, and we're working closely with the Open Compute Project to try to make open system firmware a requirement for their open hardware branding.
+It really is wonderful to have all of this flexibility. Rather than being stuck with whatever limited shell UEFI provides, you get Bash or Go or Python or whatever tools you want. I think Ron had a wonderful quote when we were getting started. LinuxBoot turns all of your Linux engineers into firmware engineers, so it takes it from something where you had to have really specialized knowledge and a real mode assembly and all this arcane stuff to suddenly, it's just Linux. We all know how to use Linux, so suddenly, we can do much more interesting things.
+00:30:47 Byran: It's a terrific development. Here at Oxide, we are huge believers in the open-source firmware movement, so it's great to see it have this critical mass and good on you for getting the Open Compute Project on board as well. Any firmware or any hardware we're going to brand open should have open firmware, so it's great to see that movement really swelling.
+00:31:08 Trammell: Yes, I think it really should be a requirement that if you're going to be making anything called open, it needs to be open at as many levels as possible from the schematics, and the board design files to all of the pieces that are running inside of it. There have been a few projects to try to build a completely open-source system. Bunnie made his Novena laptop that every part had a non-NDA datasheet. Unfortunately, in large-scale server space, that's not really feasible right now but perhaps with a RISC-V, we'll start to see something there.
+00:31:47 Jess: Yes, that would be nice down the road for sure.
+00:31:49 Bryan: Speaking of RISC-V, what do you think of OpenTitan? That's a very exciting announcement recently that we're certainly excited about. What's your take on OpenTitan?
+00:31:58 Trammell: I'm really encouraged that Google is making the Titan chip more widely available. Hopefully, it's going to be one of those things that starts to become a standard feature on systems, not just on Chromebooks and on Google servers. I think it's really vital that anything that we’re putting that much trust in needs to be as open as possible. The source tree is astounding, it has the full CPU, it's got all of the software and firmware that runs on it. It's really an exceptional resource for learning how this complex security coprocessor is built. My one disappointment right now is that it's only built for a closed source FPGA.
+I started looking to see if I could port it over to the project trellis and the nextpnr for open source development, but thus far, I've not yet been successful.
+00:32:58 Bryan: Interesting, yes, the actual toolchain itself is proprietary.
+00:33:02 Trammell: Right, that if you want to build for their test board, you need the vendor FPGA tools. It's like a 50gig download and it's locked to your one machine. It's just not a very developer-friendly environment compared to the USS and nextpnr that are very much coming out of the open-source movement. All of the tools play well with Makefiles, they play well with version control. It's just an absolute delight to develop for compared to the vendor tools.
+00:33:34 Bryan: Maybe on that note, for those folks who are interested in getting involved in FPGA exploration, how do they start messing around with FPGAs?
+00:33:45 Trammell: There are some really low-cost FPGAs out there, low-cost open-source FPGAs. The iCE40 comes in a lot of different variants. There's the icebreaker is a really nice one with a very well designed board with lots of IO. I've been using the UPDuino v2, which is a $9 board, and it's serviceable for a lot of these things. If folks want to do larger projects, the ULX3S from Radiona Makerspace in Croatia is a really full-featured board. It has HDMI and Wi-Fi and SD card. You have lots of really useful features for building things.
+A lot of people are doing cool retro projects where they're emulating old consoles on it, and then using the HDMI port to display the video. At the low end, the iCE40s are really capable. It's surprising how much you can fit in a few thousand gigs.
+00:34:48 Bryan: I love the retro stuff, I have to say. Jess, you got a PDP-10, right, in the other room?
+00:34:55 Jess: PDP-11 and PDP-8, but they're the regular because they're the piety piece.
+00:34:59 Bryan: It's so much fun to be replicating these old machines on the much newer silicon. Trammell, could you talk about some of the retro computing projects you've done? Because you've done a bunch of them.
+00:35:10 Trammell: At my previous employer, we had a small retro computer museum with some PDP-11s, some actual PDP-11s, which, unlike Jess',-
+[laughter]
+00:35:22 Jess: Small version.
+00:35:23 Trammell: - consume a bit more power and a bit more floor space, but I saw when you were soldering together the piety piece and it looked very, very fun. We actually found one of the PDP-11s on Craigslist of all places.
+00:35:36 Jess: Whoa, that would not be where I would think that you would find that.
+00:35:40 Bryan: You got a PDP-11 on Craigslist? That is amazing.
+00:35:44 Trammell: We actually ended up with an entire late '70s, early '80s data center that Mount Sinai had basically taken this massive amount of hardware and just put it in storage sometime in the mid-'80s.
+00:36:01 Jess: It was local in New York if it was Mount Sinai, right?
+00:36:04 Trammell: Yes.
+00:36:05 Jess: No, that’s nice.
+00:36:05 Bryan: Obviously, you got to ask the question anytime you get things on Craigslist, but especially PDP-11, was it stolen? This has to be a stolen PDP-11.
+00:36:12 Trammell: I think they'd put it in storage, and then 25 years later, they said, "Why are we still paying for the storage fee?" Basically, you have to take it all. We ended up with a couple of PDP-11s, a pallet of terminals, and dot matrix printers, and a lifetime supply of eight-inch floppies. It was really quite the hall.
+00:36:38 Bryan: That is quite the hall.
+00:36:39 Steve: Was it listed that way on Craigslist, or was it just, "Take whatever is in mystery locker, old computer equipment"?
+00:36:45 Trammell: It was, "Old computer equipment must take it all," but there was a photo and that made it very clear that it was a PDP. Yes, we rented a panel truck and spent a weekend cleaning out this locker, and then we were able to restore and get two of the PDP-11s boot in, quite a few of the VT100s. It also included quite a bit of software including some [crosstalk] good, so we've put all that up on archive.org. I have some documentation on my website about some of the paper tapes and things that we retrieved as well.
+00:37:23 Bryan: That's great. What was the operating system? Was it running Unix?
+00:37:29 Trammell: This one was running RT-11 because it was being used in a data collection experiments, so they needed the real-time OS, and that actually gave rise to one of the funniest finds. It was a nine-track tape labeled, Digitized Monkey Brains.
+00:37:48 Jess: What was on it?
+00:37:49 Bryan: Right, that's the question.
+00:37:52 Trammell: [laughs] We were unable to read the tape.
+00:37:56 Bryan: Wait a minute, that story has no ending? That's the end of the story?
+00:37:58 Jess: [laughs] That’s really sad.
+00:37:59 Bryan: Jeez. The Digitized Monkey Brains, that's it? We don't have them?
+00:38:06 Trammell: We don't have the monkey brains, we were unable to get the tape drive working, unfortunately. We did get the agent floppy drive working as well as the disc packs. It's been a few years, I don't know if that's the RL-1 or the RK05. On there were actually quite a bit of interesting things, including some email spools that we did not upload to the archive, but one of them was a draft of a speech that one of the doctors gave to a convention of doctors talking about his department's decision to buy a computer and several hundred thousand dollars on it.
+He warned the other doctors that if they bought one, they might not do any more science or doctor work because it was so much fun to program that he found that he was spending all of his free time now writing basic programs that would help with data analysis and processing things.
+00:39:03 Bryan: Oh my gosh, that must have been mesmerizing to find. What a tale from the crypt. Did you find the physician? Did you locate any of these folks?
+00:39:15 Trammell: We found the physician's son and forwarded the contents over to him. The physician had passed away quite some years earlier.
+00:39:24 Bryan: Wow, well, speaking as the son of a physician who discovered that he loved software, I'm sure that his son appreciated getting it. That's amazing.
+00:39:36 Trammell: Yes, it was really quite an interesting find. The PDP-11 is definitely a fun one. I also did a lot of fun work with teletypes, one of which we hooked up to the PDP because that was period appropriate, the ASR 33. That was the teletype that Unix was originally written on. Not the specific one, but that model. If you go to 
+even a modern Linux system and looking at Etsy term cap, you'll find a term definition for the TTY 33 which is that this paper output 110 baud capsule only teletype.
+00:40:16 Bryan: TTY comes from a teletype, right?
+00:40:19 Trammell: Yes, it is.
+00:40:20 Bryan: We used to talk about TTYs all the time, and that's without thinking of it as being a teletype.
+00:40:26 Trammell: Yes, we had that one hooked up to the PDP 11, and it was quite fun, but we didn't want to run the PDP 11 all the time. We moved it over to a emulated PDP 11 on Raspberry Pi. Definitely using that for a little while reinforces or reminds you why all of the Unix commands are one or two characters, and why the default behavior is not to output anything if everything worked fine, because 110 baud is really slow.
+00:40:56 Bryan: Really slow. That's really interesting, yes.
+00:40:59 Trammell: You can type way faster than 110. Except that the ASR 33 is entirely mechanical, it has no electronics whatsoever. There's no keyboard buffer that when you hit a key it has to finish transmitting that key before you can hit another one. There's a mechanical lockout that when you hit a key none of the other ones will go down until the transmission is finished.
+00:41:26 Bryan: Wow, and what's the distance from the teletype to the actual machine? How long does it take for it to propagate? To have the signal be confirmed to get back? Is that a-- 110 bauds, I guess that's what it is.
+00:41:39 Trammell: Right. This is not a latency of communication to the machine, but just in terms of clocking out eight bits of data, and is done via a mechanical rotor that spins around. It's actually being driven by a AC synchronous motor for timing.
+[laughter]
+After the gearbox, it has to make one revolution to transmit those eight bits, and so until that revolution finishes you can't hit another key.
+00:42:09 Bryan: Wow. This is like steam-powered computing. You must feel like you're going back to the actual dawn of computing to have such a mechanical mechanism in forcing your baud rate effectively.
+00:42:24 Trammell: Right, it's very steampunk. In fact, I made that observation that real computers are ones that have oil fill ports, and grease nipples to ensure proper operation.
+00:42:38 Bryan: I don't think I've ever worked on a real computer.
+[laughter]
+That's absolutely amazing. Did this whole experience and the experience of resurrecting this incredibly old machine with so much functional software and you think about we obviously, we no longer pour oil into our machines, and yet the software that was designed around those machines has persisted. It's amazing how much longer the software survives, and then the hardware that contains it in many ways.
+00:43:08 Trammell: There's a quote from one of the original Unix newsletters about that there are now 10 installations around the world, and that number is expected to grow, and you really wonder how many Unix machines are there now? Do we have them in every pocket, they're probably in a lot of light bulbs and doorknobs. It really is a phenomenal how long-lived the Unix philosophy has been.
+00:43:34 Bryan: When you think about when you got a single system, how many different Unix systems are on that single system? Where you've got the BMC, you've got all these other CPUs, microcontrollers, and so on that are running their own variant inside of that larger, supposedly single system.
+00:43:51 Trammell: Right, we really need to think of our computers more as distributed systems that happen to be built onto the same board rather than single systems.
+00:44:00 Bryan: Trammell, I was going to ask you, it seems like the sources of some of your interesting projects have been pretty creatively sourced, you found stuff on Craigslist, stuff in storage lockers. Before we started, you were talking about a project that stemmed from finding some equipment on the side of a road in Brooklyn, and it seems like that has been a good source for some interesting projects, like the Mac SE ROM that you wrote up on your page.
+00:44:26 Trammell: Right, the literally found on the side of the road in Brooklyn, an old Mac SE a bad hard disk, and that turned into a really fun project. One of the things I like to do when I encounter old machines is to dump the ROMs. As we talked about earlier in the program, there's so much interesting stuff that lives in that firmware, and it's very instructive to see what's there. With a lot of the old ones, you find really fun bitmap fonts or icons or in the case of the Mac SE a really neat easter egg of the team that worked on producing that machine.
+00:45:05 Jess: This is really cool. [laughs]
+00:45:06 Bryan: Your blog post goes into how exactly, that's what I love about your work is you don't just describe what you found but how you found it, someone could actually go replicate this and learn about the whole toolchain that you're using to actually learn about this stuff.
+00:45:24 Trammell: I think that's the really important part for documenting is to ensure that other people can do it as well. Usually, in all my conference talks, I don't want to just talk about, "Oh, here's a cool thing I did." I want to be able to help people do that and then go further. Most of the projects that I work on, as I mentioned, I only spend a few weeks on it before finding something else.
+Getting into a state where someone else can pick it up and go forward makes me happy. Most of my really successful projects I've really only gotten off the ground and then handed the community keys over to to the community. There's the joke about the two happiest days are when you start a new Git repo, and then second happiest day is when you hand the keys off to another developer.
+Yes, that's pretty much how I treat most of these projects and trying to document it both so that I can remember what I did if I ever go back to it, as well as so that the next maintainer can continue to work on it, I think are really key things.
+00:46:31 Jess: I think that's one of the greatest powers of open source is building on top of the work of others.
+00:46:36 Trammell: Absolutely.
+00:46:37 Bryan: Being able to see how things work for yourself I think is just amazing, and then that whole toolchain. Trammell, you've been able to figure out so much about so much. What are some of the things that have stumped you the longest or some things that stick out as things that were really hard to crack? It feels like so much weed that is hard to crack, it may be hard to pick out an example, but is there a favorite defect or artifact that took you a while to figure out?
+00:47:06 Trammell: My favorite quote on that goes to Matthew Garrett, who said he's not very good at computers, he's just really bad at knowing when to give up.
+[laughter]
+00:47:15 Jess: It's good.
+00:47:17 Trammell: I think for a lot of these projects there's a surprising amount of just sort of banging against the same problem over and over and saying, "What if I send this byte? What if I send that byte?" Occasionally, I feel like a human fuzzer for pushing new systems, where I'll just keep tweaking inputs or parameters until things start to work. With some recency bias, my most recent head banging has been against the ZigBee encryption protocols.
+This is frustrating because they've documented them in a fairly massive datasheet, but rather than saying, "Here's a little bit of Python or something to show you how it's done." It's written out in prose, like a 15th-century alchemist textbook.
+00:48:10 Jess: Oh, God.
+00:48:11 Bryan: [laughs] Oh, God. Wow.
+00:48:13 Trammell: Yes, you've formed the message by concatenating these things except for the leftmost bytes of this thing, and then it's completely impenetrable.
+00:48:26 Bryan: Where is ZigBee used?
+00:48:28 Jess: Isn't that IoT?
+00:48:29 Bryan: Yes, is it used for street lamps and things like that? Aren't they ZigBee connected? What's the use for ZigBee?
+00:48:36 Trammell: Well, my personally used cases that all of the IKEA smart devices use that and I'm working on a project to let people write their own firmware extensions for these smart home devices. Similar to my magic lantern project for the Canon cameras, the goal here is to let people write their own custom behaviors or add new sensors on to the actual lightbulbs and LED drivers.
+00:49:06 Jess: That's awesome.
+00:49:07 Bryan: Is this going to mean that we can make Jess's house less physically dependent on the internet. We've been working out of Jess' garage, and there have been moments when the internet goes out we are unable to adjust the heat.
+00:49:18 Jess: I definitely don't use the IKEA lightbulbs. I use the Philips ones. That would need a different protocol.
+00:49:26 Bryan: Different protocol different incompatible I'm sure.
+00:49:28 Trammell: Yes, and I think the hue bridge is also ZigBee, but I think Philips made a deliberate change to break compatibility a year or two ago.
+00:49:38 Bryan: This is light bulb firmware incompatibility. Just to be clear, this is like the light bulbs are making themselves deliberately incompatible with one another?
+00:49:45 Trammell: Yes.
+00:49:46 Jess: Yes, Philips went so far as to even disallow-- well you can do it so that you don't need the bridge and you just use pure Bluetooth to communicate with your light bulbs, which is also interesting.
+00:49:55 Bryan: Oh, thank goodness. [laughs]
+00:49:56 Jess: I know.
+00:50:00 Bryan: How many rings does my light bulb have?
+[laughter]
+00:50:03 ?Speaker: Why?
+00:50:04 Bryan: Is there a ring negative three on my light bulb? Is there SMM on my light bulb? Trammell, one of the things that you talked about was the Canon firmware reverse engineering. Could you describe how you got into that? The guts it takes to load new firmware on your camera, on your SLR camera, it's just more guts than I've got. That was very impressive.
+00:50:25 Trammell: That was a big decision.
+00:50:32 Bryan: [laughs] That's actually a relief to know.
+00:50:34 Trammell: The first time I did it I tried to boot my own firmware on it after spending a month or so reverse engineering and trying to make certain that everything was going to work. I just sat down with my partner and said, "Well, here's what we're going to try."
+00:50:55 Bryan: [laughs] I want you to say goodbye to the Canon camera, please.
+00:50:58 Trammell: Yes. Worst case maybe I can get it repaired under warranty, but it turns out that I was able to get new code running on it and I found a really neat trick that doesn't modify the camera at all, that there is a developer mode or a debug mode that if you have a specially named SD card with a specially named file on it the camera will ignore what's in ROM and copy that file into RAM and jump into it.
+00:51:29 Jess: Whoa, that is scary.
+00:51:30 Bryan: That's a good find. That's great, though. Your first reaction is that's terrifying. My first reaction is that's great. I guess it's great and terrifying. That's great.
+00:51:40 Trammell: This meant that it no longer was necessary to reflash the camera at all. You just had to rename the card and suddenly we could run firmware. That switched it from a incredibly terrifying, sort of how you're going to break a $3,000 camera, to hopefully this won't damage things.
+[laughter]
+The best of my knowledge, we've never bricked any of the cameras.
+00:52:09 Bryan: That is amazing. How did you discover that mode? How did you discover the deeper mode? From reverse engineering it?
+00:52:15 Trammell: Yes, from walking through the boot path in the firmware to try to figure out sort of, where do I need to hook things in order to be able to get my code execution work in there?
+00:52:29 Bryan: Wow.
+00:52:29 Trammell: It was one of those sort of huh, that's funny.
+00:52:33 Bryan: It's an actual string on the SD card, the name of the SD card is how is what a keys on?
+00:52:39 Trammell: Yes, and that was one of those things. [unintelligible 00:52:43] I've been to a few of the talks that debug strings are incredibly useful for the reverse engineer that seeing something like a plain text string show up in there was one of those things like, "Huh, let me see what's happening there. Let me walk through that code path. What reference is that?"
+00:53:03 Bryan: In terms of reverse engineering it's always something and I noticed that Rick Altherr did this as well in his USB anywhere exploit. One of the things that originally keyed him on it was the looking at an interesting string and a binary. It's like, "Wait a minute, what is that string doing there? How is it used? How can I better understand it?"
+00:53:19 Trammell: Right. Colin Molnar gave a fun talk at their [unintelligible 00:53:25] Summercon, where he pointed out that if you are a vendor and trying to keep tabs on the people reverse engineering your product that you could embed some fairly unique, put tantalizing strings in there, and then buy Google AdWords for them.
+[laughter]
+00:53:45 Jess: Oh, yes, I think that was a [crosstalk] or something.
+00:53:47 Bryan: Oh, that's genius.
+00:53:49 Jess: Use next security or, yes, [crosstalk]--
+00:53:51 Bryan: That is so dark and genius. I'm afraid to google anything.
+00:53:56 Trammell: Because of course, the first thing we do when you see these strings you're like, [crosstalk]--
+00:53:59 Bryan: That is hilarious. You could buy an ad that would really give people a start.
+00:54:10 Trammell: Well, you don't even need to display the ad to them. It's just the did you suddenly get charged for it? Then that means that someone has gotten to that stage in their firmware reverse engineering.
+00:54:19 Bryan: Yes, someone somewhere. That's darkly genius, and terrifying. It makes me afraid to google arbitrary strings.
+00:54:30 Trammell: Yes, it's definitely one of those things where when you see something interesting like that you dig into it. Why is that there? There's one feature in the camera that I've not figured out that or I've yet found the pads for the debug UART but I did find the password for the debug UART in this tray.
+00:54:50 Bryan: There's a debug UART somewhere. Now, is it possible that it's only on a dev board? Is it possible that it's not on the camera as shipped?
+00:54:58 Trammell: Sure. Yes, it's really hard to know. Canon doesn't ship schematics for those anymore, but going back to a previous point about that, once I ported it from the Canon 5D Mark II, which is $3,000 camera to the T2I, which was a $400 camera, suddenly the number of people willing to use it and try it out and develop for it just went from literally one to dozens.
+The wonderful communities developed around it and some really motivated folks really wanted to keep developing it. I handed the community keys over to Alex, and they've been running an absolutely amazing project ever since. We just celebrated the 10th anniversary of that project.
+00:55:52 Bryan: That's great. What does Canon feel about this? I'm sure they had very mixed feelings at the outset, but you got to embrace it at some point.
+00:56:00 Trammell: They've never mentioned anything to me or anything publicly. I personally know that it's sold a lot of cameras, but I don't know if they recognize that. There was a talk at Black Hat and Hack Lu from a group that found a vulnerability in the P2P protocol on the cameras. Canon did fix that. They actually issued CVEs and patched that.
+00:56:27 Bryan: Somebody is paying attention.
+00:56:29 Trammell: It seems that remotely exploitable ones which this was are going to get fixed. Locally exploitable, perhaps are not a high priority.
+00:56:39 Bryan: Interesting. We got to take another quick break and then we'll be back with more Trammell Hudson and On the Metal.
+[music]
+On the Metal is brought to you by the Oxide Computer Company where we're going to try a new feature shamelessly ripped off of [unintelligible 00:56:54] yes, yes, no, where our boss Steve Tuck brings us a tweet he does not understand and Jess and I try to explain it to him. Steve, do you have the tweet?
+00:57:02 Steve: I sure do.
+Bryan: Go for it.
+00:57:03 Steve: The tweet in question UEFI preboot network stack engage the onboard net in such a way that it would write back DMA to particular physical memory pages sometime after control was passed to the bootloader. Corruption would occur somewhere in the user parts of the RAM disk. No idea.
+00:57:21 Bryan: No idea. Jess, do you understand this tweet?
+00:57:24 Jess: I understand definitely the part about the UEFI pre-boot networking stack, but the part about DMA is in question mark. It's like, I guess you're not really sure where that's going.
+00:57:35 Bryan: You're overthinking it. I understand this tweet running on-prem is painful. This is dealing with an awful awful firmware bug, the firmware has overwritten part of the operating system in a way that is extremely painful to debug.
+00:57:48 Steve: Who do you go to in that case?
+00:57:50 Bryan: Who do you go to?
+00:57:51 Jess: You definitely strangle one of your vendors.
+00:57:53 Bryan: You strangle your vendors, unfortunately, your vendor is a PC vendor, because all the existing computer companies aren't selling personal computers, what we need is a new computer company.
+00:58:04 Steve: This is just saying I'm an intense pain trying to run systems on-premises.
+00:58:08 Bryan: That's exactly what it's saying. Steve, what can someone do if they're intense pain running on-premises?
+00:58:12 Steve: Well, if someone is running in intense pain on-promises, what they should do is go over to oxide.computer to learn a little bit more about how we are going to take that pain away.
+00:58:20 Bryan: Help is on the way, join us at oxide.computer.
+00:58:24 Jess: You are not alone.
+[music]
+00:58:28 Bryan: We're back with Trammell talking every kind of hardware-software interface you can imagine. Trammell, what have you been up to recently? You mentioned the ZigBee protocol, what's struck your fancy recently?
+00:58:42 Trammell: Like Jess mentioned it'd be really nice to have all of these home automation projects not dependent on the internet. That's something that I think is a really worthwhile goal and along with my partner, we're trying to put together some workshops and on how to build non-internet connected things.
+00:59:05 Bryan: It's not only Jess that has this problem then. I was giving Jess maybe too much grief but this is a common problem.
+00:59:10 Jess: A lot of them are poorly integrated. Have you looked at home assistant Trammell? The open-sourced project?
+00:59:19 Trammell: We ran it for a little while. It's a bit of a beast to get up and running.
+00:59:24 Jess: Oh, no, it is. It is totally. I actually decided that I hated it after I did that.
+00:59:29 Bryan: What is home assistant?
+00:59:31 Jess: It's an open-source integrates or tries to integrate with every single kind of IoT device out there.
+00:59:37 Bryan: Of course, it's a bear to configure.
+00:59:39 Jess: It's just a Python monolith, pretty large.
+00:59:44 Trammell: We've been playing around with a node-red, which is sort of a fun box and train programming model for doing some of the home automation.
+00:59:52 Jess: Oh, nice.
+00:59:53 Trammell: It has plugins for ZigBee and homekit and a variety of other ones. The other one that I'm looking into playing with is The Mozilla IoT gateway that they have a fairly nice JSON object description where devices can describe to the gateway how they want to be controlled. That looks very flexible.
+01:00:12 Jess: That's cool.
+01:00:12 Trammell: The ZigBee ones are nice because they're so very inexpensive, the IKEA ones are pretty high quality, they've got nice silicon labs, modules inside for doing all of the wireless. I have enough version sharing down on there to be able to boot MicroPython, and either interface with the proprietary ember stack that IKEA is using although that turns out to be really space-constrained, only have a few 10s of kilobytes to fit the MicroPython, or what I’m working on now is trying to build a fairly complete ZigBee stack in Python that can then run standalone in the MicroPython environment on there.
+01:00:55 Jess: Nice.
+01:00:55 Bryan: Obviously, this is all neat and intellectually interesting. I have to confess, I’m a bit of a Luddite on home automation. I’m still with the light switches.
+01:01:07 Jess: The nice thing is that you can actually program at, I can make it so that when I leave the house certain lights turn on, or when I’m entering the house certain lights turn on.
+01:01:16 Trammell: Or, when someone's in the house you can turn the lights off on them.
+01:01:19 Jess: Yes. For sure, you can set up almost cron job-like behavior for on an event something happens.
+01:01:26 Bryan: I just want to administer my house.
+01:01:31 Trammell: Or break your house.
+01:01:32 Bryan: Or break my house, exactly.
+01:01:33 Jess: If you're extremely wealthy, what you can do is output this to a remote sysadmin. You have this smart house, and then this remote sysadmin has power over your entire house and all of your smart controls, which that sounds horrifying.
+01:01:50 Bryan: What hours do they work?
+01:01:52 Jess: I mean, it's more what are they going to do when they actually have the power to control all your lights, are they going to just totally mess with you while you're watching some horror movies?
+01:02:03 Bryan: Just getting malware in my house just sounds horrifying. I don't know, Tremmell, sounds like you're much more optimistic about this stuff than I am.
+01:02:12 Trammell: There's a few features that I really like, one of which is a having a big LED panel that slowly fades up, starting about half-hour before my alarm goes off. It's able to then also adjust color temp during the day, so that in the morning it's a much more bluish light, and then it's more yellow at night. That's handy, being able to turn various small localized heaters on, so that we don't have to heat the entire house to 22 or 23 degrees, we can just augment in my office or in the bedroom.
+These are some nice features. I also really like the ability to keep track of things like power usage, so that we can see how much are we using across the entire house, and can we change behaviors to try to reduce our power consumption?
+01:03:11 Bryan: Interesting. Yes, being able to observe it.
+01:03:13 Trammell: Much like a magic lantern, scratched one inch of vine that I needed, that I really wanted one feature on the camera. What got me started down this road is I wanted a dimmer dim for the LED panels that the IKEA ones have eight brightness steps, and the dimmest one is still much too bright for any night light. The first hack was be able to swap out the PWM curve for one that actually goes much dimmer.
+01:03:48 Bryan: Success on that front?
+01:03:50 Trammell: Yes. That was a very straightforward binary patch, where there's no boot-time security on the code. I was able to modify the firmware in place. Since then, I’ve reverse-engineered over the air firmware update protocol, I no longer have to open up the devices to physically reprogram them.
+01:04:13 Bryan: Now, you must have incredible mixed feelings about that, because on the one hand it must be a great relief to you that you're able to so easily interpose on your own things, and run your own software on them. On the other hand, it's got to be somewhat horrifying that a bad actor could do the same thing.
+01:04:30 Trammell: This goes back to what Jess was talking about with the internet dependence of them, that most of the threats that I’m concerned about are remote. Someone close enough to join the ZigBee network and do that. I probably have other problems to be worried about. I think as long as we can keep these things off the internet, I’m reasonably comfortable having a lack of security posture on them.
+01:05:00 Bryan: Basically, relying on whatever physical security one has in one's home, or the fact that it's going to be just not economically viable for me to try out 500,000 homes to find one that's vulnerable, but if you're internet-connected it's much easier for someone to actually do that work.
+01:05:15 Trammell: As we saw with the Mirai webcam vulnerability that spread across the-- I don’t remember how many millions of vulnerable webcams. That's a much more significant concern than someone war drive in to find a light bulb to hack.
+01:05:36 Bryan: Interesting. Your thrust is like, "Hey, let's not spend our time on preventing these things from being tampered with, but let's take them off the internet."
+01:05:47 Trammell: Right. They do have a gate-- IKEA does sell a gateway that does connect to the internet, although it's very thoughtfully designed that it connects to ikea.ntp.org to get update the time, and then it fetches a JSON file from ikea.com of all the firmware versions for the different devices.
+It will download those, and then it validates a RSA signature on them before pushing them out to the devices. If you don't give it network access, it still works perfectly well. You just don't get firmware updates for your devices.
+01:06:31 Bryan: Interesting.
+01:06:32 Trammell: Compared to a lot of these other ones that if you're not online they just don't work at all.
+01:06:38 Bryan: Yes. I can tell you, when it's the heater, and you're in a garage, and the internet's out, it can be uncomfortable. It could be a problem.
+01:06:49 Trammell: Yes. I think the concerns with local attackers, perhaps if somebody's wants to prank someone they could do things, but again these devices, they're not on the Wi-Fi, they don't have connectivity to the internet proper. There's not a whole lot capabilities that they really have.
+01:07:12 Bryan: Interesting. Just limiting their surface area to keep them off the internet is probably the single most important step, which a lot of these device manufacturers don't necessarily want to do. Their whole business model is around getting you connected, right?
+01:07:25 Trammell: I don't fully understand why, what the motivation is to have all these things online. Are they really collecting that much valuable data about how often the lights are on?
+01:07:57 Bryan: Well, that's what they're telling their investors. You got to give the, "You're using your AI on your data," question mark, question mark, question mark. I don't necessarily know they're doing that much with it, but they say they are.
+01:07:51 Trammell: Yes. I think there's a big push in some of these communities to regain digital sovereignty. It's a good way to think about it, both for things like these automation devices that they should be contained to networks that we can control, as well as to things like we were talking about earlier with servers that we should be controlling the firmware that's running on there.
+We should control the route of trust with our laptops, we should be able to change out the firmware, but we should be able to do it in a way that we can detect if someone else has modified them. I think the digital sovereignty does span everything from these smart home devices all the way to our general-purpose computers, but there are different trade-offs that we need to make along the way.
+01:08:43 Bryan: Yes. That's interesting to think of it as sovereignty, and you've got to describe the intel boot guard issue you found. I think is too hilarious to not describe it.
+01:09:53 Jess: It's good.
+01:08:54 Trammell: Which one?
+[laughter]
+01:08:57 Bryan: I guess the one I’m aware of. It sounds like there's more than one, but the one that you found when you-- I believe you had a bad dixie, and as a result you could boot anything. Am I remembering that correctly?
+01:09:10 Trammell: Okay. That one is a fairly straightforward one, this is what I’m thinking of. In that case, the way the UA-5 firmware is organized in these different firmware volumes, a lot of vendors will put all of the PEI, the pre-EFI ones on one, firmware volume all the Dixies on another one, and then a lot of times they'll put ancillary things like boot logos, or microcode updates in additional volumes.
+A lot of times, those volumes will not be signed, they will not be covered by boot guard because the OEMs might change out the logos. Also, they want to be able to swap out the microcode without requiring that the whole firmware get resigned. That way, when the next side-channel attack comes out, you can install that microcode without having to get the OEM involved.
+01:10:04 Bryan: Oh, I was going to say the next corporate rebranding changes the logo, but you're taking a much more elevated path.
+01:10:11 Trammell: Well, both of those. Well, it turns out that the UEFI reference code would scan every firmware volume for executables, and would at least run the initialization code out of them, whether or not that firmware volume was covered by the Bootguard signatures. That particular attack was quite simple that you add a new Dixie or a new PI Module to that firmware volume, it would get automatically detected and run by the CPU without ever getting measured or validated.
+01:10:49 Bryan: That seems very problematic.
+01:10:52 Trammell: Very problematic, and because it was in the reference implementation that affected pretty much every OEM.
+01:11:00 Bryan: Wow, and it shows the challenge of this that you got this whole mechanism that's designed to measure things that you're booting so you don't boot the wrong thing, and effectively one bug or issue or nuance, whatever you want to call this, this kind of legacy, the capacity to evaluate these things for executable bats or executing the initializations action resulted in the whole mechanism being circumventable.
+01:11:27 Trammell: It turns out that a lot of these chains of trust fail brutally in that way that if you can get one instruction executed that's not measured you can basically use that to load arbitrary payloads and do things, which is one of the other Bootguard vulnerabilities that I found along with Peter Bosch from a University of Leiden.
+Which is that when after Bootguard has validated all of the signatures, it's supposed to do that entirely running out of cache so that way it never goes back to the flash chip, but there was a bug in the way Bootguard switched from what's called caches RAM mode into normal DRAM mode. When it did that one instruction, or I think four instructions would be loaded from the flash and executed.
+01:12:20 Bryan: Oh, boy.
+01:12:21 Trammell: This was my second FPGA project, watched the flash chip accesses for that second access, and then would provide a different instruction. This is a time of check time of use vulnerability, essentially a hardware race condition that allowed Bootguard bypass.
+01:12:45 Bryan: Via an FPGA. Wow, that's amazing.
+01:12:48 Jess: Also terrible.
+01:12:49 Bryan: It's also, and just think there's a four instruction, just four instructions. It's so few instructions and yet it doesn't take many, by measure of instructions to be able to circumvent the whole thing.
+01:13:02 Trammell: Yes, the first instruction you send is a jump somewhere else and then you're off to whatever location of code in the ROM that you want to run from.
+01:13:14 Bryan: Given the challenge of this, are you optimistic that we can actually get a full chain of trust and be able to actually have nice things in the server space? Can we actually have a [unintelligible 01:13:27] trust and get full firmware out of station?
+01:13:31 Trammell: I think we can actually start to get there, and I think we can start to apply some higher-level language techniques to give us measurements of which code paths we've gone down and basically do a tainting to ensure that everything that we execute has come from a measured path. The [unintelligible 01:13:55] project, that Linux boot depends on has reimplemented all of the firmware in Go, and it's really amazing to think that we can throw such a high-level language at such a low-level problem, and Go gives a lot of neat introspective capabilities that would be very difficult in C.
+01:14:18 Bryan: Yes, interesting. Well, I've been playing around with Rust on the Teensy and all the embedded Rust work has also been very interesting. It's fun to see these higher-level languages be able to get into these small places.
+01:14:30 Trammell: Yes, and on the RISC-V side there's a project called Oreboot.
+01:14:36 Bryan: Yes, we love Oreboot.
+01:14:38 Trammell: It's like Coreboot but in Rust.
+01:14:41 Bryan: It is Coreboot without the C, I believe, hence Oreboot.
+01:14:46 Jess: It's pretty cool.
+01:14:46 Trammell: Yes, so many wonderful metal-based puns.
+[laughter]
+01:14:52 Bryan: Oreboot is great. There was a great presentation on that at OSFC. Folks can check out online. Trammell, I assume that the place to find you online is trmm.net.
+01:15:05 Trammell: That's certainly to keep up with a lot of the projects and my talk schedule. I'm also on qrs@mastodon.social or QRS on the bird site.
+01:15:18 Jess: Nice.
+01:15:18 Bryan: [laughs] Nice. Well, that's great. Trammell, thank you so much for joining us today on On the Metal. It's hard to imagine anyone who's done such more varied work at the hardware-software interface and then documented it so thoroughly. Thank you on behalf of all of us for all of your contributions, they're mesmerizingly good.
+01:15:39 Jess: Yes, thank you so much.
+01:15:40 Trammell: It has been wonderful chatting with you all, and I wish you the best of luck in your garage startup.
+[laughter]
+01:15:47 Bryan: Well, provided the internet stays on so we can get the heat on.
+01:15:50 Trammel: The heat.
+01:15:51 Bryan: Excellent. Thank you, Trammell and I thank you for joining us for On the Metal.
+[music]
+You've been listening to On the Metal, tales from the hardware-software interface. For show notes to learn more about our guests or to sign up for our mailing list, visit us at onthemetal.fm. On the Metal is a production of Oxide Computer Company. Is recorded in the Oxide garage in Oakland, California. To learn more about Oxide visit us at oxide.computer. On the Metal is hosted by me Bryan Cantrill along with Jessie Frazelle and we are frequently joined by our boss Steve Tuck.
+Our original and awesome theme music is by JJ Wiesler at Pollen Music Group. You can learn more about JJ and Pollen at pollenmusicgroup.com. We are edited and produced by Chris Hill and his crew at Humble Pod. From Jess, from Steve, from me, and from all of us at Oxide Computer Company, thanks for listening to On the Metal.
+[music]
+[01:17:15] [END OF AUDIO]

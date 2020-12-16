@@ -1,0 +1,410 @@
+[music]
+00:00:10 Brian Cantrill: Welcome to On the Metal - Tales from the Hardware/Software Interface. I'm Brian Cantrill. With me as always is Jess Frazelle. Hi, Jess.
+00:00:18 Jessie Frazelle: Hi, Brian. [laughs]
+00:00:19 Brian: What's so hysterical about that? I can't say my name without you--
+00:00:23 Jessie: No. It was also because you told me to say, "Hi, Brian," so then I was thinking of something else to say really fast.
+00:00:29 Brian: You kept saying hello. It sounds like-- [crosstalk]
+00:00:32 Jessie: It's like hello, hey.
+00:00:33 Brian: All right.
+00:00:33 Steve Tuck: I thought it was a dramatic intro.
+00:00:34 Brian: All right. Speaking of whom, Steve Tuck, also with us, our boss Steve, welcome.
+00:00:39 Steve: Glad to be invited.
+00:00:40 Brian: Be on your best behavior.
+00:00:41 Steve: Always.
+00:00:42 Brian: Jess, you want to introduce our esteemed guest?
+00:00:45 Jessie: Yes. Our guest today is Rick Altherr. He was one of the first people who I met honestly, in the firmware space. I've learned a lot from him over just the past few months. Most recently, he found a vulnerability in a lot of Supermicro BMCs called USBAnywhere. Do you want to maybe tell us a little bit about that?
+00:01:08 Rick Altherr: Sure. Hello. USBAnywhere was a fun one, in that I work for a company now that explicitly looks for security vulnerabilities in system firmware, and produces enterprise product around this. This is my day job now.
+00:01:22 Brian: That's a target-rich environment as Don Rumsfeld would say.
+00:01:26 Rick: It definitely is. Things have been getting slightly better in the firmware scene. I'm sure we'll talk about that in more depth in a bit. USBAnywhere was really started from just me saying, "I know that this feature exists, where I can mount an ISO image as a CD ROM drive on a server over the internet. I wonder how that works and did they do it correctly?" It turns out, no, they didn't, and it was done in probably one of the most dangerous ways possible. After doing a bunch of research about a lot of reverse engineering, working with Supermicro to get fixes developed, and announced that and gave a talk about it at OSFC.
+00:02:05 Brian: A great talk. OSFC, the Open Source Firmware Conference. Loved it. Great conference.
+00:02:09 Rick: Also, with that, revealed that I had actually scanned the internet and found 47,000 servers just sitting on the internet waiting to be exploited via this.
+00:02:19 Brian: That is 47,000 BMCs on the internet. That is like, we put the brainstem on the internet.
+00:02:27 Rick: Yes, exactly. Here's your best practice. Here's what people really do. I got in contact with some of the larger network operators that had these on there and everyone was just as mystified as I was. No one clearly knew why these were on the internet, but everybody knew they shouldn't be.
+00:02:44 Brian: Was that number higher than you thought it was going to be? That is such an astonishingly high number.
+00:02:48 Rick: It's somewhere in the range that I was expecting. There have been people in the past that have done similar scans looking for BMCs and they've found significantly higher numbers in the past. This is actually a reduction from--
+00:02:58 Brian: It's good news.
+00:03:01 Steve: Were these highly clustered, or was it distributed and everyone had one?
+00:03:05 Rick: It came in lumps. If you broke it down geographically, the highest density was in the United States, but then they were scattered all over Europe, Asia, South America. Fairly well distributed, but definitely concentrated in the US. There were a couple of network operators that were very heavily affected by it.
+00:03:21 Brian: Interesting.
+00:03:22 Rick: I got in touch with them directly to say, "Look, this is a real problem, you should figure out who these machines are owned by and do something about it."
+00:03:30 Brian: You seem like a very law-abiding person, but it must have been tempting to be like, "Wow." Especially to go through the 47,000 like, "Do I have any of my enemies list on here, by any chance?"
+00:03:43 Rick: We did look up as to-- Part of after getting 47,000 IP addresses because that's really what happened, I scanned the entire IPv4 address space. I only knew the IP address initially. Trying to do reverse DNS lookups and then look up what autonomous system they're attached to and things like that, trying to narrow down who it was, taking a peek through it and going, "Is there anybody that I know personally or that I have some interaction with that company that I can talk to them about this?" Thankfully, it wasn't anybody I knew. As I said, there were some very large network operators that were affected by it and it was just--
+00:04:19 Brian: Terrifying.
+00:04:20 Rick: Thankfully, they got in touch and asked good questions about how to fix it.
+00:04:24 Brian: I've got a question about how you actually found that vulnerability. What was the process of reverse engineering for you? Obviously, you're going into this piece of functionality thinking, "If this hasn't been implemented properly, there's likely a vulnerability here." What was your toolset, your mindset, how did you go about doing that?
+00:04:38 Rick: I actually gave a talk about this at Mountain View Reverse Engineering group recently. Unfortunately, those usually aren't recorded. The main thing was, I knew what the external functionality was. Having been in the BMC space for quite a while developing or being part of early part of open BMC and developing BMC firmware, I knew what the capabilities of the chip actually were.
+It was really just a question of what was all the in-between. If I knew on the host side that this looks like a USB device and I know that the hardware, the BMC SoC actually has the ability to look like a USB device, practically any USB device, then clearly, that's the feature that's being used here. What does the full stack look like? That's going to be split between the firmware actually on the BMC and the Java application that was running on my laptop, my remote workstation.
+I'm one to really dig into protocols. That's my thing, is getting into serialized binary formats. I just packet captured the network and looked to see what was going on. As soon as I saw a UDP or a TCP 623, which was the port that the service was running on, and I saw strings of USB in them, it was just sort of like a telltale like, something is very wrong. The actual making a proof of concept was the more difficult part.
+The early that there is something wrong was an hour of work, and it really involved Wireshark, and that's about it. Actually, understanding the protocol enough to implement my own client so that I could then use it in malicious ways, that involves getting the firmware updates, unpacking it. BMCs often are a Linux-based system on an ARM processor. You can just unpack the file system and start opening binaries and things. Then using tools like Ghidra to actually decompile the binaries and start looking through, how do they actually work?
+00:06:40 Steve: Presumably an ASPEED 2400/2500?
+00:06:44 Rick: Yes. Some of them. Some of them were ASPEED, some of them were Nuvoton.
+00:06:50 Steve: Oh, really? Wow.
+00:06:51 Rick: Older Nuvoton.
+00:06:52 Brian: Interesting.
+00:06:53 Jessie: I have a slightly off-topic question. What is your favorite computer that you've ever owned and why?
+00:06:59 Rick: Oh, see you added that I ever owned. That makes it hard.
+00:07:02 Jessie: Well, okay, or came into contact with?
+00:07:07 Brian: Jess is looking for a love story. Is that a fair statement?
+00:07:09 Jessie: I am.
+00:07:10 Brian: She wants to know when you first fell in love with a computer.
+00:07:12 Rick: My love for a computer would definitely be the large circular Cray computers?
+00:07:22 Jessie: With the seats?
+00:07:22 Brian: Yes, like the YMP? Like a Cray Y-MP 1?
+00:07:25 Rick: Yes.
+00:07:26 Brian: Wow.
+00:07:27 Jessie: The seats are cool.
+00:07:30 Rick: It's interesting that I've actually got to sit on one. These are museum pieces.
+00:07:36 Brian: Right. Exactly.
+00:07:37 Steve: This is not a home computer.
+00:07:39 Brian: No.
+00:07:39 Rick: No. No, no, no. No. They actually show this in the movie Sneakers, or a related model. The Deutsches Museum in Munich actually has one and it's just out there. They're like, "Yes, you may sit on it. Enjoy the machine." I've actually had a discussion with my wife about whether or not we can incorporate this into the decor at home.
+00:08:02 Brian: How did that go?
+00:08:03 Rick: She actually worked with me on it. We found a location that it would work if I could actually find one. I'm open for it. If somebody has one that would like to sell one, please get in touch.
+00:08:12 Brian: Is your wife actually interested in this thing, or is her love for you that unconditional that she's willing to tolerate a Cray supercomputer around the house?
+00:08:23 Rick: I think it's more, she can appreciate the aesthetic.
+00:08:26 Brian: There you go. Actually the aesthetic, if people haven't seen a picture of it, they should.
+00:08:31 Jessie: It's cool.
+00:08:31 Brian: It looks like a canonical supercomputer. It looks very badass.
+00:08:35 Jessie: It looks like 2001: A Space Odyssey.
+00:08:37 Brian: It does. Steve, you ever see a photo of these things?
+00:08:39 Steve: I asked if it was a home computer, so I think the answer is no.
+00:08:42 Brian: They're cylindrical.
+00:08:45 Rick: They make a letter C from above.
+00:08:48 Brian: Do they?
+00:08:48 Steve: Interesting.
+00:08:49 Brian: God, Seymour. Oh, Seymour.
+00:08:50 Jessie: Oh, that makes so much sense.
+00:08:52 Brian: I did not actually know that. I'm embarrassed to say I did not know that. Have you ever programmed one of those machines?
+00:08:57 Rick: Oh, no. I've never even seen one powered up.
+00:08:59 Brian: For you, the Cray is purely the aesthetic?
+00:09:03 Rick: Yes. Oh, yes. There's a whole bunch of aspects to it. Like when you get into the details of how it actually works and the intricacy of design internally. They're fascinating.
+00:09:12 Brian: They are amazing.
+00:09:13 Rick: It would be completely pointless to have one that you powered up and tried to use these days. It would be fun from a nostalgia perspective, but it's hard to justify the power budget to run one of those.
+00:09:24 Brian: You also just have to love the fact that Seymour Cray did not believe in SMP, did not believe that God intended multiprocessors. He's like "No, we're going to make this single processor bigger and faster. Get out of my way."
+00:09:35 Jessie: Put seats.
+00:09:36 Brian: Seats.
+00:09:37 Jessie: Just in case you want to sit and watch it.
+00:09:39 Brian: Oh no. I don't know if you've experienced the machines from CDC, the 1604 to the 6600. Amazing machines. He was a ridiculously amazing guy.
+00:09:49 Rick: In terms of machines I've owned, probably the best machine I ever had, or my favorite was, I had a DECstation, or sorry, an AlphaStation. It was still branded digital, but I had an AlphaStation.
+00:10:00 Brian: Nice. What operating system did you run on the AlphaStation?
+00:10:04 Rick: Interestingly enough, I got this at a time when I was actually administrating Tru64.
+00:10:09 Brian: There you go.
+00:10:10 Rick: That was my day job.
+00:10:12 Brian: Tru64 without the E. There is no E in Tru64.
+00:10:15 Rick: There is no E in Tru64.
+00:10:16 Jessie: T-R-U.
+00:10:17 Brian: T-R-U 64. It sounds like a pack of cigarettes. Do you have any Tru64 lights, please?
+00:10:25 Rick: They were very much ahead of their time in branding.
+00:10:28 Brian: They were tru.ly 64.
+00:10:31 Rick: I had that at home. Interesting with that generation of Alphas is you could run Tru64, you could run Windows NT, which was always a little awkward and interesting.
+00:10:43 Brian: Yes, you could run Windows NT. This was the era that NT was going to be everywhere and they poured it to the Alpha, which was an amazing CPU.
+00:10:55 Rick: They also had SPARC.
+00:10:58 Brian: Yes, and?
+00:11:00 Rick: They had PowerPC.
+00:11:02 Brian: They had PowerPC. There's another, ISA.
+00:11:04 Rick: MIPS.
+00:11:05 Brian: Very good.
+00:11:06 Jessie: MIPS, nice.
+00:11:08 Rick: It was really sad. I had to think of the actual folder structure inside the installer.
+00:11:12 Brian: That's very good. The only reason that I had to have NT on MIPS on the mind is because back in the day, the Palo Alto Goodwill was a glorious place to go because you'd go into the t-shirt bin, and for a nickel, you could buy corpses, effectively, because everyone would get all these t-shirts for various niches and then they would give them away. I think it was actually 25 cents, not a nickel. I bought a t-shirt from SGI that had "the top 10 reasons to run NT on MIPS" on the back. Listed. This is not a sophisticated ad copy. I think number five was SPARC schmuck.
+00:11:57 Jessie: SGI made these shirts.
+00:11:58 Brian: SGI made these shirts because SGI was banking on SGI, Silicon Graphics. I know Rick knows it's because he's dropping NT on MIPS. Crazy. This is one of these you wonder, "How many people ran NT on MIPS?"
+00:12:15 Rick: I've not encountered many people who ran NT on Alpha and I'm pretty sure that was much more common. When you had NT on all these different platforms, one of the issues was the binary compatibility. If you got an application, it had to be for that specific architecture, but on the Alpha, they had a program called FX!32. So you could take an x86 binary, drop it on FX!32, and it would convert it to run on Alpha.
+00:12:38 Brian: This is at a time when Alpha is so much faster than x86. It may have been faster than x86 to do that. Was it?
+00:12:43 Rick: It may have been. I never actually got around to playing with NT on it. I know all the details and I looked into how it worked. It actually took me six months to acquire the correct RAM to boot the machine.
+00:12:57 Brian: In Tru64, that's an ILP64 kernel, right?
+00:13:01 Rick: Yes.
+00:13:02 Brian: Integers were 64-bit. That's going to break some software. That was not a good approach as it turns out. I think humanity went a different direction on that. Went to ILP64. That was great. You own that box?
+00:13:15 Rick: Not anymore. I had that for quite a while.
+00:13:18 Jessie: That's dope. That is a good answer. I wanted a long story and we got two.
+00:13:23 Brian: We got two. Are you counting NT on MIPS [unintelligible 00:13:25]. I don't think that counts.
+00:13:26 Jessie: No, Cray
+00:13:27 Steve: Cray got away. The one that got away and the one that he had. I found a Cray, by the way. Sold in 2002 for $45,000
+00:13:35 Rick: That's a worthwhile investment. I feel there is a lost art of making computers as furniture. It's clearly something that needs to come back.
+00:13:44 Jessie: It does.
+00:13:45 Brian: [unintelligible 00:13:45] something that the Amish could pick up. They've got their furniture craftsmanship.
+00:13:51 Jessie: They distinctly don't like power, though.
+00:13:54 Brian: They're willing to resell people what they want. I think that they should pick this up. I think this should be an Amish thing. They should buy old computer gear and put some nice-- a little niche. I'd buy it.
+00:14:07 Steve: Can I ask one question back to the BMC exploits or just the vulnerability? With 45,000 hanging out in the internet, 47,000, how vulnerable is someone at that point? Is this easily exploitable?
+00:14:23 Brian: Oh, my God. I almost spit up Diet Coke onto my mic. How vulnerable is someone with a BMC on the internet?
+00:14:29 Steve: I know it's like hanging wires in the water.
+00:14:34 Brian: Go ahead, Rick. How vulnerable am I by hanging my BMC out on the internet?
+00:14:39 Rick: So many ways. The thing is BMCs fundamentally were designed in the 90s and a lot of the standards that are implemented around BMCs actually never evolved much past the early 2000s. A lot of what you see today as the state of the art is actually things like IPMI version 2, where, according to the standard, you have to support things like no authentication. It's a required mode. The only mandated ciphers are all things that have known weaknesses.
+Ultimately, the IPMI implementers forum, I forget the actual standard organization is, they're like, "We're just not going to support this anymore. There's this new thing called Redfish that isn't actually done yet, but the spec is there, so you should just do that instead." What it means is that pretty much any BMC that gets put on the internet today, it's terrible.
+00:15:39 Brian: Also, you're talking about the vulnerabilities, the actual vulnerability that you found. Rick found a vulnerability in which if your BMC gets owned by someone who's sophisticated, you are done.
+00:15:54 Rick: Yes. It's also hard to get yourself a guarantee about, have I actually removed the exploit from this machine? You can maybe re-flash the BMC, but what else has been contaminated on the system? When you start working through firmware security and everything, it gets into these situations where at what level do I just write off the hardware and beat it through a shredder?
+00:16:15 Brian: Rick is saying it gently, but he's saying if Rick owns your BMC, you got no way of getting him out. You got to pulp the machine. If you are a sophisticated actor.
+00:16:25 Rick: That's hard to justify as a business. Not all right.
+00:16:30 Brian: Absolutely. It's criminal. Almost certainly.
+00:16:33 Rick: People are going to say, "If this level of attack happens, I'm just going to do these things to recondition it and then call it good." This is what my research is, is looking at ways that you can own the machine at deeper and deeper levels, but with BMCs because of the way the standards are written, because of the practices in that era, ultimately, the stagnation in that space, you see things like machines that are shipped with a default username and password for the BMC where it's admin-admin. The expectation is that you will change it, but there's not enforcement on that.
+00:17:07 Brian: Or root/calvin, right?
+00:17:08 Rick: Root/calvin is the Dell iDRAC one.
+00:17:11 Brian: Who is Calvin? Do we know this?
+00:17:13 Rick: No.
+00:17:13 Jessie: Calvin and Hobbes.
+00:17:15 Brian: Is that what that is?
+00:17:15 Jessie: No, I don't know. I just made that up.
+00:17:17 Rick: It's a long-lost mystery, but at least some of the vendors like HPE are starting to do things like generate random eight-character passwords for each machine, and so each machine comes with a password. One of the things I also mentioned at the talk at Open Source Firmware Conference was you can rent machines with massive amounts of GPUs and run password crackers on them. I actually have two HPE machines in my lab and they have the default passwords. I didn't actually know what they were, so I ran a password corrector across all of the BMC passwords. Those took a little bit longer, but we're talking 20 hours.
+There's so many different ways that you have to have done things right to make sure that somebody isn't getting into your BMC, and then you look at things like USBAnywhere where I didn't any credentials. One of the failures found was actually the ability to just use the service as an existing user without actually logging in at all.
+00:18:20 Brian: Absolutely terrifying. It's the brainstem of the box. This controls everything. You mentioned Redfish. Jess, you and I did a very good job of not exclaiming anything when he said Redfish.
+00:18:31 Jessie: I was more chill than you were.
+00:18:33 Brian: Now, you're [unintelligible 00:18:34] that back on me, fine. Redfish does drive me crazy though. Is this just me? Redfish says, "The way we're going to manage these BMCs is we're going to hang them out over the internet." Then we discover vulnerability, and it's like, "Hang them out over the network rather." Then we discover these vulnerabilities and that feels like the vendors say, "You shouldn't have had your BMC hanging over the network." You told me to do that to take advantage of this functionality.
+00:18:55 Rick: Yes, there's this back and forth. Keep in mind that IPMI was created by Intel back in the '90s.
+00:19:03 Brian: No standards have intelligent in the name. Sorry. I guess it was the '90s. Does that feel intelligent? It's never going to feel intelligent in retrospect.
+00:19:11 Jessie: In the '90s, it was intelligent.
+00:19:13 Brian: I'm not sure it was intelligent in the '90s. Maybe by the standards on NT on MIPS, it was intelligent. Sorry. IPMI, I'm sorry.
+00:19:24 Rick: With Redfish, it's actually being developed from DMTF, which is a proper standards organization, but it suffers the same fate, which is you have a standards group that meets as a committee amongst many different companies. They develop the standard for what it should be able to do as far as system management, but they don't actually produce a reference implementation of this. They publish the spec and then they wait for people to actually implement it.
+Redfish is actually something where it's been around for years, at least five. Only now are implementations starting to show up. If you look at what the state of the art was when they began the standard process, it was clear that they just took the checklist of where the industry had gone or where the rest of computing had gone to microservices and restful APIs and things like that. They were looking at the pitfalls of IPMI where most of the issues with IPMI were actually around the security model and the data interchange. It was all a custom binary format.
+On one hand, it's like, okay, I understand you're trying to solve the problem by moving towards standardized interfaces that everybody's well-vetted, but on the other hand, now my BMC, it was going to run on an HTTP server anyway, but now I have to run an adjacent parser. There's a whole host of issues that that opens up. Then, now you also have to do things like web sockets because the IKVM support is not going to run over our custom protocol, it's going to run over HTTP, so you've got to do something.
+00:20:50 Brian: It's easy to get a lot of that stuff wrong.
+00:20:52 Rick: It's easy to get it wrong. They're hedging on that they can use existing implementations that have been well tested. The problem is that usually, those well-tested implementations don't fit on a BMC. You're dealing with a very constrained resource. The other side of it was, the folks that were specking out this protocol really didn't talk with actual deployment, like operators that are doing real deployments.
+00:21:17 Brian: Who did they talk with? This is a question we have on elegant Redfish, who did we talk to?
+00:21:22 Rick: They have a lot of representatives from the actual system manufacturers and system integrators.
+00:21:25 Brian: Sure, I know that. I know they talk with themselves.
+00:21:27 Rick: Also, they talk with the BMC chip vendors. They talk with some of the larger consulting companies that actually do deployments. There are companies that will just build a data center for you and then hand it off. They talked to some of those, but they didn't really think about or interact with the people who actively operate data centers. They weren't really looking at what the existing industry practices were like at the hyperscale, where this is solved because IPMI was such a terrible solution, but it's solved where every vendor, hyperscaler has done their own implementation.
+It turns out that one of the things that really drives everybody baddie about Redfish is actually the host to BMC interface because, on IPMI, it was well-defined. You speak the same protocol, but you do it over an interface that makes sense. You might use LPC, or I2C, or one of these system buses to actually talk from the host down. On Redfish, they're like, well--
+00:22:23 Brian: Just go over the network.
+00:22:24 Rick: We built the entire security model and design around an HTTP endpoint. Clearly, if you want your BIOS on your host system to be able to read the temperature sensors, to show it on the screen when it's booting, you have to implement a USB networking stack to be able to send an HTTP request and then parse the JSON result that comes back to show this information.
+00:22:48 Brian: This does not feel like progress. This feels like a big step in the wrong direction. Even absent vulnerabilities, it sounds incredibly complicated. Then you have all these vulnerabilities.
+00:22:57 Rick: The firmware world has gotten very, very complex as we keep shifting more and more complexity down into system firmware as we are building bigger and more complex systems.
+00:23:07 Brian: All right. We are going to take a quick break, and then we are going to come back. I think Jess is going to want to ask you some more love stories, Rick. After a quick break and a word from our sponsor.
+[music]
+00:23:17 Jessie: On the Metal is brought to you by the Oxide Computer Company.
+00:23:21 Brian: Wait, did you say computer company, Jess?
+00:23:22 Jessie: Yes, indeed.
+00:23:23 Brian: Wait a minute. Everyone runs to the public cloud. Jeff Bezos owns and operates every computer on the planet. Why would anyone start a computer company?
+00:23:29 Jessie: That is so not true. I have spent a bunch of time talking to folks who are still running on-premises. Actually, the consensus among all of them is just a feeling of neglect because everyone thinks that everything is moving to the public cloud, but it's not.
+00:23:44 Brian: If you're still running on-premises, it's because you haven't heard of the cloud, right?
+00:23:47 Jessie: No, there are really good reasons for running on-premises, still. For security, for latencies, strategic reasons for your business.
+00:23:55 Brian: Wow. The people running on-premises must feel like everyone has ignored them.
+00:23:59 Jessie: They do. Indeed. If this is you, please head on over to our website, oxide.computer, sign up for our mailing list. We would love to get in touch and hear your stories.
+00:24:09 Brian: We acknowledge that you exist and you've got some really hard technical problems that we're solving. Oxide.computer, come join us. All right. We're back. Jess, love story questions.
+00:24:22 Jessie: This one's more, it's on the border of a nightmare and a love story though, but it is the most interesting or the weirdest bug you've ever found.
+00:24:35 Rick: Oh, so many stories here. Hard to choose again.
+00:24:39 Brian: For someone who's been in the places that Rick has been, this is legitimately triggering potentially.
+00:24:44 Rick: It could be, but we're going to stay away from those.
+00:24:47 Brian: Okay. That's good. That's good, on doctor's orders.
+00:24:49 Rick: I'm going to limit it to the ones that I actually had direct involvement with because there's one that is absolutely fascinating, but it wasn't actually something that-- I've only known second-hand. Probably my worst one was actually a bug that I inherited. I joined a team. I was on their hardware team, doing firmware work. I got this bug assigned to me because I was now the owner of that system. I looked at how old the bug was. The bug was five years old. The bug was that the machine would not stay powered off.
+00:25:23 Jessie: What?
+00:25:25 Rick: You would log into the machine, you would run shut down. It would go through the whole shutdown sequence. The power would actually turn off. About two seconds later, it would turn right back on and go right back up.
+00:25:36 Brian: That's brutal for debug.
+00:25:38 Jessie: [laughs] It's a ghost. 
+00:25:40 Rick: Zombie.
+00:25:40 Brian: No. You just think about like, how do you go debug something like that?
+00:25:45 Jessie: Because "it's off".
+00:25:47 Brian: It's not off. It's clearly not off.
+00:25:50 Rick: Thankfully, the people in the past who had dealt with this bug understood what the actual issue was. They had done all the hard work. I mostly just got to live through the, "Oh, this is one of those." It turns out that that particular generation of chipset, so the actual northbridge and southbridge, had an SMBus controller on it, as they usually do. SMBus has an alert pin. The concept of the alert pin is that your SM bus slave devices can raise the alert pin to cause an interrupt and say, "Hey, something happened." All fine and good.
+In this particular version of the chipset, that was a non-maskable interrupt. It will actually wake the system from sleep if it gets asserted. Now, that normally wouldn't be an issue. What would actually be causing the alert pin to go high? It turns out that the employer at that time was also making their own custom power supplies that were built off of-- They would run off utility power, but they also had a battery charger and automated cut-over. They had a built-in UPS in them. It makes perfect sense that if you lose power, you want to--
+00:26:59 Brian: You want to have an alert, of course.
+00:27:00 Rick: You want to set the alert and notify the host system that something's happening, but nothing clears it. The very first time you do a cut-over from utility power to battery, it doesn't matter when that happens, it would set this alert flag, and then it would never clear it. When the machine went to sleep, the alert was set high, it would NMI. It would wake the system back up, which is just this whole Rube Goldberg machine. The reason this got to be really bad was you have to do testing on your batteries to actually make sure they work. You were guaranteed that at least once a month, you were going to go from utility power to battery power, which meant this bug would show up often.
+00:27:37 Brian: Once a month, right. I assume this was dead reproducible, or it should've been.
+00:27:42 Rick: Once you understood what was happening, it was really easy to reproduce.
+00:27:46 Brian: No machine would stay powered off it sounds like.
+00:27:48 Rick: Only that particular generation.
+00:27:50 Brian: For that particular generation. I've often thought that the bugs may be psychotic or non-reproducible, but not both. That's a psychotic bug, but it's dead reproducible because, presumably, it took an analyzer or--
+00:28:04 Rick: It took six months for people to figure out, originally. Now, my favorite part of this is actually recognizing that there is no way to fix this. The series of events and design decisions were locked into the hardware. It was always going to do this. What is your fix, because you do want the machines to shut off. Anybody?
+00:28:26 Jessie: I don't know.
+00:28:27 Brian: I feel that we in low-level software are often asked to make up for hardware sins. I feel like we're often engaged in a cover-up, honestly.
+00:28:36 Rick: Always.
+00:28:37 Jessie: A cover-up, yes.
+00:28:38 Brian: It feels that way. It feels like, "Look, we have to like--Look, dad's a drunk. Okay? We just have to like-- Can we pretend like we're a normal family?"
+00:28:44 Jessie: Look alive.
+00:28:45 Brian: Look alive. It's like, "No, this is--"
+00:28:47 Jessie: In this case look dead. [laughs]
+00:28:49 Brian: Yes, everybody look dead, but this is a tough one to cover up. How did you do it? I don't know. NMI, there's a reason they call it NMI. It's non-maskable.
+00:29:03 Rick: See, it's really caused by that power supply flag setting the alert. It was possible to clear that from software. A cron job calls out and clears that once a day.
+00:29:13 Jessie: Oh my gosh. Nice.
+00:29:14 Rick: The bug comes back when somebody actually removes that cron job because they say, "Why do you have this cron job?"
+00:29:20 Brian: The cron job would set the bit on the power supply?
+00:29:23 Rick: Yes, it would clear the flag that power had failed.
+00:29:27 Brian: That power had failed. Got it. If you power it off twice in the same day, wouldn't you also see the problem, or no?
+00:29:35 Rick: If you had lost utility power, at some point, that flag would get set and it would stay set and so you wouldn't be able to turn off, but as soon as the--
+00:29:44 Brian: As soon as the cron job fires.
+00:29:45 Rick: As soon as the cron job fires, it's going to clear that flag, and then you're good to go.
+00:29:48 Brian: Where's the cron job running? Is it running on the BMC?
+00:29:53 Rick: Oh, no. No, no. This was running on the host.
+00:29:54 Brian: Running on the host.
+00:29:55 Rick: Yes.
+00:29:56 Jessie: Okay, nice.
+00:29:57 Brian: That is one where you'd be like-- This is just like someone logs into this machine, it's like crontab -l and there it is.
+00:30:03 Jessie: That's like all the machines that I've ever used for obviously pets because people would log in and be like, "Oh, there are some cron jobs just set up."
+00:30:13 Brian: It's hard to know if it's a pet or a cattle, but that's a cron job. What was that name? You think you would want to name it like, "Do not delete me. I'm serious. You've been warned."
+00:30:23 Rick: No, it was something more like, "PSU fix" which is always great, right? I don't even know what this is for.
+00:30:29 Jessie: It's fixing something.
+00:30:30 Brian: It's fixing something. It's like, "Oh, we don't need that. I deleted it. It was fine."
+00:30:34 Jessie: It was fine, yes.
+00:30:35 Brian: The system seemed to work.
+00:30:37 Rick: Until the next month.
+00:30:38 Brian: Yes. That's grizzly. The cron job was you're doing?
+00:30:43 Rick: No, actually. Somebody else had written that and I just came up with better ways of making sure the cron job didn't get removed.
+00:30:49 Jessie: Nice, that's good.
+00:30:51 Brian: That's an important role. You have been up down and all around. You've done disk controller stuff, and I assume that at every level you've got horror stories.
+00:31:07 Rick: Oh, yes. That's the nature of hardware and firmware, as you said, firmware is making up for the mistakes of hardware, and there's always interesting things that have occurred. Depending on which fields you get into, you bring in more interesting failure modes, but it's always the case of something will go wrong in the hardware, and firmware is your first chance of fixing that. You start moving higher up the stack as you work on situations that have to bring in more data or more context to actually decide what to do in this place.
+00:31:34 Brian: I'm curious where you've had bugs where the hardware is in danger of physically destroying itself if software doesn't do the right thing. At that level, this is not true for most of us that are even at the hardware-software interface, most of the time hardware is pretty good at not destroying itself, but I got to believe at some of the layers you've been that you've seen some things where it's like, "No, no, if we don't actually--" Certainly if you're writing firmware for a disk controller, a lot of bad things can happen.
+00:32:01 Rick: Very bad things can happen there. There was actually a mailing list internally at one of my employers that was nothing but pictures of equipment that had caught fire in the data center.
+00:32:11 Jessie: Whoa, that's dope. That's like a Reddit that I would subscribe to.
+00:32:15 Rick: Yes, and the thing was it was like there always a new contribution about every week, so the rate at which things would just burst into flames was relatively high. Now, you have to keep in mind I used to work at hyper scalars, and so at the volume they work at, the probability of any event occurring is almost certainty. For this to be happening this often is just a consequence of scale. Yes, that was definitely a thing.
+In the hard drive space, there's a really interesting one, though. There was a particular generation of hard drives that there was a mistake in the actual calculations they did. Hard drives are really, really interesting because internally you've got the platters spinning at high speeds, the heads are actually trying to move back on a servo motor, but the heads are actually airfoils. They're relying on the speed of the air from the platters spinning to actually fly, literally fly above the surface of the media.
+You have to do these calculations around number of impurities that you might expect and what those heights would be to decide how high to fly the head to the disk of the lifespan of the drive. There's a different height that you use for reading versus writing because you need to be lower when you're writing so that you change the magnetism over a much smaller area. It turned out that they had taken the previous generation, the calculation from that and multiplied it by two, but they forgot that it was an error bound both directions. They ended up making the error very tight for the actual fly height of the head.
+00:33:48 Brian: Wow, and the fly heights, this should be said, these are very, very small distances.
+00:33:54 Rick: Yes. We're talking--
+00:33:57 Brian: The number that was given to me that I honestly still don't believe, so if you told me this is false, but the number was given to me by someone who works for a disk manufacturer. The fly height during a write, 0.8 nanometers.
+00:34:08 Rick: Yes, that's about right.
+00:34:09 Brian: That's insane. That's 800 picometers. That's insanity.
+00:34:15 Rick: Yes. Especially as they've gotten into things like the helium-filled drives.
+00:34:19 Brian: Yes, this is definitely a helium-filled drive.
+00:34:20 Rick: Because they ran into the problem with natural air--
+00:34:24 Brian: Molecules.
+00:34:25 Rick: The turbulence effects of the platter spinning would actually cause too much variation so you couldn't fly any closer because you'd be in the turbulent flow. That's why they switched to helium was actually that helium has lower drag on the surface, and so you can actually fly closer.
+00:34:41 Brian: This thing was flying too close then.
+00:34:43 Rick: It was flying too close and in a hard drive, you expect surface impurities and you expect to encounter them with the drive head, aka the head literally slamming into a mountain on the surface of the disk at 7200 RPM.
+00:35:01 Brian: Right, a mountain, a 4-nanometer high mountain.
+00:35:05 Rick: Right.
+00:35:06 Brian: Just to put this in scale. It's insane.
+00:35:08 Rick: From a visual perspective. A platter is supposed to be perfectly flat. These things are big peaks and you're going to have this head smash into it. The failure mode is actually that the head itself becomes deformed from repeated impacts. This was where we had to ask for electron microscope photography of the heads of failed drives to root cause that, in fact, yes, this really was a case where the fly height had been miscalculated, and so these drives were actually destroying their heads faster than anticipated.
+00:35:41 Brian: You raise a really interesting point about you've got a hardware that is designed for this kind of mechanical impact over and over again. It's actually hard to find the software defect, even though if the poor head could speak, it would say, "Hey, you know what? I'm running into a lot of things. I'm running into more things than you would expect," because it's so designed to be able to take another lap effectively and hit the track that it missed.
+00:36:06 Rick: Yes. This is kind of the nature of the beast when you're down this low in the firmware stack is, when you're truly interacting with the hardware at this level, you can usually do dangerous things. Often, the effects are hard to tell. It's the same as when you're building critical systems for industrial control or spacecraft or whatever. There's always this case where I'm dealing with hardware that has some effect that I can only measure through my sensors, and it has a risk to human safety, so what do I do? How do you design that hardware?
+Often, the tendency has been to shift more and more control over to the software and assume that the software can do the right job. There's always this back and forth of, in some cases, that's fine. In the hard drive case, yes, having the flight height controlled by the firmware makes sense, but when you get it wrong, it's going to have massive effects. On the other hand, when you have actual critical devices, you actually want to build the hardware in a totally different way so that if there's a failure in the software that it's intrinsically safe, you cannot possibly do the thing that would be dangerous.
+00:37:12 Brian: Fortunately, these are not actually dangerous to people, but they're definitely dangerous to the device, the failures you're talking about.
+00:37:17 Rick: Yes, it just happens to be that I've worked in other systems where it was much more about not hurting humans.
+00:37:21 Brian: Yes, [unintelligible 00:37:21] hurt the humans. Are you familiar, Jessie, with The Legend of the Walking Drives?
+00:37:27 Jessie: No.
+00:37:28 Rick: Oh, yes.
+00:37:29 Brian: Right. They were the drives when you would have a spindle that was sufficiently large, there's enough angular momentum on that thing that you can actually make the drive lurch by seeking to the same location over and over again.
+00:37:43 Rick: This is when a hard drive was the size of a washing machine.
+00:37:46 Brian: Right.
+00:37:46 Jessie: Oh, geez.
+00:37:48 Brian: There is actually a great story in the New Hacker's Dictionary, which I hate to--
+00:37:51 Jessie: I have that inside.
+00:37:53 Brian: I hate to encourage people to buy it because he's such a--
+00:37:55 Jessie: It's good.
+00:37:56 Brian: It is good. It's a good book written by a bad man.
+00:38:00 Jessie: No, just it's written by "He who must not be named."
+00:38:02 Brian: "He who must not be named," but there's a good story in there about hackers getting into a Xerox machine and making the drives walk.
+00:38:09 Jessie: Nice.
+00:38:09 Brian: Rick, let's talk about the future of firmware a little bit. Jess and I were at-- and Steve, you missed the Open Source Firmware Conference, but Jess and I went down there. It was a lot of fun.
+00:38:19 Jessie: It was dope. It was like an old school conference. People actually wanted to help each other, people were nice, there wasn't nervous everywhere. It was actually legit.
+00:38:30 Brian: It was great. Rick, was that your read too? I thought that was a lot of fun.
+00:38:33 Rick: Yes. It's definitely a conference that is by and for a particular group of developers, and it's not become a commercial venue.
+00:38:42 Jessie: Thank God.
+00:38:42 Brian: It's not become a commercial venue. I was telling Jess, this did kind of date back to an era when you had no other way of connecting to people in your incredibly small demographic and you would walk in a room and like, "Oh, my God, there are 200 people here that are interested in open-source firmware." I thought it was great.
+00:39:01 Jessie: It was dope.
+00:39:02 Brian: It was so much fun. The BMC track had, the track that you run, like 100 people in there.
+00:39:09 Rick: Yes, and a lot of that's all relatively recent. The idea of an open-source BMC stack actually only came about two and a half, three years ago.
+00:39:19 Brian: It seems like a lot of interest in a lot of folks. What's your thinking on the future of open-source firmware? I feel that we're kind of on the cusp of this becoming real, what do you think?
+00:39:28 Rick: I think so. It's going to be different as we talk about different devices and that use firmware. There's EFI for an x86 system and has a large amount of it that's been open since the very beginning, but portions of it aren't, and similar to BMCs, BMCs are getting to be more open. There's this fine line happening between firmware being open-source, but there being aspects of it that are closed because of the security concerns or the security model around it. You might need a signing key that you can't get unless you have an NDA, which kind of sucks. There's other things like, "Can I actually get the data sheets to even implement the firmware?"
+There's issues that the industry is still figuring out how to adopt it, but they've also definitely, seen the success stories of using open-source in firmware. Part of the background of the Chromebooks using coreboot is actually that a person was flagged down in the hallway as he was working in that building, not on firmware at all, but he had a pass to working on coreboot and they said, "Hey, we are trying to work out a firmware situation for these Chromebooks things. What do you think about trying to port coreboot to it?" They did it and they got it done and it worked better than the actual reference firmware from the vendor.
+It's actually a similar story for open BMC. I was at Google when that happened and I was managing a team that was starting to work on BMCs. We got a machine in and we were actually trying to talk with the sales folks at a major vendor of BMC firmware and just get a quote from them on what it would cost to license their product. You would expect that this is something that they would be wanting to do, but it had been going on long enough that I just said, "I'm going to port open BMC to this and we will see who wins first."
+00:41:13 Brian: It is actually faster than your sales cycle. I can port this faster than I can get your sales folks to call me back [crosstalk]-
+00:41:18 Rick: Yes. I had an entire Linux environment booting on the BMC and then actually causing the host CPU to power on in about two days.
+00:41:27 Brian: That's impressive [unintelligible 00:41:28].
+00:41:28 Rick: We actually didn't get a quote from the said major vendor for another week. At which point, we were just like, "I'm sorry. We've got a different solution."
+00:41:38 Brian: Thanks to your delay. That's terrific. Certainly, it seems like open-source firmware is alive and well and thriving in the BMC. Hopefully, for the bias as well, can we please--
+00:41:53 Rick: As I said, most of EFI is open-source. You can build EDK2 and get a reference implementation. What you're missing is a lot of the fit and finish that makes it a production BIOS and the specific per board configuration stuff that has to happen.
+00:42:11 Brian: That you actually need to boot.
+00:42:12 Rick: Yes. That's where the difficult divide is, in that the Silicon vendors tend to feel that if they give you the raw documentation for how to interact with the system, that they're handing over too many trade secrets. Instead, they want to hand you some sort of blob that is "just call these functions in this prebuilt library and it will do the thing."
+00:42:35 Brian: Do you think that that is well-informed? Do you think that that's just out of embarrassment for you seeing all the dirty laundry?
+00:42:40 Rick: It's a bit of both. If you go way back, these companies were burned by relying on external parties to write firmware and them having to produce accurate developer information and provide it to folks in an open-ish way. As part of actually having to write the documentation and maintain it as a business cost. Also, it does actually tell a lot about the design of your hardware. If you tell somebody how to initialize your memory controller, they now know how your memory controller actually works under the hood. That can be quite damaging as well. There's some validity to it, but there's also a side of, "Come on. The machine that I'm interested in is three generations old. Why can't you give me information on this?"
+00:43:26 Brian: Right, because it might be embarrassing.
+00:43:28 Rick: They get embarrassed anyway.
+00:43:30 Brian: Exactly. They can get embarrassed the easy way or the hard way. Open Compute Project. The open compute seems very vibrant. It seems like OCP summit was another one. That was exciting for us. What's your take on that?
+00:43:40 Rick: OCP has gone in an interesting direction. When Facebook first started it, it seemed like a unique approach to stirring up the existing ODM manufacturer business to build things that were different from the 19-inch rack standard.
+00:43:58 Brian: A standard. Isn't that half of a horse's butt or whatever?
+00:44:01 Rick: Is this is going to be another [unintelligible 00:44:02] thing?
+00:44:02 Jessie: 19-inches is half of a horse's butt. Is that what you're saying?
+00:44:06 Brian: Maybe it's like a full horse's butt. I feel like a horse's butt--
+00:44:10 Rick: The railroad ties?
+00:44:11 Brian: Yes. Doesn't this go the railroad ties and the railroad ties ultimately go to like they have to have two horses?
+00:44:15 Rick: That was disproven.
+00:44:16 Brian: Oh, I'm so sorry.
+00:44:18 Jessie: Horses butts are actually pretty large.
+00:44:21 Brian: It depends on the horse. Maybe a pony butt like a Shetland pony butt.
+00:44:24 Rick: Is that where the 24-inch standard came from?
+00:44:26 Brian: There we go. Exactly. [unintelligible 00:44:28]
+00:44:27 Jessie: [laughs] Here we go.
+00:44:28 Brian: All right, sorry to sidetracks and the butts. Bring up internet lore.
+00:44:33 Rick: Over time as they really brought more people on, it seems like it really gained a lot of movement once Google and Microsoft also joined. Now you have the structure of the hyperscalers are feeding into this and making it clear what they want. They're actually doing a lot of the design work as well and providing the reference designs that are what they are using, but they might not be perfectly fit for others to consume. By handing the designs down to OCP, then OCP partners can actually pick that up and produce real designs. You have different approaches like Google is well-known for doing all of their own server development and working with their manufacturing partners directly, and these are very, very custom to them.
+00:45:20 Brian: This is what Jess calls, infrastructure privilege.
+00:45:23 Rick: [laughs] I like that term.
+00:45:25 Brian: It's a good term.
+00:45:25 Jessie: It is. Because in talking to folks that work at hyperscalers, we have found that a lot of them don't understand the pain of literally off-the-shelf hardware.
+00:45:36 Rick: Oh, yes. They haven't had to touch it in a long time.
+00:45:39 Brian: Or ever, maybe. I feel like you've got now a whole generation that's just grown up thinking like, "Everyone has these computers that are this awesome."
+00:45:46 Jessie: At some point, I feel like I got gaslit into thinking that maybe Dell was not that bad by some people who were like, "It can't be that bad." It's like, "Oh no, it actually is."
+00:45:54 Brian: Yes, it's bad. Ask Calvin [unintelligible 00:45:57]. Let's see if you can find that guy.
+00:45:59 Jessie: Calvin and Hobbes.
+00:46:00 Brian: Maybe.
+00:46:01 Rick: Then, you end up with folks like Facebook who really put out more of an RFQ type thing to the community, or they work with a partner to actually design a machine, and it's very clear then it's and significantly contributed to by the ODM. The ODMs are still having a lot of direct involvement in those designs. Either way, you end up with a lot of options. You see new developments throughout the space in terms of not only bleeding-edge technology developments, but another interesting one is companies that buy older systems that are being decommissioned and refurbish them and sell them. That was a non-existent market for the high-end of computing.
+00:46:40 Brian: Not sell them as furniture, even though I think we would all buy them as furniture.
+00:46:44 Rick: The last real one was the Mac pros, the big aluminum cases, and those weren't that comfortable.
+00:46:51 Brian: Fair.
+00:46:52 Rick: It's interesting to see where this is all going. I think OCP is one of those, if you look at it from, "I should be able to buy this infrastructure and play like the hyperscalers," it's not complete. There's an understanding that the hardware is there, the mechanical infrastructure, et cetera, you might be able to purchase it. The software story is still complicated.
+00:47:14 Brian: I feel like OCP summit, there was no Kubernetes talk at OCP summit.
+00:47:17 Jessie: Thank God. You act like this is a bad thing. I'm relieved.
+00:47:20 Brian: No, it was in a Kubernetes free zone, which is ironic, because you'd think that these two demographics are a lot of overlap, but it's good. It was refreshing.
+00:47:30 Jessie: It was refreshing.
+00:47:31 Brian: Especially for Jess.
+00:47:32 Jessie: It felt great. I was like, "Wow, I like this conference a lot."
+00:47:35 Brian: It was a lot of fun. Who doesn't want to geek out over hardware? It's good stuff.
+00:47:40 Jessie: Having the hardware there is just a treat.
+00:47:44 Rick: The vendor holder is a lot more entertaining than other conferences.
+00:47:47 Brian: Oh, it was great. Rick, what are you excited about looking forward? You're still having fun at the hardware-software interface clearly.
+00:47:54 Rick: Yes. That's my career in a nutshell. Right now, it's a lot of pushing on the security story around firmware, raising that awareness. It's amazing that for all the work that's gone into things like secure boot and verified boot on the clients' type devices, that in the server space it's slower to catch on. Also, that all of the periphery devices don't get audited nearly the same way. How do I know that my hard drive firmware is actually not malicious? These are hard questions that the industry hasn't really tackled.
+00:48:28 Brian: Talk about [unintelligible 00:48:29] as a domain. I don't think open firmware is ever going to come to the spindle. I don't know. What do you think on that? That's going to be proprietary forever.
+00:48:37 Rick: There are some low-level parts of that that are fundamentally like, you would be having to know the mechanical parameters of it and or the design. It'd be awkward.
+00:48:48 Brian: Optimistic that it's going to get better on the server space, I think, and we're going to actually get some actual true attested firmware, and that the open firmware movement is going to continue to grow and blossom, and hopefully, OSFC will be even bigger next year.
+00:49:01 Jessie: Not lose the feel because I love the feel.
+00:49:04 Brian: Also, could they change the currency to not be in euros? That was weird.
+00:49:07 Jessie: No, I liked it. It's quaint.
+00:49:08 Brian: That was so weird.
+00:49:09 Jessie: It makes it quaint. If they change it, then it would not be as weird.
+00:49:14 Brian: My wife was convinced that our credit card was stolen by someone in Berlin. She was right to think that because it was like we were being charged €108.
+00:49:20 Jessie: I think that it's quaint and if they change it, then it will change the feel of it being--
+00:49:25 Brian: It's like, "I remember when I could go to this conference in Silicon Valley and pay euros for it. Those were the glory days."
+00:49:32 Rick: 9elements is a European company.
+00:49:34 Brian: I honored their European roots. It was weird, but it was great. Great conference.
+00:49:40 Jessie: Yes, it was amazing. The eggs at Facebook are very good if anyone was wondering.
+00:49:45 Brian: Did you have the breakfast at Facebook?
+00:49:46 Rick: No.
+00:49:46 Jessie: [laughs] It was so good. I dream about it every day.
+00:49:47 Brian: Holy crap, it was good. Oh, my God. Those eggs were epic. Normally, I feel I would moderate Jess on this, but they were divine. Jess is the one that points out that Facebook acts like your parents.
+00:50:00 Jessie: The second day we were walking in and I was like, "Let's get egg drunk." [laughs]
+00:50:06 Brian: You did get drunk though. You didn't just say, "Let's get egg drunk," we actually got egg drunk. We actually were strung out on protein, but they were perfectly cooked eggs.
+00:50:14 Jessie: They really are.
+00:50:15 Brian: Then we went to a hackathon. We went to a firmware hackathon. We were with Rick desoldering a SPI flash.
+00:50:21 Jessie: That was the best.
+00:50:22 Brian: It was the best.
+00:50:22 Jessie: It was the best.
+00:50:23 Brian: It was so much fun.
+00:50:24 Rick: What's a conference without actually taking apart hardware?
+00:50:27 Jessie: That was the best part.
+00:50:29 Brian: It was so much fun. We got that box [crosstalk]-
+00:50:32 Jessie: It's right over there.
+00:50:33 Brian: We're going to [unintelligible 00:50:33] it one day.
+00:50:34 Jessie: It's just hanging out. It's hanging out.
+00:50:36 Brian: All right, Steve, you look like you woke up over there. Do you have any questions for--
+00:50:40 Steve: Thanks. There was an air gap.
+00:50:42 Brian: I do lots of air gaps.
+00:50:44 Steve: Again, having been operating thousand of machines less than six months ago, A, the BMCs that are hanging out of the Internet, terrifying, but it doesn't seem like-- I wouldn't have thought to go have our operations team, our other teams go look into what sorts of vulnerabilities we have in the lower level software systems. A, are people not worried about this, and should they be? B, if they are, where does one even start to figure out how exposed they may be?
+00:51:14 Rick: A lot of it comes down to really having a security group that thinks through your threat model. It may be legitimate for you not to think about this space at all, depending upon if you are exposed in a lot of other ways that are much more significant to you.
+00:51:31 Brian: You've got bigger problems.
+00:51:32 Rick: The entire model of security is you can't have perfect security, it doesn't exist. It's a question of how do you allocate your resources to provide the best defenses against what you anticipate your attacks to be. If you're really a public-facing website, you probably have an attack model that looks at that as the easiest venue. Someone doing a supply chain attack against your machine is very low on your list. It may be difficult to solve. It may be you're actually relying on your vendor to solve that for you. There are legitimate reasons why, especially smaller companies, it just may not be in your threat model at all.
+Now, why is the space so terrible in terms of the security today? I like to think of it as how the industry changed around web security. If you look back to the early days of the web, it was completely open. Nobody really was thinking through security at all and over time it evolved, but it reached a point where the security community felt they needed to actually establish, these are the 10 most common problems that we see and everybody keeps repeating these mistakes.
+What we've found is that the complexity of actually building proper implementations that avoid all of these risks is so hard that we need to actually call attention to these problems that you need to focus on and do the right thing. That worked really well in that community, in that space, and so that's driven a lot of what you see in terms of the security developments in the web arena.
+When you look toward system firmware, because it's a smaller set of companies, because the idea of cloud-based system hosting and bare metal clouds and things like that is relatively new, you're dealing with a lot of folks who've not been exposed to the mindset of thinking like an attacker. They're not building the defenses in. The assumption is the firmware is the first thing that runs. It needs to have full access to the machine. It needs to do what it does and the only thing that's going to talk to it's the OS. I don't need to worry about that. That landscape is changing.
+00:53:34 Brian: Do you think that Spectre and Meltdown helped open eyes in terms of-- I think Spectre and Meltdown was such a shock to the system about the bedrock that we've been relying on for so long. The firmware vulnerabilities that have been found exploded after Spectre and Meltdown. Do you think that they played any role in shining a bright light down stack?
+00:53:55 Rick: I think it certainly helped gain a lot of awareness. There's been a lot of security vulnerabilities in firmware for a long time. Did they receive the same attention from the press? Not really. Spectre and Meltdown really had the implication of these are bugs that cannot be fixed. That was the big thing. You can mitigate them, but you cannot fix them.
+That was the message that really started to get people to think about, "My hardware might be broken in a way where I have to take significant performance hits or do something about it." The cycle for mitigating it might be months. That's very uncommon. If I find a vulnerability in a software package, it's likely there'll be a patch in days, weeks. Three months is actually the normal vulnerability disclosure window, but in hardware, it could easily be a year.
+00:54:47 Brian: Do you think as people start running more cloud-like systems, there may emerge a top 10 or a top 5 or "make sure you've checked these aspects of your infrastructure as a best practice"?
+00:55:00 Rick: Yes. I guess I characterize it as the main thing that happens at the hyperscaling in the cloud place is that the-- in traditional enterprise, you had a machine owner. The end owner of the machine was running their application and they owned that whole system top to bottom and relied upon your IT department to basically make sure that it was powered on and cooled and if it needed hardware, that they would actually be the hands to go fix it.
+When you look at the cloud space and how the world of running things like Kubernetes and OpenStack and various systems, you're starting to move more to a multi-tenancy. You're starting to move toward-- The owner of the machine is probably more of a operations group that deals with the job scheduling service and they're relying on the physical hardware as a service from the IT department, and then you have actual application owners further up the stack.
+The assumption that it's the end application owner's responsibility for the whole machine and so we don't need a whole lot of security because they just get the whole machine and they're the only ones that are on it starts to break down a lot. Along with that, you see, "We had all these security features because we thought somebody might want this someday. Do they actually work?" A lot of times what we're finding are actually vulnerabilities in the security features where they've been either misconfigured or simply not enabled.
+00:56:26 Brian: All right. Rick, thank you very much for being with us On the Metal. It was a terrific conversation.
+00:56:30 Jessie: Thank you.
+00:56:32 Rick: Thank you for having me.
+00:56:33 Brian: All right. Until next time.
+00:56:34 Steve: Thanks, Rick.
+00:56:35 Brian: You've been listening to On the Metal - Tales from the Hardware/Software Interface. For shout outs to learn more about our guests or to sign up for our mailing list, visit us at onthemetal.fm. On the Metal is a production of Oxide Computer Company, is recorded in the Oxide garage in Oakland, California. To learn more about Oxide, visit us at oxide.computer.
+On the Metal is hosted by me Brian Cantrill along with Jessie Frazelle, and we are frequently joined by our boss, Steve Tuck. Our original and awesome theme music is by JJ Wiesler at Pollen Music Group. You can learn more about JJ and Pollen at pollenmusicgroup.com. We are edited and produced by Chris Hill and his crew at HumblePod. From Jess, from Steve, from me, and from all of us at Oxide Computer Company, thanks for listening to On the Metal.
+[music]
+[00:57:54] [END OF AUDIO]

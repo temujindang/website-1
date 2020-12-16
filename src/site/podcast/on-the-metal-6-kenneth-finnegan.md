@@ -11,7 +11,7 @@ description: |
     thrill in the discovery of a root DNS server thirty feet away.
 podcast_file: https://media.transistor.fm/9212f8ff.mp3
 iframe_link: https://share.transistor.fm/e/6ebd391b
-transcript_file:
+transcript_file: 006-kenneth-finnegan.txt
 ---
 
 On this episode of On the Metal, we interview Kenneth Finnegan, 

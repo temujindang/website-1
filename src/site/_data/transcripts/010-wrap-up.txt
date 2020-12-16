@@ -1,0 +1,402 @@
+[music]
+00:00:13 Bryan Cantrill: Welcome to On The Metal. I'm Bryan Cantrill. With me as always is Jess Frazelle. Hey, Jess.
+00:00:18 Jess Frazelle: Hey, Bryan.
+00:00:18 Bryan: Joining us is our boss, Steve Tuck. Hey, Steve.
+00:00:21 Steve Tuck: Glad to be here.
+00:00:23 Bryan: That's it in the garage. We actually don't have a guest because we are at the end of season one. This is it. What a season. That was amazing.
+00:00:32 Jess: It was really good.
+00:00:33 Bryan: Okay, so I got to ask both of you, we set out to go do this and I think all three of us wanted to do the podcast, we thought it was going to be fun. Did you think it was going to be as good as it was? It was so good.
+00:00:43 Steve: Definitely.
+00:00:44 Jess: I definitely knew that a certain subset of people would like it, but then I think that it grew more than I thought it would.
+00:00:51 Bryan: You cannot argue that this thing did not beat your expectations.
+00:00:54 Steve: No, I think I think the caliber of guests that we were able to get was mind-blowing.
+00:01:00 Bryan: It's mind-blowing.
+00:01:01 Steve: Very appreciative.
+00:01:01 Jess: Which was also fun because it was during raising, which was cool.
+00:01:04 Bryan: I also thought the guests were so different. I loved that and you would get a guest like, "This is going to be very different," and then it takes a delightful path. I just thought it was amazing.
+00:01:15 Steve: You had a bunch of common themes.
+00:01:17 Bryan: A bunch of common themes, and especially, you and I would do the show notes, which actually, for some of these guests, the show notes were a truck pull.
+00:01:26 Jess: When I did the first one for Jeff Rothschild, those show notes, it was multiple pages and I was like, "Whoa." I had no idea, but also, it lets you listen to it over again with a fine-tooth comb, so I learned a lot again.
+00:01:41 Bryan: I learned a lot too and I feel also there were a couple of things that came up a couple of times. Like technology came up a couple of times and it was a ton of fun.
+00:01:49 Steve: For what it's worth, I did volunteer to try and do show notes and I think both of you were like, "No."
+00:01:53 Bryan: "Yes, it's okay." We were on it.
+00:01:55 Steve: The explanation process is probably going to be longer than us doing it.
+[laughter]
+00:01:57 Bryan: It's true, but it was a lot of fun. The whole thing was a lot of fun and there's going to be another season. This is not the last season of On The Metal.
+00:02:05 Jess: No, definitely not.
+00:02:06 Bryan: We're excited. We're going to keep doing it, but we are going to take a break for a little bit. I think the three of us wanted to reflect a little bit on some of our favorite moments. We loved, I think, every conversation and loved so much about so many different conversations, but what each of the three of us has done, so we have written down five moments that spoke to us in some special way. We actually don't know what we've said. I know Jess you're very concerned that we're going to steal your favorite moment.
+00:02:35 Jess: Yes, so I would like to go first.
+00:02:36 Bryan: You get to go first.
+00:02:37 Jess: Because my favorite moment I do not want to be stolen. I feel like it might be on other people's list, but it was a mere silicon wafers.
+00:02:44 Bryan: Oh, that was on my list.
+00:02:47 Jess: It was so good, that's why I wanted to go first, I was like, "No, I got to get it out."
+00:02:49 Bryan: Oh, that was on my list.
+00:02:50 Steve: The bedroom decorations. That was great.
+00:02:53 Bryan: That was on my list. That's funny because I felt very confident that that would be on no one else's list.
+00:02:59 Jess: Excuse me, I thought about ordering some old silicon wafers for the office to hang from the ceiling.
+[laughter]
+00:03:04 Bryan: Oh my God.
+00:03:05 Steve: You just have to turn around, Bryan.
+00:03:06 Bryan: Yes, exactly. Okay, so, obviously, that moment spoke to all three of us. Why did that moment speak to you so much, Jess?
+00:03:12 Jess: The image of it obviously, and I would love doing that.
+00:03:16 Bryan: I don't know, it was the way he described it. For those of you who may not have caught this moment, this is with Amir Michael describing hanging silicon wafers in his bedroom as a child, it's like a 5th grader. Just like the way he described it, I felt like I'm in the bedroom.
+00:03:33 Steve: Totally.
+00:03:33 Jess: Yes.
+00:03:34 Bryan: It was so evocative and there was so much. It's like I was a kid in Silicon Valley.
+00:03:39 Steve: Yes, why didn't I do that?
+00:03:40 Jess: It was so good.
+00:03:41 Bryan: Right. Actually, you're the anomaly, Steven. You grew up in the Bay Area and Silicon Valley growing up in the East Bay. For most of us who are out here, we did not grow up out here.
+00:03:49 Steve: Yes, that's true.
+00:03:50 Bryan: Amir is unusual in that regard. He's a true child of Silicon Valley. I just thought that was a very evocative moment. Yes, Jess, you were right to fear it.
+00:03:59 Steve: That's why you wanted to go early.
+00:03:59 Jess: My other ones are less fearful.
+00:04:01 Bryan: God, I know. I am now terrified. I was convinced that none of mine were going to get stolen. All right, Steve.
+00:04:07 Steve: I should have written down more than five. Just right off the jump, the interview with Jeff Rothschild and hearing him describe his path into Intel was one that was just fascinating for me.
+00:04:19 Bryan: Oh my God, that was amazing.
+00:04:21 Steve: Hearing about, one, the memory manufacturing process. You've got a lot of defects that you can't use, how that got repackaged into a solid-state product, and then that product being slower than fixed-head disk, and this creating a billion-dollar issue for Intel. At the time, he happens to be interviewing, and confidently says, "Oh, yes, I can fix that." Then leaves and goes back to Honeywell, right?
+00:04:49 Bryan: Yes, right.
+00:04:50 Steve: Goes back and then sees in a published report that the person that he had interviewed with was saying, "Yes, we did have a supply issue. We've actually resolved it" to the market. Basically, a big market announcement, and that the resolution was they had hired Jeff and he didn't know it.
+00:05:05 Bryan: Right, he's like, Oh, I guess they don't need me.
+00:05:07 Steve: Exactly, "I guess I don't need to do that."
+[laughter]
+00:05:09 Bryan: Oh, no, it's the exact opposite of that actually.
+00:05:10 Steve: You're the fix.
+00:05:11 Bryan: "You're the fix, pal." That story was amazing and that's one of those where you want to have it almost videoed. For the way he was telling it, yes, but the three of us were legitimately slack-jawed. That was just like amounts I gave, oh my God. It was amazing. So many of these stories were incredible.
+00:05:33 Steve: Again, back to the common themes, it's like in each one of these, there were so many chunks where we were just soaking it in. Just hearing these stories that go back decades and how these companies were built.
+00:05:46 Bryan: They were so personal, too.
+00:05:49 Jess: That's what I love about it.
+00:05:50 Bryan: That what I think we all loved about it. It's like you're getting who these folks actually are, which is great. All right, so mine that actually, I was a little bit worried this one was going to get stolen in the first round, so I'm not sure about this.
+Ron Minnich and Dr. Nim.
+00:06:07 Steve: That's on my list.
+00:06:07 Jess: That was good. It's not on my list, but that's a good one that I forgot.
+00:06:09 Steve: That's number three, that's' my number three.
+00:06:11 Bryan: All right. Okay, so this is using plastic tumblers effectively and marbles to emulate a computer. Based on this, and, Steve, during the conversation, you're like, "I got to go find one of these on eBay." You can find it on eBay for a couple of hundred bucks or whatever, right?
+00:06:26 Steve: Yes, I've got three kids under six, one who I thought maybe getting towards six might be appropriate for, found it on eBay.
+00:06:34 Bryan: Right, so instead of getting that, you should buy this thing called Turing Tumble.
+00:06:39 Steve: I'm not paying that because it was $176.
+00:06:42 Bryan: Turing Tumble is a lot cheaper, it's like $70 and it is a modern example, but it's elaborate, it's well thought out. I bought this for the kids for Christmas, of course. I think I've probably been playing with it more than anyone else, but it's really interesting to watch. I've got a 15-year-old, a 12-year-old, and a seven-year-old, and they all do it just to varying degrees and it gets hard. Actually, I got, I think, one of the four-star problems, and I'm like, "Okay, four-star must be the top." You go to the end like, "Oh my God, there are 10-star problems in this thing." It's good. It's a computational thinking for sure.
+Ron's story was very directly inspirational in that regard, but also just the way Ron was telling it was so captivating about learning about De Morgan's laws and so on as a kid. I thought that was great.
+00:07:37 Steve: Because his dad didn't steal it, he was actually able to use his.
+00:07:40 Bryan: I hated not stealing it from-- Actually, this is where my kids would like to speak for themselves. They're like, "Dad, you actually did tell us to go do something else." "Go play." Do you know what's pathetic, I want actually a mobile game version of Turing Tumble. They pride themselves like, "Oh, this will get your kids off the phone." I'm like, "Actually, no, I want this on the phone so the kids will do this on their phone because it's that good." Anyways, really good stuff.
+00:08:05 Steve: Good one, that was on my list.
+00:08:06 Bryan: Ron was stripping. 
+00:08:07 Steve: Now I'm down to four.
+00:08:08 Bryan: Yes, exactly. Jess.
+00:08:09 Jess: This one's probably not on anyone else's list because it's something that we found out after an episode aired. Kenneth was telling me that during Rick's episode where he's talking about how he scanned the internet for all the vulnerable VMCs, he did that from Kenneth's infrastructure.
+00:08:27 Bryan: It's such a great On The Metal tie.
+00:08:28 Steve: Wow, a full circle. 
+00:08:30 Bryan: Yes, exactly.
+00:08:31 Steve: A full circle.
+00:08:31 Jess: So good because I love the interconnected world.
+00:08:33 Bryan: The interconnected worlds are great. There's so much about Kenneth's story. What was interesting is the degree that one really resonated with people listening to On The Metal.
+00:08:46 Jess: Yes. No, because it's like the Forrest Gump of an internet exchange.
+00:08:49 Steve: Careful because we're starting to get into other ones.
+[laughter]
+00:08:53 Bryan: Okay, yes, like, "Steve, can we get it fixed?" [crosstalk]
+[laughter]
+00:08:57 Jess: I'm sorry. I got to watch myself.
+00:09:01 Bryan: Yes, but that is amazing. Rick was obviously aware of the Fremont internet cabal which is great. All right, Steve, do you want to get that one out there before it gets accidentally stolen?
+00:09:15 Steve: Yes, because it was Kenneth's where he was describing basically the DIY ASP, do it yourself, create an ASP network. The way that he was describing putting this thing together and building blocks and how folks across the aisle from each other in racks we're running cables illegally. Before you know it, with a low ASP number, he's created something that I personally--
+00:09:43 Bryan: Here's a jar.
+00:09:44 Steve: Thank you. I personally had thought of as being these very, very large companies with tons of infrastructure to be able to connect out in that way.
+00:09:53 Bryan: Can I tell you how hard I tried in doing the show notes for Kenneth? I wanted to find an architectural firm that was sitting on [crosstalk].
+00:10:00 Steve: Yes, that has the lowest PSN.
+00:10:02 Bryan: Because he just said it's an architectural firm. I'm like, "I got to know the story of this architectural firm," and I tried really hard to find the architectural firm sitting on that asset and I couldn't find them. Unfortunately, we know that they went out of business, but that's how Kenneth got the number. 
+00:10:18 Jess: Then you can't find it.
+00:10:19 Bryan: Yes, it was actually already not. They probably went out of business because probably they were not a very good architectural firm. It's already like it was against me. I did not find it.
+00:10:26 Steve: Learning the lengths people would go to save $50 a month and bring a concrete drill-
+00:10:32 Bryan: The concrete drill, right.
+00:10:32 Steve: - into a data center to drill in from the floor above and run cabling.
+00:10:36 Bryan: That was another one of those that was just very evocative. I felt like I was in the data center. I loved Kenneth, he was like, "You just got to walk in with a hard hat and a clipboard."
+00:10:44 Jess: Just look like you're official.
+00:10:46 Bryan: Look like you're official.
+[laughter]
+00:10:48 Steve: That'll get you anywhere.
+00:10:50 Bryan: Yes. No, that was terrific. Another favorite one of mine. Steve, this is the one that you missed. You were out of town.
+00:10:58 Steve: Tom.
+00:10:58 Bryan: Tom Lyon.
+00:11:00 Jess: That was so good.
+00:11:00 Bryan: Tom talking about Datapoint. He mentioned this company Datapoint and he recommended a book in particular. Book, we put in the show notes at the time, but Datapoint: The Lost Story of the Texans Who Invented the Personal Computer Revolution. I got the book and read it and really enjoyed it. A really interesting story about a company that had been forgotten about. I thought one of the things I love about Tom is that Tom also likes the history of the industry. Of course, because he's been in it for so much longer than we have, he's got this incredible depth of knowledge and interest. After the podcast, he was showing us his manual collection, Jess, and it was just such a great day.
+00:11:48 Jess: That was dope.
+00:11:48 Bryan: It was so much fun. Just delightful stories and I just loved his interest in it because he has the belief that I think the three of us have and I think our listeners have, which is that history has got a lot to teach us. We're not just interested in this because out of an antiquarian fascination. It's because we see a lot of parallels with the present and future, and we think that there's really something to understanding this stuff. I love that. I love Tom's description of Datapoint and ARCNET. That was great.
+00:12:18 Steve: I was bummed. I missed that one, but also, it was nice to be able to listen to one, and he was fascinating. God, one of what, nine kids?
+00:12:28 Bryan: That was another moment.
+00:12:29 Steve: That family.
+00:12:30 Jess: The family is so cool.
+00:12:31 Bryan: The family, I know.
+00:12:31 Steve: That family took over.
+00:12:34 Bryan: I know. He was talking about this family reunion, and it's like the Computer History Museum should send a documentary crew to this family reunion.
+00:12:44 Steve: Or just let them hold it there.
+00:12:47 Bryan: I guess, right. No, it was amazing. Then the optical mouse. He looks behind at the image of the optical mouse behind you in the garage and it's like, "Yes." Actually, the one my brother invented is actually the superior implementation of an optical mouse. It's like, "No, wait." That was amazing. All right.
+00:13:08 Jess: Yes, good stuff. Okay, so my next one is also a behind the scenes thing, but the three-hour-long episode with Jonathan Blow. Steve had to leave in the middle for a call but came back, and then I had to move a TaskRabbit that was supposed to assemble furniture.
+[laughter]
+Because I was like, "This is just getting good."
+00:13:27 Steve: I was sure that was over.
+00:13:30 Bryan: He was just gathering steam.
+00:13:33 Jess: We could've gone on for so much longer,-
+00:13:35 Bryan: Oh, so much longer.
+00:13:35 Jess: - but it was freezing, my feet were frozen.
+00:13:37 Bryan: It is so cold in this garage. I also legitimately like, "I'm going to miss my flight to New Zealand." We were going to New Zealand for the holidays. My wife's family is from New Zealand.
+00:13:48 Jess: You couldn't even copy it. We had to hide the SD card because we were concerned that we would lose it.
+00:13:52 Bryan: Literally, I did not have time to copy the SD card, that's true. That if I copied the SD card, I was in danger of missing Christmas. That's what the stakes were, but that could've gone on, it felt like.
+00:14:05 Steve: I couldn't believe it. I had to go out for an interview and came back in 45 minutes later and it was still humming.
+00:14:10 Bryan: Gathering strength.
+00:14:12 Jess: It could've gone on so much longer.
+00:14:13 Bryan: It was like a hurricane that had crossed Florida into the Gulf of Mexico, and all of a sudden, catfight. He was amazing, I thought.
+00:14:22 Steve: So interesting.
+00:14:22 Jess: It was so good. In the end, it seems like everyone seems to be loving the length.
+00:14:27 Bryan: The first long one was Jeff Rothschild because when we got into this, we thought like, "Oh, these will be like 30-minute conversations."
+00:14:35 Steve: During your commute.
+00:14:36 Bryan: We knew that 30 minutes is going to be a bit short. Then we had Jeff Rothschild was the first one. There was no way we were going to cut him off.
+00:14:47 Steve: Another one that could've gone six hours.
+00:14:49 Bryan: It could've gone six hours, and when we ended, he was like, "Wow, we're already done?" Like, "God, we didn't want to continue to force you."
+[laughter]
+00:14:56 Jess: Also, his lunchtime.
+00:14:57 Bryan: The lunchtime. Then we had an extended discussion about do we do this in two parts, or do we do it as a one-parter? We decided like, "You know what? People can hit the pause button."
+00:15:09 Jess: Because it's like Netflix, the episodes don't have a set amount of time, you just go.
+00:15:12 Bryan: You just go, and it's like we knew that we would not have wanted to be interrupted halfway through that. It's like, "Don't give me the first half without giving me the second half," so we decided to just let him go.
+00:15:24 Steve: Long-form.
+00:15:24 Jess: Just go.
+00:15:25 Bryan: Long-form. Jonathan was the ne plus ultra in that department and it was good.
+00:15:29 Jess: It was so good.
+00:15:31 Bryan: It was good, yes. At the end of it, again, he was gathering strength while the three of us were trying to hold on.
+00:15:40 Jess: My feet were literally frozen after that. Actually frozen.
+00:15:44 Steve: It did take hours to get body temperature back up again.
+00:15:47 Bryan: Right, and I did make my flight, but not with a lot of margin. I don't regret having not copied that off the SD card. All right, Steve, what do you got? What's next?
+00:15:58 Steve: I think one of the themes that was pretty interesting to hear was, I think everyone had this in common, but some people took it more seriously than others, is preservation of old hardware. It wasn't just, "I can't throw out old hardware," it was, "I seek out and collect hardware until where I live is brimming with things and causing family issues." In particular, I think Jon Masters had been holding onto hardware in his domicile until that was causing an issue, then had to get a storage locker. Filled that thing to the brim.
+00:16:33 Bryan: Which he said on the podcast like, "I'm pretty sure my fiance doesn't know about this" and I'm like, "I'm sure she does know."
+00:16:38 Jess: She does know. [laughs]
+00:16:38 Bryan: Did you see her tweet?
+00:16:39 Jess: No.
+00:16:40 Bryan: Her tweet was like, "I guess I learned there's a storage locker filled with hardware."
+[laughter]
+00:16:45 Steve: How many other storage lockers?
+00:16:45 Jess: That is stories.
+00:16:47 Bryan: Yes, it's like, "Wow, okay." Sorry, we're not trying to create any domestic strife.
+00:16:52 Jess: Oh, that's so good.
+00:16:53 Steve: Then you also had Rick wanted to buy a Cray as furniture.
+00:16:57 Bryan: Right, yes.
+00:16:58 Steve: Right? Looking that up, that actually could serve as a couch.
+00:17:02 Bryan: Yes, exactly.
+00:17:03 Steve: Then obviously the Amir thing with the wafers on the wall. There's just a lot of tie on incorporation of either storage of hardware or incorporation of hardware.
+00:17:13 Bryan: That kind of physicality.
+00:17:14 Steve: Yes.
+00:17:15 Bryan: My next one actually dovetails very well with that and that is Trammell.
+00:17:19 Jess: Oh, God.
+00:17:21 Bryan: Oh, did I just steal one of yours?
+00:17:21 Jess: I don't know.
+00:17:23 Bryan: Okay, I'll keep it specific enough. I'm going to walk in a narrow line so I don't steal anything, but the Teletype 33.
+00:17:31 Jess: Oh, that's fine.
+00:17:32 Bryan: All right, Teletype 33. I thought his description of the Teletype 33, and I actually do want to expand this now, but I'm wondering if I'm going to steal.
+00:17:39 Jess: No, it's fine, I'm not even in that genre.
+00:17:41 Bryan: Okay. The way he found that whole system on Craigslist, like, "Okay, but if you take this, you actually have to take all of it," and he gets this system that's in incredible working condition. Then the way he was describing the Teletype 33 and the fact that it was mechanically locked at what is effectively like 110 BAAD or whatever the rate was, a very, very low rate. Then that dovetailed in with a couple of different conversations, but one dovetailed back to the Tom Lyon conversation, where, Jess, we had this moment where you, Tom, and I were talking about white space, which I loved. About tabs versus spaces.
+I guess I just didn't realize this, that I never, I've always been a hard tabs person, but I've never really made the efficiency argument over it. It's ridiculous, but actually, with a Teletype 33, it's actually an efficiency argument. It's like, "No, you don't understand, I'm saving a lot of time, but eight spaces, that's like 15 minutes." That tab stop is a big deal, which I thought was really interesting. I feel the way Trammell described the Teletype 33, you can almost hear it. It's was very visceral. Then the Teletype 33, which came up a couple of times in a couple of the different conversations, the Datapoint's machine is the 3300 because it's a hundred times better than the Teletype 33.
+00:19:08 Steve: [laughs] Of course.
+00:19:09 Bryan: Yes, the Teletype Corporation. I just didn't know anything about the Teletype 33 before getting into these, so I thought that was really delightful and interesting. All right, so I did not take your [crosstalk].
+00:19:17 Jess: No, you didn't.
+00:19:18 Steve: All right, send it.
+00:19:19 Jess: This is another one of the interconnected worlds of the people on the podcast because there were things that came up multiple times. Ron and Trammell, both overlapped at Sandia Labs and worked on firmware and clustering systems, and the two sides of that story are great.
+00:19:37 Bryan: They are great and I love having these people that know one another or have worked with one another or have crossed paths in their careers. I just thought that was so much fun. I think so many people that were on the podcast became fans of the podcast, which was really neat.
+00:19:51 Jess: Which is cool because I don't think we really told people who else was on it. [laughs]
+00:19:55 Steve: We didn't.
+00:19:56 Bryan: [laughs] We defnitely didn't.
+00:19:57 Jess: We probably could have, we're just like it never came up.
+00:20:00 Bryan: I remember Amir, who we had on early, I think he was maybe our third, when we were describing the podcast, he was like, "Oh, that sounds great, I want to listen to all of them right now." Like, "You are all of them right now."
+00:20:13 Steve: You're the podcast.
+00:20:13 Bryan: You're the podcast.
+00:20:14 Steve: We'll have you out there soon.
+00:20:16 Bryan: I know, that was great. Listening to that because they basically told, Trammell and Ron told the same story, but from different perspectives.
+00:20:25 Jess: Different perspectives, which is cool.
+00:20:27 Bryan: Right, they probably had not known that. It was good.
+00:20:31 Jess: I just remember in the show notes, I was like, "Oh, wow, this is very similar."
+00:20:33 Bryan: It is very similar. All right, exactly. Right, that was two weeks ago.
+00:20:38 Steve: On Amir, that was another one of mine. First of all, just that that was fascinating, just hearing his story and how he moved through building hardware with corkboards and bread racks and DRM swept off the floor that software would try and correct when it failed and his background, and then moving into this desire towards better efficiency and systems, and that guiding a lot of his career and starting OCP and being one of the founding members of OCP. What was really interesting was a lot of folks, at least in the industry in the commercial world are after performance inefficiency for commercial reasons or deliver a faster system to customers and I want to lower costs.
+I think one of the core drivers for him that really resonated was, how do we become more efficient in the planet? How do we actually reduce emissions? How do we start being less wasteful in terms of all these machines that are inefficient, underutilized, et cetera? That driving his startup and his passion of what he really cares about, less about the commercial implications of these things.
+00:21:51 Bryan: You could really tell that it's something he felt very early.
+00:21:55 Steve: Deeply, personal.
+00:21:55 Bryan: Yes, this is not something that he was doing for how you might perceive him or what happened. This is something that he really felt. That was interesting because that was a bit surprising I thought.
+00:22:06 Steve: Yes, well, you're used to the drivers being curiosity about something or a commercial interest.
+00:22:12 Bryan: Power efficiency has got such a clear economic driver as well.
+00:22:16 Steve: That's right.
+00:22:16 Bryan: It's like it's very easy to just be doing it for business reasons, but yes, he really wasn't. I thought, similarly, in terms of the driving of OCP, to share that innovation with more people so more people would adopt them so we would have more efficient computing.
+00:22:30 Steve: Yes, and not have it locked up within a couple of very large providers. That infrastructure privilege. Maybe he coined, maybe he didn't coin.
+00:22:41 Bryan: I feel Jess definitely coined it.
+00:22:43 Steve: I think so.
+00:22:43 Jess: I think so.
+00:22:44 Steve: I think we would only say like maybe didn't.
+00:22:46 Bryan: I got to tell you, I was giving a talk last night at Stanford and mentioned infrastructure privilege and attributed it. A Googler who was there got in giggle fits. He was laughing so hard over infrastructure privilege. I'm like, "Hey, look, the rest of us are actually living in a slum over here. Don't hurt yourself laughing over the infrastructure privilege." [laughs]
+00:23:09 Steve: Can you go on the hallways with that?
+00:23:10 Bryan: Exactly. No, I think Jess definitely coined infrastructure privilege.
+00:23:15 Steve: I'm going with it. I think so.
+00:23:17 Bryan: I had another favorite moment just because it took me back to a particular time and place when Jonathan Blow was describing porting doom to the SGI set-top box. It's one of those things that it wasn't, and I think even for Jonathan, it was not a central thing, but because I had done the same, I reported doomed this other operating system at the same time, it just like immediately transported me back to the mid-'90s and that project too, which was a technically interesting and a very ahead of its time project, but ultimately, it didn't succeed as originally envisioned.
+I remembered thinking that the whole idea of video-on-demand felt ludicrous and impossible because of the last mile problem. Yet ultimately, we obviously all have video-on-demand. Anyway, Jonathan's description of that and working on that project and the engineers leaving to go to Nvidia and be in free fall, and then going and starting a game company at the worst time to start a game company, I just thought, again, very evocative and taking you right back to a time.
+00:24:25 Steve: We've all played games. He's been involved in some way shape and form in everything. He's touched your life at some point.
+00:24:33 Bryan: I'm actually amazed in retrospect because Jess played The Witness.
+00:24:45 Jess: Yes, I played The Witness.
+00:24:44 Bryan: You won The Witness.
+00:24:45 Jess: No, so The Witness, it's something where I play video games very fast basically to get to the end because I just want to play the game. One thing that I definitely wish I would have brought up but I just didn't is that since I do that, I don't enjoy the game while I'm playing it, it's way too competitive.
+[laughter]
+00:25:06 Bryan: That's just to get to the last chapter. Somehow I can't envision that. No, I can't envision that.
+00:25:11 Jess: You unlock all these things along the way and I'm like, "Okay, it's fine. I'll go back when I'm done, and I go check out other worlds and stuff." Then when you're done with the game, it pops you back to the beginning.
+00:25:23 Bryan: So you weren't able to go.
+00:25:24 Jess: I couldn't go back, I'd have to play the whole game again.
+00:25:28 Steve: You would have had to have enjoyed it along the way.
+00:25:30 Jess: Yes, I would have had to enjoy it along the way.
+[laughter]
+00:25:32 Steve: That sounds awful.
+00:25:33 Jess: Which I think there's a hidden lesson there.
+00:25:35 Steve: I agree.
+00:25:36 Bryan: The other thing about this game is I feel like it's really an Easter egg, the videos that are in it.
+00:25:42 Jess: Definitely not an Easter egg, you're supposed to collect all these little puzzles, but it's definitely not part of winning. You don't have to collect all these little puzzles to unlock the YouTube videos to win, but once you get one, you're like, "Oh, shit, I got to get all the others."
+00:25:57 Steve: Suffice it to say these videos rocked Jess' boat a little bit.
+[laughter]
+00:26:03 Jess: Because I play video games so fast, I am very much like in the game. You have to tear me away. This is also why I didn't bring all this up because it's like, okay, it comes off a little crazy.
+[laughter]
+The YouTubes, some of them are related and some of them are like physics professors and stuff like that.
+00:26:26 Bryan: Like Richard Feynman is one of the videos.
+00:26:28 Jess: Yes. Most of them are physics-related, honestly, and then there's a couple like just curveballs in there that are just so weird that you want to tie it all together. It creates a weird thing when you do that.
+00:26:44 Bryan: You were having me watch these videos. It must have been after the conversation with Jon because I would have brought it up.
+00:26:48 Jess: It was definitely after because I was like, "I don't know if I should bring it up or not."
+00:26:52 Bryan: Right, so then you were showing it to me, I'm like, "God, this video," but it was clear that these videos were transporting you back to a time and place. When you're playing this game you're just like, "What is it that you mean? What does it mean? It means something, but I don't understand."
+00:27:06 Jess: Even the guy in the YouTube comments was like, "What do these videos mean?" and I'm like, "That is me."
+[laughter]
+00:27:12 Bryan: Because the other problem is some of them have a clear meaning, so now you want to get clear meaning out of all of them. One of the other thing that's interesting is one of those videos is by Bryan Moriarty, who was the InfoComm who did Trinity, the game that he mentioned, the InfoComm game that he mentioned. I was like doing the show notes and I'm like, "Ooh, This is one of the videos. Ooh, Should I bring this up with Jess, a bit of a landmine maybe?"
+00:27:34 Jess: That actually makes sense.
+00:27:36 Bryan: Right, it does make sense.
+00:27:38 Jess: It's just the one with the candle that makes no sense.
+00:27:40 Bryan: In your defense, the one with the candle really does not make sense. It's like a Polish art film or something.
+00:27:45 Jess: I think that one's thrown in there just to mess with people, I don't know, maybe.
+00:27:49 Steve: Especially people playing the game fast.
+00:27:50 Jess: Yes.
+00:27:51 Bryan: If that was its intent, mission accomplished.
+00:27:53 Jess: It really did.
+00:27:57 Bryan: You almost wonder if you brought it up with Jon then Jon is, "I can't, I overshot the mark on this one."
+00:28:00 Jess: I played that.
+[laughter]
+00:28:02 Steve: I've been waiting for someone to bring that one up.
+00:28:03 Bryan: I was trying to mess with you, not screw you up, but I think I may have. No, but I'm amazed in hindsight that you did not actually.
+00:28:10 Jess: I was thinking about it a lot though, but then I did imagine him going back to his office and being like, "You will not believe what this girl on the podcast said about the videos."
+00:28:18 Bryan: I was just impressed because underneath that, that your relatives in still waters. The conversation must have just been like--
+00:28:28 Jess: The candle.
+00:28:29 Bryan: Right, the candle, what is going on with the candle? It was amazing. Jess, have we exhausted your list.
+00:28:36 Jess: No, I have one more.
+00:28:36 Bryan: Okay, go for it.
+00:28:37 Jess: Okay, so my last one is during Jon Masters when we were all reminiscing about where we were during Spectre and Meltdown, which is crazy because it was
+such a huge thing, and it was funny to see everyone else because I was freaking out where I was, but everyone else was freaking out where they were.
+00:28:55 Bryan: Yes, that was funny. I loved your story, too, about your sister is going shopping for her wedding dress, and you're like, "Oh my God."
+00:29:04 Steve: Do you not appreciate what's happening right now.
+00:29:06 Bryan: It's like, "The world is ending."
+00:29:07 Steve: Look at my phone.
+00:29:08 Bryan: I can just envision it being like, "Can I not have my day? Why must it always be about you?" and you're like, "No."
+00:29:16 Steve: It sounds priceless.
+00:29:17 Jess: That's all the community has ever heard, us freaking out.
+00:29:22 Bryan: I remember exactly where I was.
+00:29:24 Steve: Oh, God.
+00:29:26 Bryan: What a mess.
+00:29:27 Steve: That was not a good day to be in the cloud provider business.
+00:29:31 Bryan: It was not a good day. That was not a good week.
+00:29:34 Steve: It's like, "Wait, do we run a multitenant service?"
+00:29:36 Bryan: Right, exactly. It was not a good month I bet. No, that was hard, and especially because the call for Jon Masters, one of our founding engineers, Robert Misaki, was here watching the podcast live. Robert was the one who implemented Kernel page-table isolation for us while we were exposed. Robert Misaki and Alex Wilson were actually having to do brain surgery while we were exposed. I know it's evocative for him as well for sure. That was just amazing. All the stories of the vulnerabilities were amazing. Yes, exactly, it takes us back.
+00:30:13 Jess: I was like back there with my sister wanting justice and her being like, "What the fuck?"
+[laughter]
+00:30:19 Bryan: Right, "Must it be about you?" It's like, "It's not about me, it's the world, it's humanity." Steve, any more on your list?
+00:30:29 Steve: Actually, that was a partial mine. It was around the vulnerabilities stories from Jon Masters, and then the naming of them and how they [crosstalk] arrived-
+00:30:38 Bryan: The branding.
+00:30:39 Steve: - the branding and all that. It was just hearing all the terrifying stories of vulnerabilities out there. Very interesting in that one.
+00:30:46 Bryan: My last one, I've just got a lot, but Rec, I loved Rec when we were talking about Windows NT back in the day. He was able to recall that NT ran on MIPS by bringing up the folder in his brain. You could see he was visualizing the folder of the drives. Seriously, he was on Alpha because I just feel like that windows NT ran on MIPS is a fact not many people know or would retain. Again, very evocative for me because I had the top 10 reasons to run NT on MIPS, but it was actually amazing I thought.
+00:31:22 Jess: There's a whole Wikipedia page I found, I think, on the Windows NT on MIPS. There is a specific website on it because I linked to it in the show notes, and I was like, "This was a thing."
+00:31:30 Bryan: I think one of the things I really appreciated actually in this whole exercise is Wikipedia because, Jess, you and I went to Wikipedia all the time.
+00:31:37 Jess: There are good stuff on there.
+00:31:39 Bryan: There is good stuff on there and so many of these things are very obscure artifacts. I've got actually really good Wikipedia pages.
+00:31:48 Jess: Plus, the other thing that I found through doing the show notes is it's not just the Wikipedia page that's great, there's this references thing at the bottom. If you click through those, then you find out way more information.
+00:31:58 Steve: Full bots.
+00:31:58 Bryan: Yes, way more information.
+00:31:59 Steve: See, I could have done the show notes with Wikipedia. All right, I'm taking one on at some point.
+00:32:02 Bryan: Oh, God.
+00:32:06 Steve: Come on. Next season's pop culture, right?
+00:32:10 Bryan: Yes, exactly. Any low lights?
+00:32:15 Jess: No. 
+00:32:15 Bryan: No, any low lights. I can't not talk about it.
+00:32:18 Jess: What?
+00:32:20 Bryan: The bumpkin that gave us the three-star review.
+[laughter]
+00:32:24 Steve: Oh, come on, we're not going to talk about this.
+00:32:25 Jess: Oh my God. They're all five-star reviews, there's only one three-star review and you're here.
+00:32:31 Bryan: Oh my God.
+00:32:31 Steve: Come on, no, get it back on track. I thought you were going to say like, "Oh, and Steve said the [crosstalk] is instruction sets."
+00:32:38 Bryan: No, I was trying to set myself up. I just want to get it out of my system.
+00:32:39 Steve: Come on, what's called an ASN and an ISP and SSP.
+00:32:44 Bryan: All right, let me just get it out of here, we'll be done. Okay, so first of all, the podcast is great and one of these reviews. The reviews were obviously like, "I love this podcast." Of course, who wouldn't? Also, we don't ask people to leave reviews, leave a review if you want to leave a review, people should be free to do what they want. Except for the person who said like, "Oh, I like the podcast, but Bryan should be asking Jess less frequently if she's ever heard of something, that's getting a little old. That's my recommendation." Three stars. Jess thought it was hilarious.
+I'm like, "This is not hilarious at all" because, one, I don't agree. Jess, I'm what, 16 years older than you? It's not an unreasonable question. Like on BBSs, the last BBS was shut off when you were in the uterine, I'm convinced.
+00:33:40 Jess: I only know BBSs through internet culture history.
+00:33:45 Bryan: Right, exactly. This is not an unreasonable question if you've heard of a BBS. I felt obviously very defensive, and then I feel like, "I'm getting two stars off for that?" We can lose two stars because I'm asking if Jess has ever heard of BBS.
+00:34:02 Steve: It could have been three.
+00:34:03 Bryan: It could have been three, I know, that's what you're saying. I just need to be like,-
+00:34:06 Steve: They only knocked off two.
+00:34:07 Bryan: - "Why am I reading the comments?"
+00:34:08 Steve: Why are you in the comment section? No, actually, in fairness, the comments were great.
+00:34:13 Jess: You didn't read the comments. I read them, and then I posted it because I was laughing so hard. This is all my fault. It's all my fault. 
+[laughter]
+00:34:19 Bryan: Technically, you did actually send me that comment. Yes, it's true. That's true, but also because the comments have been so positive just because it has been so positive, it's been so great. It's been so much fun.
+00:34:31 Steve: We're super, super grateful. Everyone who takes the time to listen to the long-form podcasts and giving feedback, it was great.
+00:34:39 Jess: The ad.
+00:34:40 Steve: The ad.
+00:34:40 Bryan: Yes, we can talk about the ad.
+00:34:42 Steve: We can talk about the ad. We had, obviously and understandably, listening to those same three ads again and again and again would be grading for anybody.
+00:34:51 Bryan: Hey, better than the ads we didn't run. When we recorded those ads, let's just say we had some experiment-
+00:34:56 Jess: Oh, my, there were some bad ones.
+00:34:58 Bryan: - there were some stackers in there.
+00:34:59 Jess: There were some really bad ones.
+00:35:01 Bryan: You know how good you're at it.
+00:35:01 Steve: I thought they would have appreciated us rolling out the throw outs. We had to mix things up as we went.
+00:35:05 Bryan: Yes, exactly just to read the index.
+00:35:08 Steve: Maybe not.
+00:35:09 Bryan: Yes, it was. It was the fact they're still seeing the same ads all the time.
+00:35:12 Steve: Repetition.
+00:35:12 Bryan: People are not even like, "Don't run the ads" or "Don't run the ads for Oxide," they're just like, "Can you just run different ads."
+[laughter]
+00:35:19 Steve: Right, "Can you advertise differently." One listener, as we said in the ad, just did unsolicited, sent us an email and said, "Look, I have only been a taker of the podcast this entire time, I've given nothing, so I felt like I should give you something. The repetitive ads are killing me. I've recorded my own ad for you that you're free to use if you like."
+00:35:43 Bryan: Obviously, Steve and I were delighted by this, the Jonathan Blow episode, it was the next episode up. This is on Friday, this is last Friday because Jonathan's episode was going on Monday. Jess, you were out of town, and Steve and I are going, "We obviously have to get ads around this. We got to go to the garage now." Then there was this moment of like, "We can get the power on."
+00:36:06 Jess: No, but like this is where me IoTing absolutely everything comes in hand, I was so happy. 
+00:36:10 Steve: It was the lien. I know, but let's just say that the IoT came through because the power doesn't work without it.
+00:36:16 Bryan: Without that.
+00:36:18 Bryan: Steve's got a point. He's got a point. Steve does have a point.
+00:36:20 Steve: Yes, when the power does not work, it is nice to have someone in another state be able to turn it on.
+00:36:26 Bryan: Right, I was able to DM you in another state and you were able to turn the power on, but it was pretty great.
+00:36:30 Steve: It was great.
+00:36:32 Bryan: Truthfully, Steve's caveat didn't even occur to me, but right, of course, if there was just a power switch, we would have had to, but it was fine. It was great, it worked and we got it recorded, but that was a lot of fun. How great is it to have? I think that Chris at HumblePod, our producer, I think it's fair to say he had never quite seen that one before. [laughs] He had never seen a listener offer up their own ad.
+00:36:57 Steve: Please anything else.
+00:36:57 Bryan: Right, anything like that.
+00:36:58 Jess: It was so awesome. We'll take ads in the interim if we're waiting.
+00:37:02 Bryan: We totally appreciate you. You the listeners, it has been so much fun for us. We have had so many conversations with people who have listened to the podcast for whom it's been meaningful. We've had people who've been in the industry a long time for whom they have reminisced. What I've loved are some of the younger folks who've listened to the podcast and realized, "Oh, wow, there's a whole world down there that I wasn't aware of," which is the point. At some level, it was really not to reminisce so much as it is to talk about this area of engineering that's still very active and interesting and has lots of hard problems.
+00:37:40 Steve: I think, too, the credit of the folks that were on. The descriptions of the lower levels of the stack, the descriptions of some of these hard technology problems were told in such a way that were very interesting, historical, and then relevant to a lot of the things that we're doing today and just captivating. It was really interesting.
+00:38:05 Bryan: Captivating and deeply personal, as you said, Jess, at the beginning, we love stories and that's what it's about.
+00:38:08 Jess: So great, yes. I think a lot of that just happened because there was no season before this. It was like everyone was just like, "So what do I talk about?" and we're like, "Let's just start with everything."
+00:38:19 Bryan: Let's just go. Which we should also say the intros.
+00:38:21 Steve: Yes, the first intro.
+00:38:23 Bryan: The first intro where I handed it over to Jess to make the intro and Jess is like, "We have," I think was it Reck? Emerson Reck.
+00:38:32 Jess: Yes.
+00:38:33 Steve: Yes.
+00:38:34 Bryan: It was either Reck or Jeff, we are just like, "We have--"
+00:38:37 Steve: No, it was Jeff.
+00:38:37 Bryan: It was Jeff.
+00:38:38 Jess: Yes.
+00:38:40 Steve: It was Jeff and we have Jeff here.
+00:38:39 Bryan: It's like, "Jess is going to intro who we've got to drive." She's like, "We've got Jeff Rothschild here." I'm like, "Okay, that's the intro. Hello."
+00:38:45 Jess: Here's the thing, I actually put a lot of thought into that, though, behind the scenes because I was like, "Maybe he doesn't want to be intro'd as the thing that everyone knows him for. Maybe he wants to be known for something else," so I was like, "Maybe I'll just let him intro himself."
+00:38:56 Steve: I appreciate that.
+00:38:59 Bryan: Also, it should be said that all three of us were a bit star-struck by Jeff.
+00:39:03 Jess: Yes, pretty sure.
+00:39:04 Bryan: He's had such an interesting career and been to so many different interesting places, and so you don't want to intro him in a way that he wouldn't like.
+00:39:11 Jess: He just likes, so then I was like, "Oh, crap." [laughs]
+00:39:13 Steve: Smart.
+00:39:14 Bryan: I was like, "Okay, back to me." Then I think we just decided that's the way we intro people around here. We just give your name.
+00:39:21 Jess: We didn't put them into box.
+00:39:23 Bryan: We didn't put them into box. No, it was great and it was fun and it was so much fun, we loved it. Season two is coming and we're excited that you all the listeners are excited, so stay tuned, right?
+00:39:39 Steve: Stay tuned.
+00:39:40 Bryan: All right, thanks and hey, don't forget, head on over to oxide.computer and join our mailing list. Thanks each and everyone and see you in season two.
+00:39:49 Steve: See you.
+[music]
+00:39:51 Bryan: You've been listening to On The Metal, tales from the hardware/software interface. For show notes, to learn more about our guests, or to sign up for our mailing list, visit us at onthemetal.fm. On The Metal is a production of Oxide Computer Company. It's recorded in the Oxide garage in Oakland, California. To learn more about Oxide, visit us at oxide.computer. On The Metal is hosted by me, Bryan Cantrill, along with Jess Frazelle, and we are frequently joined by our boss, Steve Tuck. Our original and awesome theme music is by JJ Wiesler at Pollen Music Group. You can learn more about JJ and Pollen at pollenmusicgroup.com.
+We are edited and produced by Chris Hill and his crew at HumblePod. From Jess, from Steve, from me, and from all of us at Oxide Computer Company, thanks for listening to On The Metal.
+[music]

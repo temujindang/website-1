@@ -1,0 +1,914 @@
+[music]
+00:00:12 Bryan: Welcome to On the Metal, tales from the hardware/software interface. I'm Bryan Cantrill, with me, as always, is Jess Frazelle. Hey, Jess.
+00:00:20 Jess: Hey, Bryan. [chuckles]
+00:00:22 Bryan: We've got a very exciting guest here in the garage today. Do you want to introduce our guest, Jess?
+00:00:25 Jess: Yes, we have Tom Lyon. I think that what we should start with, probably, is what he brought us.
+00:00:31 Bryan: Yes, Tom, you brought us a gift. First of all, welcome to the garage.
+00:00:34 Tom: Thank you. Great to be here.
+00:00:36 Bryan: Note that this should be the expectation for everyone coming into the garage. That said, we do honor the fact that you have brought us a terrific gift. Do you want to describe what you brought us?
+00:00:48 Tom: Well, I'm a collector of computing artifacts, mostly manuals, but every now and then something else, but not huge amounts of hardware like some people. I've got a bag full of buttons and indicators from IBM 360. What I have for each of you is a Ready light from the IBM mainframe.
+00:01:09 Jess: It's so cool.
+00:01:09 Bryan: It's so cool.
+00:01:10 Jess: It's also our color green.
+00:01:12 Bryan: It is. It is the green that we have for Oxide, which is great. It also has got such heft to it and you had an interesting little anecdote about the origin of Ready.
+00:01:22 Tom: Yes. Apparently in the '50s sometime, somebody was going to have an idle light on the mainframe, but an executive at IBM came along and said, "Oh, no. Our machines are never idle. Let's call it Ready."
+00:01:33 Bryan: That's genius. You really have to admire that. We should call it the Ready loop, not the Idle loop. It's unfortunate that Idle reinserted itself into our lexicon because Ready is really a much better term. My teenager's not idle, he is nearly ready.
+[laughter]
+00:01:52 Bryan: Actually, my case is idle.
+00:01:53 Tom: I'm ready for work often.
+00:01:55 Bryan: Exactly.
+00:01:55 Jess: No, it's good.
+00:01:56 Bryan: It's good, but thank you so much for this. It's interesting that you've been collecting this and you've got a terrific artifact in your office at DriveScale, an actual platter from a spindle. You want to describe that one a little bit? That's an amazing artifact.
+00:02:14 Tom: Actually, I have two giant platters. One a 26-inch and one a 31-inch. They're both from 1961, I think.
+00:02:22 Jess: Wow.
+00:02:22 Bryan: Wow.
+00:02:24 Tom: Hefty, hefty discs that were magnetic disc and units that they went into were these gigantic face because they had a lot of these discs lined up together. I've actually been trying to collect one of every size of platter ever made.
+00:02:42 Bryan: [laughs]
+00:02:42 Jess: Wow, that's cool.
+00:02:43 Bryan: That is awesome.
+00:02:45 Tom: The tiniest has a 0.85-inch that Toshiba made with a USB interface. That was very recent as well, but killed off by flash memory.
+00:02:56 Bryan: So your criteria is this needs to be rotating media, it has to be a spinning platter?
+00:03:00 Tom: Yes, just for fun because--
+00:03:01 Bryan: 0.85 inches on a platter. That's amazing.
+00:03:02 Jess: That's really small.
+00:03:04 Tom: Because you could collect flash, but it's just chips.
+00:03:06 Bryan: Oh, yes. No, this is a much better hobby.
+00:03:09 Tom: Then the largest ever made and I think there are only two or three ever made, a 48-inch platter.
+00:03:15 Bryan: Holy God.
+00:03:17 Tom: Stanford had one and Lawrence Livermore had one. The trouble is they were so huge that when they'd change temperature, everything would get out of alignment because there were too many types of metal.
+00:03:29 Bryan: I imagine you've got a lot of problems and then also just the angular momentum you have.
+00:03:33 Tom: Scary.
+00:03:34 Bryan: Scary.
+00:03:34 Tom: Very scary.
+00:03:35 Bryan: You could actually hurt somebody I imagine. What was the speed of those platters, do you know? It must've been--
+00:03:42 Tom: They were like 1500 rpm.
+00:03:46 Bryan: I came across and maybe it's apocryphal that if you get below about 1200 rpm, you begin to lose-- The aerodynamics become really complicated.
+00:03:56 Tom: I don't know, but what's interesting is that at some point they figured out making things smaller made everything more rigid and life was much simpler as they made things smaller.
+00:04:06 Bryan: Wow. We talk about On the Metal, that platter you've got, it is metal. Jess, you've not seen it, right?
+00:04:14 Jess: No, I saw the picture.
+00:04:15 Bryan: Saw the picture, yes. How much does it weigh, Tom? It's got to weigh--
+00:04:19 Tom: 15 pounds maybe.
+00:04:21 Jess: Oh, wow. That's hefty.
+00:04:23 Bryan: It is absolutely hefty and that came out, was it a Librascope? What was the machine of that?
+00:04:29 Tom: Librascope were the guys who had the 48 inch monster.
+00:04:32 Bryan: Oh, wow.
+00:04:33 Tom: This came out of Burroughs and a Data Products.
+00:04:37 Jess: Oh, cool.
+00:04:38 Tom: They did stuff for lots of vendors.
+00:04:40 Bryan: Wow. This is a machine that predates you, I assume? This is not a machine that you ever saw or worked on?
+00:04:45 Tom: No, I had no personal connection with that.
+00:04:49 Bryan: Just a curiosity. I love that. When I was a young technologist, I developed that same interest in the history that had come before me and you, obviously, had the same thing of, but what did come before me here?
+00:05:00 Tom: Well, the other really cool thing I got, not too long ago, was a memory tube-- Memory scope from an IBM 704. That was IBM's first commercial computer and the memory was on CRTs, so you had a 32x32 bit pattern on a CRT was 1K of memory. I got one of those CRTs and the computer had-- I forget whether it was 36 bit or 40 bit wide words. They had one bank of CRTs with the detectors on the front, so you could read back the bits and refresh.
+00:05:37 Bryan: How did the memory work? Is it using photoreceptors?
+00:05:40 Tom: It's using the phosphorescence to store the bit and then you would read it back and refresh it every so often to keep it going.
+00:05:51 Bryan: Oh my gosh.
+00:05:52 Tom: Which is not that different than DRAM.
+00:05:54 Bryan: No, it isn't. It's like why should that seem so insane when we do basically the same thing with capacitance, that they're doing with phosphorescence.
+00:06:01 Tom: The cool thing was they had one bank of things which was the memory and another bank of CRTs with the same display on it that you could look at and see what was going on.
+00:06:11 Bryan: Wow, that is really interesting. How effective was that memory? Was it [crosstalk]?
+00:06:18 Tom: It was great.
+00:06:18 Bryan: It was good?
+00:06:19 Tom: It was good and it was very fast.
+00:06:23 Bryan: Density, I imagine--
+00:06:23 Tom: Yes, density sucked.
+00:06:24 Bryan: Density sucked, right.
+00:06:25 Tom: Until core memory came along and that was a hot thing.
+00:06:28 Bryan: So this is pre-core memory.
+00:06:31 Jess: That's crazy.
+00:06:33 Bryan: This is maybe post-mercury delay lines, which has got to be some of the earliest, in terms of memory?
+00:06:40 Tom: Yes, UNIVAC I was mercury. That was just a couple of years before this.
+00:06:44 Bryan: I assume if you come across some mercury delay line, you're not going to purchase that. That feels a little--
+00:06:47 Tom: No.
+00:06:48 Bryan: Yes, exactly. [laughs] That is a little too dangerous.
+00:06:50 Tom: Probably, they're not going to be allowed to put it on eBay, for sure.
+00:06:53 Bryan: That one seems like a-- Do you know how a mercury delay line works, Jess?
+00:06:56 Jess: No.
+00:06:57 Bryan: Explain mercury delay line, Tom.
+00:07:00 Tom: Basically, it's a long narrow vat of mercury and by disturbing at one end you create a wave, which represents a bit and you sense it at the other end. Now you store the bit for the amount of time it takes to go from one end to the other.
+00:07:15 Jess: Like thermometers are mercury, traditionally?
+00:07:17 Bryan: Thermometers are mercury, yes. I assume the mercury, it was the viscosity I would assume? It's obviously properties of mercury that make it particularly amenable. Presumably, you could make a delay line out of other liquids, it would just be much more lossy and/or complicated?
+00:07:32 Tom: I don't know all the physics behind it. Of course, it was a big pain in the butt to install, get it stable and perfectly level and all this kind of stuff.
+00:07:41 Jess: Yes, that's crazy. That's super volatile.
+00:07:44 Bryan: Well, it is volatile in both sense. Obviously, it's volatile memory, but then it's volatile for the-- I mean, do not drink the memory, for certain, do not touch the memory.
+00:07:55 Tom: Speaking of volatile memory, for your listeners, I was employee number eight at Sun. The Sun-1 had software-based memory refresh. You had to take an interrupt every two milliseconds or something and walk through a certain amount of memory, or your memory would go away.
+00:08:15 Bryan: It was the host operating system that was responsible for that? There's not some microcontroller elsewhere? It was actually--
+00:08:19 Tom: Or even worse, even when you're booting, you had to get in there early on and put in an interrupt service for the timer.
+00:08:25 Bryan: Oh my gosh, I did not know that. Every two milliseconds? Wow, that's--
+00:08:29 Tom: Of course, what this made really hard to do was to put in a breakpoint to debug anything.
+[laughter]
+00:08:36 Bryan: You stop the machine and there's no more machine.
+00:08:40 Tom: That was a feature quickly obsoleted by the Sun-2.
+00:08:44 Bryan: I can imagine. Wow. I did not know that. What a great-- Was that common at the time to have software refreshed memory?
+00:08:52 Tom: No, this is was an Andy Bechtolsheim special.
+00:08:54 Bryan: [laughs]
+00:08:54 Jess: Nice.
+00:08:54 Tom: It's like, why should you have another piece of hardware that increments addresses, blah, blah, blah, when the processor can do that?
+00:09:02 Bryan: And you're like, is that an earnest question? Because I would like to explain why you would want to have another piece of hardware refresh memory. I could show you why we do not to have those now for-- Wow, the kind of Andy Bechtolsheim B-sides.
+[laughter]
+00:09:15 Bryan: That's pretty great. On the one hand, I admire it. It's classic Andy, it's very bold.
+00:09:21 Tom: It was good at saving on hardware which paid off well.
+00:09:27 Bryan: Wow. In those days, in the Sun-1 days, you're employee number eight, you and I didn't overlap at Sun, but you were a folk hero at Sun, obviously, by the time I showed up. I had always wished we'd overlapped actually at Sun, but in those days, you were one of the first software engineers, right
+00:09:46 Tom: I was I guess the third actual software engineer.
+00:09:51 Bryan: Wow.
+00:09:51 Jess: Cool.
+00:09:52 Tom: But the only one who had really solid Unix experience.
+00:09:55 Bryan: I feel like at some point, you tweeted out a photo of a napkin that you had at the time where you just laid out all of the next 20 years of computing on a napkin.
+00:10:05 Tom: No, there was a page I have which is--
+00:10:07 Bryan: Oh, your notebook maybe.
+00:10:09 Tom: A notebook from the original NFS architecture off-site.
+00:10:13 Jess: Wow.
+00:10:15 Tom: At the end of it all, we had the drawing on the whiteboard and I copied it all down to my notebook and that is the architecture, which is pretty much remains today.
+00:10:26 Bryan: Because it feels modern and yet it's from 1984.
+00:10:31 Tom: '84, '83 maybe. The first time it shipped till '85 so it's probably '83.
+00:10:36 Bryan: Wow. The idea of getting your storage over a network was obviously radical at the time. This is the first real instance of network storage.
+00:10:49 Tom: I've been doing some research into that and the notion of a file server was there in the Xerox Alto world and apparently, also they're in the Datapoint stuff, which I just finished reading a book about Datapoint.
+00:11:02 Bryan: Oh yes. What book?
+00:11:05 Tom: Of course I can't remember the title.
+00:11:06 Bryan: No worries. We'll get in the short notes. No worries.
+00:11:08 Tom: But it has Datapoint in it and they have a strong claim to having invented a microprocessor where they work directly with Intel on the 8008. They have a strong claim to inventing the personal computer because they were building programmable desktop devices.
+00:11:22 Bryan: This is pre-Alto then?
+00:11:24 Tom: Yes, this was around 1969.
+00:11:26 Bryan: Wow.
+00:11:27 Tom: And they definitely invented a local area network, which is ARCNET, which still survives in strange ways.
+00:11:37 Bryan: Datapoint invented ARCNET, I did not realize that. It's a go read the book. That sounds fascinating.
+00:11:43 Tom: They were like king of the business world in the early, early '80s and then they had weird management takeovers and blew up in the mid-80s.
+00:11:52 Bryan: There are many a fates for many a computer companies. ARCNET was invented there and ARCNET was a bit of a goofy network. I worked at an operating systems company, QNX, that grew up on ARCNET strangely enough and supported ARCNET much later than anyone else I think.
+00:12:09 Tom: It was basically a Token Ring.
+00:12:10 Bryan: That's right. It's a Token Ring with its concomitant problems, I think.
+00:12:17 Tom: But it could have been worse than AppleTalk though.
+00:12:19 Bryan: Oh interesting. I never had to use AppleTalk. AppleTalk not fun?
+00:12:25 Tom: It was amazing what they were able to do with that considering it was just a serial port gone crazy. It was actually the same chip that Sun used, the Z 8530 UART was used on the Macintosh. Because they don't have to worry about things like multitasking, they could spin a loop and drive the thing at 200 kilobits and that was the basis of local talk and then they layered on CSMA type stuff on just in software.
+00:12:56 Bryan: With the assumption that you were doing nothing else but driving this UART basically?
+00:13:00 Tom: Right. At Sun, I did all kinds of horrible magical tricks with UARTs as well. Eventually, we had a DMA-based board with that same chip where I wrote an AppleTalk implementation.
+00:13:13 Bryan: There was an AppleTalk implementation for Sun machines?
+00:13:16 Tom: Never shipped as a product because the higher-level protocols were even stranger and hard to implement.
+00:13:22 Bryan: But the high-level protocols of top AppleTalk?
+00:13:24 Tom: Yes.
+00:13:24 Bryan: What was even the rationale for even experimenting with it? What were AppleTalk devices? What devices spoke over AppleTalk?
+00:13:30 Tom: The most notable, of course, is Mac, but the second most notable was the LaserWriter.
+00:13:35 Bryan: That's what I was wondering.
+00:13:36 Tom: Which was, Sun actually OAMed that from Apple, but we had to talk to it on a slow serial port.
+00:13:43 Bryan: Interesting and at a time when the laser printer is not ubiquitous. It's a very differentiated technology I remember.
+00:13:49 Tom: It came from Adobe, they implemented PostScript and all that and their development system was Sun workstation doing direct DMA to the print engine. Whereas when they ship it, it's a whole separate little system 68,000 that did all the work. It was always offensive to me that we were paying Apple for processing inside this thing.
+00:14:14 Bryan: Was the work on getting AppleTalk a way to get Sun to talk directly to the LaserWriter presumably?
+00:14:21 Tom: Well, it was mostly me screwing around.
+[laughter]
+00:14:25 Bryan: And learning that AppleTalk was not a puzzle protocol to deal with.
+00:14:29 Tom: What people forget though about the '80s is, TCP/IP was not a foregone conclusion at all. There was IBM SNA, [unintelligible 00:14:36] OSI protocols, x.25. I started this group, Sun link group which eventually shipped 17 different products, different protocols, all of which are thankfully dead today because TCP/IP was clearly the way to go, but they were so important to get into a customer site to connect to whatever they already had.
+00:15:02 Bryan: What made it clear that TCP was the way to go?
+00:15:05 Tom: In the early days, it was just architecturally superior, you could do a lot more with it. It was happy on Ethernet, it was happy in the wide area and that was unusual. I remember people saying TCP/IP will never succeed on LAN because it's a wide area protocol.
+00:15:23 Bryan: Oh, interesting.
+00:15:24 Tom: A few years later people were saying TCP will never survive in the WAN because it's a LAN protocol.
+[laughter]
+00:15:29 Bryan: Exactly. Well, you might both be wrong. That is interesting. For those of us who came up later, it's hard to remember or hard to realize that TCP as we know it today, really evolved. It didn't all show up at once. Things like congestion avoidance.
+00:15:47 Tom: Yes. It took a while to sort out a lot of the details, but it still, I think, will interoperate with off-the-shelf TCP from Berkeley, Unix.
+00:15:58 Bryan: That's amazing. That interoperability was really an important strike I assume.
+00:16:03 Tom: Just like today, what was important was not the TCP standard, what was important was the fact that Berkeley Unix made it available to everybody because nobody understood the standard, even to this day.
+00:16:16 Bryan: It was the fact that it was effectively open source that was a big part of TCP success?
+00:16:21 Jess: That's good.
+00:16:22 Bryan: Well, I feel that's something that's also forgotten about NFS that a big part of NFS to success when Sun was an open systems company, was actually getting other competing vendors to have a correctly functioning implementation.
+00:16:38 Tom: That's a counter example in some ways because it would have been easy for us to say, "Here's the NFS code, just port it to your machine, you're done." That was the easy path if your machine was a lot like a Linux machine, so we did license the source code, but there was a protocol spec. It was actually a very important part of making the protocol work. One of the first independent implementations of NFS was for the IBM PC, which eventually became Sun PC NFS, but it was all [unintelligible 00:17:10] and very tightly coded.
+00:17:14 Bryan: That is not going to be using the source code from--?
+00:17:16 Tom: No.
+00:17:16 Bryan: It was very much relying on the specification and then being able to-- That emphasis on interoperability I feel was was noble at time. Is that a fair statement?
+00:17:26 Tom: Yes, it was fairly new because so many vendors just did proprietary protocols [unintelligible 00:17:30]. At the other end of the scale, people were putting NFS on mainframes where they had never seen a C compiler in their life.
+00:17:38 Bryan: Wow. NFS really became this connective tissue for a lot of these different machines?
+00:17:43 Tom: Right.
+00:17:44 Bryan: It's interesting.
+00:17:47 Tom: I have to add that everyone who hates NFS today, you should hate NFS. It means you're using it, A and B, it's 35 years old for Christ's sake.
+[laughter]
+We can do something better now. You could ask me how later.
+00:18:03 Bryan: I feel with NFS on the one hand, I think that, first of all, a lot of people that think they hate NFS, I'd love to know your opinion on this, they actually hate the Linux automounter. Auto-mounting is a really important part of NFS, it's this unseen component that-- Suns automounter was terrible, it had to be rewritten. I've heard no end of horror stories from-- I think if your automounter's bad, you're going to blame NFS.
+00:18:38 Tom: I wrote the very first automounter and it was kind of a toy, but then it got taken over and all of the generations that I've seen have just been full of all these crazy features where it's clear no one ever quite figured out what they wanted to do with it so it turned into yet another Turing complete language.
+00:19:00 Bryan: Maybe your automounter was the one that worked, we should have kept it simple.
+00:19:05 Tom: In my automounter the interface out of the kernel to a user space was just NFS.
+00:19:12 Bryan: Oh, interesting.
+00:19:12 Tom: It was very NFS-centric, but now of course, there's all kinds of interfaces and God knows what else.
+00:19:20 Bryan: I also think it ends up being where the coalface of CAP problems. Many automounter problems stem from partitions to the network, or transients in the network that are not properly dealt with that are actually very hard to deal with.
+00:19:41 Tom: This gets back to people complaining that NFS is not POSIX compatible. I'd like to point out NFS predates as POSIX, so what is POSIX's problem?
+[laughter]
+00:19:52 Bryan: The problem is that POSIX is not [unintelligible 00:19:53].
+00:19:55 Tom: The real problem is POSIX says nothing about networks. The CAP theorem, which is pretty fundamental, you have to address it or you don't actually have any semantics on a network.
+00:20:06 Bryan: I felt that CAP was pretty liberating in that we were trying-- I felt personally anyway, I was trying to engineer my way around the CAP for many years. It was somewhat of a relief to realize, "Okay, wait a minute, actually, this is at some level not a solvable problem. I actually need to pick one of these."
+00:20:27 Tom: The other funny thing in the NFS world, originally we just had hard mounts, which is basically from a CAP theorem perspective saying, that's the only way to get some consistency is to just hang if you can't get it.
+00:20:41 Bryan: We have to be partition intolerant.
+00:20:43 Tom: Then later on the resource mounter said, "Okay, we're going to go for availability instead of consistency." Of course, we didn't understand exactly what was going on back then.
+00:20:52 Bryan: That's what I mean, I think, that we were not thinking about it at it's more abstract level. As a result, you didn't have a dial you could turn between like, "Hey, this is the behavior that I want. I want consistency, or I want availability." That napkin or that notebook pad was pretty amazing to think that 1984, you ended up basically, that was certainly the next 15 years of network storage.
+00:21:18 Tom: It had legs. I don't know if you know there was a predecessor to NFS network disk. Did you ever hear about this?
+00:21:26 Bryan: No.
+00:21:26 Tom: It was a block-based protocol and it was implemented in the original disk with Sun workstations where you just couldn't even afford a disk for each workstation. It was a very simple read-write block protocol, which shared a disk on a server and people really hated that. It was very hard to administer because on the server, you didn't have a lot of spare space either, but you had to dedicate all these little slices to all your clients. It was a mess, but today we have Fibre Channel, we have iSCSI and they clearly have an important role in the ecosystem, even though if you're a file baguette, you're a file baguette and if you're a block baguette you're a block baguette. Sun went way out of the way to kill off ND when they did NFS.
+00:22:17 Bryan: Probably rightfully so. Maybe by your nomenclature there, I'm revealing myself to be a file baguette, but there is something that's actually very helpful about having a higher level of abstraction. It just makes it much more understandable what's going on I think for the system.
+00:22:34 Tom: My new way of thinking about this is that files are for people. You can name them, you can move them around, it all makes sense. Blocks are for machines. The kernel wants to do blocks and then objects are fine for applications because they just give me something, but you can't ever name them in any interesting way.
+00:22:56 Bryan: In terms of object storage. I do think this is a great contribution of S3 is realizing that actually not everything needs file semantics actually. There are actually a lot of things out there that are objects that are not going to be mutable.
+00:23:12 Tom: To scales at that level, they had to relax the consistency. That's another strike against the POSIX compatibility that people want, but it's really hard to do that in a very large system.
+00:23:29 Bryan: Going back to the development of TCP, because you were right involved in that from the Sun perspective. One thing that I've heard about anecdotally, but trying to better understand is the great internet collapse of 1986. Is that actually a thing? This is the congestion-based-- There was no congestion control of the protocols and the Internet was at the point where it could no longer function.
+00:23:53 Tom: That was pretty much true. I don't remember the particular dates or anything. Sun wasn't on the internet at that point because it was still very much an academic thing, but we had a lot of customers on the internet. Van Jacobson came along with the control theorem based exponential backoff, all that good stuff. He remains the hero of the internet.
+00:24:16 Bryan: A hero of the internet. He saved the internet from itself. It's my understanding, that it had gotten to the point that congestion control, nobody likes the metering lights on the bridge because they're the ones that have to wait for it, but without the metering lights, we end up with actually an unusable internet.
+00:24:37 Tom: The alternative to all that was lossless networks as epitomized by x.25 networks where you gave it a packet and it promised you it would deliver that packet come hell or high water to the other end of the world and it worked, but it was really slow in lots of cases and TCP was like "Send us, who are you transmitting? It has to get there.
+00:25:02 Bryan: Interesting. That must have been a huge fight.
+00:25:06 Tom: It was. What's really interesting is Larry Roberts, who passed away not too long ago, he was a really key guy in getting the ARPANET started through-- He worked at DARPA for a while, but I forget where else. He went off and started the company that became Telenet, which was the biggest x.25 network provider. He was responsible for starting the ARPANET, which became TCP/IP, but at the same time, his personal preference was lossless stuff.
+00:25:35 Bryan: Was lossless stuff.
+00:25:36 Tom: He did all this x.25 stuff and then later on, he did a bunch of router startups that could do lossless stuff. He was always firmly convinced that was the way to go, even when the rest of the world left him behind.
+00:25:49 Bryan: You can understand the appeal of it though. There's an engineer's appeal to it that like, no, you're going to give me the packet and I'm going to deliver the packet. Don't worry, you higher-level software should not have to deal with having to retransmit or having this thing show up. I will. It's hard for it to work.
+00:26:10 Tom: What he figured out at some point was design over liability. The only way to trust the system to be reliable is to not trust it to be reliable and make sure it happens yourself. Tandem Computers figured this out very early on. The reason they had such high reliability is they forced application writers to not trust the hardware or the operating system. With Ethernet, it says, "Hey, it might get there, it might not, just don't trust me." You have to build protocols that work on top of that.
+00:26:40 Bryan: It's a deep thought. Jess, I'm going to need a moment on that one. This is like a variant of the only way to win is not to play, the only way to actually get reliability is to understand the inherent unreliability in the substrate below.
+00:26:55 Tom: It forces it back on the application, which can then make intelligent trade-offs about what it really needs to do or not. This is invading my life again these days in the form of Ethernet fabrics versus PCI Express fabrics.
+00:27:11 Bryan: What do you make of all that?
+00:27:12 Tom: Well, PCI Express, it's a bus and the thing about the bus is the operating system and the users and everything assumes that that bus is the heart of the system. It's always going to work or just nothing is going to work. You inherently expect it to be reliable, but now you take it out of the box on some cable that's liable to be tripped over and bad, bad things happen.
+00:27:37 Bryan: It feels to me like, why are we making the bus into a network? I do feel like the contract is very fundamentally different.
+00:27:45 Tom: But making the network into a bus turns out improves reliability in all kinds of interesting ways.
+00:27:53 Bryan: Interesting. Could you do expound on that? It's interesting.
+00:27:55 Tom: Another example, we've worked a lot with SAS, serial SCSI drive scale, which, thankfully, is not a central anymore, but it's another one that is reliability built-in at the link layer kind of stuff. We've seen situations where a dying disk will take out all the other disks on its SCSI controller because error recovery was so central to everything and we don't want that to happen. We just want the disk to die and leave everything else alone.
+00:28:23 Bryan: Oh interesting.
+00:28:24 Tom: When you go down that slippery slope of promising reliability, you have to account for every possible error case that might ever happen, which is also impossible because you don't know. Whereas with the best effort it's like, it usually works and when it doesn't work give us a call.
+[laughter]
+00:28:43 Bryan: Where does that land you then on these PCI-based fabrics, network fabrics?
+00:28:49 Tom: I'm against them.
+00:28:53 Bryan: Good. I wanted to make sure.
+00:28:54 Tom: On the other hand, there's about 100 AI accelerator startups right now. They're all building PCI Express-based chips and our whole Sun drive scale is that we're trying to make the servers simpler and get stuff out of the server. PCI-based fabric is the way to do it, but it really doesn't go very far.
+00:29:16 Bryan: It just seems like PCI obviously doesn't have to deal with partitions. PCI is able to be a CAP denier and yet, the second you go over the, as you said, you get a cable that someone can trip over, it's like, welcome to our partition.
+00:29:29 Tom: Then you get into, well, can't I have two cables in case one goes out?
+00:29:33 Bryan: There we go.
+[laughter]
+00:29:35 Tom: That's a whole different kind of network architecture.
+00:29:39 Bryan: Now you got to deal with the things from these cables and everything else. That's the power of Ethernet because you could just plug it in and go.
+00:29:48 Tom: Yes, and routing protocols figure stuff out. Kind of plug and play.
+00:29:53 Bryan: We're going to take a quick break and then we will be back with more Tom Lyon on the metal.
+[music]
+00:30:01 Jess: On the medal is brought to you by the Oxide Computer Company.
+00:30:04 Bryan: Did you say computer company, Jess?
+00:30:06 Jess: Yes, indeed.
+00:30:07 Bryan: Wait a minute, everyone runs to the public cloud. Jeff Bezos owns and operates every computer on the planet. Why would anyone start a computer company?
+00:30:13 Jess: That is not true. I have spent a bunch of time talking to folks who are still running on premises and actually, the consensus among all of them is just a feeling of neglect because everyone thinks that everything is moving to the public cloud, but it's not.
+00:30:27 Bryan: If you're still running on premises, it's because you haven't heard of the cloud.
+00:30:30 Jess: No, there are really good reasons for running on premises still, for security, for latencies, strategic reasons for your business.
+00:30:39 Bryan: Wow. The people running on premises must feel like everyone has ignored them.
+00:30:43 Jess: They do, indeed. If this is you, please head on over to our website, oxide.computer, sign up for our mailing list and we would love to get in touch and hear your stories.
+00:30:53 Bryan: We acknowledge that you exist and you've got some really hard technical problems that we're solving. oxide.computer, come join us. We're back. Tom, we left off, we were talking about Ethernet. Ethernet was effectively not only brand new, but one of several competing networking substrates. [crosstalk]
+00:31:17 Tom: Actually, everyone knows Ethernet by the more formal name IEEE 802.3. 802.1 is management protocols, which are still used. There was an 802.2 and an 802.4 and an 802.5 and 802.6, which I have personally implemented all of those.
+00:31:36 Bryan: Oh wow.
+00:31:38 Tom: 802.7 and beyond I forget what they were. Some of them were wireless, 802.11.
+00:31:43 Bryan: I feel like I only know eight 802.11, I don't know.
+00:31:46 Tom: The eight 802.5 is IBM Token Ring.
+00:31:49 Jess: Yes. I know that one.
+00:31:50 Bryan: Yes.
+00:31:50 Tom: That was a huge contender for a long time because IBM was pushing it. I personally wrote token ring drivers. I have a whole Token Ring story, if you want to go there.
+00:32:00 Jess: This is what we're here for.
+00:32:00 Bryan: This is why we’re here. Let's do the Token Ring story.
+00:32:05 Tom: In 1989, Sun was pretty hot. IBM shows up at Sun with their new 16 megabit Token Ring adapters for the PCAT bus. They say, “We're announcing these in two weeks at the COMDEX show. If you guys want to be part of this somehow, here's a couple of boards.”
+00:32:28 Bryan: In two weeks?
+00:32:29 Tom: In two weeks.
+00:32:30 Bryan: Thanks for their advanced status.
+00:32:31 Tom: Now, at that time, Sun had not only the Sun-3 family of 68,000 base, but the Spark family had just been introduced Sun-4 based and we had the Sun386i, which was 386 and PCAT bus. All we needed to do to show this off was to write a driver. I did it in two weeks and it worked right.
+00:32:53 Bryan: Nice.
+00:32:05 Tom: We get to the show, we’re demoing TCP/IP and NFS on Token Rings, 16 megabits between Sun-3, Sun-4 and Sun386i. The Sun-4, one of my friends did a hardware hack where he hacked up a VMEbus to PCAT bus adapter. We had a Sun-4 on the Token Ring.
+00:33:17 Bryan: Hacked up a VMEbus to AT bus adapter in two weeks?
+00:33:20 Tom: Right. Those were the days.
+00:33:24 Bryan: Those were the days. How does one hack that up in two weeks?
+00:33:28 Tom: It was, I don't know. It was awesome. Anyway, I'm at COMDEX, I'm dressed to the nines because it's a trade show, I brought up my suit. I’m in the booth, I'm explaining-- and [unintelligible 00:33:41] in front of the driver for the past two weeks. I’m in the booth was explaining all this to some guy, blah, blah, blah, blah, blah. The guys says, “Wow, this is really interesting. Is there anyone more technical I could talk to?”
+[laughter]
+00:33:53 Jess: Wow.
+00:33:56 Bryan: Wow. Purely because of the suit?
+00:33:57 Tom: Right.
+00:33:59 Jess: That's crazy.
+00:33:59 Bryan: Wow. You're like, “Look, pal, I created the driver for the last two weeks. I’m not sure there’s anyone more technical on the planet in this domain right now?” That is great. How did you take that?
+00:34:08 Tom: I was just stunned, I was like, “No there isn’t."
+00:34:13 Jess: [laughs]
+00:34:15 Tom: I was like, "Wow, jeez, I had to talk to some suit at the trade show."
+[laughter]
+00:34:18 Bryan: That’s great. Did the Token Ring, did that sell? I remember those days when Token Ring was-- It was obviously an IBM push there and was a big deal.
+00:34:30 Tom: Yes, we actually did a S-bus Token Ring board after that and that was relatively important. In my next company, Epsilon, where we did IP switching and ATM networking, we ended up doing Token Ring interface as well because there's just a lot of it out there.
+00:34:46 Bryan: Interesting. There's certainly an appeal to it. We should probably explain Token Ring a little bit because of how it was.
+00:34:53 Jess: Yes, I don’t know anything.
+00:34:54 Bryan: Tom, could you just give a quick explanation of how Token Ring works?
+00:34:57 Tom: Well, it's best to understand relative to Ethernet. Ethernet in its original days as a shared medium network, it was contention-based. People would transmit and if you're lucky, nobody else would transmit it at the same time, but if you detected somebody transmitting at the same time, then you would back off for an amount of time and try it again. People looked at that and said, “That's complete crazy.” [crosstalk] Whereas Token Ring, it was very orderly. It was a polling system and you passed the token around from node to node to node and everybody took their turn and could add to the token with their message as it went around.
+00:35:33 Bryan: You would know, if I recall correctly, you would know when everybody on the ring has seen this message. When I have now received my own message, I know that everyone has seen the message.
+00:35:42 Tom: Right.
+00:35:44 Bryan: There's something to be said that’s nice?
+00:35:45 Tom: You can always depend on people getting the message because it could be booting or something while that's happening, but it was all very orderly. There were quite a few systems. We mentioned ARCNET before, IBM had theirs. There was [unintelligible 00:35:59], which very early on, had a 70 megabit network that was Token Ring. Then there was FDDI, which was optical-based 100 megabit and that was all Token Ring based, but all different types of Token Rings.
+00:36:13 Bryan: Why did Token Ring not win?
+00:36:16 Tom: Again, it's complex because Token Ring, it's all very orderly until somebody loses the token.
+00:36:22 Bryan: This was always the knock on Token Ring, is that someone would spill the token on the floor.
+00:36:29 Tom: I think Dilbert has a cartoon to that effect. Then you get into the error recovery procedures, which were more complex than all of the Ethernet spec in the first place.
+00:36:39 Jess: Oh, jeez.
+00:36:40 Bryan: Presumably not well-tested.
+00:36:43 Tom: And very, very complicated. You ended up having to have a lot of smarts on your controller instead of a dumb piece of hardware, that kind of stuff.
+00:36:52 Bryan: How open was Token Ring relative to Ethernet? Were they--?
+00:36:55 Tom: It wasn't as open as early, but by the time they did the IEEE thing it was perfectly open. TI had chips that anyone could buy, that kind of stuff.
+00:37:05 Bryan: I remember FDDI, F-D-D-I, was still around and still performing and competitive with Ethernet as late as like the early 2000.
+00:37:18 Tom: All through the '90s, at least. A lot of the internet exchanges were built on FDDI switches from digital, stuff like that.
+00:37:28 Jess: What happened to it? Why did it die? Or is it still around and I just don’t know it?
+00:37:32 Bryan: It’s obviously still around somewhere, but I think Ethernet ultimately just rolled it with the economics.
+00:37:38 Tom: There was a company, Crescendo Systems, that built 100 megabit physical layer for twisted pair. They're the first ones to do a 100 megabit at twisted pair. They developed it for FDDI, but then Cisco bought them and said, “We can do Ethernet with this.” That was the end of FDDI.
+00:37:59 Bryan: Because fiber is such a pain in the butt to deal with. It's great, until you actually step on it. [laughs]
+00:38:10 Tom: Certainly, at that point there was still, data centers were a nascent, so you had a lot of wiring neo through the physical infrastructure. That was really hard to deal with with fiber.
+00:38:24 Bryan: You get presumably longer runs with fiber than--?
+00:38:28 Tom: With single-mode, but mostly people were still doing multi-mode.
+00:38:36 Bryan: Anyways, Ethernet takes over and you left Sun-- Actually, can we go back before Sun a little bit because I would love to know what your first machine was. How did you get into this?
+00:38:50 Tom: My first machine. My dad worked for the local power utility and my aunt was a professor at the university in El Paso.
+00:39:00 Bryan: Oh, wow.
+00:39:01 Tom: One day my dad came, he took a trip to IBM in San Jose because they were looking at buying a computer to help run all the operations. He came home with a FORTRAN manual. That was the end of life as I know it and also for several of my brothers. We're like, “What the heck is this thing?” Then it turns out my aunt could get us access to the brand new computer at the university, which was a CDC 3100. It was a low end of the CDC range, but a 24-bit machine. With one's complement arithmetic. There were two kinds of zeros, positive and negative.
+00:39:40 Bryan: An idea that died for a lot of good. Two's complement as it turns out really as a better way to actually do things.
+00:39:45 Tom: That was 1967 when I started. I was in sixth grade, and really--
+00:39:52 Bryan: Devouring it so you get a FORTRAN manual, but no FORTRAN compiler up until you got access via your aunt. Right?
+00:39:57 Tom: Right.
+00:39:38 Bryan: So this is all theoretical FORTRAN?
+00:40:00 Tom: Well, it was just very interesting and of course, everyone had heard of computers at that point. They were still mysterious things, but somehow I just got sucked into that.
+00:40:09 Bryan: That's great. When you went to school, you knew you wanted to go into engineering in some capacity?
+00:40:16 Tom: Yes. I come from a very nerdy family, again, because my dad was an engineer and renaissance man and could fix anything and blah, blah, blah. We were very competitive academically among the seven boys and two girls.
+00:40:32 Jess: Wow.
+00:40:32 Bryan: I did not know you had that many siblings.
+00:40:33 Jess: That's a lot.
+00:40:35 Bryan: I did not know-- Obviously, you've got siblings of note, I knew of the Lyon brothers, but I had no idea that there was nine of you.
+00:40:43 Tom: Yes. We're everywhere. Two of the siblings ended up non-technical stuff.
+00:40:50 Bryan: [laughs] Seven of the nine ended up pursuing technical.
+00:40:55 Jess: That's crazy. That's also really cool.
+00:40:56 Bryan: That's amazing. Wow.
+00:41:00 Tom: Even now, I have a brother at Google. I call him the smart brother. He wrote a whole book on machine and human hearing. I literally cannot get through the first chapter. A brother who's been at Microsoft for 25 years now.
+00:41:15 Jess: Oh, wow.
+00:41:15 Bryan: Wow.
+00:41:16 Jess: It's just distributed. [chuckles]
+00:41:17 Bryan: It is. That is amazing.
+00:41:21 Tom: My brother Bob retired early from his Lagarto startup experience.
+00:41:26 Bryan: I think Bob is the Lyon brother that I had heard of.
+00:41:29 Tom: He was also at Sun.
+00:41:29 Bryan: He's at Sun.
+00:41:31 Tom: He actually managed the NFS group, whereas I was just part of the NFS architecture crew. I didn't actually implement anything.
+00:41:39 Bryan: Did you ever have to report to your brother?
+00:41:41 Tom: No.
+00:41:42 Bryan: Thank God.
+00:41:43 Tom: I was part of it. I didn't want to do it.
+00:41:45 Jess: [unintelligible 00:41:45]
+00:41:47 Bryan: It's like, why are you hitting yourself? It's like, God, I hate my one-on-ones with you.
+00:41:50 Jess: [laughs].
+00:41:51 Bryan: Stop. Wow.
+00:41:55 Tom: Anyway, through high school I got into every computer I could find in El Paso and had a number of odd jobs doing programming and stuff.
+00:42:05 Bryan: It's the '70s, high schools probably have computers at this point, right?
+00:42:11 Tom: Yes. Mine had a programmable calculator, but the tech high school and the school system had an IBM 1130. I spent a lot of time on that.
+00:42:23 Bryan: What was the programmable calculator? Do you remember?
+00:42:25 Tom: It was an Olivetti Programma 101.
+00:42:27 Bryan: Nice.
+00:42:28 Tom: It was pretty nice for a programmable calculator. [crosstalk] Go ahead.
+00:42:36 Bryan: Some of the first programs I wrote were for a programmable calculator.
+00:42:40 Tom: Monroe was the other big name, I think.
+00:42:44 Bryan: I came up on, by the time, it was HP for me, but it's the most program in calculators. The Olivettis, I think were gone and they were not a yard by a yard.
+00:42:54 Jess: Mine was way later.
+00:42:57 Bryan: You're a TI-89.
+00:42:59 Jess: 83. Please, I'm not that bad.
+00:43:02 Bryan: Okay, all right. I just said, no.
+00:43:03 Jess: I'm offended.
+00:43:04 Bryan: I'm so sorry. There is a certain class of nerd that has that first calculator love.
+00:43:13 Jess: I still have that.
+00:43:14 Bryan: It's good to know that. Jess is not so young, but Jess you should know, there are people, the generation behind you, I don't think their first love is a calculator. I know.
+00:43:23 Tom: How could this be?
+00:43:25 Bryan: It's tragic. The TI-89 is still very entrenched and it's galling when you get the high school course that mandates it. They want 120 bucks.
+00:43:34 Jess: You should ban that thing because honestly, you can do way too much with it.
+00:43:38 Bryan: Oh, you can definitely do way too much with it.
+00:43:39 Jess: You can just do straight up integrals by plugging in the numbers. It's cheating.
+00:43:44 Bryan: It is cheating. I had an HP-48, a 48G that I had used all of my summer money to buy that I actually took a linear algebra course where the prof did not understand that the HP-48 could basically take the exam for me. He foolishly allowed us to use calculators on an exam.
+00:44:03 Jess: No. That's why I said that they should be banned, or show your work.
+00:44:08 Tom: I remember when I was in high school, it was probably '73, the HP 35 came out, which was the first seriously powerful hand-held scientific--
+00:44:21 Bryan: RPN presumably.
+00:44:21 Tom: RPN. That was awesome. My brother brought one home from Caltech where he was going and he had already mostly disassembled it, but still it worked.
+00:44:30 Bryan: Oh that is great. Where were you in the birth order? You're obviously not the eldest.
+00:44:34 Tom: I was six of nine.
+00:44:36 Bryan: Six of nine. Wow. That's amazing. What is the age spread between you and your oldest sibling?
+00:44:45 Tom: Between me? My mom really pumped them out in the early years. The first six of us are seven years.
+00:44:53 Jess: Oh, wow.
+00:44:54 Bryan: Wow.
+00:44:55 Jess: That was just one right after the other.
+00:44:57 Tom: After me, there's a three year gap to twins, boy and girl. Then there's eight year gap.
+00:45:05 Bryan: There you go. There's got to be one of those.
+00:45:08 Jess: Because after twins, I feel you're like, we got to hold up for a while.
+00:45:12 Bryan: We got to lay off.
+00:45:14 Tom: The youngest one was clearly a surprise.
+00:45:16 Bryan: Exactly.
+00:45:18 Tom: My oldest brother had gone to college when he was born. It's a big spread.
+00:45:23 Bryan: That is put well. You had six kids under the age of seven at one point.
+00:45:27 Jess: That's really intense.
+00:45:30 Bryan: Most of them apparently destined for tech.
+00:45:31 Tom: My dad had three jobs because he had the power utility and he was repairing TVs and radios on the side and all the stuff.
+00:45:38 Bryan: Oh, my gosh.
+00:45:39 Tom: Teaching some.
+00:45:41 Bryan: There must have always been stuff around to play with. Obviously, there was there was a FORTRAN manual, obviously it came home. You can imagine the FORTRAN manual coming home to this wolf pack of future technologists, just being devoured like a carrion.
+00:45:56 Tom: I remember a sense of disappointment when I figured out that my dad wasn't going to just make a computer because he can make everything else. That was my impression.
+00:46:05 Bryan: That he was going to make a computer. I do think, and this is where and Jess, I know you are definitely not too young for that generation of really longing for a computer.
+00:46:15 Jess: Oh, yes.
+00:46:16 Bryan: I want to have a computer, but I can't have one.
+00:46:18 Jess: I saved for a long time for my own personal laptop and then I used some of my bar mitzvah money, which I wasn't supposed to do, but I did.
+00:46:27 Bryan: For a computer.
+00:46:27 Jess: Yes.
+00:46:30 Bryan: I think it's a bit lost, unfortunately.
+00:46:32 Tom: It's funny. I completely missed the personal computer, the home-built computer phase.
+00:46:40 Bryan: Because that you post-dates you effectively.
+00:46:42 Tom: Well, no. It's mostly, I was always so deep into computers. I had the real computer.
+[laughter]
+I had my day job at Amdahl work with mainframes.
+00:46:54 Bryan: Amdahl, was that your first job out of school?
+00:46:56 Tom: That was my first job out of school.
+00:46:58 Bryan: Wow.
+00:46:58 Tom: Porting Unix to the mainframe.
+00:47:00 Bryan: Oh, nice.
+00:47:01 Tom: Then there was Sun. One of the things that sets Sun apart was that the technical founders all were coming from bigger computers. We knew that computers were actually supposed to stay up for more than an hour. Whereas, there was a huge homegrown community building everything you can imagine in Silicon Valley. There were literally 168,000 computer startups.
+00:47:23 Bryan: There were a 168,000 startups.
+00:47:25 Tom: Just like 100 AI chips today.
+00:47:28 Jess: Crazy. There are a lot of AI chips.
+00:47:30 Bryan: There are. That's a Halt and Catch Fire era. That right there.
+00:47:34 Jess: That's dope.
+00:47:35 Tom: That's a great show, by the way.
+00:47:36 Bryan: It is a great show.
+00:47:36 Jess: That is one of my favorite shows. I watch it all the time. [chuckles]
+00:47:39 Tom: One of the mind blowing things is, Carl Leadbitter, who's on our board at Drive Scale, was technical adviser to that show.
+00:47:44 Bryan: Oh, wow. That's great.
+00:47:45 Jess: That's why it's so good. There's a lot of little details in it where you know that they have someone involved that's super smart.
+00:47:50 Tom: He did a great job on that.
+00:47:52 Bryan: This is where you do have to say that, Jess was a technical advisor to HBO's Silicon Valley, which is also pretty cool.
+00:47:57 Jess: Which they also took super seriously because they don't want to be blown up on Reddit, which I could see why Halt and Catch Fire would be the same way because the second you get blown up on Reddit, everyone, it's done.
+00:48:07 Bryan: You take your job very seriously.
+00:48:08 Jess: It's scary.
+00:48:09 Tom: Silicon Valley is hilarious. I love that.
+00:48:11 Jess: [chuckles].
+00:48:13 Bryan: Your job was to make sure that the go compiled, they would flash on screen for a second.
+00:48:16 Jess: It didn't technically have to compile, but I made it compiled because I was like, if it flashes on screen for a second, it's incompatible code, I will be mad at myself more than they would possibly be mad, but if it blows up on red, then I'd super be mad at myself because I'd be like, "Needs to compile."
+00:48:31 Tom: Can I ask you a very personal question, though?
+00:48:34 Jess: Yes.
+00:48:34 Tom: Tabs or spaces?
+00:48:37 Jess: Go has go thumped, so they do whatever and I think it converts it to tabs, but when I do bash scripting, I have been forced into the tab life because of Tenon.
+00:48:49 Bryan: Oh, okay. Because by the time you and I were working together, you were already hard tabs.
+00:48:57 Jess: I had to switch my Vim settings because we couldn't both contribute to the docker little scripts in the repo because he'd always be like, "You're doing spaces again." Then I'd have to go fix it. I was like, "I'm just going to fix my editor."
+00:49:09 Bryan: [unintelligible 00:49:09] hard tabs. Tom, how old is that debate of hard tabs versus spaces?
+00:49:17 Tom: Not that old from my perspective because there was a time when you used tabs because it saved a lot of space in storage and in communication and in any other early Unix days was, 100 BOD, tty33. You didn't want to mess around sending spaces when you could send as tab.
+00:49:37 Bryan: Send a hard tab. Because, truthfully, I feel that my own bias towards hard tab certainly in shell scripts, just comes up with the way I came up and I came up in the space that you were in. I came up in Sun's Unix effectively, what was hard tabs so it was what I was accustomed to.
+00:49:56 Tom: Now, if I'm doing C, it needs to be tabs, then when I do Python, it's been beaten out of me and it's spaces.
+00:50:03 Bryan: Yes, I feel the same way.
+00:50:04 Jess: Python people are very actually intense about spaces.
+00:50:07 Bryan: I feel like on whitespace, you thought you're listening On The Metal, you're actually listening On The Whitespace podcast. On The Whitespace; tales from hard tabs and soft tabs. I feel that you just got to go with the prevailing culture in the community you're in. It's very helpful to have them settings that say, "If this is a Rust file, this is a Python file. If this is a C file, I'm going to change my defaults." That's actually very helpful I found.
+00:50:35 Tom: Yes, it's gotten a lot easier with editors that can be programmed.
+00:50:39 Bryan: Yes. Editors that can be programmed without actually consuming all the resources on the machine. I assume you've got to be a vi guy.
+00:50:46 Tom: Actually am an ed guy.
+00:50:49 Jess: Oh, nice.
+00:50:49 Bryan: It's cool. There we go.
+00:50:52 Tom: It's in my muscle memory.
+00:50:54 Bryan: That is awesome.
+00:50:55 Tom: I survive in vi because it's all buried in there somewhere.
+00:50:59 Bryan: [laughs] That is awesome. I'm certainly one of the tribal. Have you used ED?
+00:51:03 Jess: I've tried it, but vim is so ingrained in me that I can't use anything else.
+00:51:08 Bryan: I'll tell you the experience that for me really got added into the muscle memory was over a serial line. If you're over a serial line and you need to edit a file, that will get the vi right out of you. You'll get very accustomed too. Ultimately, the Emacs got out of me because I showed up to a job and all I knew was Emacs. I ended up spending the first two days trying to get the goddamn editor to compile as opposed to just using vi. Of course, I was also in a workplace that called it vi. I think that's a Canadian thing. It was very weird. I also came back from that job saying process and resources. It was really corrupting in a lot of ways. It was a problem.
+00:51:48 Jess: For someone who you give a lot of shit to for pronouncing things wrong, I'm basking in this moment right now.
+00:51:54 Bryan: You should. If you catch me saying vi, you should jump all over it. That will not be good.
+00:51:58 Jess: I might say it just to make it cringy.
+00:52:04 Bryan: You use ed probably for actual real editing back in the day?
+00:52:09 Tom: Oh, yes. I started at Princeton. We got a Unix system when I was a freshman there. Unix Version six.
+00:52:17 Bryan: Sixth edition?
+00:52:18 Tom: Yes. That was what you had for editing.
+00:52:21 Bryan: Is that a 3B2 or is that too early for 3B2?
+00:52:24 Tom: It was too early. This was a PDP-1145.
+00:52:26 Bryan: There you go.
+00:52:28 Tom: Then through interesting series of events, I started trying to port Unix from the PDP-11 to the 370 at Princeton.
+00:52:36 Bryan: Oh interesting. What is the interesting series of events? Because that's got to be very early for Unix on the mainframe.
+00:52:44 Tom: Yes. In fact, I think it's come out recently that that was the first Unix port ever attempted as opposed to start by moving from the PDP-7 to a PDP-11, which was a rewrite. It wasn't the first to be successful, but it was the first to start.
+[laughter]
+00:53:08 Bryan: Spoiler. [laughs]
+00:53:11 Tom: My freshman year at the Princeton computer center, where I worked for 4 years so I had arbitrary access to stuff, they operated a time sharing APL\360 system for the state of New Jersey and all the colleges. APL was incredibly cool system, incredibly powerful and only understandable by people from ancient strange civilizations.
+00:53:38 Bryan: This is APL the programming language, right?
+00:53:40 Tom: Yes, but APL\360 was an entire time-sharing system that ran in lieu of other operating systems.
+00:53:48 Bryan: Wow and would run only APL programs?
+00:53:51 Tom: Right.
+00:53:52 Bryan: And APL was a first-class. Do you have the APL keyboard?
+00:53:56 Tom: Yes. The best thing they had was these IBM Selectric 2741s with the APL font ball. It was all built around this whole thing called visual fidelity where if you overstrike capital F with capital L, it would look like a capital E and in fact, would be taken as a capital E by the system.
+00:54:19 Bryan: Wow.
+00:54:22 Tom: It was full of weird strange things like that.
+00:54:24 Bryan: That is delightfully strange. Jess, have you ever looked at APL?
+00:54:27 Jess: No.
+00:54:29 Tom: Oh my God.
+00:54:29 Bryan: Don't take this as a value judgment, but you would love it. It is super information-dense. Its origins are really in math.
+00:54:39 Jess: Is that like K?
+00:54:41 Tom: K is a successor of APL.
+00:54:44 Bryan: K is APL descendant.
+00:54:45 Jess: Because I liked K, but it's crazy.
+00:54:47 Bryan: It's crazy, but true APL--
+00:54:50 Tom: APL has its own character.
+00:54:51 Bryan: Its own character set.
+00:54:52 Jess: How do you type that?
+00:54:54 Bryan: Glad you asked. On an APL keyboard.
+00:54:56 Tom: On an APL keyboard because this was pre-ASCII, there's no standards.
+00:55:00 Jess: That's crazy.
+00:55:01 Bryan: So you have programs that are three characters long that are meaningful.
+00:55:05 Tom: It's a very large character set as well. There's all these symbols, all the Greek letters.
+00:55:13 Jess: It's like K, but on steroids?
+00:55:14 Tom: Right.
+00:55:15 Bryan: I would say k is like APL trying to get a toe down. You're on APL\360.
+00:55:23 Tom: Anyway, so that system, the State of New Jersey had decided to shut that down, so Princeton was going to be left without a time-sharing system. That was clearly not acceptable. A bunch of us who had been using the Unix system said, well, a computer center should get a big PDP-1170, open up a time-sharing system for the whole campus. The computer centers reaction was, "What the heck is Unix? What the heck is a PDP?" By the way, we just talked to IBM and they're going to give us another 370 because Princeton was a very high-profile site for IBM.
+00:55:57 Bryan: I can imagine.
+00:55:59 Tom: We ended up with IBM 370, running the m/370, where virtual machines came from, which is another whole story. The Unix gang was disappointed. It was like, grumble, grumble, but I said, "Wait, Unix is written into C thing and that mainframe has virtual machines, why don't we just recompile it, put it over there."
+00:56:21 Bryan: It's just software.
+00:56:22 Tom: Just software. Everyone had a good laugh about that. That was in the spring of '75. Then in August, while I was home from school, I got a call from Eric Schmidt. Eric Schmidt was one of the Unix gang. [unintelligible 00:56:44] he had heard me say, "Why don't we just do this?" But then it turns out, he got a summer job at Bell Labs, working with the Unix group, famously working on Lex. He discovered that there was a 370 C compiler at Bell Labs. He said, "That's clearly what we need to make this happen." He calls me up, says, "Tom, are you really interested in doing this? We can arrange a project?" I said, "Sure, what do I do?"
+00:57:09 Bryan: Just to be clear, this is the Eric Schmidt?
+00:57:11 Tom: The Eric Schmidt.
+00:57:12 Bryan: Wow. You got the C compiler now, so this is now possible?
+00:57:17 Tom: We get the C compiler, then it's a mere matter of hacking away at things. There was Eric Schmidt who kind organized things and arranged for us to get credit for the work and all this good stuff.
+00:57:30 Bryan: I knew Eric was at Sun, but I didn't know that he was at-- So he was at Princeton?
+00:57:33 Tom: Princeton, two years ahead of me.
+00:57:34 Bryan: Two years ahead of you. Wow.
+00:57:36 Tom: He organized a lot of stuff and then there were three of us who actually did technical work and the other two guys were also two years ahead of me. After one year, we had not got very far and they all graduated. Then the second year, I managed to get to the point where I could demonstrate a shell and a kernel on the mainframe, but it was very badly hobbled by the networking, or lack thereof, between the PDP-11 and the 370. Which, if I recall correctly, the PDP-11 had to talk to a PDP-8 on a Unibus. The PDP-8 attached to a serial line, which ran about 10 times further than any standard could ever support down to an IBM 360 Model 20, which was a satellite processor for the big 360 in the computer center.
+00:58:28 Bryan: How far is that serial line running? I'm getting hundreds of feet.
+00:58:33 Tom: It's about 300 feet. Sometimes it works, sometimes it was just line noise.
+00:58:39 Bryan: Oh my god.
+00:58:40 Tom: Nobody really understood how or why.
+00:58:43 Bryan: It was a serial line the length of a football field.
+00:58:47 Tom: At that point, I was a pure digital guy, software, don't talk analog to me, I have no idea what analog means. It was all a mystery to me as to why this would work or not work. Anyway, once you got to the 370 world, everything had to be card images. You'd have to submit your deck of cards to the mainframe, which could eventually route it to the time sharing system, which then had a virtual machine where you could suck it in as pretend cards and try something. It was like an hour to get it from point A to point B.
+00:59:20 Bryan: You're doing your work on the PDP-11 going to the PDP-8, going over to the football-field-length serial line, dropping any number of bits along the carpet on the way, to the punch cards into the system and then doesn't compile. Presumably you would--
+00:59:37 Tom: We compiled on the PDP-11, but we had to do the testing the hard way. It was slow and painful.
+00:59:48 Bryan: That is a slow and painful death loop for sure, but even in that, you got it working to the point where you could have a shell.
+00:59:58 Tom: I got to the point where I can demonstrate that [unintelligible 01:00:00]
+actually worked, I was like, "Hallelujah." That was like, "Wow."
+01:00:06 Brian: Did that experience help get you the job at Amdahl?
+01:00:11 Tom: Yes. There's a whole series of serendipitous events here. I wanted to work at Bell Labs for the summer so I go through the normal interview processes. I end up interviewing with this guy who was doing something with the Unix, but it wasn't the research group and for whatever reason, he invites Ken Thompson down to impress me at lunch. Ken Thompson and I are having lunch with this guy and I started talking about this work I've done porting Unix to the 370 and Ken was like, "Holy cow, we're just about to start porting Unix to the Interdata."
+01:00:48 Brian: Oh, wow. Mission accomplished. Instead of Ken impressing you, you're impressing Ken.
+01:00:54 Tom: Right. Ken stole me for the rest of the day and I ended up working with their Unix group for the summer.
+01:01:01 Jess: That's awesome.
+01:01:03 Tom: That was the main work converting V6 into the portable V7, which ended up everywhere.
+01:01:09 Brian: So, you're working in the Unix group in the summer of '75, '76
+01:01:12 Tom: '77.
+01:01:14 Brian: Wow, that is--
+01:01:17 Tom: Okay. Now, here's the other serendipitous thing. Ken had spent a year at Berkeley, I think '75, '76, and made some friends. All those friends, this guy named Denny Koch ended up working at Amdahl and then he was agitating we need to get a decent time-sharing system in here. At one point, I'm literally sitting in the Unix room with Ken Thompson, Ken gets a call from another guy at Amdahl. This guy in Amdahl is asking is asking Ken, "We hear rumors, there's like a-- could be a port somewhere of the Unix for a 370?" Ken says, "Tom it's for you." So, I ended up working for them.
+01:01:59 Brian: That's amazing. We're going to take another quick break. Then, I got so many follow-up questions. We'll take a quick break and we'll be right back with more Tom Lyon.
+[music]
+01:02:10 Steve: On The Metal is brought to you by the Oxide Computer Company. Well, bad news I just got back from meeting with the attorneys.
+01:02:16 Brian: Oh, boy.
+01:02:16 Steve: They are not going to let us say much in these ads. We can't talk about the customer experience today for on-premises infrastructure.
+01:02:25 Jess: So, we can't do my idea to be like, "Are you being gaslit by your vendors?" Because that's what they're doing. They're gaslighting people into thinking that these bugs only exists on one of their machines when it exists on everyone's.
+01:02:35 Steve: God. No, they called that I think, "a third rail."
+01:02:38 Brian: They must be following just on Twitter I knew that that was a bad idea they've got the lawyers apologize on Twitter.
+01:02:43 Jess: They also said we can't talk about public cloud customer experience.
+01:02:47 Brian: Come on, we can't talk about the rapacious bandwidth pricing? It's practically criminal.
+01:02:50 Steve: No, we can't talk about the unit economics of that at all.
+01:02:52 Brian: Can we use the word criminal with respect to public cloud vendors.
+01:02:55 Steve: Definitely not.
+01:02:55 Brian: Oh, boy. What can we do?
+01:02:58 Steve: Well, they did say they gave us a statement we can use which is--
+01:03:01 Brian: Are you going to read from it?
+01:03:02 Steve: Oxide Computer Company is building something that should help some people.
+01:03:07 Brian: Well, that seems very direct come on, can we at least send them over to Oxide.computer?
+01:03:12 Steve: We can, we can. The other bit of bad news is all the lawyers were there in the meeting.
+01:03:16 Brian: Wait a minute not just the cheap one but the expensive one?
+01:03:19 Steve: Yes, they were all there.
+01:03:20 Brian: So, we paid a fortune to get this terrible ad. Oh my God, please listen, or go to Oxide.computer and learn what we're actually doing. All right, we're back. Jess, I don't know about you but I got a ton of follow up questions.
+01:03:32 Jess: No, that's all right though.
+01:03:34 Brian: Boy, if you give me a time machine, and allow me to set the dial anywhere, I might set it to Bell Labs.
+01:03:42 Jess: I would definitely do that.
+01:03:43 Brian: You got so many interesting folks, such an interesting collection of people and you're there for the summer basically as a summer intern effectively?
+01:03:49 Tom: Right. It was mind-boggling. Yes, Bell Labs in its heyday was incredible. They hired something like 30% of all PhDs in the US.
+01:04:01 Jess: Wow, that is a lot of PhDs.
+01:04:06 Tom: And awful lot of other people. The same summer I was working there my brother Bob, who's one year older, and his wife, Linda, they had both just graduated from Cornell and started working at Bell Labs also. I was in Murray Hill, they were at Holmdel, but I would take the Bell Labs bus over to see them for the weekend, that kind of stuff. They run the old Yacc program for you. You get sent off to get your master's degree paid for by Bell Labs and they both did that and they were living like kings because they both had half their salary while they were getting their masters and all.
+01:04:40 Brian: Right, not living the typical grad student life at all. That's great. There're so many incredible people there at that time doing so much interesting stuff.
+01:04:52 Tom: Directly across the hall from me when I was there was Greg Chesson. Did you ever know Greg?
+01:04:57 Brian: I did not actually know Greg.
+01:05:00 Tom: He was an amazing person always the funniest guy and super smart. He contributed an awful lot to SGI, that was his main purview, but he was doing networking back then that was very strange, pre-ATM kind of stuff.
+01:05:19 Brian: What does networking even look like in the 70s?
+01:05:24 Tom: Well, this stuff was very weird and this data kit, I never quite understood it.
+01:05:28 Brian: Interesting. You were with these amazing collection of folks was Joseph Osanna anywhere near you by any chance?
+01:05:36 Tom: Yes, Osanna was part of that crowd.
+01:05:40 Brian: Can I ask you a question that never got resolved? He died shortly thereafter.
+01:05:45 Tom: Right about the same time, yes.
+01:05:46 Brian: Do you know how he died?
+01:05:48 Tom: I think it was a heart attack.
+01:05:50 Brian: Yes, I've heard with a heart attack and a car crush. He died suddenly.
+01:05:53 Tom: Yes.
+01:05:54 Brian: It was my understanding that he had written a bunch of-- Because he wrote the original nroff right? Or roff maybe.
+01:06:04 Tom: Well, it was troff I think. Brian Carnahan just came out with a book that explains a lot [crosstalk]
+01:06:10 Brian: I've not read Brian's book, I need to go read it because supposedly, according to lore, Ossana is now deceased, and went into Ossana's code to actually-- The code had been ported to the C from Assembler.
+01:06:28 Tom: Yes, I have some personal view there because I was busy porting code, cleaning up code, so it would port between the PDP-11 and the Interdata and was a little-endian, big-endian 16 bit, 32 bit, a lot of differences. I opened up nroff I'm like, "What the hell is this?."
+01:06:50 Brian: It is amazing. The nroff source is out there, you can go look at the nroff source and it is really like KK or equals octal 13? If YY [unintelligible 01:07:05] it's all magic numbers.
+01:07:08 Tom: It was clearly derived from Assembler.
+01:07:10 Interviewer: It's clearly derived from Assembler.
+01:07:11 Tom: Where they were just doing word-based stuff. They were very loose with types if they had any and everything broke moving to big-endian from that.
+01:07:23 Interviewer: Oh, I can only imagine.
+01:07:24 Tom: So, I just threw my hands. Someone else above my paygrade.
+01:07:28 Brian: Right, exactly. Well, I have to go see if he talks about it in his book, but Brian supposedly went into that code being like, "It's software people. How bad can it be? I'm going to go modernize this," and came out like, "I do not understand how this thing is working."
+01:07:45 Tom: But he made it portable at some point.
+01:07:48 Brian: Yes, it's portable. When I first heard of that story as an undergraduate, I was being handed out from new factory someone who was at Princeton-- If you know, Tom Decker, at Princeton, but he would have been [crosstalk] a couple years behind you. My professor at school had described this to me and as I realized that this code was still very much in our source base at Sun, you realize that this is something that was written in the 70s, that is going to survive long past all of the hardware that was originally built for it. The software has this incredible permanence.
+01:08:22 Tom: The basic idea roff run off from the CTSS system, which is like the original time-sharing system ever. Then Brian Carnahan was a student at Princeton for a while he wrote a version of it for the IBM mainframe there, which saved my ass many times because that's how I wrote all my papers when I was at Princeton.
+01:08:41 Brian: Really?
+01:08:43 Tom: It was all card-based.
+01:08:45 Brian: So you wrote your papers in the IBM mainframe version of roff effectively?
+01:08:50 Tom: It was beautiful because you could stretch the margins all you want, and blah, blah, blah so you can always stretch that thing out to meet the minimum size.
+01:09:00 Brian: Jess, you're a law tech nerd. I think Tom just saw you and raised you you got to go like, "Raw roff if you really want to nerd it out."
+01:09:11 Jess: Okay, I'll try that.
+01:09:11 Brian: That's the original language of man-pages. The man-pages were written all in there.
+01:09:16 Jess: That's pretty readable.
+01:09:17 Brian: Yes.
+01:09:17 Tom: Well, but man-pages have macros.
+01:09:19 Brian: That's right.
+01:09:20 Tom: I don't think ours had macros.
+01:09:21 Brian: That's right. There you go. Macros, the kids today and their macros. Let me tell you, that is great. At that time, you're typesetting them, how are printing them? What are you printing them on? Your papers.
+01:09:38 Tom: You print them on these giant IBM line printers the IBM 1403 which came out with IBM-
+01:09:45 Brian: 1401
+01:09:45 Tom: -1401 computer around 1959. That thing was amazing 600 lines per minute, got this crazy print change, you could swap out for different fonts you can do different spacing.
+01:09:58 Brian: 600 lines per minute.
+01:09:59 Tom: You send out this direction saying, "Mount, the pure white paper, please."
+01:10:03 Brian: Right.
+01:10:04 Tom: Out spews your thesis or whatever.
+01:10:07 Brian: The IBM 1403 dates back to the 50s obviously. Late 50s, early 60s, and it's going 600 lines per minute, 10 lines a second.
+01:10:16 Tom: Creating a terrific racket, and they have one fully restored now at the Computer Museum.
+01:10:20 Brian: Oh my god, that must be mesmerizing.
+01:10:23 Tom: Yes. They even found one of the original IBM engineers to help them out with this crazy print chain thing.
+01:10:30 Brian: They may have needed it. This must have felt like this thing fell from space. You turned in your papers for your English class or whatever.
+01:10:39 Tom: Right.
+01:10:40 Brian: Did your professors in these other classes treat you as an alien from the future? [laughs] surely, you’re the only one--?
+01:10:48 Tom: It had been going on for a few years, I got a few funny looks, but you're supposed to typewrite things. It's not always immediately obvious.
+01:10:57 Brian: Okay, that's amazing. Sorry, you were using roff for that, that's pretty great. At Amdahl, you are porting AT&T Unix, Bell Labs Unix to their mainframes.
+01:11:15 Tom: Yes. I arrive at Amdahl-- I interviewed first in January 78, and the week after I interviewed with IBM where I got snowed in for an extra day. Out here it's gorgeous, wonderful weather. I was like, “Yes. I think I’ll come out here.”
+01:11:30 Brian: [laughs] some people like to overthink the allure of Silicon Valley. It's the weather stupid? It has drawn technologists here for time in memorial, it's like "The weather is pretty good."
+01:11:44 Tom: Right. Then, Amdahl had me back for spring break to start consulting, start the project going. I physically brought my Unix on deck tapes with me and all science-- Made an agreement with Princeton to get the project, and I still have those deck types, which were recently recovered by the folks at the Living Computer Museum in Seattle.
+01:12:09 Brian: That is awesome. Have you been to the Living Computer Museum?
+01:12:12 Jess: No. I haven't been to the one in Seattle, but I want to.
+01:12:15 Tom: Yes. It’s mind-blowing. They have, I don't know, 20 or 30 working computers from the 70s era.
+01:12:22 Jess: That sounds dope.
+01:12:23 Brian: That is amazing. They've got it working there, they were able to extract the stuff off the tape.
+01:12:27 Tom: Yes. They sent me a tiny little email containing everything.
+[laughter]
+01:12:32 Brian: It's an attachment now to an email. That is great. It must be really mesmerizing to look at your own work from so long ago.
+01:12:43 Tom: Yes. You can't really remember who did what, why, or anything. Anyway, Amdahl, this was still version 6 Unix because version 7 had not made it out of Bell Labs yet. We got that working, we wrote editors. One of my things I’m proudest of was doing a device driver for this IBM 3270 terminal. In the IBM world, everything is record-oriented, and the terminals must not disturb the mainframe unless absolutely necessary. It was all local form entry stuff.
+01:13:21 Brian: Interesting. They've got computational power on the terminal?
+01:13:25 Tom: Yes. Mostly, it got in the way of things.
+01:13:28 Brian: Right.
+01:13:29 Tom: Anyway, trying to get that to work with the Unix notion that everything's full-duplex. It was a challenge.
+01:13:35 Brian: Interesting.
+01:13:36 Tom: Anyway, we had a whole V6 system up with probably 100 internal users at Amdahl before V7 Unix ever came out. V7 was the portable Unix where it was easier to do that.
+01:13:51 Brian: Did Amdahl view Unix as a big part of their future? They're competing directly with IBM and making an IBM compatible mainframe effectively.
+01:13:58 Tom: Yes. It started out just as a time zero system for the electronic design automation people to do stuff to further building hardware. Then, it leaked into the operating system for the console processor. The original Amdahl mainframe had a data general nova as a console processor, 16-bit machine. People were grumbling about that.
+The next generation, they were actually going to be 11 running Unix, but they were going to implement their own PDP-11 because you don't buy computers from another computer company, but they stumbled across a couple of patents, the famous UNIBUS patent, stuff like that. They said, “I'm not going to do PDP-11.” They ended up doing a 370 subset on this tiny little console processor, and so they ran Unix on that. It was buried inside all the Amdahl mainframes.
+01:14:54 Brian: Got it, okay. It was a smaller implementation detail?
+01:14:58 Tom: Later on, they came out with the actual UTS, they called it.
+01:15:04 Brian: The Unix hardware system, right?
+01:15:05 Tom: Unix, I don't know if it ever officially stood for anything. That was fairly popular, especially in the Bell System and many universities.
+01:15:14 Brian: Right. Then, you were at Amdahl until-- What lured you away? When did you first hear about this crazy company that was starting?
+01:15:21 Tom: It turns out because of my mafia of brothers.
+01:15:26 Brian: True mafia. That is scary.
+01:15:29 Tom: My brother Dick was working at Xerox PARC at the time, my brother bob was working in the Xerox Star Group, they had friends from Stanford, and the Sun stuff was, of course, happening at Stanford, all the Sun hardware development. The Valley was already a buzz, was like, “Cool processor board out of Stanford,” what could be done with this?
+At Amdahl, Berkeley had become the center of the west coast Unix universe because of Bill Joy, I had been up to Berkeley a few times, met him, chatted. One day, I get a call from this guy, Scott McNeely. He's like, “Hey, Tom, we're doing a little startup, have you ever heard of this thing called The Sun board?” “Yes. 68,000,” Scott is like ding, ding, ding, somebody heard of this. I was on Bill Joy's list of Unix people to call up.
+01:16:24 Brian: To call up.
+01:16:25 Tom: That's why Scott got my name.
+01:16:26 Brian: That's great.
+01:16:28 Tom: I was looking for a startup, basically, because it was still start-up fever all the way back then as well.
+01:16:35 Brian: Right.
+01:16:37 Tom: Yes. It's just what you did in Silicon Valley.
+01:16:38 Brian: Right. It's amazing how permanent that cultural idea is around new company formation.
+01:16:47 Tom: Yes. It worked out well. I was clueless about so many things back then, but it worked out.
+01:16:53 Brian: That's great, just to be really at the epicenter of it because you surely could not have guessed that Sun was going to be playing such a central role in the next 15 years effectively. I don't know, maybe it was clear from the beginning. I guess you had Bill Joy, you knew that between Bill Joy and Andy Beckelsheim this is like--
+01:17:13 Tom: Right. My exposure to the Xerox also stuff. That was the coolest thing ever in terms of personal computing, and then I was a [unintelligible 01:17:22] Unix guy by this time, bringing those two together was-
+01:17:27 Brian: Seemed natural.
+01:17:28 Tom: -it was perfect.
+01:17:28 Brian: When did you see the Xerox Alto? Is this through your brother that you'd see?
+01:17:30 Tom: Yes. I’d been up to visit him.
+01:17:33 Brian: You've been up to visit him and you'd seen. That must have felt like seeing the future?
+01:17:38 Tom: Yes. I don't remember that well, but clearly, it was a hot place to be.
+01:17:46 Brian: Yes. I'm reading Dealers of Lightning now, which is a really interesting book about the development of Xerox PARC, but you forget that the laser printer was actually--
+01:17:56 Tom: Oh god, they had generation after generation of these color printers where the pages would come out on fire, and all that.
+[laughter]
+01:18:04 Jess: That's cool.
+01:18:05 Brian: That's great. Boy, you could take the Alto, but what was the Alto running for an operating system?
+01:18:10 Tom: A bunch of homegrown stuff. Xerox SPARC actually did a PDP-10 clone.
+01:18:17 Brian: They did a PDP-10 clone which I did not know until reading this book, it's a MAXC.
+01:18:23 Tom: MAXC, they ran a whole lot of their own software, but some other software. They had file sharing and all that stuff.
+01:18:29 Brian: Yes. This is something that like Chuck Thacker put together in whatever it was, six months, they built their own machine from scratch, crazy.
+01:18:36 Jess: That's crazy.
+01:18:38 Tom: Actually, that whole core group came out of Berkeley Computer Corporation.
+01:18:41 Brian: Yes. Berkeley Computer Corporation, yes. Which, again, I had not learned about until this book.
+01:18:45 Tom: Yes. I still don't know enough about them, but it was quite the seminal group.
+01:18:49 Brian: It feels like they burned through a lot of money. I would love to read a book on the Berkeley Computer Corporation because they clearly had a lot of good ideas, interesting people, but also [laughs] no real financial discipline.
+01:19:04 Tom: Right.
+01:19:06 Brian: Another story that's as old as Silicon Valley for sure. You saw that this could be a big deal to combine these folks and these ideas, this is going to go places?
+01:19:16 Tom: Yes. I wasn't taking it too seriously because I felt like I was employable, so what the heck? Try something out.
+01:19:24 Brian: I feel that's actually an important point, I think the security of a fluid labor market allows you to take much greater risks in your career.
+01:19:37 Tom: Now, turns out I just bought a house with my brother Bob and his wife. We were divvying it up three ways, and this was a point in time when interest rates were about 15%.
+01:19:47 Brian: Oh, boy, right.
+01:19:48 Tom: The monthly mortgage was quite astounding, and he's like, “You're doing what?”
+01:19:54 Brian: Okay. He thought you were crazy.
+01:19:55 Tom: “You're going to a startup? What if, what if, what if.” I'm like, "Don't worry," and then a year later, he's joined me because everything's going so well.
+01:20:06 Brian: So he joined you pretty shortly thereafter?
+01:20:08 Tom: Yes.
+01:20:09 Brian: It was pretty clear that it was-- because Sun did--
+01:20:12 Tom: Oh, Sun was such a rocket. I joined in May of '82. The first revenue shipments were actually three megabit ethernet cards, and we did a whole stack of these for somebody. That was our first revenue in the same month, May. Then, first week of June, we shipped our first workstation.
+01:20:35 Brian: Wow.
+01:20:35 Jess: Nice. That's fast.
+01:20:37 Brian: Yikes that's--
+01:20:38 Tom: It was rocket from there. Because everyone knew Bill Joy was joining, the entire Unix world-
+01:20:45 Brian: Was a buzz.
+01:20:45 Tom: -was a buzz. Then John Gage, he came on board as our sales guy. He was a terrible salesperson, but he knew every scientist, computer scientist, rock star, news person on the planet, and everybody knew all of a sudden, so it was great.
+01:21:04 Brian: That's great.
+01:21:05 Jess: That's cool.
+01:21:06 Brian: Wow, that was great. Actually, behind you in the garage here, we have a-- I don't know if you know where this piece of artwork came from that was in Mountain View five somehow made its way to Menlo Park 17, which is where I found it in a trash pile with the optical mouse. We'll put a photo in the show notes because that is a machine that would overlap with you, right?
+01:21:29 Tom: Yes. That's-- I don't know what it is. I have a story about a mouse though.
+01:21:36 Jess: Yes, that mouse is crazy.
+01:21:37 Brian: Go on. What's the story about the mouse?
+01:21:39 Tom: My summer at Bell Labs, they put us up for housing at Farleigh Dickinson University. I shared a suite with five other guys also working for Bell Labs. One of them was Steve Kirsch from MIT who importantly taught me how to juggle that summer because that's a computer science thing. You go to know how to juggle. He went on to form Mouse Systems Corporation. He invented this mouse that's in the drawer.
+01:22:07 Brian: The optical mouse.
+01:22:08 Tom: Yes.
+01:22:08 Brian: Wow.
+01:22:10 Tom: He invented the optical mouse, as well as my brother Dick also did it at Xerox.
+01:22:15 Brian: Wow.
+01:22:16 Jess: That's cool.
+01:22:17 Tom: Completely independently.
+01:22:18 Brian: Completely independently.
+01:22:19 Tom: Right.
+01:22:21 Brian: Obviously, with an optical mouse on the wall, the optical mouse is the center of conversation around here.
+01:22:25 Jess: Yes, definitely come out.
+01:22:26 Brian: These predate the rollerball effectively, or was this more precise than the rollerball? Why the optical mouse?
+01:22:33 Tom: It's more reliable because you can always get gunk in the rollerballs.
+01:22:36 Jess: Oh, God. Yes, that's so gross. I remember cleaning out the dust. Oh, I just remember that. Sorry. That was very vivid [chuckles].
+01:22:44 Tom: Yes. It was a much better experience with the optical.
+01:22:48 Brian: And more precise for EDA and so on. Interesting. Wow, so he independently invented it?
+01:22:56 Tom: Right. My brother did a Xerox technical report on the optical mouse, and it was the first Xerox technical report printed with color inserts from their brand new color laser printers. That dates it.
+01:23:13 Brian: That dates it. When is it?
+01:23:17 Tom: 1980.
+01:23:17 Brian: Yes, Xerox in the very early '80s. The laser printer itself, I'm reading about the trials and tribulations of just getting that thing working. Boy, that's amazing. The optical mouse, it's since obviously fallen away I think because these mice, I don't know if your brother's was the same way, but they required the mouse pad-
+01:23:38 Tom: Required a pad.
+01:23:39 Brian: -have a particular orientation. If you flipped it 90 degrees, it no longer worked.
+01:23:42 Tom: Yes. Well, my brother's was orientation-independent, which was cool. The pad was a grid of dots in a hexagonal pattern. I never quite figured out how that worked, but it worked no matter how you turned it.
+01:23:59 Brian: It sounds like that's the better technology.
+01:24:02 Tom: Yes.
+01:24:03 Brian: Because the Sun technology I was told was a little bit brittle because the orientation of your mouse pad would screw you up. Fast forward, beyond Sun, you went to Ipsilon. I arrived in '96. I feel like you left maybe in '95 or '94, something like that.
+01:24:20 Tom: '94.
+01:24:21 Brian: '94, right, yes.
+01:24:23 Tom: I got caught up in ATM networking. The short description of ATM is it's the kind of ATM you only put money into.
+01:24:32 Brian: Oh, ATM humor. ATM is a technology you would not necessarily-
+01:24:41 Jess: I thought you meant like an ATM machine.
+01:24:43 Brian: No, but that's the joke. No ATM is Asynchronous Transfer Mode. This was a frequently hated-upon protocol, I dare say. The knock on this was this is the way for the telcos to actually meter the internet. That's fair or not.
+01:25:00 Tom: It definitely came out of the telco world. It was very odd because it had 48-byte packets with five-byte headers. It was guaranteed not to fit with anything else. As for the synchronous phone world, envisioning a world where everything worked with no buffering at all anywhere, it was just not the world we have today. What was cool about ATM is you could easily visualize how to build a switch, and switches came from the telephone world of voice switches.
+01:25:35 Brian: It's appealing you've got these, all packets are the same size, there's constant small size. There are lots of things that are--
+01:25:44 Tom: That's what struck me and I was like, "Ah, you could build a switch with these." Little did I realize that there were people starting to build ethernet switches at the same time, but it just wasn't as obvious how you would do that.
+01:25:55 Brian: Yes, I remember I think when I first moved out to Silicon Valley, I subscribed to the Red Herring magazine, as one did back in the day. I think one of the first Red Herrings I have is Andy Bechtolsheim with the Death to ATM cover with him because he was at a company called Granite that was doing ethernet switching. Ipsilon was doing ATM switching effectively.
+01:26:21 Tom: We set off with observation that the ATM standards, they were building brand new random stuff that the telcos liked, that had no bearing whatsoever on what you would like a TCP/IP network to look like. I came along and said, "Look, get rid of all that higher-level protocol stuff. We're just going to operate the ATM switches with IP routing."
+01:26:42 Brian: Oh, interesting, and hence in Ip in Ipsilon.
+01:26:47 Tom: We called it IP switching because you were able to switch IP packets at ridiculous speeds. It was all pretty clever. What was really fun was kicking Cisco in the shins, because at the time, Cisco sold lots and lots of routers, but they were all based on relatively slow MIPS chips and the forwarding was all done in software. Even a Sun workstation could do a better job than a Cisco router. ATM switch was orders of magnitude faster.
+01:27:19 Brian: Right, because you're able to presumably do a lot of this without actually having to even-- were you doing it in silicon, or were you able to do [crosstalk].
+01:27:24 Tom: Yes, the ATM switches were all silicon data path. We had to surround the ATM fabric with software that would put things on the right channel, basically, so there was some software, some hardware, blah, blah, blah. Anyway, we did a lot of partnering with ATM switch companies. In some ways, we invented a core of some of the software-defined networking stuff you see today.
+01:27:47 Brian: Oh, interesting.
+01:27:49 Tom: Because we were managing a switch from the outside, so the control and the switching were separated. It was a fun time.
+01:27:57 Brian: Yes, that sounds fun, and Ipsilon was awfully bought by Nokia, if I remember correctly?
+01:28:02 Tom: That's right. It wasn't that long into Ipsilon when people figured it out that ethernet switching was going to be the way to go. There were all kinds of startups. We actually had a team of hardware people come to us and say, "Hey, you should hire us. We'll do an ethernet-based thing for you." We said, "No," and they went off to be very successful. We missed the boat in a couple of ways. Same thing, one of our key guys left and became a founder at Juniper Networks.
+01:28:32 Brian: Oh, there you go.
+01:28:34 Tom: They did IP routing directly in hardware. It was all going downhill when we were talking to Nokia. Nokia coming from the telco world, we thought they wanted all this ATM stuff, which we were at the point of saying, "This is never going to fly." There was this weird tap dance when it finally came out that what Nokia wanted was some IP routing expertise. I was like, "Oh, hallelujah. This is perfect."
+01:28:58 Brian: That's always funny, right, when you're trying to impress them with all of your ATM savvy. They were actually much more interested than the IP instance?
+01:29:07 Tom: Yes.
+01:29:08 Brian: That's interesting. Then how long were you at Nokia? Or were you at Nokia?
+01:29:12 Tom: Yes, probably three years or so.
+01:29:14 Brian: Okay, interesting.
+01:29:15 Tom: Many trips to Helsinki, which was a fun time. This was when Nokia was king of the world. Year 2000 they were the most valuable company in Europe.
+01:29:27 Brian: You must have had a Nokia. Did you have a Nokia phone?
+01:29:29 Jess: Yes, I did. I had the one that everyone had that you could play Snake on.
+01:29:33 Brian: Exactly. This is going to date you in not long. It already does date you actually.
+01:29:38 Jess: That's the one everyone had.
+01:29:39 Brian: I know but I'm just saying like the Gen Z years coming up are going to view you as like, "Wow, you are really old."
+01:29:43 Tom: You can buy brand new phones that are clones of those, and Snake is still one of the key features.
+01:29:50 Jess: Wow, nice. I don't even remember the model number. I feel shame right now, I can't. It was very popular.
+01:29:57 Tom: There were a lot of models.
+01:29:59 Brian: Yes. Nokia I think was the first phone I had that had a built-in camera, which was great but of course, I was much older. Interesting and then after Nokia where did you end up?
+01:30:09 Tom: After Nokia I had my first retirement or a little drown and consulted with some VCs and had a nice office in downtown Palo Alto.
+01:30:18 Brian: There you go.
+01:30:18 Jess: Nice.
+01:30:19 Tom: The major thing I accomplished then was getting into Linux, because I had been a FreeBSD guy at Ipsilon, so that was 2001. Then eventually, at [unintelligible 01:30:31] I started another startup, it was called Netilion and I pulled some people out of Sun, et cetera. Satya Nishtala, who's my co-founder now, DriveScale, that's when I pulled him out of Sun.
+01:30:44 Brian: Got it.
+01:30:44 Tom: We were going to do a distributed shared memory product for basically connecting CPUs to be SMPS over ethernet and it was way too early for that.
+01:30:55 Brian: Yes, it was early.
+01:30:56 Tom: Yes, and we discovered two other companies who were already doing it. which one of them survives today, amazingly ScaleMP and doing just that.
+01:31:08 Brian: Wow.
+01:31:09 Tom: We fiddled around for a year and the VCs didn't really see anything interesting so they said, "I think you're done." I went around trying to sell the group of engineers to whoever was interested and talked to Cisco. At that time, the core team from Cisco, which is MPLS, Mario, Prem, Luca, Soni, they were leaving Cisco to start a new startup/spin in. They had done this spin in previously for fibre channel stuff.
+01:31:45 Brian: This is Nuova, right? This is got to be Nuova.
+01:31:46 Tom: Nuova, that's what they were forming. They saw I was loose, they called me up and it was good because I brought a whole engineering team with me as a co-founder of Nuova.
+01:31:59 Brian: All right, we will be taking another break. We'll be right back with Tom Lyon and more On The Metal.
+[music]
+01:32:06 Brian: On The Metal is brought to you by the oxide computer company where we're going to try a new feature shamelessly ripped off of replies yes, yes, no, where our boss Steve Tuck brings us a tweet he does not understand and Jess and I try to explain it to him. Steve, do you have a tweet?
+01:32:20 Steve: I sure do.
+01:32:21 Brian: Go for it.
+01:32:21 Steve: The tweet in question, UEFI preboot network stack engage the onboard NIC in such a way that it would write back DMA to particular physical memory pages sometime after control was passed to the bootloader. Corruption would occur somewhere in the user parts of the RAM disk. No idea. No idea. Jess, do you understand this tweet?
+01:32:42 Jess: I understand definitely the part about the UEFI pre-boot networking stack, but the part about DMA is in question mark, so I guess not really sure where that's going.
+01:32:53 Brian: You're overthinking it. I understand this tweet running on-prem is painful. This is dealing with an awful, awful firmware bug. Firmware has overwritten part of the operating system in a way that is extremely painful to debug.
+01:33:07 Steve: So who do you go to in that case?
+01:33:08 Brian: Who do you go to?
+01:33:08 Jess: You definitely strangle one of your vendors.
+01:33:11 Brian: You strangle your vendors. Unfortunately, your vendor is a PC vendor because all the existing computer companies are selling personal computers. What we need is a new computer company.
+01:33:21 Steve: This is just saying I'm in intense pain trying to run systems on-premises?
+01:33:26 Brian: That's exactly what it's saying. Steve, what can someone do if they're in intense pain running on-promises?
+01:33:30 Steve: If someone is running in intense pain on promises, what they should do is go over to oxide.computer to learn a little bit more about how we are going to take that pain away.
+01:33:38 Brain: Help is on the way join us at oxide.computer.
+01:33:42 Jess: You are not alone.
+[music]
+01:33:48 Brian: All right, we're back with Tom. Tom, as you know, Jess and I along with Steve Tuck have started a computer company. Oxide Computer Company and as a result, we have gone back through history about when are the recent attempts at doing this and Nuova is obviously one of the big ones, one of the important ones. It is a computer company that started in the early 2000s effectively.
+01:34:11 Tom: 2005.
+01:34:13 Brian: Right, by the MPLS crew. MPLS is a protocol, but it's also the names of the--
+01:34:23 Tom: The initials of Mario, Pren, Luca, and Soni, this gang that have been together ever since that crescendo communication, so did the physical layer stuff and then Mario ran all of engineering at Cisco. Luca was his right-hand, Prem has been everywhere, he's really good. It was a gang to contend with. It was a no-brainer for me to join them and then that became Nuova Systems.
+01:34:54 Brian: Nuova is where you're going to take off from scratch approach or try to take a clean sheet of paper on the computing?
+01:34:58 Tom: Yes, basically they were saying, "Look, there's this wall between servers and networking that doesn't really have to be there. How can we rethink who does what and in some more efficient way?" We did a lot of interesting stuff, but business-wise, it became structured as a spin in because Mario had the power to hire absolutely anyone he wanted from Cisco. To stop that happening, Cisco had to come up with a framework for--
+[laughter]
+01:35:27 Brian: That is great. It's a preventative acquisition. The only way to actually prevent you from just hiring away our best and brightest is to actually acquire you?
+01:35:38 Tom: Right. We did the second best thing which was to hire away all the people who had already left Cisco that he knew reals good. In particular, we got JR Rivers, and then when Lenoski, I think they both came out of Google and they're both amazing people. The first product we did was a 10 gig ethernet switch in a way that was really the first economical 10 gig ethernet switch.
+01:36:01 Brian: Oh, interesting. I didn't realize that you guys did you own switch, okay.
+01:36:04 Tom: Cisco knew how to sell switches so it was a no-brainer. It pissed off a lot of people in Cisco who are also building 10 gig switches.
+01:36:11 Brian: With the structure that this had been, it was a spin in so it was acquired very shortly after?
+01:36:18 Tom: Yes, basically, after we hit the development milestones then we were acquired.
+01:36:23 Brian: Okay, got it, but you're an independent group effectively within Cisco?
+01:36:26 Tom: Right, but then doing the switch, we viewed that as the easy part and we wanted to do something more significant with servers and whatever. That was a much more difficult discussion with Cisco because they didn't know how to sell servers.
+01:36:40 Brian: Right. You said switches, I don't know, I said servers? I heard switches.
+01:36:45 Tom: Right. That took quite a while to iron that out, but then we did the UCS system, which had a number of really interesting things about it, including one of the first smart NICs-- What happened on the PCI bus was really controlled by the network, not by the server.
+01:37:04 Brian: Interesting. Was that the VIC? The VIC [crosstalk]
+01:37:10 Tom: We never called that internally but that's external name.
+01:37:13 Brian: Yes, exactly. That's how I know. What did you call it internally?
+01:37:16 Tom: The Palo. After Palo Alto.
+01:37:18 Brian: After Palo Alto. All right, now Jess, you and I can be cool with the VIC crowd, we can be called The Palo.
+01:37:24 Tom: We also had a Menlo chip, but that was not cool. That was just a fiber channel translator.
+01:37:29 Brian: Okay. All right. so Palo was much cooler than Menlo.
+01:37:31 Tom: That's good.
+01:37:32 Jess: Get it out. Oh, boy.
+01:37:33 Brian: Yes, but you guys were also doing some special things on firmware, right? Because I know there were some interesting BMC work going on--
+01:37:41 Tom: Yes. We've had a very tight relationship with Intel because they were happy to see another contender in the server world, so we did a lot of firmware work with them. Again, all pointed at making things more manageable, which remains a huge problem with BMC today.
+01:37:58 Brian: Huge problem.
+01:37:59 Tom: Cisco UCS had the server profile thing where you could really control the whole identity of the server, MAC addresses, and UUIDs and all that kind of stuff so you can move that identity around between different physical pieces of hardware.
+01:38:12 Brian: What were some of the big lessons of that in terms of what worked? I feel like this is like one of really the last attempts at taking things from scratch that are not in the hyperscalers. It was in this and it became UCS. What were some of the things that really worked from them?
+01:38:29 Tom: A lot of it never quite mattered because everything ended up in virtual machines. It became a very, very VMware-centric product. Then, VMware was taking over a lot of the management stuff. Then it became this uneasy tension between Cisco and VMware about who's doing what and why. I was fortunately not deeply involved in all that, but I didn't. As soon as Cisco took us over I checked out anyways because the Cisco culture is so alien to me.
+01:39:05 Brian: I think that if open firmware had been around, a lot of the challenges from Nouva sounds like were dealing with some of all the proprietary firmware that you had to go partner with effectively--?
+01:39:17 Tom: There's that. We did a necessarily complex system in my view-
+01:39:23 Brian: Oh, interesting.
+01:39:23 Tom: -where we had not only the firmware on the server boards, but we had a local switch in the server box. Only it wasn't a switch, it was a fabric extender, which was a new concept. Then the switch was top of the rack and we're doing software up and down the stack. We're doing chips for all these things.
+01:39:41 Brian: Okay. Wow.
+01:39:42 Tom: There was a lot of stuff going on.
+01:39:43 Brian: That was all internal, the Cisco's, the budget is actually much larger basically.
+01:39:46 Tom: Even at Nuova, we were doing like six chips at once.
+01:39:50 Brian: Wow. Wow.
+01:39:53 Tom: That was pretty silly, but we had the people who could crank these things out.
+01:39:56 Brian: That's amazing, so you left Nuova at some point?
+01:40:00 Tom: I've invested in peace at Cisco.
+01:40:02 Bryan: You've invested in peace as they say. It was DriveScale time. DriveScale, was then--?
+01:40:07 Tom: Actually, the thing I did at Cisco which was a research project for me it was I got interested in low latency networking and why does InfiniBand claimed to be so much faster than ethernet [unintelligible 01:40:19] Basically, did a user-level framework for Ethernet drivers which turned into the VFIO subsystem in the Linux Kernel. I'm proud of that, of creating a framework where you can actually do user-level drivers safely.
+01:40:36 Bryan: You can actually rival IB.
+01:40:39 Tom: In terms on all of the performance side, IB comes from OS bypass. It has nothing to do with the protocol.
+01:40:45 Bryan: In fact, it's despite the protocol.
+01:40:48 Tom: The protocols are protocols. That was cool.
+01:40:51 Bryan: Neat.
+01:40:52 Tom: That was my side project.
+01:40:54 Bryan: There you go. The three of us last saw one another at the Open Source Firmware Conference which--
+01:41:01 Jess: It was awesome.
+01:41:02 Bryan: I love that conference.
+01:41:03 Tom: That was a great conference.
+01:41:04 Bryan: Wasn't it great?
+01:41:05 Tom: Yes. That's the kind that should be. A small enough community that they're all fun and interesting.
+01:41:11 Bryan: I've said this before. I was telling Jess, I'm like, "This is what conferences are used to be like," I felt. Did you feel like that that was [crosstalk]
+01:41:17 Tom: Yes. Like the early Unix days and stuff like that.
+01:41:19 Bryan: Yes.
+01:41:20 Jess: Before everything became a trade show.
+01:41:22 Bryan: It's like working on a kind of esoteric technology really.
+01:41:28 Tom: Most people still, It's like, "Open Source firmware." It's like, "Who cares?" Those of us who know it's like, "This is really important."
+01:41:36 Bryan: This is really important. Why is it important from your perspective? We certainly have our perspective [unintelligible 01:41:39].
+01:41:40 Tom: Really nothing to do with my business thing. There's just been so many attacks at so many levels on these computer elements that it's time to protect ourselves.
+01:41:53 Jess: Totally.
+01:41:53 Bryan: It is. I feel really much more modern software much deeper in the stack. It's terrifying how much of this--
+01:42:00 Tom: Well, the other thing besides NFS I wish would go away is C because it's time to stop. We've had enough.
+01:42:09 Bryan: Yes. What is post-C. We obviously have our opinion on this.
+01:42:13 Tom: It's Rust.
+01:42:14 Bryan: All right. Here we go. Exactly.
+01:42:16 Tom: If we're doing that level of system's programming. Then, Go has its place.
+01:42:22 Bryan: Go has its place. Yes, I can understand that.
+01:42:23 Tom: I found it awesome.
+01:42:27 Bryan: I feel like all this stuff has its place. It does feel like Rust is replacing C. It feels like this is a not uncommonly held view from people who came up when C itself was revolutionary.
+I think it's interesting to me how many folks who remember when C replaced Assembly are now seeing a lot of the same things. Same reasons that C replaced Assembly, they're now seeing in Rust replacing C. Is that a fair characterization?
+01:43:00 Tom: Yes. It just saddens to me to see major new things still being written in C++ or C.
+01:43:05 Jess: Oh, God, yes. It's like, "Why?"
+01:43:07 Tom: Oh, God. Gag me. Tom, you like us, I'm not a PL person at all. I just view a programming language as it's an important way of expressing a system. I've always viewed it as a necessary evil, I guess. With Rust, it's been very exciting to feel like, "Wow. This is an actual technological step forward in the programming language that is helping me as someone who's actually deploying a real system."
+01:43:41 Tom: I actually have not started programming in Rust.
+01:43:44 Bryan: There you go.
+01:43:48 Tom: I really want to. I don't know if I have some excuse to [crosstalk]
+01:43:50 Bryan: You've got to find some excuse. Here's what I think you what I found. You remember when you're programming C, you could feel the underlying Assembly?
+01:43:58 Tom: Yes.
+01:43:59 Brian: With Rust, I think you can feel the underlying C. I think as a veteran C programmer, Rust will have less of a learning curve for you because I think that some of the things that it wants to do, I don't know if your Java programmer, Python programmer or something, it's going to be very confusing about why the Rust compiler is being upset about various things. The actual, the ownership model makes so much intuitive sense if you're coming from C, I think. I feel that's a great tour from Roff from the mainframe to 600 lines per minute of printing to Rust. Tom, we cannot thank you enough. This has been just--
+01:44:44 Tom: You're throwing me out already.
+01:44:45 Bryan: We can go. I feel that this could go on for days because I think there's so much interesting stuff out there.
+01:44:55 Tom: We haven't really talked about DriveScale, but the short--
+01:44:58 Bryan: Yes. I'm so sorry. Let's talk about DriveScale.
+01:45:00 Tom: The short thing there is we're trying to make the server simpler and get stuff out of servers to put them on the network.
+01:45:07 Bryan: Put them on the network.
+01:45:07 Tom: Tie it all together on demand. It's very simple.
+01:45:11 Bryan: People want to learn more about DriveScale. You've been at the epicenter of so many technological revolutions. I am sure people are going to interested to learn a lot more about DriveScale. Where should they go do that?
+01:45:23 Tom: The usual website. I don't know where else to start. There's been a fair amount of stuff right now about us.
+01:45:28 Bryan: You've got your own podcast.
+01:45:30 Tom: I do. Kind of in hiatus, but there's a bunch of episodes out there.
+01:45:34 Bryan: People can go and catch up if they want more Tom Lyon. That's a good place to go.
+01:45:38 Tom: If you want to hear the same stories again, it's probably out there.
+01:45:41 Bryan: I want to know when we're doing the Lyon Family reunion.
+01:45:46 Jess: Is that for Thanksgiving or?
+01:45:51 Tom: We're all getting together in El Paso for Christmas.
+01:45:54 Jess: Nice.
+01:45:54 Bryan: Wow.
+01:45:55 Tom: All nine siblings, spouses, kids, grandkids. This is going to be about 30 people.
+01:46:00 Bryan: I feel like the Computer History Museum needs to send a film crew there. Don't you think?
+01:46:07 Jess: Yes.
+01:46:08 Bryan: It's just so incredible to have such a family that has done so much. Hopefully, everyone gets along well enough>
+01:46:18 Tom: It's all good and dirty fun.
+01:46:21 Bryan: That is great. Well, Tom, thank you again. Thank you so much for joining us in the garage today.
+01:46:27 Jess: Yes, thank you.
+01:46:28 Bryan: It's been terrific. I know that I'll look forward to more stories from you for sure.
+01:46:34 Tom: Thank you for having me.
+01:46:35 Bryan: Excellent. Thank you. Thanks for joining us On The Metal: Tales from the Hardware/Software Interface. You've been listening to On The Metal: Tales From The Hardware/Software Interface. For show notes to learn more about our guests or to sign up for our mailing list, visit us at onthemetal.fm. On The Metal is a production of Oxide Computer Company. It is recorded in the Oxide garage in Oakland, California.
+To learn more about Oxide, visit us at oxide.computer. On The Metal is hosted by me, Bryan Cantrill along with Jess Frazelle. We're frequently joined by our boss, Steve Tuck. Our original and awesome theme music is by JJ Wiesler at Pollen Music Group. You can learn more about JJ and Pollen at pollenmusicgroup.com. We are edited and produced by Chris Hill and his crew at HumblePod. From Jess, from Steve, from me, and from all of us at Oxide Computer Company, thanks for listening to On The Metal.
+[01:47:57] [END OF AUDIO]
