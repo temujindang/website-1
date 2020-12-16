@@ -6,7 +6,7 @@
 00:00:24 Bryan: Jess, do you want to introduce who we've got in the Virtual Garage today?
 00:00:27 Jess: Yes, today we have Trammell Hudson. He is remotely in Amsterdam, but I discovered Trammell through the internet. He does crazy cool things with computers. It always seems like he's on a train or a boat or something hacking on something, so yes, I'm very excited.
 00:00:47 Bryan: Trammell, welcome to the Virtual Oxide Garage.
-00:00:50 Trammell Trammell: I'm glad to be there. I think it's wonderful that y'all have started a Silicon Valley company in a literal garage.
+00:00:50 Trammell: I'm glad to be there. I think it's wonderful that y'all have started a Silicon Valley company in a literal garage.
 00:00:57 Bryan: In a literal garage, I know. When Jess said her garage was perfect for us to get started in, we were like, "It looks too cliché, but it's a great garage actually." It's great to have you here. Trammell, I have a little bit of a confession. I was attending a conference recently and they were asking me, "What website do you read that other people are not going to be aware of?" I go, "Boy, all right, I've got to find something really interesting now." I was thinking, "What website do I go to that other people should be aware of but maybe aren't?" I'm like, "I'm going to give them trmm.net."
 Your website is delightful and there's so much interesting stuff there. You've done so much with the hardware/software interface, how did you first discover it when you were coming up?
 00:01:46 Trammell: Right out of school, I went to work for Sandia National Labs out in Albuquerque on the high-performance computing team. At the time, we were writing a custom operating system for the supercomputers. Because performance was absolutely critical, we were running everything on the bare metal and we really had to do a lot of work to make all of the computer resources available to the users.
@@ -168,7 +168,7 @@ He warned the other doctors that if they bought one, they might not do any more 
 00:39:03 Bryan: Oh my gosh, that must have been mesmerizing to find. What a tale from the crypt. Did you find the physician? Did you locate any of these folks?
 00:39:15 Trammell: We found the physician's son and forwarded the contents over to him. The physician had passed away quite some years earlier.
 00:39:24 Bryan: Wow, well, speaking as the son of a physician who discovered that he loved software, I'm sure that his son appreciated getting it. That's amazing.
-00:39:36 Trammell: Yes, it was really quite an interesting find. The PDP-11 is definitely a fun one. I also did a lot of fun work with teletypes, one of which we hooked up to the PDP because that was period appropriate, the ASR 33. That was the teletype that Unix was originally written on. Not the specific one, but that model. If you go to 
+00:39:36 Trammell: Yes, it was really quite an interesting find. The PDP-11 is definitely a fun one. I also did a lot of fun work with teletypes, one of which we hooked up to the PDP because that was period appropriate, the ASR 33. That was the teletype that Unix was originally written on. Not the specific one, but that model. If you go to
 even a modern Linux system and looking at Etsy term cap, you'll find a term definition for the TTY 33 which is that this paper output 110 baud capsule only teletype.
 00:40:16 Bryan: TTY comes from a teletype, right?
 00:40:19 Trammell: Yes, it is.
