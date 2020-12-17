@@ -12,7 +12,7 @@ description: |
     toys, and more!
 podcast_file: https://media.transistor.fm/344925bb.mp3
 iframe_link: https://share.transistor.fm/e/43499ab9
-transcript_file:
+transcript_file: 003-ron-minnich.txt
 ---
 
 On this episode of On the Metal, we interview Ron Minnich. Ron has had a 

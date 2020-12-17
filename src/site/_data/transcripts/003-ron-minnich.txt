@@ -1,0 +1,494 @@
+[music]
+00:00:12 Bryan Cantrill: Welcome to On The Metal, Tales from the Hardware/Software Interface. I'm Bryan Cantrill. With me, as always, is Jess Frazelle. Hey, Jess.
+00:00:19 Jessie Frazelle: Hey, Bryan.
+00:00:20 Bryan: Joining us is our boss, Steve Tuck. Hey, Steve.
+00:00:22 Steve Tuck: Excited to be here.
+00:00:24 Bryan: All right, keep us in line. Jess, you want to introduce who we've got in the garage today?
+00:00:27 Jessie: Today, we have Ron Minnich, who I like to refer to as the godfather of open firmware, but I'm not sure if he'd even like that.
+[laughter]
+00:00:37 Jessie: Yes, it's super exciting. We're in the garage as usual.
+00:00:40 Bryan: Ron, welcome to the garage. It's great to have you.
+00:00:42 Ron Minnich: I'm so honored to be here.
+00:00:43 Bryan: Well, first of all, the godfather of open firmware, do you find that disparaging or not? I view it as certainly praise, but hopefully, you view that as-- how do you view that?
+00:00:51 Ron: There's probably more than one.
+00:00:53 Bryan: Okay. Maybe it's a good place to start about where open firmware-- because you were certainly at the birthplace of open firmware in a lot of ways. How did that come about? Where did you see the need, and how did you feel it?
+00:01:06 Ron: Actually, it's weird. My hope of doing that work started in the early '90s with Sun Microsystems systems. When I looked at the Netboot program, they had at the time, realized it was a quarter-meg. A lot of it was Sun would take these scripts and run them on their kernel and extract the drivers from the kernel and compile them into the Netboot program.
+We took one look at that and thought, "Well, why don't we just put the kernel in the flash?" That's when we hit the hard wall of, well, because it's licensed, and the flash is too small, and all these other problems applied. That went on the shelf from about 1990, 1991. In the intervening time, I actually helped design a PCI card, and that's when I realized PCI had self-defining hardware, which meant we were done with dip switches and jumpers and special knowledge and all that.
+It was not the first self-defining hardware bus, but it was the first commodity one. In '99, I had this god awful VA Linux cluster with these Intel L440GX motherboards that took five minutes to boot. If you needed to reflash the firmware, you had to rip the thing open and physically move the jumper, and put it in a floppy disk that ran an autoexec.bat.
+00:02:31 Bryan: Oh, my god.
+00:02:31 Ron: That ran that because it was a backup 64K firmware that burned the real firmware. You didn't have video or keyboard, which meant that their instructions were, "Put the floppy in, watch this LED light, listen for a couple beeps, everything will be-- pray," praying was not in the manual, but it was in the activity, "and you'll be fine." This was so terribly awful on every possible dimension.
+Then I thought, "First off, wow, we've got a quarter-meg flash port in there, more than big enough to hold a LinuxONE-- well, 2.2 kernel at the time. We have self-defining hardware. developer.intel.com actually has chipset datasheets," it's no longer true, but it was true back then. The pieces were all here in place that we could actually write a C-based thing that would load a Linux kernel into RAM and jump to it.
+The original LinuxBIOS was intended to be about five instructions, which was, "Take this thing and flash copy it to RAM and jump to it." What I hadn't been realized when I started the project is that it wouldn't work anymore because DRAM was actually a little more complicated to set up. By then, it was synchronous DRAM, your clocks and things that had to happen. Linux files grew a little bit from there and then the kernel kept getting bigger. We managed and make that all work for a few years.
+00:03:55 Bryan: That's amazing. At the time when DRAM training was getting more complicated, where did you get the DRAM training code?
+00:04:01 Ron: Stefan Reinauer wrote that.
+00:04:02 Bryan: Oh, wow.
+00:04:03 Ron: Pretty sure it was Stefan. There are a lot of us looking at it, but by the time the Opteron came along which needed DRAM training-- again, the SDRAM, you just really needed to read the serial presence, detect bits, do a computation, jam in the registry, you were done. They're really wasn't training on SDRAM, but DDR brought in the idea of training and that just complicated our life a lot.
+We had really smart people like Yinghai Lu-- who was at Tyan for a while and then AMD, who got involved, of course, Eric Biederman, of course, Stefan Reinauer. I would have to really go do a git blame on the tree to really remember actually who really wrote the real training code. I only know it wasn't me.
+00:04:48 Bryan: Well, I just feel like DRAM training is one of those things that, as programmers, we take DRAM for granted. It's like, "How complicated can it be to actually get DRAM booted effectively?" It's like, "Well, glad you asked. As it turns out, it can be quite complicated."
+00:05:01 Ron: Probably in the early 2000s with DDR, it was order of several million instructions. I timed it on a-
+00:05:10 Bryan: Whoa.
+00:05:11 Ron: -yes, instruction times, I should say, because there's a lot of loops. I timed it on a Chromebook in 2012 when I joined Google on it. By that point, it was up to billions of instructions. It's so bad and so slow in fact that [inaudible 00:05:26] BIOS will try and cache the computed parameters for DRAM training so that it doesn't have to do it more than once. There's a large, large chunk of time minimum on a server system, 10 seconds maybe, that is DRAM training. It's a long, long time.
+00:05:44 Bryan: That's a long time.
+00:05:46 Ron: Now, compared to you UEFI, it's really fast because UEFI is 10 minutes. UEFI is 60 times slower than the DRAM training step, but still, it's a long time.
+00:05:54 Bryan: As someone who has never ventured into that kind of code, but who has suffered from a pandemic of DIMM failures, you really do wonder how robust that is to-- because you're basically on the fly trying to determine the right parameters for this thing. Over time, presumably, the system can change and invalidate those parameters, at some level you would think, or that you think that'd be at least a possibility.
+00:06:18 Ron: I don't have the knowledge of that part of it. Once you compute like a Chromebook, they compute the parameters. Actually, the ARM Chromebook, it'll come with, say, eight or four predefined sets of parameters, so based on that, I would guess that, in some of these systems, once you node, it doesn't drift that much.
+00:06:40 Bryan: It's just amazing that all of the work that's required, the billions of instructions that are required to get a part working that we just take for granted.
+00:06:49 Ron: A little more disturbing is the fact that even though we opened that up in the early 2000s because the vendors decided a few years later they didn't want that to be opened up, it's now behind the walls of binary blob. I always viewed LinuxBIOS and then coreboot in part as this open-source reservoir of knowledge. Do you want to know how to do DRAM training? You look at our code, you can see how it works. That, sadly, is falling behind the veil of binary blobs. It's a problem.
+00:07:25 Bryan: When you and I read the open source from our conference, Ron, obviously with you and crew, which it was a terrific conference. I was telling Jess, it reminded me of an old-school conference because it is. It's using open source as that repository of knowledge, which that used to be true in an all proprietary era. It's become less true for the world writ large, but it still really is true for firmware. It is.
+00:07:49 Ron: Yes, that's why I love that conference so much. I tell the people involved in all those projects. As far as I'm concerned, it's the best conference I go to every year because people show up with soldering irons.
+00:07:59 Bryan: It was something.
+00:08:01 Jessie: Yes, dope. The hackathon was honestly the coolest part because of that. You don't see that at any other conference that I've been to at least.
+00:08:08 Bryan: Well, I also feel that was the spirit of open source. There was a time when in an all proprietary world, you would go to these conferences, and you'd be delighted by, "Oh, my god, there are 200 people that are interested in the same thing I'm interested in." It felt so arcane, and the social networking was so much fun. Now, we're in this era where people are exhausted by pull requests.
+00:08:31 Jessie: It's like more commercialized versus the grassroots. The grassroots open source is my favorite open source.
+00:08:38 Ron: Well, actually, one of the reasons I started the U-root project, which we now use in our open-source firmware work at Google and other places, it was the last time I tried to do a build route and it failed. I watched just this gigantic, massive stack of config files fail to work correctly. There are really two barriers. There's the binary blob barrier, which has come back, but unfortunately, I feel in the open-source community, one of the other barriers is we just built these gigantic stacks of just scripts and scripts and scripts.
+It's very hard sometimes to get behind the wall of all that stuff and find out what's really going on. I know I'm diverging a little bit. The goal with U-root was to get back that sense we had in early Unix days that I would say, "Where's cat? Oh, here's the source to cat right there." Not, "Oh, I have to get cat," which I think is-- it's wonderful that the source for cat can be found. It's not wonderful that very few people ever look at that stuff.
+00:09:46 Bryan: Well, then you're like, "I have to get cat," and it's like, "I'm going to download 431 megs." It's like, "Oh, my god." It's like we've got dependencies on-- it's like, "How is this?" It's a complicated world. You do wonder, is there a simplicity that we could be realizing that we're not realizing? Certainly Unix-- that way, it's a pun on Multics.
+00:10:51 Jessie: Actually, I love Gentoo. I used it for a long time to make this custom OS, which is how also Chrome OS is made. I think it's perfect for that use case because the static binaries compiling an OS, but just static binaries, I don't know that was my goal.
+00:11:07 Ron: I love static binaries. In fact, U-root is built around that whole idea that binaries should be static.
+00:11:15 Jessie: Nice.
+00:11:15 Ron: I'm with you on that one, totally.
+00:11:18 Steve: Sorry, can I ask what Gentoo is?
+00:11:20 Ron: Oh, boy.
+00:11:20 Bryan: There's the Gentoo problem right there in a nutshell.
+00:11:22 Bryn: Yes, that is the Gentoo problem in a nutshell.
+[laughter]
+00:11:23 Steve: I assume it's not second generation?
+00:11:25 Bryan: No. This is not you. This is Gentoo. This is an entirely reasonable question, but the fact that you know about Ubuntu and you know about CentOS and these other things, but Gentoo is like, "What the hell is that?
+00:11:39 Jessie: My favorite Gentoo meme though, this is very subculture of Gentoo, it's that when you are trying to compile GCC, you're just starting out like your distribution, you have to go all the way to Germany and back basically to get the source code for GCC and compile the world, which I think is a funny thing.
+00:11:58 Bryan: You should explain for Steve what the zeitgeist is of Gentoo with the--
+00:12:01 Jessie: You build everything from scratch. Everything is from almost first principles of building artifacts. You have to compile everything from source including the compiler itself, which is like a chicken-and-egg problem because you need a compiler to compile the compiler.
+00:12:17 Bryan: It's excruciating. There's something that is obviously very, very satisfying about building a system from first principles, but the fact that it is so difficult to build a system from first principles today-- in GCC, boy, in an LLVM world, it's even more complicated. Ron, as you know, I'm a huge fan of Rust, but the big complexity with Rust is getting LLVM to work. There is so much working.
+Once you can get that working, you are opened up to this new simplicity, but there's a lot of complexity in getting just the compiler to compile. It is excruciating.
+00:12:52 Ron: That's where Ken Thompson's C compiler from Plan 9 is an incredible lesson in compactness. It compiles in about a second or two. It's about 124 files. Interesting thing in there is he actually doesn't use the C library.
+00:13:08 Bryan: Old school. Too old school.
+00:13:09 Ron: No, no, no, it's actually about-
+00:13:11 Bryan: Does it makes system calls?
+00:13:12 Ron: Yes, but it's a Trusting Trust thing. The thing is if you pull the C library in as part of your compiler, there's an introduction of a vulnerability there. What Ken realizes, he can make that C compiler-- and I'm reading into what he did, so maybe I'm wrong, but you can make the C compiler a standalone entity that doesn't pull in any libraries. It's a neat idea to do it that way. He has a couple of system calls. He only as four.
+The thing I totally love is his [unintelligible 00:13:38] is an s-break and his free is an empty. Free [unintelligible 00:13:42] never happen because, well, you're not ever going to get big enough that it matters.
+00:13:46 Bryan: It is like a harbor Root of Trust analog for compiling. We want to have this one compiler that is super simple, and then we will use this compiler that we can reason about, and we can verify putatively to actually then begin to bootstrap the world and build a much more complicated world.
+00:14:04 Ron: Yes. Actually, every Go through Go 1.3 was actually based on a [unintelligible 00:14:08] C compiler.
+00:14:08 Bryan: Right.
+00:14:09 Jessie: The Trust of Trust paper is actually one of my favorite papers because it's very short, simple, and then it's just like, "Wow, this makes a lot of sense." Trusting Trust, it goes down to first principles again of what you're really--
+00:14:21 Ron: It rarely had to go to firmware, actually, because you trust all this firmware, and it's all really very bad code.
+00:14:27 Bryan: Yes, it was not designed to be at the bedrock of humanity the way it is, certainly. What was your first exposure to the Plan 9 and Unix philosophy? Obviously, was that Los Alamos or before?
+00:14:40 Ron: I think I'll date myself. My first exposure to Unix was 1976.
+00:14:44 Bryan: There you go. On what machine? That is version--
+00:14:46 Ron: Version 6 on 11/45.
+00:14:50 Bryan: Nice.
+00:14:50 Ron: I wouldn't trade the time spent with that for anything. We were so circumscribed by the limits of the machine you really had to think through what you were doing. Again, Ken is the master at this. All of Ken's code through the present day-- I don't know, I think he's written recently, but you still see it, signature bits of Ken.
+It's hard to describe, but it's code that can fold in on itself and do something additional in addition to the purpose it was described for. I don't possess the mathematical skill to define the way his code works, but you know it when you see it.
+00:15:31 Bryan: Oh, interesting.
+00:15:32 Ron: You see a function, but then you see maybe multiple functions calling that and getting different behaviors in ways you wouldn't think of. Unix, back at that time, because of all the limits we lived with, made us think very, very, very hard about how you did things. The result was you tended to write-- and the code had to be clean, but tight, fast code.
+00:15:56 Bryan: This 11/45, where is it? Is this at a school? Where-
+00:16:00 Ron: I gave the front panel to a friend of mine, but this was at University of Delaware back in the day.
+00:16:04 Bryan: Okay. You're a university student, I assume.
+00:16:06 Ron: Yes.
+00:16:08 Bryan: 1976 was probably your first computer at that point, right?
+00:16:14 Ron: No, believe it or not, '69 was my first computer. I wrote my first program 50 years ago [unintelligible 00:16:18] .
+00:16:18 Bryan: Okay, we got to talk about that. What computer is that? That sounds [unintelligible 00:16:20]. 1969, okay. At home?
+00:16:25 Ron: I built a little of relay computers and things too. I hungered for more than eight bits of memory because that's all I ever built in my relay computers. It was basic HP 2100 leased machine from a company called Lease Co.
+00:16:39 Bryan: Lease Co.
+00:16:39 Ron: It's a long gone, long gone. It was an ASR 33 paper, tape, punch and reader.
+00:16:46 Jessie: Nice. That's cool.
+00:16:49 Bryan: You had this at home somehow.
+00:16:50 Ron: No, that was in my high school.
+00:16:51 Bryan: In your high school, okay.
+00:16:53 Ron: Well, it was a high school course and I had to petition to get in because I was 12, and they didn't want me doing that when I was 12. I had the usual things that a lot of people wanting to do computers back then had. I had a Dr. Nim for anyone who knows what a Dr. Nim is.
+00:17:09 Bryan: No, what's a Dr. Nim?
+00:17:10 Ron: A Dr. Nim, I'll bring it in some time. It was a plastic device that played the game in Nim. The flip flops were actuated by marbles. In some sense, the marble was the input bit to these three plastic flip flops. Even though you didn't know you were being taught, it taught you a lot about digital logic. This was a company called E.S.R. started in New Jersey. They built four different kinds of digital devices cast in plastic.
+00:17:43 Bryan: Where are these today? I visualized it.
+00:17:45 Jessie: Yes, I want to find one.
+00:17:46 Steve: Give me one of those.
+00:17:46 Bryan: Yes, put this on the Christmas list for the kids.
+00:17:48 Ron: I have three of them.
+00:17:49 Bryan: Oh, my God.
+00:17:50 Ron: I never got the fourth one. They went out of business. The first was Dr. Nim. The next was Think-a-Dot. It's on my list to recover my poor little Digi-Comp I. The Digi-Comp I is what taught me De Morgan's theorem, Boolean algebra, that kind of thing. It was a three-flip-flop device and you would realize the and and or of the state machine with these little plastic-- believe it or not, little bits of plastic tubing.
+You define your logic equations and a clock was this thing you move back and forth-
+00:18:23 Bryan: Oh my gosh.
+00:18:24 Ron: -[unintelligible 00:18:24] the clock printed on it. Then you'd watch the three bits change value as these things went back to-
+00:18:29 Bryan: Oh, my God, that's incredibly valuable.
+00:18:30 Steve: They are still available. They are not cheap.
+00:18:32 Bryan: Should I buy a reproduction?
+00:18:35 Ron: No, because these are obviously-
+00:18:36 Bryan: These are originals.
+00:18:37 Steve: These are originals that people are selling online.
+00:18:38 Bryan: What a great idea, though, because I remember, certainly, when I was coming up in the '80s, that was not a thing, unfortunately, anymore. I just remember, as a young kid, thinking like I don't understand how we built computation on binary logic and getting an intuition for that at such a physical level is great. That's a great idea.
+00:19:01 Ron: Well, it got me started. I was a hardware designer for a long time while I was also doing software because of the Digi-Comp I. If I could find those guys, and thank them, I wish. I don't know where they are anymore, who they were even. They're in Wikipedia as E.S.R. There you go. That's Dr. Nim. Dr. Nim was wonderful because you really would-
+00:19:28 Steve: If you'd hung on to a couple of them, they've been marked up to $145 apiece now.
+00:19:32 Ron: [unintelligible 00:19:32] cheap at 10 times the price for the educational value.
+00:19:35 Bryan: Totally. [unintelligible 00:19:36] or Steve has done what you might well be doing. It's just going to the Wikipedia page and add-
+00:19:40 Steve: Googling E.S.R. Dr. Nim
+00:19:42 Jessie: We'll put in the show notes.
+00:19:43 Bryan: We'll put in the show notes, for sure, but that's amazing. What a great first exposure. It sounds like mid-'60s.
+00:19:50 Ron: The other very early learn about computers thing I got was called the Geniac, which was literally [unintelligible 00:20:00] rotatry dials and you would build plugboard things. You would set up logic equations and do stuff.
+00:20:08 Bryan: There's something great about the IAC era, the ILLIAC, the JOHNNIAC.
+00:20:12 Ron: Yes. IAC, ILLIAC, Geniac. All this stuff.
+00:20:16 Bryan: The Geniac, now. That's great.
+00:20:18 Ron: Again, I think when you have limits, it's good because you have to really think it through carefully.
+00:20:27 Steve: The Geniac designed and developed by Edmund Berkeley.
+00:20:32 Ron: Really? This hasn't ended. There's an artist in France who designed this incredibly beautiful digital clock and she built all the flip-flops using LEDs. I've lost the reference but it's about six or eight feet tall and you can watch the computation as it occurs in this digital clock. Even were we not to do this stuff with plastic, this stuff could be done in ways that make it visually clear what's going on.
+00:21:13 Bryan: Especially because the atomic particles of computation have not changed. For all of the talk of quantum computing and the very poorly named-- I guess terrifically named from their perspective of quantum supremacy. I hate that term because it makes my-- my mom's book club is contemplating ritual suicide because Google has achieved quantum supremacy. It's like, "Oh, God."
+00:21:38 Ron: People are reading too much Tom Clancy, I think. This supremacy. It's just, "Give me a break."
+00:21:43 Bryan: Exactly. Meanwhile, back in the reality of a short program computer and a von Neumann architecture, which is still what we're living with, these are still the atomic particles. It is still deeply-- in fact, more so than ever in an era where we are further removed from that to be able to actually physically understand and get an intuition for what's actually happening. That's terrific.
+00:22:09 Ron: It's pretty funny. When we did the work in 1999 on Linux files, I had a lot of people from vendors say, "You can't write a BIOS in C." About five years later, they said, "Thanks to Ron who showed us we can write a BIOS on C." First off, I'd written a BIOS in a better language than C in 1978 so I knew I could write it in C. Secondly, arguably, Unix, in many ways lives in the place of a BIOS.
+It was just so bizarre to me to hear these companies makes this statement. I couldn't understand why anyone would believe that.
+00:22:45 Bryan: That's actually a very interesting point. You're mentally saying, "Look, on 11/45, the limited resources that that thing has, that effectively is firmware. That
+was firmware. We had Unix on it. We absolutely know that we can do Unix on a certain way given the luxury that we have even in the mid-'90s."
+00:23:10 Ron: A 40K instruction space was about all you got for Unix. What's interesting when I look at what people want you to do to discover interrupt routing today in ACPI which has run the ACPI machine language "virtual" machine to evaluate ACPI byte codes and you can't find the interrupts any other way. Well, the way you did it on those old machines is you basically literally poke the register somewhere and waited to be kicked in the ass, basically.
+Then you said, "Well, I just got an interrupt, I wonder what vector it was. Must be that device that I just poked to interrupt me," because you had no other way to find out what interrupt it was. You just didn't. You look at that and then you look at what vendors come up with today which is megabytes of software to do almost the same thing. We've lost a lot of the idea of simplicity.
+What we tend to go to is every time anything gets a little tricky, I see this all the time, their honest response is, "We'll put a firmware driver in place to paper over the mess." We've made a mess, let's put something in firmware to paper over the mess and don't tell anyone. Never speak it.
+00:24:22 Bryan: It really takes a lightning bolt to have that simplicity cut through all that complexity because we accept that complexity as endemic and required. There's no other way to do it. You can't do a BIOS in C because there's no other way to do it.
+00:24:38 Ron: You have to do assembly.
+00:24:39 Bryan: You have to do assembly. It's difficult to overcome that inertia. It gives you great reverence for Ken and co. did with Unix in terms of being able to have
+such powerful abstractions on such a small hardware. That's one of the resources.
+00:24:59 Ron: The key was the abstractions. It's so critical to pick the right abstractions. This is one thing that's a little bit missing sometimes in the Linux discussion, which is it's an actually brilliant piece of engineering. There's no way of getting around that, but there are a lot of competing operating systems to Unix in the early '70s. Why did Unix win? They picked the right abstractions.
+The abstraction was arguably that you could enumerate the resources in the namespace so to speak because it was all there in the file system. That was really novel. The fact that /dev/tty was a thing was incredibly novel. If you look at Windows NT today, there are still sort of you name things with pass but you can't tell us those pass. That won't work. The fact that if you cat a file on it would be a disk, or you'd be writing to a printer, or it'd be a tape, or it'd be a real file, or a tty and it didn't matter.
+You'd be surprised how often people don't get that point today.
+00:26:07 Bryan: As it turns out, open, read, write, lseek, it's a very powerful abstraction. We can put a lot through that abstraction.
+00:26:16 Ron: Yes, we can. Segueing, actually, you mentioned Plan 9. I started hearing about Plan 9 around '88 or so and read all the papers and just all I could think is, "This is really cool. This feels like the Unix again." Bear in mind, this is only a dozen or so years after I started using Unix.
+00:26:37 Bryan: By then, Unix has become a monolith. Even the late '80s, Unix has diverged. It's amazing just how quickly the pigs were walking on their hind feet with respect to the Unix was going to throw out all this complexity. I have to say it's a little bit like the microservices revolution today where microservices came and, "We're going to throw out all this complexity to monolith. We're going to replace it with the simplicity."
+It doesn't take too long before that complexity grows again and metastasizes again and the simplicity now is complicated.
+00:27:17 Ron: At some point, Unix did bring in a few good ideas in the '80s like the idea of a synthetic file system, that was key. One of these talks I give is, "Why did Plan 9 happen?" It's pretty funny. If you go back to about 1978, when they brought TCP and networking into Unix, there were a lot of discussions about how to do that and you actually can find an RFC where someone says, "Let's put it in the file system namespace." /dev/tcp/harv, you can actually find that string.
+Looking back on it, we didn't really have the mental model, we didn't have the abstractions that would really let us do that. Rob Pike gave a fantastic talk one time about how you can go wrong with naming. For example, /dev/tcp/harv as an example, putting a hostname in that path didn't actually make sense because the question became, "If I move /dev/tcp/harv, the /dev/tcp/prep which is the MIT machine--
+00:28:15 Bryan: What does that mean?
+00:28:16 Ron: What does that mean?" Exactly.
+00:28:17 Bryan: [unintelligible 00:28:17] . Is that connection?
+00:28:17 Ron: Does that mean I disconnect and reconnect? What happened here? Weirdly enough, I reviewed a paper in the 2000s that was actually proposing putting networking in the namespace and proposing that exact same thing. That if you move something to dev/ctp something else, it would disconnect and reconnect. It was just fairly awful. Plan 9 worked really hard.
+In the '90s, they got the abstractions right for the namespace model of all these resources like your networking stack, like your process control and all that. Of course, by that time, it almost didn't matter because Unix had owned the world at that point. Basically, AT&T kept following up the release of Plan 9. We finally got it right in 2013 and by then, nobody really cared but we did get it out under GPL, but it took 25 years.
+Funny side story of that, I can tell this tale out of school because literally most of the people involved are no longer alive. When they were talking at AT&T about releasing Plan 9, one of the people no longer alive told me, "Look, the reason we didn't release it the way we released Unix is that people at the company at the time were saying, 'Well, look what happened when we released Unix. We don't want to do that again.'" Meaning, from their point of view, they'd lost control.
+They didn't see that we lost control but we set the standard for the ages. It didn't matter.
+00:29:48 Bryan: If you had not done that for Unix, Unix likely would have died on the vine had it not been for Lions. If Unix had been locked up inside of AT&T-
+00:29:58 Ron: I don't know what we'd be running today.
+00:30:00 Bryan: -I don't know what we'd be running today, but it would be in the confines of interesting systems that no one runs. The abstractions flourished because they were made available with the benefit-
+00:30:10 Ron: In fact, in the late '70s, there was a lot of discussion that our future looked like an IBM mainframe because they're plug compatibles and IBM was everywhere and we just, "Yes, fine, we better accept that the future is going to look like an IBM mainframe." A lot of people don't remember this, but around 1998, DARPA announced it would only fund Windows NT efforts. You were there for that, right?
+00:30:34 Bryan: No, I was going to say thank you for mentioning that because when you mentioned the mainframe-- because that's when I came up, in the mid-90s, I graduated '96 and decided that I want to do OS development. I was told explicitly that the world is going to Windows. I have to remind people of this that the reason I went to Sun Microsystems in 1996 is because Sun was the only computer company that believed in Unix.
+00:30:59 Ron: Yes, true.
+00:31:00 Bryan: This is before Linux really. Linux, yes, it existed in '92 but in 1996, Linux isn't really a thing. Unix itself is now viewed because of these complicated monolith that it's become. Unix is dying of its own weight and everyone is mortgaging their future to Windows. It's interesting to think of that, that looked a lot like the IBM mainframe from the late '70s. [unintelligible 00:31:22] mainframe and I feel the same way today with AWS, honestly, where it's like, everything should just be on AWS.
+We see this again and again [unintelligible 00:31:30] where-
+00:31:31 Ron: Yes, it happens again and again and the thing that eventually wins-- I almost for a while had decided I was going to be wrong about firmware, and I'm still not sure I'm going to be right, but the thing that's open-source tends to win. I don't know what that means for the world we're in today but there really was a period of time, I remember at Los Alamos in 2001, a physicist said to me, "Well, it's all well and good to be playing games with this Linux toy but we've got serious work to do here and we're doing it on Unix." Less than two years later, all the major computing infrastructure was Linux based. It happened literally while people had their backs turned almost.
+00:32:10 Bryan: Well, then I think that people didn't appreciate that what was actually happening is x86 was passing all the risk lenders.
+00:32:14 Ron: Yes. Nobody expected that.
+00:32:17 Bryan: No. Making ASCII add before multiply operate at multiple gigahertz. We never thought we'd see that.
+00:32:25 Ron: No, nobody-- and you have to hand it to Intel.
+00:32:29 Bryan: Oh, it's a process.
+00:32:29 Ron: That's an incredible accomplishment. We, in the '90s, for a while, PowerPC had the higher clock rate than Alpha had the amazing high clock rate. We all looked at the x86 and said, "They're never going to get here." We turned our back and turned around and all of a sudden, it just blew right by everybody. It was amazing.
+00:32:50 Bryan: [unintelligible 00:32:50] , you were on the front lines of that happening, really because you guys are very performance sensitive, clearly, and whatever is going to be higher performing, you're going to use and that was becoming x86.
+00:33:02 Ron: Well, interesting story about that. We had built a cluster at Los Alamos called Q. We ended up spending $120 million to get 20 teraflops, which is nothing now, it was a big deal back then. About the same year that was being delivered, we build an x86 Linux BIOS cluster that for $6 million was 10 teraflops.
+00:33:25 Bryan: Wow.
+00:33:25 Ron: We essentially showed a few things. First is we were about a 10th the price, we were the same performance. The big machine with the Alphas basically, the rule at the time was 100% uptime means that you're up maybe all the week, but for a couple hours while we do plan maintenance. The system we built, which we called Pink because there was ASCII, blue, red and white, and all the stuff. We said, "No, we're going to call it Pink." That caused a lot of upset I got to tell you, which is why we did it.
+[laughter]
+00:33:57 Ron: That basically was up continuously, so it had 110% or 120% uptime. Nobody was expecting that, but the nodes were Linux BIOS nodes, they had no local disk, they were just far, far, far more reliable than the big expensive machines. A friend of mine used to make a joke about you could buy a smaller disk and this big Cray disk that we used to get, but you'd have to spend a lot less money.
+[laughter]
+00:34:24 Ron: We would say, "You could buy a much better cluster than that thing, but you'll have to spend one 10th of the money. I hope that's okay." Well, you know what? It actually isn't sometimes.
+00:34:32 Bryan: [unintelligible 00:34:32] it's not, especially with someone who has spent $100 million of the taxpayers money on-- you're not exactly making them look great.
+00:34:41 Ron: We weren't making friends. Being in the '90s when I really first got started in a cluster game, I went up to, let's call it the nameless government agency and said, "About 95% of the cycles on your big vector Cray machines are not vector cycles, they're scalar cycles and I can give you machines for literally 100 times less money that will run just as fast based on commodity workstations. Isn't this cool?"
+I realized after I gave the talk that they were really angry with me. I thought, "Why are they so angry with me? I'm going to save them a lot of money." Then I realized, "Yes, that's a bad thing to do in the government," because that means that guy's budget just got smaller and it also means the fraction of budget that is represented by people just got a lot bigger because I've reduced this hardware cost.
+Further, the 95% of the people running scalar cycles in a vector machine are paying the rent. The 5% of those people can't pay the rent. That was basically the dagger into the heart of the big vector machines was started in the early '90s. When not just me, but we started showing that we could take a bunch of rack them stack them, spend $40,000, literally $40,000 on my first cluster, and for many important apps, we just outran the Cray easily.
+00:36:03 Bryan: For apps that you would think would be vector.
+00:36:05 Ron: These weren't vector apps.
+00:36:07 Bryan: They were scalar apps, got it.
+00:36:07 Ron: Yes, these were scalar apps and we just left that thing in the dust. The same thing happened with the x86, people were spending hundreds of millions of dollars on what essentially were commodity clusters. We showed them, well, if you want to do a commodity, get this cheap PC and by the way, [unintelligible 00:36:26] are not sensitive to cosmic rays at 7200 feet the way the Alphas were.
+You'll actually get a more reliable machine because you won't have single event upsets in L2 cache. We spent less money and got a better machine, which was again, not a popular message.
+[laughter]
+00:36:45 Bryan: We're going to take a quick break. We're going to be right back with more Ron Minnich and his tales in the hardware/software interface.
+[music]
+[00:36:56] Steve: On the Metal is brought to you by the Oxide Computer Company. Well, bad news, I just got back from a meeting with the attorneys.
+00:37:01 Bryan: Oh, boy.
+00:37:01 Steve: They are not going to let us say much in these ads. We can't talk about the customer experience today for on-premises infrastructure.
+00:37:09 Jessie: We can't do my idea to be like, "Are you being gaslit by your vendors?" Because that's what they're doing. They're gaslighting people into thinking that these bugs only exist on one of their machines when it exists on everyone's.
+00:37:20 Steve: God, no, they called that I think, "a third rail."
+00:37:23 Bryan: They must be following Jess on Twitter. I knew that that was a bad idea to let the lawyers follow Jess on Twitter.
+[laughter]
+00:37:28 Steve: They also said we can't talk about public cloud customer experience.
+00:37:32 Bryan: Oh, come on. We can't talk about the rapacious bandwidth pricing. It's practically criminal.
+00:37:36 Steve: No, we can't talk about the unit economics of that at all.
+00:37:38 Bryan: Can we use the word criminal with respect to public cloud vendors?
+00:37:40 Steve: Definitely not.
+00:37:41 Bryan: Oh, boy. What can we do?
+00:37:43 Steve: Well, they did say they gave us a statement we can use which is-
+00:37:46 Bryan: Are you going to read from it?
+00:37:47 Steve: Oxide Computer Company is building something that should help some people.
+00:37:52 Bryan: Well, that seems very direct. Come on, can we at least send them over to oxide.computer?
+00:37:57 Steve: We can. The other bit of bad news is all the lawyers were there at the meeting?
+00:38:01 Bryan: Oh, wait a minute, not just the cheap one but the expensive one?
+00:38:04 Steve: Yes, they were all there.
+00:38:05 Bryan: We paid a fortune to get this terrible ad. Oh, my God, please listen, go to oxide.computer and learn what we're actually doing.
+[music]
+00:38:14 Bryan: All right, we're back. Ron, you've just built Pink?
+00:38:19 Ron: Yes.
+00:38:20 Bryan: This cluster, which is so good it's profoundly unpopular because it's a dangerous cluster.
+00:38:27 Ron: Well, there are other ways that we caused trouble. Remember, the VA Linux node, it took five minutes to boot. We put software on their that was written by Erik
+Hendriks, who's a really neat guy, he's at Google now. It was called BProc. The way BProc worked, we had a kernel and a daemon in flash. BProc, you'd have 1,000 nodes-- 1,023, to be honest, with one node at head end and these nodes would come up.
+They would all zero in on the home node and say I want to boot. What Erik implemented was this ad hoc tree, the first 32 nodes in would be-- it was like The Godfather, Right?
+00:39:08 Bryan: Right.
+00:39:08 Ron: I'm going to ask you for a favor, or maybe it's like Trump, I don't know. The first 32 nodes in would be saying, "Here's the image. By the way, I want you to hang
+around a while because I'm going to come back and very quickly and ask you to boot other nodes."
+00:39:19 Bryan: Interesting.
+00:39:20 Ron: Now, our boot scenario is 32 nodes boot, and they boot 32 more each, and now you're up.
+00:39:25 Bryan: You're gossiping boot images.
+00:39:26 Ron: Yes.
+00:39:27 Jessie: That's cool.
+00:39:28 Steve: That's great.
+00:39:28 Ron: It was a beautiful thing and Erik did the experiment, was, "Do we use IP multicast or point-to-point?" It turned out point-to-point always won, which is interesting.
+00:39:36 Bryan: That is interesting. Yes, that is interesting.
+00:39:38 Ron: It was not a static layout. It was whoever got in the first 32 first, they were assigned. Well, that code's available, by the way. It's on GitHub.
+00:39:45 Jessie: Pretty cool.
+00:39:45 Bryan: Yes.
+00:39:46 Ron: We've been wanting to rewrite it in Go because it's so cool. Trivially easy in Go with goroutines and channels. We booted. We booted in a minute and a half and most of that minute and a half was-- I'm sorry, two and half minutes. Most of that time actually was spent-- Myrinet was source-routed and you needed another route. The Myricom that mapped the network took four hours to run. Again, Erik Hendriks is one of the, "Man, that guy is smart," type guys. He wrote his own Myrinet configurator that would actually map the whole thing in seven seconds.
+00:40:26 Bryan: Oh, wow.
+00:40:28 Ron: Now, we're booting in two and a half minutes. Where's a lot of that time spent? It's actually spent printing serial messages because you always want those messages. Now, we're up. Now, all these nodes are going to go to the high-performance cluster file system we bought from a company I won't name that said it was super scalable.
+00:40:46 Bryan: Please don't be Sun. Please don't be Sun. Please don't be Sun.
+00:40:47 Ron: No, no, it's not Sun. They had never been able to test what happened when 1,023 nodes came at their system simultaneously and said, "We're ready to mount now." You know what happened?
+00:40:59 Bryan: Oh, it's [unintelligible 00:40:59] .
+00:41:00 Ron: Yes. You know what got blamed?
+00:41:02 Bryan: The speed of the boot, of course.
+00:41:04 Ron: Yes, we got blamed. "It's a bug in your system." They didn't even say, "It's because you're booting so fast." They said, "It's a bug in your system."
+00:41:13 Jessie: That's crazy.
+00:41:14 Ron: We had to walk through. In the end, the really weird thing that came out of this is I was talking to somebody from Los Alamos a while ago and they said there were still some bad memories about LinuxBIOS and BProc because of problems they caused. I thought, "Well, what was that?" "Well, it was too fast."
+00:41:32 Bryan: It's too fast. There's some bad blood over the high performance.
+00:41:36 Ron: Then, further, Erik implemented a scheduler that really took advantage of his BProc ideas. He could start a 16-megabyte NPI image in about one or two seconds to call it, which was only about 60 times faster than anything else. That used the same ad hoc tree for distributing the binary.
+00:41:56 Bryan: Yes, interesting.
+00:41:57 Ron: It's still the best cluster system I've ever used bar none because the way his model worked is you would start the process up on the head node and then migrate it, but it would leave a slot, a zombie process slot. When you type PS, you slow all your processes on the cluster at the head node. It was a very, very nice model. Further, again, he would start his NPI jobs so quickly they would all go to the "scalable storage system" and crash it.
+00:42:25 Bryan: Crash it, right
+00:42:27 Ron: Again, "Oh, Erik, you've done something terrible. Well, no, the terrible thing you did is you were fast."
+00:42:34 Bryan: Jess, there's no way you know about Myrinet, I would assume. Myrinet is one of those things that's lost to history. It was obviously big in HPC.
+00:42:42 Ron: Yes. Chuck Seitz developed it at Caltech. I first saw a talk on it in 1996 maybe. It was really cool because it was so damn cheap, but it was a two-gigabit network when that was 20 times faster than anything anybody else had. Super low latency port-to-port. It had a lot of really neat ideas.
+00:43:07 Bryan: All fiber, right?
+00:43:08 Ron: All fiber. Well, actually it was copper. Copper was the size of your index finger, the connector. It was just insanely copper.
+00:43:16 Bryan: Wow, okay, I thought was fiber initially.
+00:43:18 Ron: It had these little neat little routers. The only gotcha with the whole thing was the fact that it was a source-routed network. That meant, in parallel, everybody had to figure out, "Well, what's the topology of my network?" Then store it as a source route. The way it worked is every switch you went through, you would rip off the first end bits of your packet and say, "Now, I know your output port," and then, your now shorter packet would go to the next hop. It was really cool.
+00:43:47 Jessie: That's cool.
+00:43:48 Bryan: Simple. I remember, the thing I was always impressed by is the performance was so much better than Ethernet at the time. Then you look at the card and you're like, "Where is it?" It was just like the card was very lean.
+00:43:59 Ron: Yes, it really was.
+00:44:00 Bryan: There was not a lot on there. I was just like, "Wow."
+00:44:03 Steve: Why did it die.
+00:44:08 Ron: You want to know why it died?
+00:44:09 Bryan: Well, it was up against Ethernet. It was up against commodity Ethernet.
+00:44:12 Ron: Yes, it's interesting. It was up against InfiniBand for a while.
+00:44:16 Bryan: Yes, IB2.
+00:44:17 Ron: To be honest, InfiniBand just had more money and in the end, better performance in the end, at least for what people wanted. Now, there's a guy named Patrick Geoffray, now at Google, who worked at Myricom, very, very smart guy who did a lot of really, really nice work in the early 2000s. Among other things, showing that you don't always need to always bypass. Really shaped a lot of my thinking. Anyway, everybody does always bypass anyway.
+Arguably, for some HPC applications, Sandia actually showed Myricom would outrun InfiniBand. It really didn't matter because the theory was InfiniBand was going to be the Ethernet of HPC. There'd be all these vendors selling InfiniBand. In the end, there was only one. There were going to be all these vendors selling InfiniBand cards. We'd all be happy with our Ethernet of HPC. Well, it turns out the Ethernet of HPC is probably Ethernet because they all became Ethernet.
+If you look, Myricom at some point said, "Oh, by the way, our interface is through Ethernet." Mellanox, after a while, said, "Oh, by the way, are interface is through Ethernet too." You really look, everybody just convert to an Ethernet.
+00:45:25 Bryan: Well, even with Mellanox today, it's very hard to get them to confess that this is IB. There's IB at the brain stem of a Mellanox card.
+00:45:35 Ron: Yes. I don't know if this is true, but I know a while back, it was the case that the Fi for all these networks was the same Fi.
+00:45:45 Bryan: That's right.
+00:45:46 Ron: It was all a licensed from Dolphin, of all places. Dolphin really knows how to do these Fis. They had a Fi for their shared memory network. In the end, everybody licensed their Fi. I was told that was a big, good thing for them. Their network was really cool, but not as many people bought that as bought their Fi.
+00:46:13 Bryan: Interesting. Then IB, of course, was itself-- talk about it. You're talking about the complexity versus simplicity.
+00:46:20 Ron: Oh, man. Yes.
+00:46:21 Bryan: We used to joke that the only reason that it was the National Labs buying IB because they had the indentured servants in the form of postdocs to actually go configure the thing.
+00:46:31 Ron: Yes, true. One of the LinuxBIOS clusters we built in the early 2000s at LANL was the first Opteron cluster running LinuxBIOS as well, and it had IBs. You may remember, back then, there was the Intel IBAL. Then there was the other one, which I've forgotten the acronym for. As delivered, that system used IBAL to bring the network up, and then it used the other one actually do comms. It was just the-
+00:46:58 Bryan: Worst of all worlds.
+00:46:59 Ron: -worst thing ever. At some point, I can't describe how much pain that InfiniBand thing was. We had people walking through the spec and realizing at some point, spec and code were going to be really, really an effort to deal with. At some point, what happened-- I really regret I can't get his name in my head right now, we had these two enormous stacks of code.
+We had a guy from-- well, I'll just say it, Intel, because you could find a discussion, who said, "We've got this really cool patch, the Linux kernel that will give you IB. It's only 280,000 lines or something like that." We just said, "That is a nonstarter. This is just not going to happen." One engineer and again, I've known him forever, and I'm just blanking on his name, just came up very quietly said, "I'm starting from scratch. Here is my driver. It's really compact. I'm not really drawing on a lot of this other source code."
+That is what eventually became the kernel subsystem. Somebody just said, "I realized there's millions of dollars replacing these other two gigantic stacks that are mutually incompatible, but this isn't going to work."
+00:48:16 Bryan: Yes, it's not going to work.
+00:48:18 Ron: It's just an example again of sometimes a codebase can be so large it might as well be a binary blob.
+00:48:26 Bryan: Oh, my God, right.
+00:48:28 Ron: Sometimes you just say shove it off the table and start clean.
+00:48:31 Bryan: It's like the Broadcom SDK for the top-of-rack silicon. Someone told me that it's 14 million lines of code.
+00:48:37 Ron: Wow.
+00:48:38 Bryan: I went to Robert Mustacchi who is now an Oxide engineer. I'm like, "Robert, 14 million." He's like, "I don't know about that. That seems a little light. Let me count it." Yes, the Broadcom SDK.
+00:48:50 Ron: It seems a little light.
+00:48:50 Bryan: It seems light. It was light. It's more than 14 million.
+00:48:53 Ron: Oh, my gosh.
+00:48:54 Bryan: You just have the same thing of like, "How? I mean, how do we have this much complexity to enable silicon?" Some of it's for good reason, but a lot of it is not. A lot of it is just this accretion. People don't go back to first principles and say, "Okay, let's actually write this."
+This what I so love about the open firmware movement about, "Okay, what do we actually need here? Let's actually start over from scratch and let's build the stuff that we need as opposed to the stuff that we have along for the ride for a multi-decade long ride?"
+00:49:27 Ron: Yes. Actually, I prefer that. We may not always be happy with what a individual company is doing, but we need to not forget there are really good people at those companies. Just this morning, I got a note, Intel has released firmware for the Management Engine called ignition firmware, half a megabyte. Well, what's really cool is who really spearheaded getting this done? Well, it was four engineers from Intel.
+00:49:55 Jessie: That's amazing.
+00:49:56 Ron: Yes. They're great guys. You can find the note, but we need to remember that there are really some terrific people in these companies who really are trying to do the best thing they can.
+00:50:09 Bryan: I confess, Jess and I have already read the note, as have all of our engineers, the note this morning about the Ignition firmware, that got around the internet very-- Because for the folks that have been watching this space closely, where the ME has been so tightly held, to get anything that is redistributable, that is smaller, it's like [crosstalk]--
+00:50:29 Ron: Yes, plus, it's incredible.
+00:50:31 Bryan: It's incredible, and it shows that companies can change, and you've got-- Especially when you've got engineers' boots on ground that are trying to make the right thing happen. It's a big step forward.
+00:50:43 Jess: I would love to hear the organizational battle that they had to get into about that.
+00:50:48 Ron: Yes, I don't know, but the main thing I know is they fought the good fight and--
+00:50:54 Bryan: They did, and maybe-- Because I felt-- I don't know if you felt this way, I felt this way for years, where you would speak with Intel in particular about firmware in particular, where you are-- It's like, why does American Megatrends still exist as a company? This is from my childhood, why is this at the brainstem of humanity?
+You would ask Intel about open firmware-- As a customer of Intel, asking about open firmware. Every meeting, we would ask about open firmware, and every meeting, you basically get the same response, which is people around the table more or less agreeing with you. Like, "Yes, what you're saying is right. You're right. You're right. Yes, you're right. You're right. You're right, but it's just not a decision we're making," and the Intel folks that you're dealing with-- We had great Intel folks that we were dealing with, but they did not feel empowered.
+They weren't empowered. They didn't feel empowered for a very good reason, because they were not empowered, and I think that when that-- I've got a question for you, Ron, because [crosstalk]--
+00:51:52 Ron: Just one quick thing, again, before we beat up on AMI too much, I admit that, again, in my past, it wasn't something I needed, but they do provide a thing that people need, so--
+00:52:06 Bryan: I want it not to be a proprietary blob. I want it-- Like open-source it, and let's find another revenue model for you, but that's what I [crosstalk]--
+00:52:17 Ron: I think everybody will be happier, especially in light of all the security issues that have popped up in the last just five years, if all that stack were open-source, because, what do you trust?
+00:52:27 Bryan: Here's my question, [crosstalk]-- I feel that Spectre and Meltdown have helped to accelerate open firmware at Intel. I feel that Spectre and Meltdown-- It'd be interesting to know your read on this, but my read on this is that I saw a real change in Intel after Spectre and Meltdown where they realized that they had totally screwed up. They were very accepting of that, actually, and their-- I saw their behavior change around security, around vulnerabilities, and that's when we began to see the first cracks. I began to see the first cracks anyway, maybe you saw the first cracks earlier, with respect to accepting open firmware.
+00:53:04 Ron: I'm not sure-- I was not directly involved with any of that, but the thing I'm seeing is more-- I started showing people what could be done in [unintelligible 00:53:18] bad things in firmware about 20 years ago, and the general response--
+00:53:24 Bryan: What were you showing them 20 years ago? I mean, I can only imagine--
+00:53:26 Ron: It was a joke. I did this thing as a joke. I turned the machine on, and I ran a program that put the string, "This is a secret message," in flash, and then turned it off and turned it on and said, "Look, see it's still there." I pointed out that there are organizations in this world that switch machines between different security levels, and I said, "Here's how you get bad things out."
+The general response from everybody was, "Let's not talk about that. It won't happen under Windows anyway. You can't do that under Windows if you have the right service packs," and all this nonsense. I've been trying to get this out for a long time, but I think that--
+00:53:59 Bryan: [chuckles] You can't do it under Windows--
+00:54:01 Ron: Serious, that was the response.
+00:54:03 Bryan: It's like, I have physical possession of the machine, I can do what I want.
+00:54:07 Ron: Right, but again, it's just that the sort of idea that all the BIOS vendors tried to push is, "Our code is perfect, this stuff won't happen. Don't worry about it." Now, I see two things that really have pushed this along. One, maybe my BIOS here at Chromebooks have really pushed the idea that, actually, Coreboot can work for real computers. I'm hearing more and more about Coreboot now on laptops, and, of course, System76 got to really give them a nod, fantastic, and I know they get a lot of crap that Purism, to be honest, did also push on the idea of Coreboot. They're not as visible at the moment, but System76, actually, a few weeks ago, pushed commits for management engine blobs for their laptops.
+00:54:59 Steve: And just for the broader audience, who is System76?
+00:55:00 Jess: Laptops.
+00:55:01 Bryan: System76 laptops, we were going to-- Jess and I were going to get you to get a System76 laptop.
+00:55:07 Ron: Yes, look at the Darter Pro, I mean--
+00:55:09 Jess: They're really nice. They have 4K ones. The 4K one is a bit bulky, but I like it.
+00:55:14 Steve: And they are unique because--
+00:55:16 Jess: They do open firmware.
+00:55:17 Bryan: They're open firmware. A Linux laptop would actually have their own OS as well, but it's all open firmware, so they are not trying to be-- But it's price-competitive, and it is feature-competitive with other laptops, so it shows that it's economically possible. I mean, they are a kindred spirit.
+[00:55:35] Steve: And it will allow me to tinker with my laptop more.
+00:55:37 Jess: Totally.
+00:55:38 Bryan: Well, and it will allow you to get-- This kind of like getting-- I don't think they're quite the Chromebook level. I mean, Chromebook really is amazing in terms of its ability to [crosstalk]--
+00:55:45 Ron: They're quite incredible. I'm going to [unintelligible 00:55:48]. System76, what I like about them is they started from a point of, "Let's do the right thing. We're going to build open systems, and they're going to run Coreboot. We're going to figure out how to make that work," and they follow the same path that everybody has to follow.
+You're going to get something designed by someone else, and you're going to make it work for your needs. What the folks there I talked to said is, in a lot of ways, that the newest ones are the ones where they really had a huge amount of impact on the design of, and I think they're just nice units. They feel nice when you hold on that kind of thing, but further, I can get cloned with Coreboot repo, I can build a firmware image for a System76, I can burn it on that machine.
+If I'm in a company where I don't want to believe what might be in the firmware, I can just burn it again. This is really interesting to, I think, anybody who realizes how bad the attacks you can put in firmware are. System76, what's really cool about them too is, you got a lot of configurability in terms of how much memory, how much NVMe, that kind of thing, and what distro you're on. Chromebooks have absolutely, in my opinion, and I've worked with them for a long time now, have completely and utterly nailed building a thing that when it turns on and puts up a screen that doesn't have a warning on it, I can believe it's running the right software, right?
+00:57:12 Jess: Yes.
+00:57:14 Ron: Further, Chromebooks have nailed the, "Oh, by the way, hold down this magic key combo, and it's yours. It's your laptop now. We will put up a crazy warning screen, but then we'll boot to whatever you want to boot to. The deep dark secret that nobody knows about Chromebooks, and I've been trying to give talks about this for years, but people still don't know it, is you can further take that Chromebook, re-key it with your personal key, and build an operating system image which you sign with your personal key, and that Chromebook from then on will only boot your version of your operating system that you load. It won't even recognize Google's operating system as legitimate.
+This is the fantastic property of Chromebooks which I've been trying to kind of make noise about for years, but I think this is because [crosstalk]--
+00:58:04 Bryan: Well, because if there's no way back, that may be the reason that people are-- You always worry about [crosstalk]--
+00:58:08 Ron: Yes, there is no way back when you blow those Google keys out of your Chromebook. You're running your version of Chrome OS or whatever forever, but I think that-- I feel maybe the System76 will maybe take little attention of that anyway just because it's so incredibly configurable. Maybe we'll see-- I don't have any knowledge at all about this, so I'm just going to say hypothetically, but maybe down the road, we see System76 picking up those additional properties of Chromebooks that make them so incredibly trustworthy.
+In my view, if you kind of look-- Like I worked with some of the early Chromebooks in the day, some of them at least were sort of, "Here's a laptop we already sell, but we're going to change that motherboard so it can be a Chromebook." But if you look at them today, Chromebooks are just so incredibly nice. They have a nice feel, and-- Okay, I'm biased, I work at Google, but I don't work in Chromebook land anymore, and I just think the hardware is just really, really sweet.
+00:59:10 Jess: I'm a huge fan of the Chromebooks. I tracked that since like 2014, and then when I realized that it was open-source and I could build the Chrome OS myself, I was like, "Oh--" Also, [inaudible 00:59:20] Gentoo, and I can make my own distro based off of it, but the experience with Chrome OS is also so good that it's like, "Why even do that, honestly?"
+00:59:29 Ron: Especially with the virtualization now, people really love it. The only reason I don't own a Chromebook today for my work is I miss the ability to throw in a lot of memory and NVMe. In 2012, I had a Chromebook that had 16 gig of RAM and 320 gig of fash SSD, and you [crosstalk]--
+00:59:50 Bryan: That's [crosstalk] laptop in 2012.
+00:59:52 Ron: Yes, that was a really big thing.
+00:59:54 Bryan: That's a fire-breather.
+00:59:55 Ron: It literally took about 20 seconds to bring the memory up, because it was just-- But I can't do that today. I wish I could. For lots of good reasons, they're not things you pull-- You rip open and throw in your own RAM and disk.
+01:00:09 Bryan: You don't, and my only-- I love the Chromebooks. The kids all have the Chromebooks, those are their computers in the school, they all get the Chromebooks. They're so good. I worry that they discourage that kind of experimentation, because there are so many conditions-- We're just like, "Well, now this is not going to boot," and for good reason, but-- I guess my only criticism is that they're so good at what they do, but I do like the ability to actually go install your own thing. It does not deprive you of the ownership of your computer.
+01:00:40 Ron: In fact, we've had two sets of interns do two different operating systems for Chromebooks that aren't Chrome OS's projects. One is called NiChrome OS which is kind of becoming dormant, but NiChrome OS was based on u-root, so all the code was Go. The window manager was written in Go, and in the manner of u-root, once you really started booting, everything got compiled on first-use. That meant the window manager source was there for you to see. Now, obviously, the web browser source wasn't there because it was Chrome, but--
+Then the most recent one is called Webboot. That will be a system which we've demonstrated for a few-- Well, really one distro. Chromebook boots and says, "What distro do you want to run?" and you might say, I don't know, Tiny Core. It knows how to go get Tiny Core, pull it all down, pull down the live image [unintelligible 01:01:25] Tiny Core. This would be the ultimate stateless device because when it boots, it asks you what distro to run.
+The plan is-- Again, this is all-intern project, all open-source, nothing to do with Google. It's just that this is a good thing for interns to learn how to do systems. You might not have a system with no disk in it. Why would you ever do that? Well, suppose you live in a place where you don't want a disc, right?
+01:01:54 Bryan: Yes, right, there are reasons to do it. Just as there are reasons to have stateless services, there are definitely reasons to have a stateless laptop. There's a lot [unintelligible 01:02:00] for that.
+01:02:01 Ron: Right, so I think you could potentially build Joanna Rutkowska's [unintelligible 01:02:05] machine based on the Chromebook and Webboot. It wouldn't be quite her machine, but we like the idea that you can pick your distro boot by boot, there's no state, you turn it off, and everything's gone.
+01:02:18 Bryan: Right. I mean, you got to imagine that there are a lot of three-letter agencies that would love to know that you're entirely stateless on the laptop.
+01:02:27 Ron: Yes. Well, actually, the one app that partly inspired my interest in it is the case of the journalist. He's in a hotel room or wherever, and they're about to get arrested. Turn off the Chromebook or the Webboot device, and everything's gone. There are a lot of cases where a stateless device [inaudible 01:02:48] potentially go beyond just the government agency scenarios.
+01:02:55 Bryan: Yes, that's great. We're going to take another break. We will be back with more On the Metal with Ron Minnich.
+[music]
+On the Metal is brought to you by the Oxide Computer Company. We're going to try a new feature, shamelessly ripped off of [unintelligible 01:03:08] Yes, yes, no, where our boss, Steve Tuck, brings us a tweet he does not understand, and Jess and I try to explain it to him. Steve, do you have a tweet?
+01:03:17 Steve: I sure do.
+01:03:17 Bryan: Go for it.
+01:03:18 Steve: The tweet in question, UEFI pre-boot network stack engaged the on-board [unintelligible 01:03:23] in such a way that it would write back DMA to particular physical memory pages some time after control was passed to the bootloader. Corruption would occur somewhere in the user parts of the RAM disk. No idea.
+01:03:36 Bryan: No idea. Jess, do you understand this tweet?
+01:03:39 Jess: I understand definitely the part about the UEFI pre-boot networking stack, but the part about DMA is in question mark, so it's like-- I guess he's not really sure where that's going.
+01:03:49 Bryan: You're overthinking it. I understand this tweet. Running on-prem is painful. This is dealing with an awful firmware bug. The firmware has overwritten part of the operating system in a way that is extremely painful to debug.
+01:04:03 Steve: Who do you go to in that case?
+01:04:04 Bryan: Who do you go to?
+01:04:05 Jess: You definitely strangle one of your vendors.
+01:04:07 Bryan: You strangle one of your vendors. Unfortunately, your vendor is a PC vendor, because all of the existing computer companies are selling personal computers. What we need is a new computer company.
+01:04:18 Steve: This is just saying, "I'm in intense pain trying to run systems on-premises."
+01:04:22 Bryan: That's exactly what it's saying. Steve, what can someone do if they're in intense pain running on-premises?
+01:04:26 Steve: Well, if someone is running in intense pain on-premises, what they should do is go over to oxide.computer, to learn a little bit more about how we are going to take that pain away.
+01:04:34 Bryan: Help is on the way. Join us at oxide.computer.
+01:04:38 Jess: You are not alone.
+[music]
+01:04:44 Bryan: All right, we're back. Ron, we were just singing the high praises of the Chromebook, and Coreboot, and then System76 and what they've done with Coreboot. Where are you seeing open firmware-- Obviously, you're in the Oxide garage, so we're very interested in the server space. Where are you seeing it in the server space? Obviously, there's a lot of interest in them.
+01:05:07 Ron: This is a good question, because your timing is perfect. In fact, especially with the Intel announcement this morning. I'm on one of the-- It's a very strange name. I'm on the Incubation Committee at Open Compute Platform, which means we evaluate new standards coming in, and say yes or no whether they become an OCP thing. I was formerly the project leader at the Open System Firmware Project, which became officially a project in August, of OCP.
+What that project says is that-- I'll give the [unintelligible 01:05:41] first. March 2021, if your OCP server wants to have OCP-accepted branding, it must be possible to purchase an OCP server running open system firmware. Further, it must be possible for the customer to replace that with their own build of open system firmware without asking the ODM for permission or asking the ODM to sign it. Further, it must be possible for you to give that build to someone else, or give that system to someone else, and they can build and install their own. That is actually not possible today. Everybody thinks it is.
+01:06:24 Bryan: Yes, that's not possible by a long shot, right? Virtually, none of those things is possible.
+01:06:28 Ron: I've been actually talking to people about this. There's this really weird thing coming down the [unintelligible 01:06:31], if I buy a 2012 Facebook server from ITRenew, I can do this. I can build an open system firmware image. The ones we build are always based on Linux Boot and u-root, it doesn't matter. I can burn it, it'll work. Unfortunately, this has led people to believe that this will always work, but for example, if you buy a Dell server today, or an HPE server, or whatever, and you change one bit of the firmware, in the case of the Dell, it'll say, "Something horrible has happened. Something's happened to my firmware." Okay, it's nice to have this recovery path, the BMC will rewrite the firmware, and your changes are erased.
+What's happening is, coming in this used-machine pipeline, companies like ITRenew, are servers where they can't replace the firmware. Our goal is to make that period of time-- You think of a pipeline, you think of big-- Almost like this pipeline of oil, and there's some bad oil in the pipeline, right? We're trying to make the period of time where those servers can't have their firmware replaced as short as possible, but we're already kind of behind it, because probably starting in the 2017 or 2016 years, or maybe earlier, there are servers that have this thing called Boot Guard. Boot Guard is what locks you in.
+How does Boot Guard lock you in? There are one-time fuses in what's called the peripheral controller hub, which is a chip. When you blow those fuses, that locks in the key, and the only firmware that can run on the machine is firmware signed with the key. You get a machine, you're not going to update the BIOS, period. In our world, where we all live in-- Kind of the nerd world, let's just call it, nobody really realizes this. I talk to people and they say, "What do you mean I can't load my own firmware? I know how to burn a flash part," and I say, "Yes, but you don't have the key to sign that part, and you are locked in."
+01:08:26 Bryan: Right, and the actual CPU is not going to execute. The CPU is not going to execute [unintelligible 01:08:29]-- This is an Intel construct, right?
+01:08:32 Ron: Yes. The model is-- We call the model 'brick, not boot', and the goal with open system firmware, one of our goals is boot, not brick. That's kind of the Chromebook model, actually. Chromebook will always boot. I bricked a Chromebook, it took a lot of work, and I did things that people don't generally do. It's only one of the ones I ever worked with in eight years, but the model that comes with Boot Guard is, you're going to brick if anything looks even a little bit off, and that's the model-- We've gotten acceptance from a lot of OCP vendors, and we've gotten support from Intel on this, actually, that we want to be able to ship systems where the user is in control of the firmware.
+01:09:11 Bryan: Right, and you can know who's attested to the firmware, and you should be able to know-- You should have a chain of trust, and you should be able to know whether that firmware is from a trusted source or not, but the idea that you can't boot--
+01:09:25 Ron: The idea of boot, not brick too, is that-- Suppose I have a machine, and it boots, and it can't attest for some reason. It'll contact the thing, and the thing would say, "Oh, you're bad. You go talk to that other thing that will figure out what's wrong with you," but it won't be completely dead, which is-- The current model is, things that die. Now, fact is, there are a lot of companies that are perfectly happy with brick, not boot, so we're not saying you can't sell it at all. What we are saying is, it has to be possible to buy a machine that follows this boot, not brick, use your own firmware model, the fuses aren't blown-- We would prefer the fuses not exist. [unintelligible 01:10:08] fuses like that, that's a problem, right?
+01:10:10 Bryan: It's a problem, and especially when there are-- It's especially gutting when there are vulnerabilities found in the mechanism itself, where it turns out, it doesn't even work, so the bad guys can find a way around it. It's like, this is just punishing folks.
+01:10:26 Ron: I've heard a lot of stories about organized crime and this kind of vulnerability. I've been told that-- The way it was told to me by a faculty member from ETA, it is you-- If you've seen Narcos, you might go somewhere now, and you look at this big old barn, and you think, "Oh, there's a drug manufacturing facility in the barn." [unintelligible 01:10:47] you go in, and you're going to only find four [inaudible 01:10:50], and they do decapping, and they can find vulnerabilities in chips. That's the big money thing, and that just knocked me on my heels.
+He had to explain to me what he was talking about. At first, I was like, "What do you mean?" but there's a lot of money in decapping, and working out what's in a chip and finding these vulnerabilities. The two arguments I make for this is, first off, there are a lot of really smart people at a company like Intel, or AMD or ARM, whatever. Huge numbers of really smart people trying to solve these problems. The problem is, there are way more smart people out in the world, and they only got to succeed once and they're in.
+We're trying to get to a world where servers come with user-controlled ability to build and burn your own firmware, we can get much faster turnaround on vulnerabilities where all of us are empowered to find vulnerabilities. We want the good guys looking for vulnerabilities, not just the bad guys, and that can only happen if the firmware is open. Finally, we want a world where when we're done, when Facebook or whoever is done with a server, and Facebook is doing this already, actually, they can just put those servers on a cargo pallet and ship them to a company like ITRenew, and ITRenew refurbs them, and they sell them on the places that can't afford the new version of that that's still a really good machine. That's what ITRenew has been doing.
+We want that to continue, it's called Circular Economy, it's a big thing in the world now. I've been in on some of these meetings with various organizations, and I feel like Cassandra sometimes just saying, "You've got a problem with this model coming at you." Yes, we've been able to recycle the 2012 servers, but we're going to have a big problem in about five years. We're going to get servers we can't rewrite the firmware on, and we are, to be honest-- Well, we're in a lot of trouble at that point.
+There's going to be a period of time where we're going to get these Boot Guard-enabled things, and we can't do it, but we're hoping that post-March 2021, that won't be a problem. Now we have-- I'm talking to companies today, March 2020, is an aspirational target, which means companies will optionally provide that. You'll have a list in March 2020, there are companies that are going to come to the OCP summit, they're going to wave the flag and say, "We will sell you a machine today with open system firmware. We're not required to, but we're ready to do it," and to get back to the Intel ME firmware releases this morning, that is like the critical piece of all this.
+Intel, a year ago, they said they're going to help us. They put the FSP firmware support package blobs on GitHub, along with their microcode. The license is a fantastic license. You can build that FSP blob into your firmware, and you can redistribute it, knock yourself out--
+01:13:51 Bryan: Right, so not open-source, but freely distributable, and you got the binary.
+01:13:54 Ron: Right.
+01:13:55 Bryan: It's the binary blob, but it's a big step forward, it's something you can redistribute.
+01:13:59 Ron: The last piece in the chain, and notice, it wasn't for every chipset, it doesn't matter, it's a start. It's for one chipset. The last piece in this chain has been ME binary blob. What I'm really delighted about is they not only released that blob, they released the Ignition variant, which is just half a meg.
+01:14:17 Bryan: Yes, that is great, and I had not heard of that. Is Ignition an internal Intel product? I had not heard of it until this morning.
+01:14:25 Ron: I've only just seen it in-- Isaac-- It wasn't Isaac, it was another guy that wrote it up, and they explained what it was in that release. You'd have to read that thing, but I just read it enough to say, "Okay, Ignition, it's a half meg, great." If it's a half meg as opposed to three meg, it's got to be doing a lot less stuff, right?
+01:14:45 Bryan: It's got to be doing a lot less stuff.
+01:14:47 Ron: I'm assuming the web server is gone.
+01:14:49 Bryan: Right. There's a lot of horrifying things there in the ME, and in SMM too, in system management mode. That's the other-- I know it's been something you've been working with the RISC-V folks to make sure they don't repeat some of the same mistakes.
+01:15:01 Ron: It didn't work out, but--
+01:15:03 Bryan: Really?
+01:15:04 Ron: Yes
+01:15:06 Bryan: It didn't work out yet. I think you got to be an optimist, given how much you've been able to triumph over--
+01:15:12 Ron: Yes, we're-- Let's see. Let me mention, Intel has been proposing getting us out of the SMM box we're in with a new thing called PRM. We're talking-- Again, the person doing that, I wish I weren't blanking on his name. I'm sorry, but he's really a good guy, and we're hoping to be done with SMM here in the next little while, so that's cool.
+01:15:33 Bryan: That would be great.
+01:15:34 Ron: Yes. You can look at-- He's given [unintelligible 01:15:36] talk I think at OCP about it, and it looks good.
+01:15:39 Bryan: That's good. Jess, your paper on-- You talked about SMM in your [unintelligible 01:15:44] paper, what did you learn about-- For those folks who are learning about SMM, do you want to give them an explanation for--?
+01:15:52 Jess: Yes, it stands for System Management Mode. Ideally, they wouldn't have shoved so many features in there, but a lot of vendors tend to do that it seems like, so it becomes very bloated and [crosstalk]--
+01:16:03 Bryan: Steve, you [crosstalk]-- This is like the Steve test.
+01:16:06 Steve: I am.
+01:16:07 Bryan: Alright, then [inaudible 01:16:07] not going to talk about it. All right-- I mean, not that you're the--
+01:16:12 Ron: Actually, it's really interesting if you think about PCs, all this stuff, SMM, all this stuff is an answer to the question, how do I keep supporting DOS 1.0? If I close the lid on the laptop, and I want to do a sleep thing, and DOS 1.0 doesn't know anything about sleep, how will I implement that? That was the answer.
+01:16:29 Bryan: [crosstalk] your talks where SMM has mouse drivers--
+01:16:34 Ron: Yes. SMM has a USB mouse, USB keyboard, you would really be amazed at what goes in there. Just crazy.
+01:16:44 Bryan: It's terrifying.
+01:16:45 Ron: Again, that's why in-- Again, in like the late '90s, I could get a laptop, I could run an operating system that didn't have USB support, I could plug in a USB mouse, and it would work, SMM. All this stuff arguably has a good purpose, but in the long run, it's just deadly.
+01:17:06 Jess: Especially in a data center, who needs a mouse?
+01:17:08 Bryan: Oh, yes. [unintelligible 01:17:09] surface area.
+01:17:11 Ron: Honestly, you would not believe how many of these like recovery schemes for server nodes involve a mouse. Actually, this up-board I have, which is a teeny, tiny $99 board, I found out in the BIOS, there is a graphics and mouse driver. One of the things the mouse driver uses, it allows you to-- It gives you a little keyboard, and you click buttons, click-- It's just like, "What is a mouse driver doing in this thing?"
+01:17:33 Bryan: Oh, that's for the keyboard. That makes sense. [laughs]
+01:17:36 Ron: It's a different mouse driver than in SMM, it's a UFI mouse driver. Getting into RISC-V, yes, I wanted to mention it because I'm really glad you brought it up. I've been a little bit disappointed lately to see-- I guess I understand it, but to see the UEFI port to RISC-V. We did the Coreboot port in 2014, 2015, 2016, 2017. I got out of it at that point, but other people have done it in 2018 and 2019. I've been told that the reason [unintelligible 01:18:08] UEFI is because Linux wants it, that's the claim that's been made to me.
+01:18:13 Bryan: That seems crazy.
+01:18:14 Ron: It seems crazy, but--
+01:18:15 Bryan: That seems crazy, given that like-- That seems-- Wait a minute, that seems-- No, I am--
+01:18:21 Jess: That seems wrong. It just seems like-- It's just like perverse.
+01:18:26 Bryan: Linux hated UEFI as much as every other non-Windows system hated it.
+01:18:29 Ron: I know, but Linux is pretty corporate now, and so--
+01:18:32 Bryan: It's like Linux didn't want-- I mean, the excuse was that we need UEFI because Windows wants it, and now we want UEFI because Linux wants it.
+01:18:39 Ron: I have a friend at ARM, I was pushing hard on him about, "Why am I only hearing about UEFI from ARM nowadays?" and he said, "Because Linux." I said, "What?" He said, "Well, Linux requires UEFI, or that's their argument." I ought to mention then, I have been looking at some ARM boards that run UEFI, and we're pretty close to being able to say, not that we will add Linux kernel to UEFI the way we do on X86, but that we will completely replace UEFI with a Linux kernel and u-root, and it's just gone [crosstalk]. That's kind of where we want to be.
+Now, getting to RISC-V, there are some aspects of RISC-V that I've always been not exactly thrilled with. One is called the open SPI, because it's basically a classic BIOS interface, and I don't know why you would do those. There are a few architectural hooks in the RISC-V nowadays, in more recent models, that explicitly sort of enabled the SMM model on the RISC-V.
+01:19:42 Bryan: Which is tragic, because I think that RISC-V has done such a good job of learning from all of the microprocessor mistakes from an instruction set perspective. They've really done a very admirable job of like, here's what MIPS did wrong, and here's what SPARC it wrong, and what Power did wrong, and not repeating those mistakes.
+01:20:01 Ron: Yes. They really are brilliant architects on that thing.
+01:20:04 Bryan: On that thing, but then to repeat these mistakes on the firmware side, it's just gutting.
+01:20:09 Ron: Yes, it was a bummer. What we're doing, we started-- And that code's written in C, and every time I see new code written in C, I just have to say, "Why are you doing this? Why would you ever do this?" It looks like every other [unintelligible 01:20:24] to firmware with all the things it implies. We're taking a very different tack now on RISC-V. I started a project called Oreboot back in March.
+01:20:34 Bryan: We're big fans.
+01:20:35 Ron: Okay. For anyone that hasn't heard of it, Oreboot is a downstream fork for Coreboot, but Oreboot is Coreboot without C. We downstream-forked Coreboot, we did a search and destroy on every C code. The new code's all written in Rust, but we do use some of the Coreboot assembly code because it's good code, and we do use the Coreboot utilities because they're fantastic utilities, but where we can, we discard things from Coreboot that we feel we're no longer needed. That is now-- We have used that to load kernels on the SiFive HiFive Freedom u-board, which is the one based on 64 bit.
+01:21:17 Jess: I have one over there somewhere in one of those bags.
+01:21:19 Ron: Okay. Well, here is the slightly more exciting news, now, that OpenTitan is-- We're allowed to talk about OpenTitan, which is--
+01:21:26 Bryan: Very excited, yes.
+01:21:26 Ron: Yes, I know. They've appreciated your support of it, actually.
+01:21:32 Bryan: Yes, it's something we've been very excited about. Very excited to say.
+01:21:36 Ron: Yes, so we are now compiling Oreboot for the OpenTitan.
+01:21:41 Jess: That is dope. That's so cool.
+01:21:43 Bryan: That's great news, yes. Wow.
+[01:21:45] Ron: We actually are finding bugs in Rust, which-- We had a number of bugs all based around Atomics, the most-- Take a look for the most recent one based around Atomics on rv32, because OpenTitan is what's called an rv32 IMC, and there's no-- It's not iMac, it's IMC which is used in the Atomics instructions, and Rust, it turned out, the compiler had a bug, and it would incorrectly handle processors without Atomics. It's a fun bug.
+01:22:15 Bryan: That's a great one, yes. I would love to go look at that.
+01:22:18 Ron: It's actually a little subtle, but I had to [crosstalk]--
+01:22:19 Bryan: I can imagine.
+01:22:21 Ron: Yes. It's the difference between saying a thing is none, or is a value of zero.
+01:22:28 Bryan: Oh, interesting.
+01:22:29 Ron: Take a look at it, you'll love it.
+01:22:30 Jess: That' cool.
+01:22:30 Ron: Anyway, our intent with Oreboot is that on a machine with privileged mode, we want to load a kernel that'll run in M-mode as an experiment. This goes a little bit further, we're experimenting with running in M-mode [crosstalk]-- M is machine-mode, it's essentially SMM. I never viewed the ability of the operating system to modify M-mode code as a bug. A lot of people did because I wanted the operating system to own that mode.
+01:23:01 Bryan: Absolutely. Amen. Preach.
+01:23:03 Ron: Yes. There is really a-- Jeremy [unintelligible 01:23:06], who's written the Redox Operating System [unintelligible 01:23:09], I've talked to him about this, and kind of got the sanity check from him, because he's really good, and said, "Look, we'd like to run the kernel in M-mode, but with user mode, with paging enabled." He said he liked the idea, because-- Think about this, I'll go from my process to M-mode. I don't have to do any TLB flash. I don't need to load a page table root because there's no paging in M-mode, basically.
+I can use their memory protect area registers, which were basically segment registers without an offset of-- It's a [unintelligible 01:23:43], but not a base, is one way to think of it, to protect bits of the kernel. The question is-- Really, this is kind of a research question, do I lose so much by not having paging enabled in the kernel that it's too far to go? Or, do I gain so much by not having paging turned on, that it's really worth what I lose? This is the [unintelligible 01:24:05] question.
+01:24:07 Bryan: I think it depends on how much your kernel's going to be doing, honestly.
+01:24:10 Ron: Yes, that's true.
+01:24:11 Bryan: It means if you've got a big kernel that's going to do a lot, it's going to get more and more difficult to not have paging enabled. This would be my--
+01:24:16 Ron: That's kind of our speculation, but on these little tiny rv64s, we may never care.
+01:24:24 Bryan: For OpenTitan, you [crosstalk]
+01:24:27 Ron: Well, OpenTitan won't even run Linux, so we're fine. It'll be running something else, but I do think that we need to step back a little about, what is a kernel, and what does a kernel do? Does it need things the way we're doing them now or do we need to rethink this? Because-- The other fascinating thing that RISC-V opens up, I can build-- And I know someone who's doing-- I can build a machine with 1,000, 2000 cores. One of the reasons that I can do that is I'm not paying a per-core license anymore. Why didn't anyone do it with ARM? Well, you can't do it with x86, it's too complex and big. ARM, conceivably, you could do it, but you can't pay it.
+01:25:03 Bryan: Right. The licensing cost is going to be too great.
+01:25:06 Ron: Well, okay, if I have 1,000 cores, should I really be time-sharing cores anymore? Oh, wait a minute, I'm not time-sharing cores, did I need a virtual machine capability? I'm not sharing cores, and virtual machine is all about sharing the [crosstalk], right?
+01:25:23 Bryan: Yes, you do wonder like, what does that pink look like today in RISC-V where you may have hundreds of thousands of cores? Yes, interesting.
+01:25:34 Ron: Yes, so RISC-V-- And this is the thing that people get a little mixed up on. RISC-V is not an open-source core necessarily. You can make a proprietary RISC-V and not violate anything. It doesn't mean that firmware has to be open-source, it just means that you don't pay a nickel, or whatever, for every core you lay down on a die. That one simple fact opens up so many interesting possibilities. It's just-- We're just seeing the beginning.
+A friend of mine got a $3 RISC-V board from China. Funny thing about the RISC-V board from China, it has a camera and a GPU, guess what they're going to use those for, but the thing is--
+01:26:14 Bryan: Right, say cheese.
+01:26:17 Ron: Yes, or don't say cheese. In any event, it's really exploding, from what I can tell in China. Also, you look at the most recent SiFive processor, that's pretty interesting what they've done there. Not the [unintelligible 01:26:32], but the next one. I want to try and understand better what they've done, but they've had some really cool ideas. I think you're going to see a lot of really innovative things coming down the pike around the RISC-V. It's sort of like it's opened up our ability to do innovative things in hardware again.
+01:26:51 Bryan: I totally agree, and especially as we increasingly get packed in that 7-nanometer node. Because I think the SiFive guys, I think they're at like 28-nanometer, or maybe even lower now. It's like, it wasn't that long ago that that was leading-edge process. I think it's reasonable to assume that we're maybe-- TSMC thinks we're going to get to five, I don't think that-- I mean, a silicon atom, the Van der Waals radius of a silicon atom is 200 nanometers-- Or 200 picometers rather, 0.2 nanometers, so we're not getting too far beyond five. Then as we get more and more fabs packed at that node, it's going to be possible to fab a RISC-V at the same node that you're fabbing an AMD microprocessor.
+01:27:33 Ron: Yes, and the thing is-- I used to make this argument at Los Alamos, we would run the supers at 5% efficiency, and I'd say-- Well, there's a couple of ways to double your performance. One is, let's find ways to be a little bit more efficient, 10% efficiency, or we'll go spend 100 million on a new supercomputer or whatever. I think there's a similar argument around processors. You can either continue to make your processor more complex and do more, but that's a losing game as we run out of rule, or node size. Or we can say, "Hey, let's do a dramatically simpler processor, and then try and figure out what happens when we tile many, many, many of those on our die," so things are getting interesting--
+01:28:19 Bryan: This is what AMD has done, right? Where they got a 7-nanometer [unintelligible 01:28:21] sitting side-by-side with a 14-nanometer [unintelligible 01:28:24].
+01:28:24 Ron: Yes, that's really neat stuff.
+01:28:25 Bryan: Yes, the kind of the 2.5D stuff, and it opens up a lot of possibility there. It's definitely interesting. This is where I think the end of Moore's law is actually going to be exciting.
+01:28:37 Ron: Well, it'll bring us back to [unintelligible 01:28:39] limits, and arguably, that's when the innovation starts. If you can just throw more memory at it in a year and a half, you don't have to be smart. Back in the early Unix days, you had to be smart, and a lot of people came up with a lot of really clever things. I think forcing limits back on us, I think will be a good thing.
+01:29:02 Bryan: I think it'll be healthy. I think it'll be healthy for the software ecosystem we've got, the firmware ecosystem we've got.
+01:29:07 Ron: I actually had a friend at Intel who told me a funny story, really apropos. They had a graphics stack on a processor on an attached graphics board, and then one stack-- I don't remember which [unintelligible 01:29:18] one stack had seven layers of API layering, and one stack had six. Guess what the decision was made to make them kind of meet.
+01:29:27 Bryan: Oh, God--
+01:29:28 Ron: You add another layer.
+01:29:29 Bryan: Of course.
+01:29:29 Ron: Of course. He said, nobody wanted to talk about slicing off a layer of API, they just added another layer. That's what we all do, right?
+01:29:38 Bryan: That's what we all do. Sophos made that free.
+01:29:41 Ron: Getting back to the Plan9 discussion, the thing I love about Plan9 is that the model of that was, do not put anything in the kernel if you can possibly find a way not to put it in the kernel. I did an ACPI subsystem for Plan9 about four years ago, and if you look, every kernel, including Minix, which is a microkernel, they take the 50,000 or 90,000 lines of ACPI [unintelligible 01:30:06] code, and Linux transforms it to make it less ugly, because it is really ugly, and the compile another kernel. I thought, "Okay, fine. Everybody does that, but the rule is, you never put it into the kernel if you don't have to," so I kind of worked out a way to make a very minimal ACPI device, and run the ACPI Consortium code in user mode.
+I think in a lot of cases, it's really possible to do those things, but it's so easy just to toss it in the kernel, bloat it up, another 100,000 lines of code, who cares? We've got enough memory, whatever. In some ways, we've kind of gotten a little lazy, so if we're back to an era where there's limits, that's kind of cool.
+01:30:50 Bryan: I think it's going to need-- As you said, those limits force innovation. That's where you got to be creative, and I think that's-- It's going to be fun times for sure. Ron, this has been delightful.
+01:31:04 Ron: I've had fun, ye.
+01:31:06 Bryan: Thank you so much for joining us today. This has been really great. We were looking forward to having you up at the garage, and I think it has over-delivered, so thank you very much.
+01:31:15 Ron: Thanks again.
+01:31:16 Jess: Thank you.
+01:31:16 Steve: Thanks, Ron.
+01:31:17 Ron: Good to see you all.
+01:31:19 Bryan: You've been listening to On the Metal: Tales from the Hardware/Software Interface. For shoutouts, to learn more about our guests, or to sign up for our mailing list, visit us at onthemetal.fm. On the Metal is a production of Oxide Computer Company. It is recorded in the Oxide Garage in Oakland, California. To learn more about Oxide, visit us at oxide.computer. On the Metal is hosted by me, Bryan Cantrill, along with Jessie Frazelle, and we are frequently joined by our boss, Steve Tuck.
+Our original and awesome theme music is by JJ Wiesler at Pollen Music Group. You can learn more about JJ and Pollen at pollenmusicgroup.com. We are edited and produced by Chris Hill and his crew at HumblePod. From Jess, from Steve, from me, and from all of us at Oxide Computer Company, thanks for listening to On the Metal.
+[music]
+[01:32:35] [END OF AUDIO]
