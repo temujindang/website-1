@@ -13,7 +13,6 @@
 - [Running locally](#running-locally)
 - [Adding new content](#adding-new-content)
   - [Blog posts](#blog-posts)
-    - [Rich links](#rich-links)
   - [Team members](#team-members)
 - [Previewing the production build](#previewing-the-production-build)
 - [Styling with TailwindCSS](#styling-with-tailwindcss)
