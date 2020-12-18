@@ -19,7 +19,7 @@ It looks to a player like there's just some kind of invisible wall. They feel te
 00:05:25 Bryan: Work from computational work?
 00:05:28 Jonathan: Yes. Just taking something like let's detect the collision between something in its environment as an example. Back in old style computers, there were ways of accelerating that even on home computers. I never had an Atari home computer.
 00:05:47 Bryan: Oh, really? Wow.
-00:05:48 Jonathan: I was a Counter64 [unintelligible 00:05:51] guy when I was in high school. Compared to your previous guess, that's recent history.
+00:05:48 Jonathan: I was a Commodore 64, TRS-80 guy when I was in high school. Compared to your previous guess, that's recent history.
 00:05:59 Bryan: You and I are on the same vintage. I did have an Atari 2600.
 00:06:07 Jonathan: A 2600, I had. I mean the computers.
 00:06:10 Bryan: The 800.
@@ -27,7 +27,7 @@ It looks to a player like there's just some kind of invisible wall. They feel te
 00:06:31 Bryan: The Atari 800 had that.
 00:06:33 Jonathan: Something happened.
 00:06:34 Bryan: A third had the Atari 800.
-00:06:39 Jonathan: Maybe actually the Counter64 had that. I don't know. It's just to say that that was the scale of technical problem at that time. People didn't even really do box versus box that much. It was either box versus extents or sprite versus sprite. I think Counter64 did that. This is showing you how much I remember. I program that thing for years.
+00:06:39 Jonathan: Maybe actually the Commodore 64 had that. I don't know. It's just to say that that was the scale of technical problem at that time. People didn't even really do box versus box that much. It was either box versus extents or sprite versus sprite. I think Commodore 64 did that. This is showing you how much I remember. I program that thing for years.
 [laughter]
 Jonathan: I don't remember even what it did. These days, it's a very, very, very different problems. First of all, before you're even going to collide something, you need to have something. Let's say I have a person walking around like a lot of games do. How do you do that? You could imagine, for example, and the earliest 3D games do is you could, example, that much like you do sprites by having like a flip book of images. You could have some poses of a person doing a walk, and you somehow represent the geometry in all these poses, and you flip through it. Very early 3D games. Quake one did this, for example. It doesn't do it anymore.
 Anyway, that has a lot of drawbacks. How do you represent the geometry? You have points and space. There's like a 3D coordinate for every vertex, and then you have what's called an index array which is just like, "Let's define a bunch of triangles." Back then we were all like, "Maybe you should have higher order primitives or something." It's still triangles today mostly. You say, "These three vertices have a triangle, and these three, and these three, and these three." That tells you what the geometry is, and then you can have some additional properties like, "Oh--" If you want to vary the color over the surface, we have this thing called texture map.
